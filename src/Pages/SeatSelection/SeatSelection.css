@@ -1,0 +1,430 @@
+.seat-page{
+    min-height:100vh;
+    background:#f5f7fb;
+    padding:120px 0 60px;
+}
+
+.seat-container{
+    width:90%;
+    max-width:1000px;
+    margin:auto;
+    background:#fff;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+
+
+.seat-header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.seat-header h2{
+    font-size:32px;
+    color:#0B5ED7;
+    margin-bottom:8px;
+}
+
+.seat-header p{
+    font-size:22px;
+    font-weight:600;
+    color:#222;
+}
+
+.seat-header span{
+    color:#666;
+    font-size:16px;
+}
+
+
+
+.seat-map h3{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:24px;
+}
+
+.seat-grid{
+    display:grid;
+    grid-template-columns:repeat(4,70px);
+    justify-content:center;
+    gap:18px 35px;
+    margin-bottom:40px;
+}
+
+.seat{
+    width:70px;
+    height:70px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.available{
+    background:#dff6dd;
+    color:#1b7d2b;
+}
+
+.available:hover{
+    transform:translateY(-4px);
+    background:#9be79b;
+}
+
+
+
+.booked{
+    background:#ffd6d6;
+    color:#d10000;
+    cursor:not-allowed;
+}
+
+
+
+.selected{
+    background:#0B5ED7;
+    color:#fff;
+    transform:scale(1.08);
+    box-shadow:0 10px 25px rgba(11,94,215,.35);
+}
+
+
+
+.seat-legend{
+    display:flex;
+    justify-content:center;
+    gap:35px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+}
+
+.seat-legend div{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:600;
+}
+
+.box{
+    width:22px;
+    height:22px;
+    border-radius:6px;
+}
+
+.box.available{
+    background:#9be79b;
+}
+
+.box.booked{
+    background:#ff7d7d;
+}
+
+.box.selected{
+    background:#0B5ED7;
+}
+
+
+
+.seat-summary{
+    background:#f8f9fc;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.seat-summary h3{
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.seat-summary span{
+    color:#0B5ED7;
+    font-weight:700;
+}
+
+.seat-summary p{
+    font-size:18px;
+    color:#555;
+}
+
+
+
+.continue-seat-btn{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#0B5ED7,#2f8fff);
+    color:#fff;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.continue-seat-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 30px rgba(11,94,215,.35);
+}
+
+.continue-seat-btn:disabled{
+    background:#b5b5b5;
+    cursor:not-allowed;
+    transform:none;
+    box-shadow:none;
+}
+
+
+@media(max-width:768px){
+
+.seat-container{
+    width:95%;
+    padding:20px;
+}
+
+.seat-grid{
+    grid-template-columns:repeat(4,55px);
+    gap:15px;
+}
+
+.seat{
+    width:55px;
+    height:55px;
+    font-size:14px;
+}
+
+.seat-header h2{
+    font-size:26px;
+}
+
+.seat-header p{
+    font-size:18px;
+}
+
+.seat-legend{
+    gap:18px;
+}
+
+}
+
+
+/* ==========================
+   Laptop (1200px)
+========================== */
+
+@media (max-width:1200px){
+
+    .seat-container{
+        width:92%;
+    }
+
+}
+
+/* ==========================
+   Tablet (992px)
+========================== */
+
+@media (max-width:992px){
+
+    .seat-page{
+        padding:100px 0 50px;
+    }
+
+    .seat-container{
+        width:94%;
+        padding:28px;
+    }
+
+}
+
+/* ==========================
+   Mobile (768px)
+========================== */
+
+@media (max-width:768px){
+
+    .seat-page{
+        padding:90px 0 40px;
+    }
+
+    .seat-container{
+        width:95%;
+        padding:20px;
+        border-radius:16px;
+    }
+
+    .seat-header{
+        margin-bottom:25px;
+    }
+
+    .seat-header h2{
+        font-size:26px;
+    }
+
+    .seat-header p{
+        font-size:18px;
+    }
+
+    .seat-header span{
+        font-size:14px;
+    }
+
+    .seat-map h3{
+        font-size:20px;
+    }
+
+    .seat-grid{
+        grid-template-columns:repeat(4,55px);
+        gap:15px;
+    }
+
+    .seat{
+        width:55px;
+        height:55px;
+        font-size:14px;
+    }
+
+    .seat-legend{
+        gap:18px;
+    }
+
+    .seat-summary h3{
+        font-size:20px;
+    }
+
+    .seat-summary p{
+        font-size:16px;
+    }
+
+    .continue-seat-btn{
+        padding:15px;
+        font-size:16px;
+    }
+
+}
+
+/* ==========================
+   Small Mobile (480px)
+========================== */
+
+@media (max-width:480px){
+
+    .seat-page{
+        padding:80px 0 30px;
+    }
+
+    .seat-container{
+        width:96%;
+        padding:16px;
+    }
+
+    .seat-header h2{
+        font-size:22px;
+    }
+
+    .seat-header p{
+        font-size:16px;
+    }
+
+    .seat-header span{
+        font-size:13px;
+    }
+
+    .seat-map h3{
+        font-size:18px;
+    }
+
+    .seat-grid{
+        grid-template-columns:repeat(4,45px);
+        gap:10px;
+    }
+
+    .seat{
+        width:45px;
+        height:45px;
+        font-size:12px;
+        border-radius:8px;
+    }
+
+    .seat-legend{
+        flex-direction:column;
+        align-items:center;
+        gap:12px;
+    }
+
+    .seat-legend div{
+        font-size:14px;
+    }
+
+    .box{
+        width:18px;
+        height:18px;
+    }
+
+    .seat-summary{
+        padding:16px;
+    }
+
+    .seat-summary h3{
+        font-size:18px;
+    }
+
+    .seat-summary p{
+        font-size:14px;
+    }
+
+    .continue-seat-btn{
+        padding:14px;
+        font-size:15px;
+    }
+
+}
+
+/* ==========================
+   Extra Small (320px)
+========================== */
+
+@media (max-width:320px){
+
+    .seat-container{
+        padding:14px;
+    }
+
+    .seat-header h2{
+        font-size:20px;
+    }
+
+    .seat-header p{
+        font-size:15px;
+    }
+
+    .seat-grid{
+        grid-template-columns:repeat(4,38px);
+        gap:8px;
+    }
+
+    .seat{
+        width:38px;
+        height:38px;
+        font-size:11px;
+    }
+
+    .seat-summary h3{
+        font-size:16px;
+    }
+
+    .seat-summary p{
+        font-size:13px;
+    }
+
+    .continue-seat-btn{
+        padding:12px;
+        font-size:14px;
+    }
+
+}

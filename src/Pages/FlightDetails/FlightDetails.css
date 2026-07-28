@@ -1,0 +1,286 @@
+.flight-details-page {
+  width: 90%;
+  max-width: 1300px;
+  margin: 40px auto;
+}
+
+.details-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  margin-bottom: 30px;
+}
+
+.details-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.details-header h2 {
+  font-size: 28px;
+  color: #222;
+  margin-bottom: 6px;
+}
+
+.details-header p {
+  color: #666;
+  font-size: 15px;
+}
+
+.details-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 35px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.08);
+  margin-bottom: 30px;
+}
+
+.details-route {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.details-route h1 {
+  font-size: 42px;
+  color: #0d6efd;
+}
+
+.details-route p {
+  margin-top: 8px;
+  color: #666;
+  font-size: 16px;
+}
+
+.route-center {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #0d6efd;
+  font-size: 22px;
+}
+
+.route-center span {
+  color: #444;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+}
+
+.info-box {
+  background: #f8f9fa;
+  border-radius: 14px;
+  padding: 25px;
+  text-align: center;
+  transition: .3s;
+}
+
+.info-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.info-box svg {
+  font-size: 28px;
+  color: #0d6efd;
+  margin-bottom: 15px;
+}
+
+.info-box h4 {
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.info-box p {
+  color: #666;
+}
+
+.fare-card,
+.policy-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  margin-bottom: 30px;
+}
+
+.fare-card h2,
+.policy-card h2 {
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.fare-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  color: #555;
+}
+
+.fare-row:last-child {
+  border: none;
+}
+
+.total {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0d6efd;
+}
+
+.policy-card ul {
+  list-style: none;
+}
+
+.policy-card li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  color: #555;
+  font-size: 16px;
+}
+
+.green {
+  color: #16a34a;
+}
+
+.red {
+  color: #dc2626;
+}
+
+.book-section {
+  background: linear-gradient(135deg,#0d6efd,#1d4ed8);
+  color: #fff;
+  padding: 30px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-section h2 {
+  font-size: 34px;
+}
+
+.book-section p {
+  margin-top: 8px;
+  opacity: .9;
+}
+
+.book-section button {
+  border: none;
+  background: #fff;
+  color: #0d6efd;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 15px 35px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.book-section button:hover {
+  background: #f3f3f3;
+  transform: scale(1.05);
+}
+
+.flight-details-empty {
+  width: 90%;
+  max-width: 600px;
+  margin: 80px auto;
+  background: #fff;
+  padding: 50px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+.flight-details-empty h2 {
+  margin-bottom: 15px;
+}
+
+.flight-details-empty p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.flight-details-empty button {
+  border: none;
+  background: #0d6efd;
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.flight-details-empty button:hover {
+  background: #0b5ed7;
+}
+
+@media(max-width:992px){
+
+.details-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.details-route{
+flex-direction:column;
+gap:30px;
+text-align:center;
+}
+
+.book-section{
+flex-direction:column;
+gap:20px;
+text-align:center;
+}
+
+}
+
+@media(max-width:768px){
+
+.details-header{
+flex-direction:column;
+text-align:center;
+}
+
+.details-grid{
+grid-template-columns:1fr;
+}
+
+.details-route h1{
+font-size:32px;
+}
+
+.route-center{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.fare-card,
+.policy-card,
+.details-card{
+padding:20px;
+}
+
+.book-section h2{
+font-size:28px;
+}
+
+.book-section button{
+width:100%;
+}
+
+}

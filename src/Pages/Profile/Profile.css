@@ -1,0 +1,208 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+.profile-page{
+    min-height:100vh;
+    background:#f5f7fb;
+    padding:40px 20px;
+}
+
+.profile-container{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:30px;
+}
+
+/* Left Card */
+
+.profile-card{
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.profile-image{
+    width:150px;
+    height:150px;
+    margin:auto;
+    border-radius:50%;
+    overflow:hidden;
+    border:5px solid #ff6b00;
+}
+
+.profile-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.profile-card h2{
+    margin-top:20px;
+    color:#222;
+}
+
+.profile-email{
+    color:#777;
+    margin:10px 0 25px;
+}
+
+.edit-btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    background:#ff6b00;
+    color:#fff;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.edit-btn:hover{
+    background:#e45d00;
+}
+
+/* Right */
+
+.profile-details{
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.profile-details h2{
+    color:#222;
+    margin-bottom:25px;
+}
+
+.details-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.detail-box{
+    background:#f8f8f8;
+    padding:18px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.detail-box:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+
+.detail-box h4{
+    color:#666;
+    margin-bottom:8px;
+}
+
+.detail-box p{
+    color:#222;
+    font-weight:600;
+}
+
+.account-section{
+    margin-top:40px;
+}
+
+.account-buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.account-buttons button{
+    flex:1;
+    min-width:180px;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.booking-btn{
+    background:#ff6b00;
+    color:#fff;
+}
+
+.password-btn{
+    background:#007bff;
+    color:#fff;
+}
+
+.logout-btn{
+    background:#dc3545;
+    color:#fff;
+}
+
+.account-buttons button:hover{
+    transform:translateY(-3px);
+}
+
+/* Responsive */
+
+@media(max-width:992px){
+
+.profile-container{
+grid-template-columns:1fr;
+}
+
+.profile-card{
+max-width:400px;
+margin:auto;
+}
+
+}
+
+@media(max-width:768px){
+
+.details-grid{
+grid-template-columns:1fr;
+}
+
+.profile-details,
+.profile-card{
+padding:20px;
+}
+
+.account-buttons{
+flex-direction:column;
+}
+
+}
+
+@media(max-width:480px){
+
+.profile-page{
+padding:20px 10px;
+}
+
+.profile-image{
+width:120px;
+height:120px;
+}
+
+.profile-card h2{
+font-size:22px;
+}
+
+.profile-details h2{
+font-size:22px;
+}
+
+}

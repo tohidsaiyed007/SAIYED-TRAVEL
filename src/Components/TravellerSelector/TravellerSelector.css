@@ -1,0 +1,468 @@
+/* .traveller-popup{
+    width:360px;
+    background:#fff;
+    border-radius:18px;
+    padding:24px;
+    box-shadow:0 20px 50px rgba(0,0,0,.18);
+    animation:popup .3s ease;
+}
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.95);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.traveller-popup h2{
+    text-align:center;
+    font-size:24px;
+    color:#111;
+    margin-bottom:25px;
+    font-weight:700;
+}
+
+.traveller-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid #f0f0f0;
+}
+
+.traveller-row:last-child{
+    border-bottom:none;
+}
+
+.traveller-row span{
+    font-size:17px;
+    font-weight:600;
+    color:#333;
+}
+
+.counter{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.counter strong{
+    width:30px;
+    text-align:center;
+    font-size:18px;
+    font-weight:700;
+    color:#111;
+}
+
+.counter button{
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:50%;
+    background:#0B5ED7;
+    color:#fff;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.counter button:hover{
+    background:#0847a8;
+    transform:scale(1.08);
+}
+
+.counter button:active{
+    transform:scale(.95);
+}
+
+.cabin-section{
+    margin-top:25px;
+}
+
+.cabin-section h3{
+    margin-bottom:12px;
+    color:#222;
+    font-size:18px;
+    font-weight:600;
+}
+
+.cabin-section select{
+    width:100%;
+    padding:13px 15px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    outline:none;
+    font-size:15px;
+    background:#fafafa;
+    transition:.3s;
+}
+
+.cabin-section select:focus{
+    border-color:#0B5ED7;
+    background:#fff;
+    box-shadow:0 0 0 4px rgba(11,94,215,.15);
+}
+
+
+
+.traveller-buttons{
+    display:flex;
+    gap:14px;
+    margin-top:30px;
+}
+
+.cancel-btn,
+.done-btn{
+    flex:1;
+    padding:14px 0;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+
+
+.cancel-btn{
+    background:#f3f4f6;
+    color:#555;
+    border:1px solid #ddd;
+}
+
+.cancel-btn:hover{
+    background:#e5e7eb;
+    color:#111;
+}
+
+
+
+.done-btn{
+    background:linear-gradient(135deg,#0B5ED7,#1d7cff);
+    color:#fff;
+    box-shadow:0 10px 25px rgba(11,94,215,.45);
+}
+
+.done-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 35px rgba(11,94,215,.55);
+    background:linear-gradient(135deg,#0952bf,#2986ff);
+}
+
+.done-btn:active{
+    transform:scale(.97);
+}
+
+.cancel-btn:active{
+    transform:scale(.97);
+}
+
+@media(max-width:768px){
+
+.traveller-popup{
+    width:320px;
+    padding:20px;
+}
+
+.traveller-buttons{
+    flex-direction:column;
+}
+
+} */
+
+
+
+
+
+
+
+.traveller-popup{
+    width:100%;
+    max-width:360px;
+    background:#fff;
+    border-radius:18px;
+    padding:24px;
+    box-shadow:0 20px 50px rgba(0,0,0,.18);
+    animation:popup .3s ease;
+}
+
+@keyframes popup{
+
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.95);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+
+.traveller-popup h2{
+    text-align:center;
+    font-size:24px;
+    font-weight:700;
+    color:#111;
+    margin-bottom:25px;
+}
+
+.traveller-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    padding:14px 0;
+    border-bottom:1px solid #f0f0f0;
+}
+
+.traveller-row:last-child{
+    border-bottom:none;
+}
+
+.traveller-row span{
+    font-size:17px;
+    font-weight:600;
+    color:#333;
+}
+
+.counter{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.counter strong{
+    width:30px;
+    text-align:center;
+    font-size:18px;
+    font-weight:700;
+    color:#111;
+}
+
+.counter button{
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:50%;
+    background:#0B5ED7;
+    color:#fff;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+    flex-shrink:0;
+}
+
+.counter button:hover{
+    background:#0847a8;
+    transform:scale(1.08);
+}
+
+.counter button:active{
+    transform:scale(.95);
+}
+
+/* Cabin */
+
+.cabin-section{
+    margin-top:25px;
+}
+
+.cabin-section h3{
+    margin-bottom:12px;
+    font-size:18px;
+    font-weight:600;
+    color:#222;
+}
+
+.cabin-section select{
+    width:100%;
+    padding:13px 15px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    outline:none;
+    font-size:15px;
+    background:#fafafa;
+    transition:.3s;
+}
+
+.cabin-section select:focus{
+    border-color:#0B5ED7;
+    background:#fff;
+    box-shadow:0 0 0 4px rgba(11,94,215,.15);
+}
+
+/* Buttons */
+
+.traveller-buttons{
+    display:flex;
+    gap:14px;
+    margin-top:30px;
+}
+
+.cancel-btn,
+.done-btn{
+    flex:1;
+    padding:14px 0;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.cancel-btn{
+    background:#f3f4f6;
+    color:#555;
+    border:1px solid #ddd;
+}
+
+.cancel-btn:hover{
+    background:#e5e7eb;
+    color:#111;
+}
+
+.done-btn{
+    background:linear-gradient(135deg,#0B5ED7,#1d7cff);
+    color:#fff;
+    box-shadow:0 10px 25px rgba(11,94,215,.45);
+}
+
+.done-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 35px rgba(11,94,215,.55);
+    background:linear-gradient(135deg,#0952bf,#2986ff);
+}
+
+.done-btn:active,
+.cancel-btn:active{
+    transform:scale(.97);
+}
+
+/* ==========================
+   Tablet
+========================== */
+
+@media (max-width:768px){
+
+    .traveller-popup{
+        max-width:320px;
+        padding:20px;
+    }
+
+    .traveller-popup h2{
+        font-size:22px;
+    }
+
+    .traveller-row span{
+        font-size:16px;
+    }
+
+    .traveller-buttons{
+        flex-direction:column;
+    }
+
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width:480px){
+
+    .traveller-popup{
+        max-width:100%;
+        padding:18px;
+        border-radius:15px;
+    }
+
+    .traveller-popup h2{
+        font-size:20px;
+        margin-bottom:20px;
+    }
+
+    .traveller-row{
+        padding:12px 0;
+    }
+
+    .traveller-row span{
+        font-size:15px;
+    }
+
+    .counter{
+        gap:10px;
+    }
+
+    .counter button{
+        width:34px;
+        height:34px;
+        font-size:18px;
+    }
+
+    .counter strong{
+        width:25px;
+        font-size:16px;
+    }
+
+    .cabin-section h3{
+        font-size:16px;
+    }
+
+    .cabin-section select{
+        padding:12px;
+        font-size:14px;
+    }
+
+    .cancel-btn,
+    .done-btn{
+        width:100%;
+        padding:12px;
+        font-size:15px;
+    }
+
+}
+
+/* ==========================
+   Extra Small
+========================== */
+
+@media (max-width:320px){
+
+    .traveller-popup{
+        padding:15px;
+    }
+
+    .traveller-popup h2{
+        font-size:18px;
+    }
+
+    .traveller-row span{
+        font-size:14px;
+    }
+
+    .counter button{
+        width:30px;
+        height:30px;
+        font-size:16px;
+    }
+
+    .counter strong{
+        font-size:15px;
+    }
+
+    .cancel-btn,
+    .done-btn{
+        font-size:14px;
+        padding:10px;
+    }
+
+}

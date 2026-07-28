@@ -1,0 +1,416 @@
+/* ===========================
+   FILTER SIDEBAR
+=========================== */
+
+.filter-sidebar{
+    width:100%;
+    background:#ffffff;
+    border-radius:22px;
+    padding:28px;
+    border:1px solid #edf1f7;
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.05),
+    0 2px 10px rgba(0,0,0,.04);
+
+    position:sticky;
+    top:100px;
+}
+
+.filter-sidebar h2{
+    font-size:30px;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:28px;
+}
+
+/* ===========================
+   FILTER BOX
+=========================== */
+
+.filter-section{
+
+    padding-bottom:24px;
+    margin-bottom:24px;
+
+    border-bottom:1px solid #eef2f7;
+
+}
+
+.filter-section:last-child{
+
+    margin-bottom:0;
+    padding-bottom:0;
+    border:none;
+
+}
+
+.filter-section h3{
+
+    font-size:18px;
+    font-weight:700;
+    color:#111827;
+
+    margin-bottom:18px;
+
+}
+
+/* ===========================
+   LABEL
+=========================== */
+
+.filter-section label{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:11px 14px;
+
+    margin-bottom:10px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    color:#4b5563;
+
+}
+
+.filter-section label:hover{
+
+    background:#f4f8ff;
+
+    color:#0d6efd;
+
+    transform:translateX(4px);
+
+}
+
+/* ===========================
+   CHECKBOX
+=========================== */
+
+.filter-section input[type="checkbox"]{
+
+    width:18px;
+    height:18px;
+
+    accent-color:#0d6efd;
+
+    cursor:pointer;
+
+    flex-shrink:0;
+
+}
+
+.filter-section small{
+
+    color:#9ca3af;
+
+    font-size:12px;
+
+}
+
+/* ===========================
+   RANGE
+=========================== */
+
+.filter-section input[type="range"]{
+
+    width:100%;
+
+    margin-top:18px;
+
+    accent-color:#0d6efd;
+
+    cursor:pointer;
+
+}
+
+.filter-section p{
+
+    margin-top:12px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    color:#0d6efd;
+
+}
+
+/* ===========================
+   RESET BUTTON
+=========================== */
+
+.reset-filter-btn{
+
+    width:100%;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    background:linear-gradient(
+    135deg,
+    #0d6efd,
+    #2563eb
+    );
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+.reset-filter-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 25px rgba(13,110,253,.30);
+
+}
+
+
+/*==================================
+        CUSTOM SCROLLBAR
+==================================*/
+
+.filter-sidebar::-webkit-scrollbar{
+    width:7px;
+}
+
+.filter-sidebar::-webkit-scrollbar-track{
+    background:#f3f4f6;
+    border-radius:20px;
+}
+
+.filter-sidebar::-webkit-scrollbar-thumb{
+    background:#0d6efd;
+    border-radius:20px;
+}
+
+.filter-sidebar::-webkit-scrollbar-thumb:hover{
+    background:#0056d2;
+}
+
+/*==================================
+        ACTIVE CHECKBOX
+==================================*/
+
+.filter-section label:has(input:checked){
+
+    background:#eef5ff;
+
+    border:1px solid #0d6efd;
+
+    color:#0d6efd;
+
+    font-weight:600;
+
+    box-shadow:0 8px 18px rgba(13,110,253,.12);
+
+}
+
+.filter-section input[type="checkbox"]:checked{
+
+    transform:scale(1.1);
+
+}
+
+/*==================================
+        RANGE DESIGN
+==================================*/
+
+.filter-section input[type="range"]{
+
+    -webkit-appearance:none;
+
+    appearance:none;
+
+    height:7px;
+
+    background:#dbeafe;
+
+    border-radius:30px;
+
+    outline:none;
+
+}
+
+.filter-section input[type="range"]::-webkit-slider-thumb{
+
+    -webkit-appearance:none;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:#0d6efd;
+
+    border:4px solid #fff;
+
+    box-shadow:0 5px 14px rgba(13,110,253,.35);
+
+    cursor:pointer;
+
+}
+
+.filter-section input[type="range"]::-moz-range-thumb{
+
+    width:18px;
+
+    height:18px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#0d6efd;
+
+    cursor:pointer;
+
+}
+
+/*==================================
+        SMOOTH ANIMATION
+==================================*/
+
+.filter-sidebar,
+.filter-section,
+.filter-section label,
+.reset-filter-btn{
+
+    transition:all .35s ease;
+
+}
+
+/*==================================
+        MOBILE
+==================================*/
+
+@media(max-width:992px){
+
+.filter-sidebar{
+
+    position:static;
+
+    margin-bottom:25px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.filter-sidebar{
+
+    padding:22px;
+
+    border-radius:18px;
+
+}
+
+.filter-sidebar h2{
+
+    font-size:26px;
+
+}
+
+.filter-section{
+
+    margin-bottom:22px;
+
+}
+
+.filter-section h3{
+
+    font-size:17px;
+
+}
+
+.filter-section label{
+
+    padding:10px 12px;
+
+    font-size:14px;
+
+}
+
+.reset-filter-btn{
+
+    padding:14px;
+
+    font-size:15px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.filter-sidebar{
+
+    padding:18px;
+
+}
+
+.filter-sidebar h2{
+
+    font-size:23px;
+
+}
+
+.filter-section h3{
+
+    font-size:16px;
+
+}
+
+.filter-section label{
+
+    font-size:13px;
+
+    gap:10px;
+
+    padding:9px 10px;
+
+}
+
+.filter-section small{
+
+    display:block;
+
+    margin-left:28px;
+
+    margin-top:3px;
+
+}
+
+.reset-filter-btn{
+
+    padding:13px;
+
+    border-radius:10px;
+
+    font-size:14px;
+
+}
+
+}

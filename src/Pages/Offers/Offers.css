@@ -1,0 +1,334 @@
+/* ===========================
+   Offers Page
+=========================== */
+
+.offers-page{
+    min-height:100vh;
+    background:#f5f7fb;
+    padding:120px 20px 60px;
+}
+
+/* Banner */
+
+.offers-banner{
+    max-width:1200px;
+    margin:auto;
+    text-align:center;
+    padding:60px 30px;
+    border-radius:22px;
+    background:linear-gradient(135deg,#0B5ED7,#2d8cff);
+    color:#fff;
+    margin-bottom:45px;
+    box-shadow:0 20px 40px rgba(11,94,215,.25);
+}
+
+.offers-banner h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.offers-banner p{
+    font-size:18px;
+    opacity:.95;
+}
+
+/* Container */
+
+.offers-container{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+/* Offer Card */
+
+.offer-box{
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+    transition:.35s;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    position:relative;
+    overflow:hidden;
+}
+
+.offer-box:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+}
+
+.offer-icon{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    color:#fff;
+    margin-bottom:20px;
+}
+
+/* Colors */
+
+.offer-blue .offer-icon{
+    background:#0B5ED7;
+}
+
+.offer-orange .offer-icon{
+    background:#ff8a00;
+}
+
+.offer-green .offer-icon{
+    background:#16a34a;
+}
+
+.offer-purple .offer-icon{
+    background:#7c3aed;
+}
+
+.offer-box h2{
+    font-size:24px;
+    margin-bottom:12px;
+    color:#222;
+}
+
+.offer-box p{
+    color:#666;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+/* Coupon */
+
+.coupon{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+}
+
+.coupon strong{
+    background:#eef5ff;
+    color:#0B5ED7;
+    padding:12px 16px;
+    border-radius:10px;
+    letter-spacing:1px;
+}
+
+.coupon button{
+    border:none;
+    background:#0B5ED7;
+    color:#fff;
+    padding:12px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    transition:.3s;
+}
+
+.coupon button:hover{
+    background:#0847a8;
+}
+
+/* ===========================
+   Tablet
+=========================== */
+
+@media(max-width:992px){
+
+.offers-banner h1{
+    font-size:34px;
+}
+
+.offers-container{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media(max-width:768px){
+
+.offers-page{
+    padding:100px 15px 40px;
+}
+
+.offers-banner{
+    padding:40px 20px;
+}
+
+.offers-banner h1{
+    font-size:28px;
+}
+
+.offers-banner p{
+    font-size:16px;
+}
+
+.offers-container{
+    grid-template-columns:1fr;
+}
+
+.offer-box{
+    padding:22px;
+}
+
+.coupon{
+    flex-direction:column;
+}
+
+.coupon strong,
+.coupon button{
+    width:100%;
+    text-align:center;
+    justify-content:center;
+}
+
+}
+
+/* ===========================
+   Small Mobile
+=========================== */
+
+@media(max-width:480px){
+
+.offers-banner h1{
+    font-size:24px;
+}
+
+.offer-box h2{
+    font-size:20px;
+}
+
+.offer-box p{
+    font-size:15px;
+}
+
+.offer-icon{
+    width:55px;
+    height:55px;
+    font-size:24px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.offers-banner{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 40px;
+    border-radius:24px;
+    text-align:center;
+    color:#fff;
+    background:linear-gradient(135deg,#0B5ED7,#2684ff);
+    box-shadow:0 20px 50px rgba(11,94,215,.25);
+}
+
+.offers-banner h1{
+    font-size:46px;
+    font-weight:700;
+    letter-spacing:.5px;
+    margin-bottom:12px;
+}
+
+.offers-banner p{
+    font-size:18px;
+    font-weight:400;
+    opacity:.95;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.offer-box{
+
+    background:#fff;
+
+    border-radius:22px;
+
+    padding:32px;
+
+    transition:.35s ease;
+
+    border:1px solid #edf2f7;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.06);
+
+}
+
+.offer-box:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.12);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.offers-page{
+    min-height:100vh;
+    background:#f4f8fc;
+
+    /* पहले 120px था */
+
+    padding:170px 20px 60px;
+}
+
+.offers-banner{
+    margin-top:30px;
+}
+
+
+
+.offers-container{
+    margin-top:40px;
+}

@@ -1,0 +1,381 @@
+/* .popular-routes {
+    width: 90%;
+    max-width: 1400px;
+    margin: 80px auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 42px;
+    color: #1d1d1d;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.section-title p {
+    font-size: 18px;
+    color: #666;
+}
+
+.routes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.route-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,.08);
+    transition: .4s;
+    cursor: pointer;
+}
+
+.route-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,.15);
+}
+
+.route-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.route-card:hover img {
+    transform: scale(1.08);
+}
+
+.route-content {
+    padding: 20px;
+}
+
+.route-content h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.route-content p {
+    font-size: 15px;
+    color: #777;
+    margin-bottom: 8px;
+}
+
+.route-content h4 {
+    font-size: 28px;
+    color: #0B5ED7;
+    margin-bottom: 18px;
+}
+
+.route-content button {
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg,#0B5ED7,#2196F3);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.route-content button:hover {
+    background: linear-gradient(135deg,#0847a8,#0B5ED7);
+}
+
+
+
+@media (max-width:1200px){
+
+.routes-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media (max-width:768px){
+
+.routes-grid{
+    grid-template-columns:1fr;
+}
+
+.section-title h2{
+    font-size:32px;
+}
+
+}
+
+.airline{
+    display:inline-block;
+    background:#eaf4ff;
+    color:#0B5ED7;
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:12px;
+} */
+
+
+
+
+
+
+
+.popular-routes{
+    width:92%;
+    max-width:1400px;
+    margin:80px auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:42px;
+    font-weight:700;
+    color:#1d1d1d;
+    margin-bottom:12px;
+    line-height:1.3;
+}
+
+.section-title p{
+    font-size:18px;
+    color:#666;
+    line-height:1.7;
+}
+
+.routes-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.route-card{
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+    transition:.4s;
+    cursor:pointer;
+}
+
+.route-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+.route-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    transition:.5s;
+    display:block;
+}
+
+.route-card:hover img{
+    transform:scale(1.08);
+}
+
+.route-content{
+    padding:20px;
+}
+
+.airline{
+    display:inline-block;
+    background:#eaf4ff;
+    color:#0B5ED7;
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:12px;
+}
+
+.route-content h3{
+    font-size:22px;
+    color:#222;
+    margin-bottom:10px;
+}
+
+.route-content p{
+    font-size:15px;
+    color:#777;
+    margin-bottom:8px;
+    line-height:1.6;
+}
+
+.route-content h4{
+    font-size:28px;
+    color:#0B5ED7;
+    margin-bottom:18px;
+}
+
+.route-content button{
+    width:100%;
+    height:48px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#0B5ED7,#2196F3);
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.route-content button:hover{
+    background:linear-gradient(135deg,#0847a8,#0B5ED7);
+}
+
+/* ==========================
+   Large Laptop
+========================== */
+
+@media (max-width:1200px){
+
+    .routes-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+/* ==========================
+   Tablet
+========================== */
+
+@media (max-width:768px){
+
+    .popular-routes{
+        width:95%;
+        margin:60px auto;
+    }
+
+    .section-title{
+        margin-bottom:35px;
+    }
+
+    .section-title h2{
+        font-size:32px;
+    }
+
+    .section-title p{
+        font-size:16px;
+    }
+
+    .routes-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .route-card img{
+        height:220px;
+    }
+
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width:480px){
+
+    .popular-routes{
+        width:96%;
+        margin:50px auto;
+    }
+
+    .section-title h2{
+        font-size:26px;
+    }
+
+    .section-title p{
+        font-size:14px;
+    }
+
+    .route-card{
+        border-radius:16px;
+    }
+
+    .route-card img{
+        height:190px;
+    }
+
+    .route-content{
+        padding:16px;
+    }
+
+    .airline{
+        font-size:12px;
+        padding:5px 10px;
+    }
+
+    .route-content h3{
+        font-size:20px;
+    }
+
+    .route-content p{
+        font-size:14px;
+    }
+
+    .route-content h4{
+        font-size:24px;
+    }
+
+    .route-content button{
+        height:44px;
+        font-size:15px;
+    }
+
+}
+
+/* ==========================
+   Extra Small
+========================== */
+
+@media (max-width:320px){
+
+    .section-title h2{
+        font-size:22px;
+    }
+
+    .section-title p{
+        font-size:13px;
+    }
+
+    .route-card img{
+        height:170px;
+    }
+
+    .route-content{
+        padding:14px;
+    }
+
+    .route-content h3{
+        font-size:18px;
+    }
+
+    .route-content p{
+        font-size:13px;
+    }
+
+    .route-content h4{
+        font-size:20px;
+    }
+
+    .route-content button{
+        height:40px;
+        font-size:14px;
+    }
+
+}

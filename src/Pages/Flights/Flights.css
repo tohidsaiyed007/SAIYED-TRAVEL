@@ -1,0 +1,859 @@
+/*==========================================
+            FLIGHTS PAGE
+==========================================*/
+
+.flights-page{
+
+    width:100%;
+
+    min-height:100vh;
+
+    background:#f4f7fc;
+
+    overflow-x:hidden;
+
+    padding-bottom:40px;
+
+}
+
+/*==========================================
+        SEARCH AREA
+==========================================*/
+
+.flight-search-area{
+
+    width:100%;
+
+    position:sticky;
+
+    top:72px;
+
+    z-index:100;
+
+    background:#f4f7fc;
+
+    padding:12px 0 6px;
+
+    border-bottom:1px solid #e8edf5;
+
+    backdrop-filter:blur(10px);
+
+}
+
+/*==========================================
+        MAIN LAYOUT
+==========================================*/
+
+.flight-layout{
+
+    width:95%;
+
+    max-width:1450px;
+
+    margin:18px auto 0;
+
+    display:grid;
+
+    grid-template-columns:310px 1fr;
+
+    gap:22px;
+
+    align-items:start;
+
+}
+
+/*==========================================
+        LEFT SIDEBAR
+==========================================*/
+
+.flight-layout aside{
+
+    width:100%;
+
+    position:sticky;
+
+    top:185px;
+
+}
+
+/*==========================================
+        RIGHT SIDE
+==========================================*/
+
+.flight-results{
+
+    width:100%;
+
+    min-width:0;
+
+}
+
+/*==========================================
+        RESULT HEADER
+==========================================*/
+
+.results-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    background:#ffffff;
+
+    padding:18px 24px;
+
+    border-radius:18px;
+
+    border:1px solid #edf2f7;
+
+    box-shadow:
+
+    0 8px 25px rgba(0,0,0,.05);
+
+    margin-bottom:18px;
+
+}
+
+.results-header h2{
+
+    font-size:28px;
+
+    color:#111827;
+
+    font-weight:700;
+
+    margin:0;
+
+}
+
+.results-header p{
+
+    margin:0;
+
+    color:#6b7280;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+/*==========================================
+        FLIGHT LIST
+==========================================*/
+
+.flight-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/*==========================================
+        HOVER EFFECT
+==========================================*/
+
+.results-header{
+
+    transition:.35s;
+
+}
+
+.results-header:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+    0 14px 35px rgba(0,0,0,.08);
+
+}
+
+
+/*==========================================
+            EMPTY STATE
+==========================================*/
+
+.no-flight-box{
+
+    background:#ffffff;
+
+    border:1px solid #edf2f7;
+
+    border-radius:20px;
+
+    padding:70px 30px;
+
+    text-align:center;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.06);
+
+}
+
+.no-flight-box h2{
+
+    font-size:34px;
+
+    color:#111827;
+
+    margin-bottom:15px;
+
+    font-weight:700;
+
+}
+
+.no-flight-box p{
+
+    color:#6b7280;
+
+    font-size:16px;
+
+    line-height:28px;
+
+    max-width:550px;
+
+    margin:auto;
+
+}
+
+.no-flight-box button{
+
+    margin-top:28px;
+
+    border:none;
+
+    outline:none;
+
+    background:linear-gradient(
+    135deg,
+    #0d6efd,
+    #2563eb
+    );
+
+    color:#fff;
+
+    padding:15px 34px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+    box-shadow:
+    0 10px 25px rgba(13,110,253,.25);
+
+}
+
+.no-flight-box button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 18px 35px rgba(13,110,253,.35);
+
+}
+
+/*==========================================
+            CARD ANIMATION
+==========================================*/
+
+.flight-list>*{
+
+    animation:fadeUp .45s ease both;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(18px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==========================================
+            CUSTOM SCROLLBAR
+==========================================*/
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#edf2f7;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#0d6efd;
+
+    border-radius:50px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#0056d2;
+
+}
+
+/*==========================================
+            LAPTOP
+==========================================*/
+
+@media(max-width:1200px){
+
+.flight-layout{
+
+    grid-template-columns:280px 1fr;
+
+    gap:18px;
+
+}
+
+.flight-layout aside{
+
+    top:170px;
+
+}
+
+.results-header{
+
+    padding:16px 20px;
+
+}
+
+.results-header h2{
+
+    font-size:24px;
+
+}
+
+}
+
+/*==========================================
+            TABLET
+==========================================*/
+
+@media(max-width:992px){
+
+.flight-layout{
+
+    grid-template-columns:1fr;
+
+}
+
+.flight-layout aside{
+
+    position:static;
+
+}
+
+.results-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+}
+
+.results-header h2{
+
+    font-size:22px;
+
+}
+
+}
+
+/*==========================================
+            MOBILE
+==========================================*/
+
+@media(max-width:768px){
+
+.flight-search-area{
+
+    position:relative;
+
+    top:0;
+
+    padding:10px 0;
+
+}
+
+.flight-layout{
+
+    width:94%;
+
+    margin-top:12px;
+
+}
+
+.results-header{
+
+    padding:16px;
+
+    border-radius:14px;
+
+}
+
+.results-header h2{
+
+    font-size:20px;
+
+}
+
+.results-header p{
+
+    font-size:14px;
+
+}
+
+.flight-list{
+
+    gap:14px;
+
+}
+
+.no-flight-box{
+
+    padding:45px 20px;
+
+}
+
+.no-flight-box h2{
+
+    font-size:28px;
+
+}
+
+.no-flight-box button{
+
+    width:100%;
+
+}
+
+}
+
+/*==========================================
+            SMALL MOBILE
+==========================================*/
+
+@media(max-width:480px){
+
+.flights-page{
+
+    padding-bottom:25px;
+
+}
+
+.flight-layout{
+
+    width:96%;
+
+}
+
+.results-header{
+
+    padding:14px;
+
+}
+
+.results-header h2{
+
+    font-size:18px;
+
+}
+
+.results-header p{
+
+    font-size:13px;
+
+}
+
+.no-flight-box{
+
+    padding:35px 15px;
+
+}
+
+.no-flight-box h2{
+
+    font-size:24px;
+
+}
+
+.no-flight-box p{
+
+    font-size:14px;
+
+    line-height:24px;
+
+}
+
+.no-flight-box button{
+
+    padding:13px;
+
+    font-size:15px;
+
+}
+
+}
+
+
+/*==========================================
+            PREMIUM EFFECTS
+==========================================*/
+
+.flight-results,
+.results-header,
+.flight-list,
+.no-flight-box{
+
+    transition:all .35s ease;
+
+}
+
+.results-header:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.flight-list>.flight-card{
+
+    transition:.35s;
+
+}
+
+.flight-list>.flight-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+/*==========================================
+            LOADING EFFECT
+==========================================*/
+
+.flight-card{
+
+    animation:fadeCard .45s ease;
+
+}
+
+@keyframes fadeCard{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(18px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==========================================
+            SECTION SPACING
+==========================================*/
+
+.flight-results>*{
+
+    margin-bottom:18px;
+
+}
+
+.flight-results>*:last-child{
+
+    margin-bottom:0;
+
+}
+
+/*==========================================
+            DESKTOP LARGE
+==========================================*/
+
+@media(min-width:1600px){
+
+.flight-layout{
+
+    max-width:1550px;
+
+}
+
+}
+
+/*==========================================
+            LAPTOP
+==========================================*/
+
+@media(max-width:1200px){
+
+.flight-layout{
+
+    grid-template-columns:270px 1fr;
+
+    gap:18px;
+
+}
+
+.flight-layout aside{
+
+    top:170px;
+
+}
+
+.flight-results{
+
+    width:100%;
+
+}
+
+}
+
+/*==========================================
+            TABLET
+==========================================*/
+
+@media(max-width:992px){
+
+.flight-search-area{
+
+    position:relative;
+
+    top:0;
+
+}
+
+.flight-layout{
+
+    grid-template-columns:1fr;
+
+    gap:18px;
+
+}
+
+.flight-layout aside{
+
+    position:relative;
+
+    top:0;
+
+}
+
+.results-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+}
+
+.results-header h2{
+
+    font-size:22px;
+
+}
+
+}
+
+/*==========================================
+            MOBILE
+==========================================*/
+
+@media(max-width:768px){
+
+.flights-page{
+
+    padding-bottom:20px;
+
+}
+
+.flight-layout{
+
+    width:95%;
+
+    margin-top:10px;
+
+}
+
+.results-header{
+
+    padding:15px;
+
+    border-radius:14px;
+
+}
+
+.results-header h2{
+
+    font-size:19px;
+
+}
+
+.results-header p{
+
+    font-size:14px;
+
+}
+
+.flight-list{
+
+    gap:14px;
+
+}
+
+.no-flight-box{
+
+    padding:40px 18px;
+
+}
+
+.no-flight-box h2{
+
+    font-size:26px;
+
+}
+
+.no-flight-box p{
+
+    font-size:14px;
+
+    line-height:24px;
+
+}
+
+.no-flight-box button{
+
+    width:100%;
+
+}
+
+}
+
+/*==========================================
+            SMALL MOBILE
+==========================================*/
+
+@media(max-width:480px){
+
+.flight-layout{
+
+    width:96%;
+
+}
+
+.results-header{
+
+    padding:14px;
+
+}
+
+.results-header h2{
+
+    font-size:18px;
+
+}
+
+.results-header p{
+
+    font-size:13px;
+
+}
+
+.no-flight-box{
+
+    padding:30px 15px;
+
+}
+
+.no-flight-box h2{
+
+    font-size:22px;
+
+}
+
+.no-flight-box button{
+
+    padding:13px;
+
+    font-size:15px;
+
+}
+
+}
+
+/*==========================================
+            EXTRA SMALL
+==========================================*/
+
+@media(max-width:360px){
+
+.results-header{
+
+    padding:12px;
+
+}
+
+.results-header h2{
+
+    font-size:17px;
+
+}
+
+.results-header p{
+
+    font-size:12px;
+
+}
+
+.flight-layout{
+
+    width:98%;
+
+}
+
+}

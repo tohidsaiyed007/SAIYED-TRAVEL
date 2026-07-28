@@ -1,0 +1,295 @@
+/* ===========================
+   Extra Baggage Page
+=========================== */
+
+.baggage-page{
+    min-height:100vh;
+    background:#f5f7fb;
+    padding:120px 20px 60px;
+}
+
+.baggage-container{
+    max-width:1200px;
+    margin:auto;
+    background:#fff;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+/* ===========================
+   Header
+=========================== */
+
+.baggage-header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.baggage-header h2{
+    font-size:36px;
+    font-weight:700;
+    color:#0B5ED7;
+    margin-bottom:10px;
+}
+
+.baggage-header p{
+    font-size:20px;
+    color:#555;
+    font-weight:500;
+}
+
+/* ===========================
+   Grid
+=========================== */
+
+.baggage-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-bottom:35px;
+}
+
+/* ===========================
+   Card
+=========================== */
+
+.baggage-card{
+    background:#fff;
+    border:2px solid #e8e8e8;
+    border-radius:18px;
+    padding:28px 20px;
+    text-align:center;
+    cursor:pointer;
+    transition:.35s ease;
+}
+
+.baggage-card:hover{
+    transform:translateY(-8px);
+    border-color:#0B5ED7;
+    box-shadow:0 15px 35px rgba(11,94,215,.15);
+}
+
+.baggage-card.active{
+    border-color:#0B5ED7;
+    background:#eef6ff;
+    box-shadow:0 15px 35px rgba(11,94,215,.25);
+}
+
+.bag-icon{
+    font-size:60px;
+    margin-bottom:18px;
+}
+
+.baggage-card h3{
+    font-size:24px;
+    color:#222;
+    margin-bottom:12px;
+}
+
+.baggage-card p{
+    font-size:20px;
+    color:#0B5ED7;
+    font-weight:700;
+}
+
+/* ===========================
+   Summary
+=========================== */
+
+.baggage-summary{
+    background:#f8f9fc;
+    border-radius:16px;
+    padding:25px;
+    margin-bottom:30px;
+}
+
+.baggage-summary h3{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+    font-size:24px;
+    color:#222;
+}
+
+.baggage-summary h3 span{
+    color:#0B5ED7;
+}
+
+.baggage-summary p{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:20px;
+    color:#444;
+}
+
+.baggage-summary strong{
+    color:#0B5ED7;
+}
+
+/* ===========================
+   Button
+=========================== */
+
+.continue-baggage-btn{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#0B5ED7,#2d8cff);
+    color:#fff;
+    font-size:19px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.35s;
+    box-shadow:0 15px 30px rgba(11,94,215,.30);
+}
+
+.continue-baggage-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 35px rgba(11,94,215,.40);
+}
+
+.continue-baggage-btn:active{
+    transform:scale(.98);
+}
+
+/* ===========================
+   Laptop
+=========================== */
+
+@media(max-width:1200px){
+
+.baggage-container{
+    max-width:95%;
+}
+
+}
+
+/* ===========================
+   Tablet
+=========================== */
+
+@media(max-width:992px){
+
+.baggage-container{
+    padding:30px;
+}
+
+.baggage-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.baggage-header h2{
+    font-size:32px;
+}
+
+.baggage-header p{
+    font-size:18px;
+}
+
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media(max-width:768px){
+
+.baggage-page{
+    padding:100px 15px 40px;
+}
+
+.baggage-container{
+    padding:20px;
+    border-radius:16px;
+}
+
+.baggage-grid{
+    grid-template-columns:1fr;
+    gap:18px;
+}
+
+.baggage-card{
+    padding:22px 15px;
+}
+
+.bag-icon{
+    font-size:50px;
+}
+
+.baggage-card h3{
+    font-size:20px;
+}
+
+.baggage-card p{
+    font-size:18px;
+}
+
+.baggage-summary{
+    padding:20px;
+}
+
+.baggage-summary h3,
+.baggage-summary p{
+    flex-direction:column;
+    gap:8px;
+    text-align:center;
+}
+
+.baggage-summary h3{
+    font-size:22px;
+}
+
+.baggage-summary p{
+    font-size:18px;
+}
+
+.continue-baggage-btn{
+    font-size:17px;
+    padding:16px;
+}
+
+}
+
+/* ===========================
+   Small Mobile
+=========================== */
+
+@media(max-width:480px){
+
+.baggage-header h2{
+    font-size:26px;
+}
+
+.baggage-header p{
+    font-size:16px;
+}
+
+.bag-icon{
+    font-size:42px;
+}
+
+.baggage-card h3{
+    font-size:18px;
+}
+
+.baggage-card p{
+    font-size:16px;
+}
+
+.baggage-summary h3{
+    font-size:20px;
+}
+
+.baggage-summary p{
+    font-size:16px;
+}
+
+.continue-baggage-btn{
+    font-size:16px;
+}
+
+}
