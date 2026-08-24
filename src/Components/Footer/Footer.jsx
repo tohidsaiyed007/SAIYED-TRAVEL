@@ -1,238 +1,8 @@
-// // import "./Footer.css";
-// // import {
-// //   FaFacebookF,
-// //   FaInstagram,
-// //   FaWhatsapp,
-// //   FaYoutube,
-// //   FaPhoneAlt,
-// //   FaEnvelope,
-// //   FaMapMarkerAlt,
-// //   FaPlaneDeparture,
-// // } from "react-icons/fa";
-
-// // function Footer() {
-// //   return (
-// //     <footer className="footer">
-
-// //       <div className="footer-container">
-
-// //         {/* Company */}
-
-// //         <div className="footer-box">
-
-// //           <div className="footer-logo">
-// //             <FaPlaneDeparture />
-// //             <h2>Saiyed Travels</h2>
-// //           </div>
-
-// //           <p>
-// //             Book Domestic & International Flights with
-// //             confidence at the best prices.
-// //           </p>
-
-// //           <div className="footer-contact">
-// //             <p><FaMapMarkerAlt /> Jhunjhunu, Rajasthan</p>
-// //             <p><FaPhoneAlt /> +91 98765 43210</p>
-// //             <p><FaEnvelope /> support@saiyedtravels.com</p>
-// //           </div>
-
-// //         </div>
-
-// //         {/* Quick Links */}
-
-// //         <div className="footer-box">
-
-// //           <h3>Quick Links</h3>
-
-// //           <ul>
-// //             <li>Home</li>
-// //             <li>Flights</li>
-// //             <li>Offers</li>
-// //             <li>About</li>
-// //             <li>Contact</li>
-// //           </ul>
-
-// //         </div>
-
-// //         {/* Support */}
-
-// //         <div className="footer-box">
-
-// //           <h3>Support</h3>
-
-// //           <ul>
-// //             <li>Privacy Policy</li>
-// //             <li>Terms & Conditions</li>
-// //             <li>Refund Policy</li>
-// //             <li>Help Center</li>
-// //           </ul>
-
-// //         </div>
-
-// //         {/* Follow */}
-
-// //         <div className="footer-box">
-
-// //           <h3>Follow Us</h3>
-
-// //           <div className="social-icons">
-
-// //             <a href="#"><FaFacebookF /></a>
-
-// //             <a href="#"><FaInstagram /></a>
-
-// //             <a href="#"><FaWhatsapp /></a>
-
-// //             <a href="#"><FaYoutube /></a>
-
-// //           </div>
-
-// //         </div>
-
-// //       </div>
-
-// //       <div className="footer-bottom">
-// //         © 2026 Saiyed Travels. All Rights Reserved.
-// //       </div>
-
-// //     </footer>
-// //   );
-// // }
-
-// // export default Footer;
-
-
-// import "./Footer.css";
-// import {
-//   FaFacebookF,
-//   FaInstagram,
-//   FaWhatsapp,
-//   FaYoutube,
-//   FaPhoneAlt,
-//   FaEnvelope,
-//   FaMapMarkerAlt,
-//   FaPlaneDeparture,
-//   FaPaperPlane,
-// } from "react-icons/fa";
-
-// function Footer() {
-//   return (
-//     <footer className="footer">
-
-//       <div className="footer-container">
-
-//         {/* Company */}
-
-//         <div className="footer-box">
-
-//           <div className="footer-logo">
-//             <FaPlaneDeparture />
-//             <h2>Saiyed <span>Travels</span></h2>
-//           </div>
-
-//           <p>
-//             Your trusted travel partner for Domestic &
-//             International Flights at the best fares.
-//           </p>
-
-//           <div className="footer-contact">
-
-//             <p><FaMapMarkerAlt /> Jhunjhunu, Rajasthan</p>
-
-//             <p><FaPhoneAlt /> +91 98765 43210</p>
-
-//             <p><FaEnvelope /> support@saiyedtravels.com</p>
-
-//           </div>
-
-//         </div>
-
-//         {/* Quick Links */}
-
-//         <div className="footer-box">
-
-//           <h3>Quick Links</h3>
-
-//           <ul>
-//             <li>Home</li>
-//             <li>Flights</li>
-//             <li>Offers</li>
-//             <li>About</li>
-//             <li>Contact</li>
-//           </ul>
-
-//         </div>
-
-//         {/* Services */}
-
-//         <div className="footer-box">
-
-//           <h3>Services</h3>
-
-//           <ul>
-//             <li>Flight Booking</li>
-//             <li>Visa Services</li>
-//             <li>Holiday Packages</li>
-//             <li>Umrah Packages</li>
-//           </ul>
-
-//         </div>
-
-//         {/* Newsletter */}
-
-//         <div className="footer-box">
-
-//           <h3>Newsletter</h3>
-
-//           <p>
-//             Subscribe to receive travel offers and flight updates.
-//           </p>
-
-//           <div className="newsletter">
-
-//             <input
-//               type="email"
-//               placeholder="Enter your email"
-//             />
-
-//             <button>
-
-//               <FaPaperPlane />
-
-//             </button>
-
-//           </div>
-
-//           <div className="social-icons">
-
-//             <a href="#"><FaFacebookF /></a>
-
-//             <a href="#"><FaInstagram /></a>
-
-//             <a href="#"><FaWhatsapp /></a>
-
-//             <a href="#"><FaYoutube /></a>
-
-//           </div>
-
-//         </div>
-
-//       </div>
-
-//       <div className="footer-bottom">
-
-//         © 2026 Saiyed Travels | All Rights Reserved.
-
-//       </div>
-
-//     </footer>
-//   );
-// }
-
-// export default Footer;
 
 
 import "./Footer.css";
+import { Link } from "react-router-dom";
+
 import {
   FaFacebookF,
   FaInstagram,
@@ -245,8 +15,11 @@ import {
 } from "react-icons/fa";
 
 function Footer() {
+
   return (
+
     <footer className="footer">
+
       <div className="footer-container">
 
         {/* Company */}
@@ -254,51 +27,101 @@ function Footer() {
         <div className="footer-box">
 
           <div className="footer-logo">
+
             <FaPlaneDeparture className="logo-icon" />
+
             <h2>
               Saiyed <span>Travels</span>
             </h2>
+
           </div>
 
           <p className="footer-desc">
+
             Your trusted travel partner for Domestic &
-            International Flight Booking with secure payments
-            and 24×7 customer support.
+            International Flight Booking with secure
+            payments and 24×7 customer support.
+
           </p>
 
           <div className="footer-contact">
 
+  <p>
+    <FaMapMarkerAlt />
+    Near Madina Masjid, Mohalla Kaziwara, Jhunjhunu, Rajasthan, India
+  </p>
+
+  <p>
+    <FaPhoneAlt />
+    <strong>Ayub Saiyed:</strong>{" "}
+    <a href="tel:+919414080277">
+      +91 9414080277
+    </a>
+  </p>
+
+  <p>
+    <FaPhoneAlt />
+    <strong>Tayyub Saiyed:</strong>{" "}
+    <a href="tel:+919928222512">
+      +91 99282 22512
+    </a>
+  </p>
+
+  <p>
+    <FaPhoneAlt />
+    <strong>Abdul Wahid:</strong>{" "}
+    <a href="tel:+919660497018">
+      +91 9960497018
+    </a>
+  </p>
+
+  <p>
+    <FaEnvelope />
+    <a href="mailto:saiyedtravels786@gmail.com">
+      saiyedtravels786@gmail.com
+    </a>
+  </p>
+
+  <p>
+    <FaEnvelope />
+    <a href="tayub.saiyed786@gmail.com">
+      tayub.saiyed786@gmail.com
+    </a>
+  </p>
+
+</div>
+{/* 
+          <div className="footer-contact">
+
             <p>
+
               <FaMapMarkerAlt />
+
               Jhunjhunu, Rajasthan, India
+
             </p>
 
             <p>
+
               <FaPhoneAlt />
-              <strong>Booking:</strong> +91 98765 43210
+
+              <a href="tel:+919928222512">
+                +91 99282 22512
+              </a>
+
             </p>
 
             <p>
-              <FaPhoneAlt />
-              <strong>Support:</strong> +91 98765 43211
-            </p>
 
-            <p>
-              <FaPhoneAlt />
-              <strong>Emergency:</strong> +91 98765 43212
-            </p>
-
-            <p>
               <FaEnvelope />
-              booking@saiyedtravels.com
+
+              <a href="mailto:booking@saiyedtravels.com">
+                booking@saiyedtravels.com
+              </a>
+
             </p>
 
-            <p>
-              <FaEnvelope />
-              support@saiyedtravels.com
-            </p>
-
-          </div>
+          </div> */}
 
         </div>
 
@@ -309,29 +132,103 @@ function Footer() {
           <h3>Quick Links</h3>
 
           <ul>
-            <li>Home</li>
-            <li>Flights</li>
-            <li>Payment</li>
-            <li>Offers</li>
-            <li>About</li>
-            <li>Contact</li>
+
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+
+            <li>
+              <Link to="/flights">Flights</Link>
+            </li>
+
+            <li>
+              <Link to="/booking">Booking</Link>
+            </li>
+
+            <li>
+              <Link to="/payment">Payment</Link>
+            </li>
+
+            <li>
+              <Link to="/offers">Offers</Link>
+            </li>
+
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+
+            <li>
+              <Link to="/signup">Sign Up</Link>
+            </li>
+
+            <li>
+              <Link to="/privacy">
+                Privacy Policy
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/terms">
+                Terms & Conditions
+              </Link>
+            </li>
+
           </ul>
 
         </div>
 
-        {/* Services */}
+                {/* Services */}
 
         <div className="footer-box">
 
           <h3>Our Services</h3>
 
           <ul>
-            <li>Domestic Flights</li>
-            <li>International Flights</li>
-            <li>Visa Services</li>
-            <li>Holiday Packages</li>
-            <li>Umrah Packages</li>
-            <li>Travel Insurance</li>
+
+            <li>
+              <Link to="/flights">
+                Domestic Flights
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/flights">
+                International Flights
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/visa">
+                Visa Services
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/holiday">
+                Holiday Packages
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/umrah">
+                Umrah Packages
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/insurance">
+                Travel Insurance
+              </Link>
+            </li>
+
           </ul>
 
         </div>
@@ -343,25 +240,43 @@ function Footer() {
           <h3>Follow Us</h3>
 
           <p>
-            Follow us on social media for the latest flight offers,
-            travel deals and updates.
+
+            Follow us on social media for the latest
+            flight offers, travel deals and updates.
+
           </p>
 
           <div className="social-icons">
 
-            <a href="#">
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaFacebookF />
             </a>
 
-            <a href="#">
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaInstagram />
             </a>
 
-            <a href="#">
+            <a
+              href="https://wa.me/919928222512"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaWhatsapp />
             </a>
 
-            <a href="#">
+            <a
+              href="https://www.youtube.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaYoutube />
             </a>
 
@@ -371,14 +286,22 @@ function Footer() {
 
       </div>
 
+      {/* Footer Bottom */}
+
       <div className="footer-bottom">
+
         <p>
+
           © 2026 <strong>Saiyed Travels</strong>. All Rights Reserved.
+
         </p>
+
       </div>
 
     </footer>
+
   );
+
 }
 
 export default Footer;

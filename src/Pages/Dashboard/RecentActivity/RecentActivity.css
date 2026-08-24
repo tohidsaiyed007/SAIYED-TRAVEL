@@ -1,0 +1,283 @@
+/* ===========================
+   RECENT ACTIVITY
+=========================== */
+
+.recent-activity{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.activity-header{
+
+    margin-bottom:25px;
+
+}
+
+.activity-header h2{
+
+    font-size:24px;
+
+    color:#222;
+
+    font-weight:700;
+
+    margin-bottom:5px;
+
+}
+
+.activity-header p{
+
+    font-size:14px;
+
+    color:#777;
+
+}
+
+/* ===========================
+   ACTIVITY LIST
+=========================== */
+
+.activity-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ===========================
+   ACTIVITY ITEM
+=========================== */
+
+.activity-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    transition:.3s;
+
+    border:1px solid #edf1f7;
+
+}
+
+.activity-item:hover{
+
+    background:#f8fbff;
+
+    transform:translateX(6px);
+
+}
+
+/* ===========================
+   ICON
+=========================== */
+
+.activity-icon{
+
+    width:55px;
+
+    height:55px;
+
+    min-width:55px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#fff;
+
+    font-size:22px;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.15);
+
+}
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.activity-content{
+
+    flex:1;
+
+}
+
+.activity-content h4{
+
+    font-size:16px;
+
+    font-weight:700;
+
+    color:#222;
+
+    margin-bottom:6px;
+
+}
+
+.activity-content p{
+
+    font-size:14px;
+
+    color:#777;
+
+    line-height:1.5;
+
+}
+
+/* ===========================
+   TIME
+=========================== */
+
+.activity-time{
+
+    font-size:13px;
+
+    font-weight:600;
+
+    color:#999;
+
+    white-space:nowrap;
+
+}
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media(max-width:992px){
+
+.activity-item{
+
+    gap:14px;
+
+    padding:15px;
+
+}
+
+.activity-icon{
+
+    width:50px;
+
+    height:50px;
+
+    min-width:50px;
+
+    font-size:20px;
+
+}
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.recent-activity{
+
+    padding:20px;
+
+    border-radius:16px;
+
+}
+
+.activity-item{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+}
+
+.activity-time{
+
+    margin-left:67px;
+
+}
+
+}
+
+/* ===========================
+   SMALL MOBILE
+=========================== */
+
+@media(max-width:480px){
+
+.recent-activity{
+
+    padding:18px;
+
+}
+
+.activity-header h2{
+
+    font-size:20px;
+
+}
+
+.activity-header p{
+
+    font-size:13px;
+
+}
+
+.activity-icon{
+
+    width:46px;
+
+    height:46px;
+
+    min-width:46px;
+
+    font-size:18px;
+
+}
+
+.activity-content h4{
+
+    font-size:15px;
+
+}
+
+.activity-content p{
+
+    font-size:13px;
+
+}
+
+.activity-time{
+
+    margin-left:58px;
+
+    font-size:12px;
+
+}
+
+}

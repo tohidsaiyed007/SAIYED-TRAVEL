@@ -1,207 +1,65 @@
-/* .meal-page{
-    min-height:100vh;
-    background:#f5f7fb;
-    padding:120px 0 60px;
-}
-
-.meal-container{
-    width:90%;
-    max-width:1100px;
-    margin:auto;
-    background:#fff;
-    border-radius:20px;
-    padding:35px;
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
-}
-
-
-
-.meal-header{
-    text-align:center;
-    margin-bottom:40px;
-}
-
-.meal-header h2{
-    font-size:34px;
-    color:#0B5ED7;
-    margin-bottom:10px;
-}
-
-.meal-header p{
-    font-size:20px;
-    color:#555;
-    font-weight:500;
-}
-
-
-.meal-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-    margin-bottom:35px;
-}
-
-.meal-card{
-    background:#fff;
-    border:2px solid #e8e8e8;
-    border-radius:18px;
-    padding:30px 20px;
-    text-align:center;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.meal-card:hover{
-    transform:translateY(-6px);
-    border-color:#0B5ED7;
-    box-shadow:0 12px 30px rgba(11,94,215,.15);
-}
-
-.meal-card.active{
-    background:#eef6ff;
-    border-color:#0B5ED7;
-    box-shadow:0 12px 30px rgba(11,94,215,.25);
-}
-
-.meal-icon{
-    font-size:55px;
-    margin-bottom:15px;
-}
-
-.meal-card h3{
-    font-size:22px;
-    color:#222;
-    margin-bottom:10px;
-}
-
-.meal-card p{
-    font-size:18px;
-    color:#0B5ED7;
-    font-weight:700;
-}
-
-
-
-.meal-summary{
-    background:#f8f9fc;
-    border-radius:16px;
-    padding:22px;
-    margin-bottom:30px;
-}
-
-.meal-summary h3{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:15px;
-    font-size:22px;
-}
-
-.meal-summary h3 span{
-    color:#0B5ED7;
-}
-
-.meal-summary p{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    font-size:18px;
-    color:#444;
-}
-
-.meal-summary strong{
-    color:#0B5ED7;
-}
-
-
-
-.continue-meal-btn{
-    width:100%;
-    padding:18px;
-    border:none;
-    border-radius:14px;
-    background:linear-gradient(135deg,#0B5ED7,#2b8dff);
-    color:#fff;
-    font-size:18px;
-    font-weight:700;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.continue-meal-btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 15px 35px rgba(11,94,215,.35);
-}
-
-
-
-@media(max-width:768px){
-
-.meal-container{
-    width:95%;
-    padding:20px;
-}
-
-.meal-header h2{
-    font-size:28px;
-}
-
-.meal-header p{
-    font-size:17px;
-}
-
-.meal-summary h3,
-.meal-summary p{
-    flex-direction:column;
-    gap:8px;
-    text-align:center;
-}
-
-} */
-
+/*==========================
+        MEAL PAGE
+==========================*/
 
 .meal-page{
+    width:100%;
     min-height:100vh;
-    background:#f5f7fb;
+    background:#f4f7fb;
     padding:120px 0 60px;
 }
 
 .meal-container{
     width:92%;
-    max-width:1100px;
+    max-width:1200px;
     margin:auto;
-    background:#fff;
-    border-radius:20px;
-    padding:35px;
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
 }
 
-/* ==========================
-   Header
-========================== */
+/*==========================
+        HEADER
+==========================*/
 
 .meal-header{
-    text-align:center;
-    margin-bottom:40px;
+    background:#ffffff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    margin-bottom:30px;
 }
 
 .meal-header h2{
-    font-size:34px;
-    color:#0B5ED7;
-    margin-bottom:10px;
-    line-height:1.3;
+    font-size:32px;
+    color:#111827;
+    margin-bottom:12px;
 }
 
 .meal-header p{
-    font-size:20px;
-    color:#555;
-    font-weight:500;
-    line-height:1.6;
+    font-size:18px;
+    font-weight:600;
+    color:#2563eb;
+    margin-bottom:8px;
 }
 
-/* ==========================
-   Meal Grid
-========================== */
+.meal-header h4{
+    font-size:18px;
+    color:#374151;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.meal-header h5{
+    font-size:17px;
+    color:#6b7280;
+    font-weight:600;
+}
+
+.meal-header h5 span{
+    color:#16a34a;
+}
+
+/*==========================
+        MEAL GRID
+==========================*/
 
 .meal-grid{
     display:grid;
@@ -210,53 +68,59 @@
     margin-bottom:35px;
 }
 
+/*==========================
+        MEAL CARD
+==========================*/
+
 .meal-card{
-    background:#fff;
-    border:2px solid #e8e8e8;
+    background:#ffffff;
     border-radius:18px;
     padding:30px 20px;
     text-align:center;
     cursor:pointer;
+    border:2px solid transparent;
     transition:.3s;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
 .meal-card:hover{
-    transform:translateY(-6px);
-    border-color:#0B5ED7;
-    box-shadow:0 12px 30px rgba(11,94,215,.15);
+    transform:translateY(-8px);
+    border-color:#2563eb;
 }
 
 .meal-card.active{
-    background:#eef6ff;
-    border-color:#0B5ED7;
-    box-shadow:0 12px 30px rgba(11,94,215,.25);
+    border-color:#2563eb;
+    background:#eff6ff;
 }
 
 .meal-icon{
-    font-size:55px;
-    margin-bottom:15px;
+    font-size:50px;
+    margin-bottom:18px;
 }
 
 .meal-card h3{
     font-size:22px;
-    color:#222;
+    color:#111827;
     margin-bottom:10px;
 }
 
 .meal-card p{
     font-size:18px;
-    color:#0B5ED7;
     font-weight:700;
+    color:#16a34a;
 }
 
-/* ==========================
-   Summary
-========================== */
+
+
+/*==========================
+        SUMMARY
+==========================*/
 
 .meal-summary{
-    background:#f8f9fc;
-    border-radius:16px;
-    padding:22px;
+    background:#ffffff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
     margin-bottom:30px;
 }
 
@@ -264,37 +128,41 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:15px;
-    font-size:22px;
+    margin-bottom:20px;
+    font-size:24px;
+    color:#111827;
 }
 
 .meal-summary h3 span{
-    color:#0B5ED7;
+    color:#2563eb;
+    font-weight:700;
 }
 
 .meal-summary p{
     display:flex;
     justify-content:space-between;
     align-items:center;
+    margin-bottom:15px;
     font-size:18px;
-    color:#444;
+    color:#374151;
 }
 
 .meal-summary strong{
-    color:#0B5ED7;
+    color:#16a34a;
+    font-size:22px;
 }
 
-/* ==========================
-   Button
-========================== */
+/*==========================
+      CONTINUE BUTTON
+==========================*/
 
 .continue-meal-btn{
     width:100%;
     padding:18px;
     border:none;
     border-radius:14px;
-    background:linear-gradient(135deg,#0B5ED7,#2b8dff);
-    color:#fff;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:#ffffff;
     font-size:18px;
     font-weight:700;
     cursor:pointer;
@@ -303,109 +171,126 @@
 
 .continue-meal-btn:hover{
     transform:translateY(-3px);
-    box-shadow:0 15px 35px rgba(11,94,215,.35);
+    box-shadow:0 18px 35px rgba(37,99,235,.30);
 }
 
-/* ==========================
-   Laptop
-========================== */
+/*==========================
+      NO BOOKING
+==========================*/
 
-@media (max-width:1200px){
+.no-booking{
+    width:90%;
+    max-width:650px;
+    margin:120px auto;
+    background:#ffffff;
+    padding:50px 35px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.no-booking h2{
+    font-size:32px;
+    color:#111827;
+    margin-bottom:18px;
+}
+
+.no-booking p{
+    color:#6b7280;
+    font-size:16px;
+    line-height:28px;
+    margin-bottom:25px;
+}
+
+.no-booking button{
+    border:none;
+    padding:15px 35px;
+    border-radius:12px;
+    background:#2563eb;
+    color:#ffffff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.no-booking button:hover{
+    background:#1d4ed8;
+    transform:translateY(-3px);
+}
+
+/*==========================
+        RESPONSIVE
+==========================*/
+
+@media(max-width:992px){
 
     .meal-container{
-        width:94%;
+        width:95%;
+    }
+
+    .meal-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
 }
 
-/* ==========================
-   Tablet
-========================== */
-
-@media (max-width:768px){
+@media(max-width:768px){
 
     .meal-page{
         padding:100px 0 40px;
     }
 
-    .meal-container{
-        width:95%;
-        padding:25px;
-        border-radius:16px;
-    }
-
-    .meal-header{
-        margin-bottom:30px;
+    .meal-header,
+    .meal-summary{
+        padding:22px;
     }
 
     .meal-header h2{
-        font-size:28px;
-    }
-
-    .meal-header p{
-        font-size:17px;
+        font-size:26px;
     }
 
     .meal-grid{
+        grid-template-columns:1fr;
         gap:18px;
     }
 
     .meal-card{
-        padding:24px 18px;
-    }
-
-    .meal-icon{
-        font-size:48px;
-    }
-
-    .meal-card h3{
-        font-size:20px;
-    }
-
-    .meal-card p{
-        font-size:16px;
+        padding:25px 18px;
     }
 
     .meal-summary h3,
     .meal-summary p{
         flex-direction:column;
-        gap:8px;
+        gap:10px;
         text-align:center;
+    }
+
+    .continue-meal-btn{
+        font-size:16px;
+        padding:16px;
     }
 
 }
 
-/* ==========================
-   Mobile
-========================== */
-
-@media (max-width:480px){
-
-    .meal-page{
-        padding:85px 0 30px;
-    }
+@media(max-width:480px){
 
     .meal-container{
         width:96%;
-        padding:18px;
     }
 
     .meal-header h2{
-        font-size:24px;
+        font-size:22px;
     }
 
-    .meal-header p{
+    .meal-header p,
+    .meal-header h4,
+    .meal-header h5{
         font-size:15px;
-    }
-
-    .meal-grid{
-        grid-template-columns:1fr;
-        gap:15px;
     }
 
     .meal-card{
         padding:20px 15px;
-        border-radius:14px;
     }
 
     .meal-icon{
@@ -413,73 +298,37 @@
     }
 
     .meal-card h3{
-        font-size:18px;
+        font-size:19px;
     }
 
     .meal-card p{
-        font-size:15px;
+        font-size:16px;
     }
 
     .meal-summary{
-        padding:18px;
+        padding:20px;
     }
 
     .meal-summary h3{
-        font-size:18px;
-    }
-
-    .meal-summary p{
-        font-size:15px;
-    }
-
-    .continue-meal-btn{
-        padding:15px;
-        font-size:16px;
-    }
-
-}
-
-/* ==========================
-   Extra Small
-========================== */
-
-@media (max-width:320px){
-
-    .meal-container{
-        padding:15px;
-    }
-
-    .meal-header h2{
         font-size:20px;
     }
 
-    .meal-header p{
-        font-size:14px;
-    }
-
-    .meal-icon{
-        font-size:36px;
-    }
-
-    .meal-card h3{
-        font-size:17px;
-    }
-
-    .meal-card p{
-        font-size:14px;
-    }
-
-    .meal-summary h3{
-        font-size:16px;
-    }
-
-    .meal-summary p{
-        font-size:14px;
+    .meal-summary strong{
+        font-size:20px;
     }
 
     .continue-meal-btn{
+        padding:15px;
         font-size:15px;
-        padding:13px;
+    }
+
+    .no-booking{
+        width:95%;
+        padding:35px 20px;
+    }
+
+    .no-booking h2{
+        font-size:24px;
     }
 
 }

@@ -1,47 +1,66 @@
-/* ===========================
-   Extra Baggage Page
-=========================== */
+/*==========================
+      BAGGAGE PAGE
+==========================*/
 
 .baggage-page{
+    width:100%;
     min-height:100vh;
-    background:#f5f7fb;
-    padding:120px 20px 60px;
+    background:#f4f7fb;
+    padding:120px 0 60px;
 }
 
 .baggage-container{
+    width:92%;
     max-width:1200px;
     margin:auto;
-    background:#fff;
-    border-radius:20px;
-    padding:35px;
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
 }
 
-/* ===========================
-   Header
-=========================== */
+/*==========================
+        HEADER
+==========================*/
 
 .baggage-header{
-    text-align:center;
-    margin-bottom:35px;
+    background:#ffffff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    margin-bottom:30px;
 }
 
 .baggage-header h2{
-    font-size:36px;
-    font-weight:700;
-    color:#0B5ED7;
-    margin-bottom:10px;
+    font-size:32px;
+    color:#111827;
+    margin-bottom:12px;
 }
 
 .baggage-header p{
-    font-size:20px;
-    color:#555;
-    font-weight:500;
+    font-size:18px;
+    font-weight:600;
+    color:#2563eb;
+    margin-bottom:8px;
 }
 
-/* ===========================
-   Grid
-=========================== */
+.baggage-header h4{
+    font-size:18px;
+    color:#374151;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.baggage-header h5{
+    font-size:17px;
+    color:#6b7280;
+    font-weight:600;
+    margin-bottom:6px;
+}
+
+.baggage-header h5 span{
+    color:#16a34a;
+}
+
+/*==========================
+      BAGGAGE GRID
+==========================*/
 
 .baggage-grid{
     display:grid;
@@ -50,57 +69,58 @@
     margin-bottom:35px;
 }
 
-/* ===========================
-   Card
-=========================== */
+/*==========================
+      BAGGAGE CARD
+==========================*/
 
 .baggage-card{
-    background:#fff;
-    border:2px solid #e8e8e8;
+    background:#ffffff;
     border-radius:18px;
-    padding:28px 20px;
+    padding:30px 20px;
     text-align:center;
     cursor:pointer;
-    transition:.35s ease;
+    border:2px solid transparent;
+    transition:.3s;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
 .baggage-card:hover{
     transform:translateY(-8px);
-    border-color:#0B5ED7;
-    box-shadow:0 15px 35px rgba(11,94,215,.15);
+    border-color:#2563eb;
 }
 
 .baggage-card.active{
-    border-color:#0B5ED7;
-    background:#eef6ff;
-    box-shadow:0 15px 35px rgba(11,94,215,.25);
+    border-color:#2563eb;
+    background:#eff6ff;
 }
 
 .bag-icon{
-    font-size:60px;
+    font-size:52px;
     margin-bottom:18px;
 }
 
 .baggage-card h3{
-    font-size:24px;
-    color:#222;
-    margin-bottom:12px;
+    font-size:22px;
+    color:#111827;
+    margin-bottom:10px;
 }
 
 .baggage-card p{
-    font-size:20px;
-    color:#0B5ED7;
+    font-size:18px;
     font-weight:700;
+    color:#16a34a;
 }
 
-/* ===========================
-   Summary
-=========================== */
+
+/*==========================
+      SUMMARY
+==========================*/
 
 .baggage-summary{
-    background:#f8f9fc;
-    border-radius:16px;
-    padding:25px;
+    background:#ffffff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
     margin-bottom:30px;
 }
 
@@ -108,188 +128,207 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:18px;
+    margin-bottom:20px;
     font-size:24px;
-    color:#222;
+    color:#111827;
 }
 
 .baggage-summary h3 span{
-    color:#0B5ED7;
+    color:#2563eb;
+    font-weight:700;
 }
 
 .baggage-summary p{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    font-size:20px;
-    color:#444;
+    margin-bottom:15px;
+    font-size:18px;
+    color:#374151;
 }
 
 .baggage-summary strong{
-    color:#0B5ED7;
+    color:#16a34a;
+    font-size:22px;
 }
 
-/* ===========================
-   Button
-=========================== */
+/*==========================
+      CONTINUE BUTTON
+==========================*/
 
 .continue-baggage-btn{
     width:100%;
     padding:18px;
     border:none;
     border-radius:14px;
-    background:linear-gradient(135deg,#0B5ED7,#2d8cff);
-    color:#fff;
-    font-size:19px;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:#ffffff;
+    font-size:18px;
     font-weight:700;
     cursor:pointer;
-    transition:.35s;
-    box-shadow:0 15px 30px rgba(11,94,215,.30);
+    transition:.3s;
 }
 
 .continue-baggage-btn:hover{
-    transform:translateY(-4px);
-    box-shadow:0 18px 35px rgba(11,94,215,.40);
+    transform:translateY(-3px);
+    box-shadow:0 18px 35px rgba(37,99,235,.30);
 }
 
-.continue-baggage-btn:active{
-    transform:scale(.98);
+/*==========================
+      NO BOOKING
+==========================*/
+
+.no-booking{
+    width:90%;
+    max-width:650px;
+    margin:120px auto;
+    background:#ffffff;
+    padding:50px 35px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-/* ===========================
-   Laptop
-=========================== */
-
-@media(max-width:1200px){
-
-.baggage-container{
-    max-width:95%;
+.no-booking h2{
+    font-size:32px;
+    color:#111827;
+    margin-bottom:18px;
 }
 
+.no-booking p{
+    font-size:16px;
+    color:#6b7280;
+    line-height:28px;
+    margin-bottom:25px;
 }
 
-/* ===========================
-   Tablet
-=========================== */
+.no-booking button{
+    border:none;
+    padding:15px 35px;
+    border-radius:12px;
+    background:#2563eb;
+    color:#ffffff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.no-booking button:hover{
+    background:#1d4ed8;
+    transform:translateY(-3px);
+}
+
+/*==========================
+      RESPONSIVE
+==========================*/
 
 @media(max-width:992px){
 
-.baggage-container{
-    padding:30px;
-}
+    .baggage-container{
+        width:95%;
+    }
 
-.baggage-grid{
-    grid-template-columns:repeat(2,1fr);
-}
-
-.baggage-header h2{
-    font-size:32px;
-}
-
-.baggage-header p{
-    font-size:18px;
-}
+    .baggage-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
 }
-
-/* ===========================
-   Mobile
-=========================== */
 
 @media(max-width:768px){
 
-.baggage-page{
-    padding:100px 15px 40px;
-}
+    .baggage-page{
+        padding:100px 0 40px;
+    }
 
-.baggage-container{
-    padding:20px;
-    border-radius:16px;
-}
+    .baggage-header,
+    .baggage-summary{
+        padding:22px;
+    }
 
-.baggage-grid{
-    grid-template-columns:1fr;
-    gap:18px;
-}
+    .baggage-header h2{
+        font-size:26px;
+    }
 
-.baggage-card{
-    padding:22px 15px;
-}
+    .baggage-grid{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
 
-.bag-icon{
-    font-size:50px;
-}
+    .baggage-card{
+        padding:25px 18px;
+    }
 
-.baggage-card h3{
-    font-size:20px;
-}
+    .baggage-summary h3,
+    .baggage-summary p{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
 
-.baggage-card p{
-    font-size:18px;
-}
-
-.baggage-summary{
-    padding:20px;
-}
-
-.baggage-summary h3,
-.baggage-summary p{
-    flex-direction:column;
-    gap:8px;
-    text-align:center;
-}
-
-.baggage-summary h3{
-    font-size:22px;
-}
-
-.baggage-summary p{
-    font-size:18px;
-}
-
-.continue-baggage-btn{
-    font-size:17px;
-    padding:16px;
-}
+    .continue-baggage-btn{
+        font-size:16px;
+        padding:16px;
+    }
 
 }
-
-/* ===========================
-   Small Mobile
-=========================== */
 
 @media(max-width:480px){
 
-.baggage-header h2{
-    font-size:26px;
-}
+    .baggage-container{
+        width:96%;
+    }
 
-.baggage-header p{
-    font-size:16px;
-}
+    .baggage-header h2{
+        font-size:22px;
+    }
 
-.bag-icon{
-    font-size:42px;
-}
+    .baggage-header p,
+    .baggage-header h4,
+    .baggage-header h5{
+        font-size:15px;
+    }
 
-.baggage-card h3{
-    font-size:18px;
-}
+    .baggage-card{
+        padding:20px 15px;
+    }
 
-.baggage-card p{
-    font-size:16px;
-}
+    .bag-icon{
+        font-size:42px;
+    }
 
-.baggage-summary h3{
-    font-size:20px;
-}
+    .baggage-card h3{
+        font-size:19px;
+    }
 
-.baggage-summary p{
-    font-size:16px;
-}
+    .baggage-card p{
+        font-size:16px;
+    }
 
-.continue-baggage-btn{
-    font-size:16px;
-}
+    .baggage-summary{
+        padding:20px;
+    }
+
+    .baggage-summary h3{
+        font-size:20px;
+    }
+
+    .baggage-summary strong{
+        font-size:20px;
+    }
+
+    .continue-baggage-btn{
+        padding:15px;
+        font-size:15px;
+    }
+
+    .no-booking{
+        width:95%;
+        padding:35px 20px;
+    }
+
+    .no-booking h2{
+        font-size:24px;
+    }
 
 }

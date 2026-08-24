@@ -1,0 +1,318 @@
+/*==========================================
+        SEARCH FLIGHT
+==========================================*/
+
+.search-flight{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+/*==========================================
+        HEADER
+==========================================*/
+
+.search-title{
+
+    margin-bottom:25px;
+
+}
+
+.search-title h2{
+
+    font-size:26px;
+
+    color:#1f2937;
+
+    font-weight:700;
+
+    margin-bottom:6px;
+
+}
+
+.search-title p{
+
+    font-size:14px;
+
+    color:#6b7280;
+
+}
+
+/*==========================================
+        GRID
+==========================================*/
+
+.search-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+/*==========================================
+        FIELD
+==========================================*/
+
+.search-field{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.search-field label{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#374151;
+
+    margin-bottom:8px;
+
+}
+
+.search-field input,
+.search-field select{
+
+    width:100%;
+
+    height:50px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:12px;
+
+    padding:0 15px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+    background:#fff;
+
+}
+
+.search-field input:focus,
+.search-field select:focus{
+
+    border-color:#0d6efd;
+
+    box-shadow:0 0 0 4px rgba(13,110,253,.12);
+
+}
+
+
+/*==========================================
+        BUTTONS
+==========================================*/
+
+.search-buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-top:25px;
+
+}
+
+.search-btn,
+.reset-btn{
+
+    border:none;
+
+    outline:none;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    padding:14px 26px;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+/*==========================================
+        SEARCH BUTTON
+==========================================*/
+
+.search-btn{
+
+    background:linear-gradient(
+        135deg,
+        #0d6efd,
+        #2563eb
+    );
+
+    color:#fff;
+
+    box-shadow:
+    0 10px 25px rgba(13,110,253,.25);
+
+}
+
+.search-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 18px 35px rgba(13,110,253,.35);
+
+}
+
+/*==========================================
+        RESET BUTTON
+==========================================*/
+
+.reset-btn{
+
+    background:#f3f4f6;
+
+    color:#374151;
+
+}
+
+.reset-btn:hover{
+
+    background:#e5e7eb;
+
+}
+
+/*==========================================
+        TABLET
+==========================================*/
+
+@media(max-width:992px){
+
+.search-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.search-buttons{
+
+    justify-content:flex-start;
+
+}
+
+}
+
+/*==========================================
+        MOBILE
+==========================================*/
+
+@media(max-width:768px){
+
+.search-flight{
+
+    padding:20px;
+
+}
+
+.search-title h2{
+
+    font-size:22px;
+
+}
+
+.search-grid{
+
+    grid-template-columns:1fr;
+
+    gap:16px;
+
+}
+
+.search-buttons{
+
+    flex-direction:column;
+
+}
+
+.search-btn,
+.reset-btn{
+
+    width:100%;
+
+}
+
+}
+
+/*==========================================
+        SMALL MOBILE
+==========================================*/
+
+@media(max-width:480px){
+
+.search-flight{
+
+    padding:16px;
+
+    border-radius:14px;
+
+}
+
+.search-title h2{
+
+    font-size:20px;
+
+}
+
+.search-title p{
+
+    font-size:13px;
+
+}
+
+.search-field input,
+.search-field select{
+
+    height:46px;
+
+    font-size:14px;
+
+}
+
+.search-btn,
+.reset-btn{
+
+    padding:12px;
+
+    font-size:14px;
+
+}
+
+}

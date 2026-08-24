@@ -1,0 +1,273 @@
+/* ===========================
+   DASHBOARD CARDS
+=========================== */
+
+.dashboard-cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:24px;
+
+    margin-bottom:30px;
+
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.card-box{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.card-box:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+}
+
+/* ===========================
+   TOP
+=========================== */
+
+.card-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.card-icon{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#fff;
+
+    font-size:28px;
+
+    box-shadow:0 12px 25px rgba(0,0,0,.15);
+
+}
+
+.growth{
+
+    padding:6px 14px;
+
+    border-radius:30px;
+
+    background:#e8fff2;
+
+    color:#198754;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.card-box h3{
+
+    font-size:34px;
+
+    color:#222;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.card-box p{
+
+    font-size:15px;
+
+    color:#666;
+
+    font-weight:500;
+
+}
+
+/* ===========================
+   HOVER EFFECT
+=========================== */
+
+.card-box::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:5px;
+
+    background:linear-gradient(
+        90deg,
+        #0B5ED7,
+        #4d9dff
+    );
+
+    transform:scaleX(0);
+
+    transition:.35s;
+
+    transform-origin:left;
+
+}
+
+.card-box:hover::before{
+
+    transform:scaleX(1);
+
+}
+
+/* ===========================
+   LAPTOP
+=========================== */
+
+@media(max-width:1200px){
+
+.dashboard-cards{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media(max-width:768px){
+
+.dashboard-cards{
+
+    grid-template-columns:1fr;
+
+    gap:18px;
+
+}
+
+.card-box{
+
+    padding:20px;
+
+}
+
+.card-icon{
+
+    width:58px;
+
+    height:58px;
+
+    font-size:24px;
+
+}
+
+.card-box h3{
+
+    font-size:28px;
+
+}
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:480px){
+
+.dashboard-cards{
+
+    gap:15px;
+
+}
+
+.card-box{
+
+    border-radius:16px;
+
+    padding:18px;
+
+}
+
+.card-top{
+
+    margin-bottom:18px;
+
+}
+
+.card-icon{
+
+    width:52px;
+
+    height:52px;
+
+    font-size:20px;
+
+}
+
+.growth{
+
+    font-size:12px;
+
+    padding:5px 10px;
+
+}
+
+.card-box h3{
+
+    font-size:24px;
+
+}
+
+.card-box p{
+
+    font-size:14px;
+
+}
+
+}

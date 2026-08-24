@@ -1,0 +1,404 @@
+/* ==========================================
+   ADMIN EDIT PROFILE PAGE
+========================================== */
+
+.admin-edit-profile-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.admin-edit-header {
+  margin-bottom: 25px;
+}
+
+.admin-edit-header h1 {
+  margin: 0;
+  color: #111827;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.admin-edit-header p {
+  margin: 7px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+
+/* ==========================================
+   FORM CARD
+========================================== */
+
+.admin-edit-form {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 30px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ==========================================
+   PROFILE PHOTO SECTION
+========================================== */
+
+.admin-edit-photo-section {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding-bottom: 25px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-edit-photo {
+  width: 110px;
+  height: 110px;
+  min-width: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #eff6ff;
+  border: 4px solid #dbeafe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-edit-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.admin-edit-photo svg {
+  width: 72px;
+  height: 72px;
+  color: #2563eb;
+}
+
+.admin-photo-content h3 {
+  margin: 0 0 7px;
+  color: #111827;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.admin-photo-content p {
+  margin: 0 0 14px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.admin-photo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 9px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.admin-photo-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+
+/* ==========================================
+   FORM GRID
+========================================== */
+
+.admin-edit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.admin-edit-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.admin-edit-group label {
+  margin-bottom: 8px;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.admin-edit-group input {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  box-sizing: border-box;
+
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #ffffff;
+  color: #111827;
+
+  font-size: 14px;
+
+  transition: 0.2s ease;
+}
+
+.admin-edit-group input::placeholder {
+  color: #9ca3af;
+}
+
+.admin-edit-group input:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.admin-edit-group input:disabled {
+  background: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.admin-edit-group small {
+  margin-top: 6px;
+  color: #9ca3af;
+  font-size: 11px;
+}
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.admin-edit-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 30px;
+  padding-top: 25px;
+
+  border-top: 1px solid #e5e7eb;
+}
+
+.admin-save-btn,
+.admin-cancel-btn {
+  min-width: 155px;
+  height: 45px;
+
+  border: none;
+  border-radius: 9px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.admin-save-btn {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.admin-save-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.admin-save-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.admin-cancel-btn {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.admin-cancel-btn:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+
+/* ==========================================
+   SUCCESS MESSAGE
+========================================== */
+
+.admin-edit-success {
+  margin-bottom: 20px;
+  padding: 13px 16px;
+
+  border-radius: 9px;
+
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
+
+  color: #15803d;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+/* ==========================================
+   ERROR MESSAGE
+========================================== */
+
+.admin-edit-error {
+  margin-bottom: 20px;
+  padding: 13px 16px;
+
+  border-radius: 9px;
+
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+
+  color: #b91c1c;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+/* ==========================================
+   LOADING
+========================================== */
+
+.admin-edit-loading {
+  min-height: 350px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #6b7280;
+
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 900px) {
+
+  .admin-edit-profile-page {
+    padding: 22px;
+  }
+
+  .admin-edit-form {
+    padding: 24px;
+  }
+
+  .admin-edit-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 650px) {
+
+  .admin-edit-profile-page {
+    padding: 15px;
+  }
+
+  .admin-edit-form {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .admin-edit-header h1 {
+    font-size: 23px;
+  }
+
+  .admin-edit-header p {
+    font-size: 13px;
+  }
+
+  .admin-edit-photo-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-edit-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .admin-edit-buttons {
+    flex-direction: column;
+  }
+
+  .admin-save-btn,
+  .admin-cancel-btn {
+    width: 100%;
+  }
+
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 400px) {
+
+  .admin-edit-profile-page {
+    padding: 10px;
+  }
+
+  .admin-edit-form {
+    padding: 16px;
+  }
+
+  .admin-edit-photo {
+    width: 95px;
+    height: 95px;
+    min-width: 95px;
+  }
+
+  .admin-edit-photo svg {
+    width: 62px;
+    height: 62px;
+  }
+
+  .admin-edit-header h1 {
+    font-size: 21px;
+  }
+
+}

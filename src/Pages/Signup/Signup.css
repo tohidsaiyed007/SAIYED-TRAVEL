@@ -376,3 +376,120 @@
 }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   Account Type
+========================= */
+
+.account-type{
+    margin-bottom:25px;
+}
+
+.account-type h3{
+    font-size:16px;
+    color:#222;
+    margin-bottom:15px;
+    font-weight:600;
+}
+
+.account-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.account-card{
+    border:2px solid #e5e7eb;
+    border-radius:16px;
+    padding:18px;
+    cursor:pointer;
+    text-align:center;
+    transition:.3s;
+    background:#fff;
+}
+
+.account-card:hover{
+    border-color:#0B5ED7;
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(11,94,215,.12);
+}
+
+.account-card.active{
+    background:#eef5ff;
+    border-color:#0B5ED7;
+    box-shadow:0 12px 30px rgba(11,94,215,.18);
+}
+
+.account-icon{
+    font-size:32px;
+    color:#0B5ED7;
+    margin-bottom:12px;
+}
+
+.account-card h4{
+    font-size:18px;
+    margin-bottom:8px;
+    color:#111;
+}
+
+.account-card p{
+    font-size:13px;
+    color:#666;
+    line-height:1.5;
+}
+
+/* =========================
+   Agent Fields
+========================= */
+
+.agent-title{
+    margin:15px 0;
+    font-size:17px;
+    color:#0B5ED7;
+    font-weight:700;
+}
+
+.input-box input{
+    transition:.3s;
+}
+
+.input-box input:hover{
+    border-color:#0B5ED7;
+}
+
+.input-box input::placeholder{
+    color:#9ca3af;
+}

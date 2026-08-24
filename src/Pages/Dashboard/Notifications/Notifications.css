@@ -1,0 +1,310 @@
+/* ===========================
+   NOTIFICATIONS
+=========================== */
+
+.dashboard-notifications{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.notification-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.notification-header h2{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#222;
+
+}
+
+.notification-bell{
+
+    font-size:22px;
+
+    color:#0B5ED7;
+
+}
+
+/* ===========================
+   LIST
+=========================== */
+
+.notification-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ===========================
+   ITEM
+=========================== */
+
+.notification-item{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    border:1px solid #edf1f7;
+
+    transition:.3s;
+
+}
+
+.notification-item:hover{
+
+    background:#f8fbff;
+
+    transform:translateX(5px);
+
+}
+
+
+/* ===========================
+   ICON
+=========================== */
+
+.notification-icon{
+
+    width:50px;
+
+    height:50px;
+
+    min-width:50px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#fff;
+
+    font-size:20px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.notification-content{
+
+    flex:1;
+
+}
+
+.notification-content h4{
+
+    font-size:16px;
+
+    font-weight:700;
+
+    color:#222;
+
+    margin-bottom:6px;
+
+}
+
+.notification-content p{
+
+    font-size:14px;
+
+    color:#666;
+
+    line-height:1.5;
+
+    margin-bottom:8px;
+
+}
+
+.notification-content span{
+
+    font-size:12px;
+
+    color:#999;
+
+    font-weight:600;
+
+}
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media(max-width:992px){
+
+.dashboard-notifications{
+
+    padding:20px;
+
+}
+
+.notification-item{
+
+    padding:15px;
+
+}
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.dashboard-notifications{
+
+    border-radius:16px;
+
+    padding:18px;
+
+}
+
+.notification-header{
+
+    margin-bottom:18px;
+
+}
+
+.notification-header h2{
+
+    font-size:20px;
+
+}
+
+.notification-item{
+
+    gap:12px;
+
+    padding:14px;
+
+}
+
+.notification-icon{
+
+    width:45px;
+
+    height:45px;
+
+    min-width:45px;
+
+    font-size:18px;
+
+}
+
+.notification-content h4{
+
+    font-size:15px;
+
+}
+
+.notification-content p{
+
+    font-size:13px;
+
+}
+
+}
+
+/* ===========================
+   SMALL MOBILE
+=========================== */
+
+@media(max-width:480px){
+
+.dashboard-notifications{
+
+    padding:16px;
+
+}
+
+.notification-header h2{
+
+    font-size:18px;
+
+}
+
+.notification-bell{
+
+    font-size:20px;
+
+}
+
+.notification-item{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+}
+
+.notification-icon{
+
+    width:42px;
+
+    height:42px;
+
+    min-width:42px;
+
+    font-size:16px;
+
+}
+
+.notification-content h4{
+
+    font-size:14px;
+
+}
+
+.notification-content p{
+
+    font-size:12px;
+
+}
+
+.notification-content span{
+
+    font-size:11px;
+
+}
+
+}

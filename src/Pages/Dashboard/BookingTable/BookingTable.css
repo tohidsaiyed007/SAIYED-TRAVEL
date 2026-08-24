@@ -1,0 +1,370 @@
+/* ===========================
+   BOOKING TABLE CARD
+=========================== */
+
+.booking-table-card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    margin-top:30px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.table-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.table-header h2{
+
+    font-size:24px;
+
+    color:#222;
+
+    font-weight:700;
+
+    margin-bottom:5px;
+
+}
+
+.table-header p{
+
+    color:#777;
+
+    font-size:14px;
+
+}
+
+/* ===========================
+   RESPONSIVE TABLE
+=========================== */
+
+.table-responsive{
+
+    width:100%;
+
+    overflow-x:auto;
+
+}
+
+.table-responsive::-webkit-scrollbar{
+
+    height:8px;
+
+}
+
+.table-responsive::-webkit-scrollbar-thumb{
+
+    background:#0B5ED7;
+
+    border-radius:20px;
+
+}
+
+/* ===========================
+   TABLE
+=========================== */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:950px;
+
+}
+
+thead{
+
+    background:#f5f8ff;
+
+}
+
+thead th{
+
+    padding:18px;
+
+    text-align:left;
+
+    font-size:15px;
+
+    color:#444;
+
+    font-weight:700;
+
+    border-bottom:2px solid #e8edf5;
+
+}
+
+tbody tr{
+
+    transition:.3s;
+
+    border-bottom:1px solid #edf1f7;
+
+}
+
+tbody tr:hover{
+
+    background:#f9fbff;
+
+}
+
+tbody td{
+
+    padding:18px;
+
+    color:#555;
+
+    font-size:15px;
+
+    vertical-align:middle;
+
+}
+
+/* ===========================
+   STATUS
+=========================== */
+
+.status{
+
+    display:inline-block;
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+
+.status.confirmed{
+
+    background:#e9f9ef;
+
+    color:#198754;
+
+}
+
+.status.pending{
+
+    background:#fff8e6;
+
+    color:#f59e0b;
+
+}
+
+.status.cancelled{
+
+    background:#ffe9ec;
+
+    color:#dc3545;
+
+}
+
+/* ===========================
+   ACTION BUTTONS
+=========================== */
+
+.action-buttons{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.action-buttons button{
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#f5f7fb;
+
+    color:#444;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.action-buttons button:nth-child(1):hover{
+
+    background:#0B5ED7;
+
+    color:#fff;
+
+}
+
+.action-buttons button:nth-child(2):hover{
+
+    background:#198754;
+
+    color:#fff;
+
+}
+
+.action-buttons button:nth-child(3):hover{
+
+    background:#dc3545;
+
+    color:#fff;
+
+}
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media(max-width:992px){
+
+.booking-table-card{
+
+    padding:20px;
+
+}
+
+table{
+
+    min-width:900px;
+
+}
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.booking-table-card{
+
+    padding:18px;
+
+    border-radius:16px;
+
+}
+
+.table-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:8px;
+
+}
+
+.table-header h2{
+
+    font-size:20px;
+
+}
+
+.table-header p{
+
+    font-size:13px;
+
+}
+
+thead th,
+tbody td{
+
+    padding:14px;
+
+    font-size:14px;
+
+}
+
+.action-buttons{
+
+    gap:8px;
+
+}
+
+.action-buttons button{
+
+    width:36px;
+
+    height:36px;
+
+    font-size:14px;
+
+}
+
+}
+
+/* ===========================
+   SMALL MOBILE
+=========================== */
+
+@media(max-width:480px){
+
+.booking-table-card{
+
+    padding:15px;
+
+}
+
+.table-header h2{
+
+    font-size:18px;
+
+}
+
+.table-header p{
+
+    font-size:12px;
+
+}
+
+.status{
+
+    padding:6px 12px;
+
+    font-size:12px;
+
+}
+
+.action-buttons button{
+
+    width:34px;
+
+    height:34px;
+
+    font-size:13px;
+
+}
+
+}
