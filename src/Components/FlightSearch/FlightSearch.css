@@ -1200,3 +1200,123 @@
 }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   AVAILABLE FLIGHT DATE
+===================================================== */
+
+.react-datepicker__day.flight-available-day {
+  background: #111827 !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+  font-weight: 700 !important;
+}
+
+
+/* Hover */
+
+.react-datepicker__day.flight-available-day:hover {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+
+/* Selected available date */
+
+.react-datepicker__day--selected.flight-available-day {
+  background: #111827 !important;
+  color: #ffffff !important;
+}
+
+
+/* Today */
+
+.react-datepicker__day--today.flight-available-day {
+  font-weight: 800 !important;
+}
+
+
+/* Disabled dates */
+
+.react-datepicker__day--disabled {
+  color: #cbd5e1 !important;
+  cursor: not-allowed !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.react-datepicker__day.flight-available-day {
+  background: #111827 !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+  font-weight: 700 !important;
+}
+
+.react-datepicker__day.flight-available-day:hover {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+.react-datepicker__day--selected.flight-available-day {
+  background: #111827 !important;
+  color: #ffffff !important;
+}

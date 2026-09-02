@@ -1,3299 +1,3 @@
-// // // // // // import "./Payment.css";
-// // // // // // import { useState } from "react";
-// // // // // // import { useLocation, useNavigate } from "react-router-dom";
-
-// // // // // // import Navbar from "../../Components/Navbar/Navbar";
-// // // // // // import Footer from "../../Components/Footer/Footer";
-
-// // // // // // function Payment() {
-
-// // // // // //   const navigate = useNavigate();
-// // // // // //   const location = useLocation();
-
-// // // // // //   const {
-// // // // // //     flight,
-// // // // // //     seat,
-// // // // // //     meal,
-// // // // // //     baggage,
-// // // // // //   } = location.state || {};
-
-// // // // // //   const [coupon, setCoupon] = useState("");
-// // // // // //   const [discount, setDiscount] = useState(0);
-// // // // // //   const [paymentMethod, setPaymentMethod] = useState("upi");
-
-// // // // // //   if (!flight) {
-
-// // // // // //     return (
-
-// // // // // //       <>
-
-// // // // // //         <Navbar />
-
-// // // // // //         <section className="payment-page">
-
-// // // // // //           <div className="no-booking">
-
-// // // // // //             <h2>No Booking Found ✈️</h2>
-
-// // // // // //             <p>
-// // // // // //               Please complete your booking before making payment.
-// // // // // //             </p>
-
-// // // // // //             <button
-// // // // // //               onClick={() => navigate("/")}
-// // // // // //             >
-// // // // // //               Back To Home
-// // // // // //             </button>
-
-// // // // // //           </div>
-
-// // // // // //         </section>
-
-// // // // // //         <Footer />
-
-// // // // // //       </>
-
-// // // // // //     );
-
-// // // // // //   }
-
-// // // // // //   const seatPrice = seat ? 300 : 0;
-// // // // // //   const mealPrice = meal ? meal.price : 0;
-// // // // // //   const baggagePrice = baggage ? baggage.price : 0;
-
-// // // // // //   const taxes = 350;
-// // // // // //   const convenienceFee = 100;
-
-// // // // // //   const subtotal =
-// // // // // //     flight.price +
-// // // // // //     seatPrice +
-// // // // // //     mealPrice +
-// // // // // //     baggagePrice +
-// // // // // //     taxes +
-// // // // // //     convenienceFee;
-
-// // // // // //   const total = subtotal - discount;
-
-// // // // // //   const applyCoupon = () => {
-
-// // // // // //     if (coupon.trim().toUpperCase() === "SAVE500") {
-
-// // // // // //       setDiscount(500);
-
-// // // // // //       alert("Coupon Applied Successfully");
-
-// // // // // //     }
-
-// // // // // //     else {
-
-// // // // // //       setDiscount(0);
-
-// // // // // //       alert("Invalid Coupon");
-
-// // // // // //     }
-
-// // // // // //   };
-
-// // // // // //   return (
-
-// // // // // //     <>
-
-// // // // // //       <Navbar />
-
-// // // // // //       <section className="payment-page">
-
-// // // // // //         <div className="payment-progress">
-
-// // // // // //           <div className="step active">
-// // // // // //             <span>✓</span>
-// // // // // //             <p>Booking</p>
-// // // // // //           </div>
-
-// // // // // //           <div className="line active"></div>
-
-// // // // // //           <div className="step active">
-// // // // // //             <span>✓</span>
-// // // // // //             <p>Seat</p>
-// // // // // //           </div>
-
-// // // // // //           <div className="line active"></div>
-
-// // // // // //           <div className="step active">
-// // // // // //             <span>✓</span>
-// // // // // //             <p>Meal</p>
-// // // // // //           </div>
-
-// // // // // //           <div className="line active"></div>
-
-// // // // // //           <div className="step active">
-// // // // // //             <span>✓</span>
-// // // // // //             <p>Baggage</p>
-// // // // // //           </div>
-
-// // // // // //           <div className="line active"></div>
-
-// // // // // //           <div className="step current">
-// // // // // //             <span>5</span>
-// // // // // //             <p>Payment</p>
-// // // // // //           </div>
-
-// // // // // //         </div>
-
-// // // // // //         <div className="payment-container">
-
-// // // // // //           <div className="payment-left">
-
-// // // // // //             <h2>
-// // // // // //               Select Payment Method
-// // // // // //             </h2>
-
-// // // // // //             {/* UPI */}
-
-// // // // // //             <div className="payment-card">
-
-// // // // // //               <label>
-
-// // // // // //                 <input
-// // // // // //                   type="radio"
-// // // // // //                   checked={paymentMethod === "upi"}
-// // // // // //                   onChange={() => setPaymentMethod("upi")}
-// // // // // //                 />
-
-// // // // // //                 UPI Payment
-
-// // // // // //               </label>
-
-// // // // // //               <div className="upi-apps">
-
-// // // // // //                 <button>
-// // // // // //                   PhonePe
-// // // // // //                 </button>
-
-// // // // // //                 <button>
-// // // // // //                   Google Pay
-// // // // // //                 </button>
-
-// // // // // //                 <button>
-// // // // // //                   Paytm
-// // // // // //                 </button>
-
-// // // // // //               </div>
-
-// // // // // //             </div>
-
-// // // // // //             {/* CARD */}
-
-// // // // // //             <div className="payment-card">
-
-// // // // // //               <label>
-
-// // // // // //                 <input
-// // // // // //                   type="radio"
-// // // // // //                   checked={paymentMethod === "card"}
-// // // // // //                   onChange={() => setPaymentMethod("card")}
-// // // // // //                 />
-
-// // // // // //                 Credit / Debit Card
-
-// // // // // //               </label>
-
-// // // // // //               <input
-// // // // // //                 type="text"
-// // // // // //                 placeholder="Card Number"
-// // // // // //               />
-
-// // // // // //               <div className="card-row">
-
-// // // // // //                 <input
-// // // // // //                   type="text"
-// // // // // //                   placeholder="MM / YY"
-// // // // // //                 />
-
-// // // // // //                 <input
-// // // // // //                   type="password"
-// // // // // //                   placeholder="CVV"
-// // // // // //                 />
-
-// // // // // //               </div>
-
-// // // // // //             </div>
-
-// // // // // //             {/* NET BANKING */}
-
-// // // // // //             <div className="payment-card">
-
-// // // // // //               <label>
-
-// // // // // //                 <input
-// // // // // //                   type="radio"
-// // // // // //                   checked={paymentMethod === "netbanking"}
-// // // // // //                   onChange={() => setPaymentMethod("netbanking")}
-// // // // // //                 />
-
-// // // // // //                 Net Banking
-
-// // // // // //               </label>
-
-// // // // // //               <select>
-
-// // // // // //                 <option>Select Bank</option>
-
-// // // // // //                 <option>State Bank of India</option>
-
-// // // // // //                 <option>HDFC Bank</option>
-
-// // // // // //                 <option>ICICI Bank</option>
-
-// // // // // //                 <option>Axis Bank</option>
-
-// // // // // //               </select>
-
-// // // // // //             </div>
-
-// // // // // //             {/* Coupon */}
-
-// // // // // //             <div className="coupon-box">
-
-// // // // // //               <h3>
-// // // // // //                 Apply Coupon
-// // // // // //               </h3>
-
-// // // // // //               <div className="coupon-input">
-
-// // // // // //                 <input
-// // // // // //                   type="text"
-// // // // // //                   placeholder="Enter Coupon Code"
-// // // // // //                   value={coupon}
-// // // // // //                   onChange={(e) =>
-// // // // // //                     setCoupon(e.target.value)
-// // // // // //                   }
-// // // // // //                 />
-
-// // // // // //                 <button
-// // // // // //                   onClick={applyCoupon}
-// // // // // //                 >
-// // // // // //                   Apply
-// // // // // //                 </button>
-
-// // // // // //               </div>
-
-// // // // // //               <p className="coupon-note">
-// // // // // //                 Use <strong>SAVE500</strong> to get ₹500 OFF
-// // // // // //               </p>
-
-// // // // // //             </div>          {/* Right Side */}
-
-// // // // // //           <div className="payment-right">
-
-// // // // // //             <div className="booking-summary">
-
-// // // // // //               <h2>
-// // // // // //                 Booking Summary
-// // // // // //               </h2>
-
-// // // // // //               <div className="summary-row">
-// // // // // //                 <span>Airline</span>
-// // // // // //                 <span>{flight.airline}</span>
-// // // // // //               </div>
-
-// // // // // //               <div className="summary-row">
-// // // // // //                 <span>Route</span>
-// // // // // //                 <span>
-// // // // // //                   {flight.from} → {flight.to}
-// // // // // //                 </span>
-// // // // // //               </div>
-
-// // // // // //               <div className="summary-row">
-// // // // // //                 <span>Flight No.</span>
-// // // // // //                 <span>{flight.flightNo}</span>
-// // // // // //               </div>
-
-// // // // // //               <div className="summary-row">
-// // // // // //                 <span>Selected Seat</span>
-// // // // // //                 <span>{seat}</span>
-// // // // // //               </div>
-
-// // // // // //               <div className="summary-row">
-// // // // // //                 <span>Meal</span>
-// // // // // //                 <span>{meal.name}</span>
-// // // // // //               </div>
-
-// // // // // //               <div className="summary-row">
-// // // // // //                 <span>Baggage</span>
-// // // // // //                 <span>{baggage.weight}</span>
-// // // // // //               </div>
-
-// // // // // //               <hr />
-
-// // // // // //               <div className="summary-row">
-// // // // // //                 <span>Flight Fare</span>
-// // // // // //                 <span>₹ {flight.price}</span>
-// // // // // //               </div>
-
-// // // // // //               <div className="summary-row">
-// // // // // //                 <span>Seat Charges</span>
-// // // // // //                 <span>₹ {seatPrice}</span>
-// // // // // //               </div>
-
-// // // // // //               <div className="summary-row">
-// // // // // //                 <span>Meal Charges</span>
-// // // // // //                 <span>₹ {mealPrice}</span>
-// // // // // //               </div>
-
-// // // // // //               <div className="summary-row">
-// // // // // //                 <span>Baggage Charges</span>
-// // // // // //                 <span>₹ {baggagePrice}</span>
-// // // // // //               </div>
-
-// // // // // //               <div className="summary-row">
-// // // // // //                 <span>Taxes</span>
-// // // // // //                 <span>₹ {taxes}</span>
-// // // // // //               </div>
-
-// // // // // //               <div className="summary-row">
-// // // // // //                 <span>Convenience Fee</span>
-// // // // // //                 <span>₹ {convenienceFee}</span>
-// // // // // //               </div>
-
-// // // // // //               <div className="summary-row discount">
-// // // // // //                 <span>Coupon Discount</span>
-// // // // // //                 <span>- ₹ {discount}</span>
-// // // // // //               </div>
-
-// // // // // //               <hr />
-
-// // // // // //               <div className="summary-total">
-
-// // // // // //                 <span>
-// // // // // //                   Total Payable
-// // // // // //                 </span>
-
-// // // // // //                 <span>
-// // // // // //                   ₹ {total}
-// // // // // //                 </span>
-
-// // // // // //               </div>
-
-// // // // // //               <div className="secure-payment">
-// // // // // //                 🔒 100% Secure Payment
-// // // // // //               </div>
-
-// // // // // //               <button
-// // // // // //                 className="pay-btn"
-// // // // // //                 onClick={() =>
-// // // // // //                   navigate("/success", {
-// // // // // //                     state: {
-// // // // // //                       flight,
-// // // // // //                       seat,
-// // // // // //                       meal,
-// // // // // //                       baggage,
-// // // // // //                       total,
-// // // // // //                     },
-// // // // // //                   })
-// // // // // //                 }
-// // // // // //               >
-// // // // // //                 Pay ₹ {total}
-// // // // // //               </button>
-// // // // // //  </div>
-// // // // // //             </div>
-
-// // // // // //           </div>
-
-// // // // // //         </div>
-
-        
-
-// // // // // //       </section>
-
-// // // // // //       <Footer />
-
-// // // // // //     </>
-
-// // // // // //   );
-
-// // // // // // }
-
-// // // // // // export default Payment;
-
-
-
-
-// // // // // import "./Payment.css";
-
-// // // // // import { useState } from "react";
-// // // // // import { useLocation, useNavigate } from "react-router-dom";
-
-// // // // // import Navbar from "../../Components/Navbar/Navbar";
-// // // // // import Footer from "../../Components/Footer/Footer";
-
-// // // // // function Payment() {
-// // // // //   const navigate = useNavigate();
-// // // // //   const location = useLocation();
-
-// // // // //   // ==========================================
-// // // // //   // BOOKING DATA
-// // // // //   // ==========================================
-
-// // // // //   const {
-// // // // //     flight,
-// // // // //     passenger,
-// // // // //     seat,
-// // // // //     meal,
-// // // // //     baggage,
-// // // // //   } = location.state || {};
-
-// // // // //   // ==========================================
-// // // // //   // STATES
-// // // // //   // ==========================================
-
-// // // // //   const [coupon, setCoupon] = useState("");
-// // // // //   const [discount, setDiscount] = useState(0);
-// // // // //   const [paymentMethod, setPaymentMethod] =
-// // // // //     useState("upi");
-
-// // // // //   const [loading, setLoading] = useState(false);
-
-// // // // //   // ==========================================
-// // // // //   // NO FLIGHT
-// // // // //   // ==========================================
-
-// // // // //   if (!flight) {
-// // // // //     return (
-// // // // //       <>
-// // // // //         <Navbar />
-
-// // // // //         <section className="payment-page">
-// // // // //           <div className="no-booking">
-// // // // //             <h2>No Booking Found ✈️</h2>
-
-// // // // //             <p>
-// // // // //               Please complete your booking before
-// // // // //               making payment.
-// // // // //             </p>
-
-// // // // //             <button
-// // // // //               onClick={() => navigate("/")}
-// // // // //             >
-// // // // //               Back To Home
-// // // // //             </button>
-// // // // //           </div>
-// // // // //         </section>
-
-// // // // //         <Footer />
-// // // // //       </>
-// // // // //     );
-// // // // //   }
-
-// // // // //   // ==========================================
-// // // // //   // PRICE
-// // // // //   // ==========================================
-
-// // // // //   const flightPrice = Number(
-// // // // //     flight.finalPrice ??
-// // // // //     flight.price ??
-// // // // //     flight.cabins?.[0]?.price ??
-// // // // //     0
-// // // // //   );
-
-// // // // //   const seatPrice = seat ? 300 : 0;
-
-// // // // //   const mealPrice = Number(
-// // // // //     meal?.price ?? 0
-// // // // //   );
-
-// // // // //   const baggagePrice = Number(
-// // // // //     baggage?.price ?? 0
-// // // // //   );
-
-// // // // //   const taxes = 350;
-
-// // // // //   const convenienceFee = 100;
-
-// // // // //   const subtotal =
-// // // // //     flightPrice +
-// // // // //     seatPrice +
-// // // // //     mealPrice +
-// // // // //     baggagePrice +
-// // // // //     taxes +
-// // // // //     convenienceFee;
-
-// // // // //   const total =
-// // // // //     Math.max(
-// // // // //       0,
-// // // // //       subtotal - discount
-// // // // //     );
-
-// // // // //   // ==========================================
-// // // // //   // COUPON
-// // // // //   // ==========================================
-
-// // // // //   const applyCoupon = () => {
-// // // // //     if (
-// // // // //       coupon.trim().toUpperCase() ===
-// // // // //       "SAVE500"
-// // // // //     ) {
-// // // // //       setDiscount(500);
-
-// // // // //       alert(
-// // // // //         "Coupon Applied Successfully"
-// // // // //       );
-// // // // //     } else {
-// // // // //       setDiscount(0);
-
-// // // // //       alert("Invalid Coupon");
-// // // // //     }
-// // // // //   };
-
-// // // // //   // ==========================================
-// // // // //   // CREATE BOOKING
-// // // // //   // ==========================================
-
-// // // // //   const handlePayment = async () => {
-// // // // //     // ----------------------------------------
-// // // // //     // Passenger validation
-// // // // //     // ----------------------------------------
-
-// // // // //     if (!passenger) {
-// // // // //       alert(
-// // // // //         "Passenger details are missing. Please start booking again."
-// // // // //       );
-
-// // // // //       navigate("/flights");
-
-// // // // //       return;
-// // // // //     }
-
-// // // // //     if (!seat) {
-// // // // //       alert(
-// // // // //         "Please select a seat."
-// // // // //       );
-
-// // // // //       navigate("/seat-selection", {
-// // // // //         state: {
-// // // // //           flight,
-// // // // //           passenger,
-// // // // //         },
-// // // // //       });
-
-// // // // //       return;
-// // // // //     }
-
-// // // // //     // ----------------------------------------
-// // // // //     // Prevent double click
-// // // // //     // ----------------------------------------
-
-// // // // //     if (loading) {
-// // // // //       return;
-// // // // //     }
-
-// // // // //     setLoading(true);
-
-// // // // //     try {
-// // // // //       // ======================================
-// // // // //       // BOOKING DATA
-// // // // //       // ======================================
-
-// // // // //       const bookingData = {
-// // // // //         passenger: {
-// // // // //           firstName:
-// // // // //             passenger.firstName || "",
-
-// // // // //           lastName:
-// // // // //             passenger.lastName || "",
-
-// // // // //           dob:
-// // // // //             passenger.dob || "",
-
-// // // // //           gender:
-// // // // //             passenger.gender || "",
-
-// // // // //           nationality:
-// // // // //             passenger.nationality || "",
-
-// // // // //           passport:
-// // // // //             passenger.passport || "",
-
-// // // // //           passportExpiry:
-// // // // //             passenger.passportExpiry || "",
-
-// // // // //           email:
-// // // // //             passenger.email || "",
-
-// // // // //           phone:
-// // // // //             passenger.phone || "",
-
-// // // // //           city:
-// // // // //             passenger.city || "",
-
-// // // // //           address:
-// // // // //             passenger.address || "",
-
-// // // // //           request:
-// // // // //             passenger.request || "",
-// // // // //         },
-
-// // // // //         // ====================================
-// // // // //         // FLIGHT
-// // // // //         // ====================================
-
-// // // // //         flight: {
-// // // // //           airline:
-// // // // //             flight.airline || "",
-
-// // // // //           flightNo:
-// // // // //             flight.flightNo || "",
-
-// // // // //           flightType:
-// // // // //             flight.flightType ||
-// // // // //             "Domestic",
-
-// // // // //           aircraft:
-// // // // //             flight.aircraft || "",
-
-// // // // //           fromCity:
-// // // // //             flight.fromCity ||
-// // // // //             flight.from ||
-// // // // //             "",
-
-// // // // //           fromAirport:
-// // // // //             flight.fromAirport || "",
-
-// // // // //           fromCode:
-// // // // //             flight.fromCode || "",
-
-// // // // //           toCity:
-// // // // //             flight.toCity ||
-// // // // //             flight.to ||
-// // // // //             "",
-
-// // // // //           toAirport:
-// // // // //             flight.toAirport || "",
-
-// // // // //           toCode:
-// // // // //             flight.toCode || "",
-
-// // // // //           departureDate:
-// // // // //             flight.departureDate || "",
-
-// // // // //           departureTime:
-// // // // //             flight.departureTime ||
-// // // // //             flight.departure ||
-// // // // //             "",
-
-// // // // //           departureTerminal:
-// // // // //             flight.departureTerminal ||
-// // // // //             "",
-
-// // // // //           arrivalDate:
-// // // // //             flight.arrivalDate || "",
-
-// // // // //           arrivalTime:
-// // // // //             flight.arrivalTime ||
-// // // // //             flight.arrival ||
-// // // // //             "",
-
-// // // // //           arrivalTerminal:
-// // // // //             flight.arrivalTerminal || "",
-
-// // // // //           duration:
-// // // // //             flight.duration || "",
-
-// // // // //           stops:
-// // // // //             flight.stops ||
-// // // // //             "Non-stop",
-
-// // // // //           stopAirport:
-// // // // //             flight.stopAirport || "",
-
-// // // // //           price:
-// // // // //             flightPrice,
-
-// // // // //           logo:
-// // // // //             flight.logo || "",
-// // // // //         },
-
-// // // // //         // ====================================
-// // // // //         // SEAT
-// // // // //         // ====================================
-
-// // // // //         seat: seat,
-
-// // // // //         seatPrice:
-// // // // //           seatPrice,
-
-// // // // //         // ====================================
-// // // // //         // MEAL
-// // // // //         // ====================================
-
-// // // // //         meal: {
-// // // // //           name:
-// // // // //             meal?.name ||
-// // // // //             "No Meal",
-
-// // // // //           price:
-// // // // //             mealPrice,
-// // // // //         },
-
-// // // // //         // ====================================
-// // // // //         // BAGGAGE
-// // // // //         // ====================================
-
-// // // // //         baggage: {
-// // // // //           weight:
-// // // // //             baggage?.weight ||
-// // // // //             "15 KG (Included)",
-
-// // // // //           price:
-// // // // //             baggagePrice,
-// // // // //         },
-
-// // // // //         // ====================================
-// // // // //         // PAYMENT
-// // // // //         // ====================================
-
-// // // // //         paymentMethod:
-// // // // //           paymentMethod,
-
-// // // // //         discount:
-// // // // //           discount,
-
-// // // // //         taxes:
-// // // // //           taxes,
-
-// // // // //         convenienceFee:
-// // // // //           convenienceFee,
-
-// // // // //         total:
-// // // // //           total,
-// // // // //       };
-
-// // // // //       console.log(
-// // // // //         "Sending Booking:",
-// // // // //         bookingData
-// // // // //       );
-
-// // // // //       // ======================================
-// // // // //       // API REQUEST
-// // // // //       // ======================================
-
-// // // // //       const response = await fetch(
-// // // // //         "http://localhost:5000/api/bookings",
-// // // // //         {
-// // // // //           method: "POST",
-
-// // // // //           headers: {
-// // // // //             "Content-Type":
-// // // // //               "application/json",
-// // // // //           },
-
-// // // // //           body:
-// // // // //             JSON.stringify(
-// // // // //               bookingData
-// // // // //             ),
-// // // // //         }
-// // // // //       );
-
-// // // // //       // ======================================
-// // // // //       // RESPONSE
-// // // // //       // ======================================
-
-// // // // //       const data =
-// // // // //         await response.json();
-
-// // // // //       console.log(
-// // // // //         "Booking API Response:",
-// // // // //         data
-// // // // //       );
-
-// // // // //       // ======================================
-// // // // //       // API ERROR
-// // // // //       // ======================================
-
-// // // // //       if (!response.ok) {
-// // // // //         throw new Error(
-// // // // //           data.message ||
-// // // // //             "Unable to create booking."
-// // // // //         );
-// // // // //       }
-
-// // // // //       // ======================================
-// // // // //       // SUCCESS
-// // // // //       // ======================================
-
-// // // // //       if (
-// // // // //         !data.success ||
-// // // // //         !data.booking
-// // // // //       ) {
-// // // // //         throw new Error(
-// // // // //           "Booking was not created."
-// // // // //         );
-// // // // //       }
-
-// // // // //       // ======================================
-// // // // //       // SUCCESS PAGE
-// // // // //       // ======================================
-
-// // // // //       navigate("/success", {
-// // // // //         state: {
-// // // // //           flight:
-// // // // //             data.booking.flight,
-
-// // // // //           passenger:
-// // // // //             data.booking.passenger,
-
-// // // // //           seat:
-// // // // //             data.booking.seat,
-
-// // // // //           meal:
-// // // // //             data.booking.meal,
-
-// // // // //           baggage:
-// // // // //             data.booking.baggage,
-
-// // // // //           total:
-// // // // //             data.booking.total,
-
-// // // // //           bookingId:
-// // // // //             data.booking.bookingId,
-
-// // // // //           pnr:
-// // // // //             data.booking.pnr,
-
-// // // // //           paymentStatus:
-// // // // //             data.booking.paymentStatus,
-
-// // // // //           bookingStatus:
-// // // // //             data.booking.bookingStatus,
-// // // // //         },
-// // // // //       });
-
-// // // // //     } catch (error) {
-// // // // //       console.error(
-// // // // //         "Booking Error:",
-// // // // //         error
-// // // // //       );
-
-// // // // //       alert(
-// // // // //         error.message ||
-// // // // //           "Unable to create booking. Please make sure backend is running."
-// // // // //       );
-
-// // // // //     } finally {
-// // // // //       setLoading(false);
-// // // // //     }
-// // // // //   };
-
-// // // // //   // ==========================================
-// // // // //   // UI
-// // // // //   // ==========================================
-
-// // // // //   return (
-// // // // //     <>
-// // // // //       <Navbar />
-
-// // // // //       <section className="payment-page">
-
-// // // // //         {/* ====================================
-// // // // //             PROGRESS
-// // // // //         ==================================== */}
-
-// // // // //         <div className="payment-progress">
-
-// // // // //           <div className="step active">
-// // // // //             <span>✓</span>
-// // // // //             <p>Booking</p>
-// // // // //           </div>
-
-// // // // //           <div className="line active"></div>
-
-// // // // //           <div className="step active">
-// // // // //             <span>✓</span>
-// // // // //             <p>Seat</p>
-// // // // //           </div>
-
-// // // // //           <div className="line active"></div>
-
-// // // // //           <div className="step active">
-// // // // //             <span>✓</span>
-// // // // //             <p>Meal</p>
-// // // // //           </div>
-
-// // // // //           <div className="line active"></div>
-
-// // // // //           <div className="step active">
-// // // // //             <span>✓</span>
-// // // // //             <p>Baggage</p>
-// // // // //           </div>
-
-// // // // //           <div className="line active"></div>
-
-// // // // //           <div className="step current">
-// // // // //             <span>5</span>
-// // // // //             <p>Payment</p>
-// // // // //           </div>
-
-// // // // //         </div>
-
-// // // // //         {/* ====================================
-// // // // //             PAYMENT CONTAINER
-// // // // //         ==================================== */}
-
-// // // // //         <div className="payment-container">
-
-// // // // //           {/* ==================================
-// // // // //               LEFT
-// // // // //           ================================== */}
-
-// // // // //           <div className="payment-left">
-
-// // // // //             <h2>
-// // // // //               Select Payment Method
-// // // // //             </h2>
-
-// // // // //             {/* UPI */}
-
-// // // // //             <div className="payment-card">
-
-// // // // //               <label>
-
-// // // // //                 <input
-// // // // //                   type="radio"
-// // // // //                   checked={
-// // // // //                     paymentMethod ===
-// // // // //                     "upi"
-// // // // //                   }
-// // // // //                   onChange={() =>
-// // // // //                     setPaymentMethod(
-// // // // //                       "upi"
-// // // // //                     )
-// // // // //                   }
-// // // // //                 />
-
-// // // // //                 UPI Payment
-
-// // // // //               </label>
-
-// // // // //               <div className="upi-apps">
-
-// // // // //                 <button
-// // // // //                   type="button"
-// // // // //                 >
-// // // // //                   PhonePe
-// // // // //                 </button>
-
-// // // // //                 <button
-// // // // //                   type="button"
-// // // // //                 >
-// // // // //                   Google Pay
-// // // // //                 </button>
-
-// // // // //                 <button
-// // // // //                   type="button"
-// // // // //                 >
-// // // // //                   Paytm
-// // // // //                 </button>
-
-// // // // //               </div>
-
-// // // // //             </div>
-
-// // // // //             {/* CARD */}
-
-// // // // //             <div className="payment-card">
-
-// // // // //               <label>
-
-// // // // //                 <input
-// // // // //                   type="radio"
-// // // // //                   checked={
-// // // // //                     paymentMethod ===
-// // // // //                     "card"
-// // // // //                   }
-// // // // //                   onChange={() =>
-// // // // //                     setPaymentMethod(
-// // // // //                       "card"
-// // // // //                     )
-// // // // //                   }
-// // // // //                 />
-
-// // // // //                 Credit / Debit Card
-
-// // // // //               </label>
-
-// // // // //               <input
-// // // // //                 type="text"
-// // // // //                 placeholder="Card Number"
-// // // // //               />
-
-// // // // //               <div className="card-row">
-
-// // // // //                 <input
-// // // // //                   type="text"
-// // // // //                   placeholder="MM / YY"
-// // // // //                 />
-
-// // // // //                 <input
-// // // // //                   type="password"
-// // // // //                   placeholder="CVV"
-// // // // //                 />
-
-// // // // //               </div>
-
-// // // // //             </div>
-
-// // // // //             {/* NET BANKING */}
-
-// // // // //             <div className="payment-card">
-
-// // // // //               <label>
-
-// // // // //                 <input
-// // // // //                   type="radio"
-// // // // //                   checked={
-// // // // //                     paymentMethod ===
-// // // // //                     "netbanking"
-// // // // //                   }
-// // // // //                   onChange={() =>
-// // // // //                     setPaymentMethod(
-// // // // //                       "netbanking"
-// // // // //                     )
-// // // // //                   }
-// // // // //                 />
-
-// // // // //                 Net Banking
-
-// // // // //               </label>
-
-// // // // //               <select>
-
-// // // // //                 <option>
-// // // // //                   Select Bank
-// // // // //                 </option>
-
-// // // // //                 <option>
-// // // // //                   State Bank of India
-// // // // //                 </option>
-
-// // // // //                 <option>
-// // // // //                   HDFC Bank
-// // // // //                 </option>
-
-// // // // //                 <option>
-// // // // //                   ICICI Bank
-// // // // //                 </option>
-
-// // // // //                 <option>
-// // // // //                   Axis Bank
-// // // // //                 </option>
-
-// // // // //               </select>
-
-// // // // //             </div>
-
-// // // // //             {/* COUPON */}
-
-// // // // //             <div className="coupon-box">
-
-// // // // //               <h3>
-// // // // //                 Apply Coupon
-// // // // //               </h3>
-
-// // // // //               <div className="coupon-input">
-
-// // // // //                 <input
-// // // // //                   type="text"
-// // // // //                   placeholder="Enter Coupon Code"
-// // // // //                   value={coupon}
-// // // // //                   onChange={(e) =>
-// // // // //                     setCoupon(
-// // // // //                       e.target.value
-// // // // //                     )
-// // // // //                   }
-// // // // //                 />
-
-// // // // //                 <button
-// // // // //                   type="button"
-// // // // //                   onClick={
-// // // // //                     applyCoupon
-// // // // //                   }
-// // // // //                 >
-// // // // //                   Apply
-// // // // //                 </button>
-
-// // // // //               </div>
-
-// // // // //               <p className="coupon-note">
-// // // // //                 Use{" "}
-// // // // //                 <strong>
-// // // // //                   SAVE500
-// // // // //                 </strong>{" "}
-// // // // //                 to get ₹500 OFF
-// // // // //               </p>
-
-// // // // //             </div>
-
-// // // // //           </div>
-
-// // // // //           {/* ==================================
-// // // // //               RIGHT
-// // // // //           ================================== */}
-
-// // // // //           <div className="payment-right">
-
-// // // // //             <div className="booking-summary">
-
-// // // // //               <h2>
-// // // // //                 Booking Summary
-// // // // //               </h2>
-
-// // // // //               <div className="summary-row">
-// // // // //                 <span>
-// // // // //                   Passenger
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   {passenger?.firstName}{" "}
-// // // // //                   {passenger?.lastName}
-// // // // //                 </span>
-// // // // //               </div>
-
-// // // // //               <div className="summary-row">
-// // // // //                 <span>
-// // // // //                   Airline
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   {flight.airline}
-// // // // //                 </span>
-// // // // //               </div>
-
-// // // // //               <div className="summary-row">
-// // // // //                 <span>
-// // // // //                   Route
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   {flight.fromCity ||
-// // // // //                     flight.from ||
-// // // // //                     "-"}{" "}
-// // // // //                   →{" "}
-// // // // //                   {flight.toCity ||
-// // // // //                     flight.to ||
-// // // // //                     "-"}
-// // // // //                 </span>
-// // // // //               </div>
-
-// // // // //               <div className="summary-row">
-// // // // //                 <span>
-// // // // //                   Flight No.
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   {flight.flightNo}
-// // // // //                 </span>
-// // // // //               </div>
-
-// // // // //               <div className="summary-row">
-// // // // //                 <span>
-// // // // //                   Travel Date
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   {flight.departureDate ||
-// // // // //                     "-"}
-// // // // //                 </span>
-// // // // //               </div>
-
-// // // // //               <div className="summary-row">
-// // // // //                 <span>
-// // // // //                   Departure
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   {flight.departureTime ||
-// // // // //                     flight.departure ||
-// // // // //                     "-"}
-// // // // //                 </span>
-// // // // //               </div>
-
-// // // // //               <div className="summary-row">
-// // // // //                 <span>
-// // // // //                   Selected Seat
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   {seat || "-"}
-// // // // //                 </span>
-// // // // //               </div>
-
-// // // // //               <div className="summary-row">
-// // // // //                 <span>
-// // // // //                   Meal
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   {meal?.name ||
-// // // // //                     "No Meal"}
-// // // // //                 </span>
-// // // // //               </div>
-
-// // // // //               <div className="summary-row">
-// // // // //                 <span>
-// // // // //                   Baggage
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   {baggage?.weight ||
-// // // // //                     "15 KG Included"}
-// // // // //                 </span>
-// // // // //               </div>
-
-// // // // //               <hr />
-
-// // // // //               <div className="summary-row">
-// // // // //                 <span>
-// // // // //                   Flight Fare
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   ₹ {flightPrice}
-// // // // //                 </span>
-// // // // //               </div>
-
-// // // // //               <div className="summary-row">
-// // // // //                 <span>
-// // // // //                   Seat Charges
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   ₹ {seatPrice}
-// // // // //                 </span>
-// // // // //               </div>
-
-// // // // //               <div className="summary-row">
-// // // // //                 <span>
-// // // // //                   Meal Charges
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   ₹ {mealPrice}
-// // // // //                 </span>
-// // // // //               </div>
-
-// // // // //               <div className="summary-row">
-// // // // //                 <span>
-// // // // //                   Baggage Charges
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   ₹ {baggagePrice}
-// // // // //                 </span>
-// // // // //               </div>
-
-// // // // //               <div className="summary-row">
-// // // // //                 <span>
-// // // // //                   Taxes
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   ₹ {taxes}
-// // // // //                 </span>
-// // // // //               </div>
-
-// // // // //               <div className="summary-row">
-// // // // //                 <span>
-// // // // //                   Convenience Fee
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   ₹ {convenienceFee}
-// // // // //                 </span>
-// // // // //               </div>
-
-// // // // //               <div className="summary-row discount">
-
-// // // // //                 <span>
-// // // // //                   Coupon Discount
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   - ₹ {discount}
-// // // // //                 </span>
-
-// // // // //               </div>
-
-// // // // //               <hr />
-
-// // // // //               <div className="summary-total">
-
-// // // // //                 <span>
-// // // // //                   Total Payable
-// // // // //                 </span>
-
-// // // // //                 <span>
-// // // // //                   ₹ {total}
-// // // // //                 </span>
-
-// // // // //               </div>
-
-// // // // //               <div className="secure-payment">
-// // // // //                 🔒 100% Secure Payment
-// // // // //               </div>
-
-// // // // //               {/* ==================================
-// // // // //                   PAY BUTTON
-// // // // //               ================================== */}
-
-// // // // //               <button
-// // // // //                 type="button"
-// // // // //                 className="pay-btn"
-// // // // //                 onClick={
-// // // // //                   handlePayment
-// // // // //                 }
-// // // // //                 disabled={loading}
-// // // // //               >
-
-// // // // //                 {loading
-// // // // //                   ? "Processing Booking..."
-// // // // //                   : `Pay ₹ ${total}`}
-
-// // // // //               </button>
-
-// // // // //             </div>
-
-// // // // //           </div>
-
-// // // // //         </div>
-
-// // // // //       </section>
-
-// // // // //       <Footer />
-// // // // //     </>
-// // // // //   );
-// // // // // }
-
-// // // // // export default Payment;
-
-
-// // // // import "./Payment.css";
-// // // // import { useState } from "react";
-// // // // import { useLocation, useNavigate } from "react-router-dom";
-
-// // // // import Navbar from "../../Components/Navbar/Navbar";
-// // // // import Footer from "../../Components/Footer/Footer";
-
-// // // // function Payment() {
-
-// // // //   const navigate = useNavigate();
-// // // //   const location = useLocation();
-
-// // // //   const {
-// // // //     flight,
-// // // //     passenger,
-// // // //     seat,
-// // // //     meal,
-// // // //     baggage,
-// // // //   } = location.state || {};
-
-// // // //   const [coupon, setCoupon] = useState("");
-// // // //   const [discount, setDiscount] = useState(0);
-// // // //   const [paymentMethod, setPaymentMethod] =
-// // // //     useState("upi");
-
-// // // //   const [loading, setLoading] = useState(false);
-
-// // // //   // ==========================================
-// // // //   // NO BOOKING
-// // // //   // ==========================================
-
-// // // //   if (!flight || !passenger) {
-// // // //     return (
-// // // //       <>
-// // // //         <Navbar />
-
-// // // //         <section className="payment-page">
-
-// // // //           <div className="no-booking">
-
-// // // //             <h2>
-// // // //               No Booking Found ✈️
-// // // //             </h2>
-
-// // // //             <p>
-// // // //               Please complete your passenger
-// // // //               details before making payment.
-// // // //             </p>
-
-// // // //             <button
-// // // //               onClick={() =>
-// // // //                 navigate("/")
-// // // //               }
-// // // //             >
-// // // //               Back To Home
-// // // //             </button>
-
-// // // //           </div>
-
-// // // //         </section>
-
-// // // //         <Footer />
-// // // //       </>
-// // // //     );
-// // // //   }
-
-// // // //   // ==========================================
-// // // //   // PRICES
-// // // //   // ==========================================
-
-// // // //   const flightPrice =
-// // // //     Number(flight.price) || 0;
-
-// // // //   const seatPrice =
-// // // //     seat ? 300 : 0;
-
-// // // //   const mealPrice =
-// // // //     Number(meal?.price) || 0;
-
-// // // //   const baggagePrice =
-// // // //     Number(baggage?.price) || 0;
-
-// // // //   const taxes = 350;
-
-// // // //   const convenienceFee = 100;
-
-// // // //   const subtotal =
-// // // //     flightPrice +
-// // // //     seatPrice +
-// // // //     mealPrice +
-// // // //     baggagePrice +
-// // // //     taxes +
-// // // //     convenienceFee;
-
-// // // //   const total =
-// // // //     Math.max(
-// // // //       0,
-// // // //       subtotal - discount
-// // // //     );
-
-// // // //   // ==========================================
-// // // //   // COUPON
-// // // //   // ==========================================
-
-// // // //   const applyCoupon = () => {
-
-// // // //     if (
-// // // //       coupon.trim().toUpperCase() ===
-// // // //       "SAVE500"
-// // // //     ) {
-
-// // // //       setDiscount(500);
-
-// // // //       alert(
-// // // //         "Coupon Applied Successfully"
-// // // //       );
-
-// // // //     } else {
-
-// // // //       setDiscount(0);
-
-// // // //       alert(
-// // // //         "Invalid Coupon"
-// // // //       );
-// // // //     }
-// // // //   };
-
-// // // //   // ==========================================
-// // // //   // COMPLETE BOOKING
-// // // //   // ==========================================
-
-// // // //   const handlePayment = async () => {
-
-// // // //     if (loading) {
-// // // //       return;
-// // // //     }
-
-// // // //     try {
-
-// // // //       setLoading(true);
-
-// // // //       const bookingData = {
-
-// // // //         passenger,
-
-// // // //         flight: {
-// // // //           airline:
-// // // //             flight.airline || "",
-
-// // // //           flightNo:
-// // // //             flight.flightNo || "",
-
-// // // //           flightType:
-// // // //             flight.flightType ||
-// // // //             "Domestic",
-
-// // // //           aircraft:
-// // // //             flight.aircraft || "",
-
-// // // //           fromCity:
-// // // //             flight.fromCity ||
-// // // //             flight.from ||
-// // // //             "",
-
-// // // //           fromAirport:
-// // // //             flight.fromAirport ||
-// // // //             "",
-
-// // // //           fromCode:
-// // // //             flight.fromCode ||
-// // // //             "",
-
-// // // //           toCity:
-// // // //             flight.toCity ||
-// // // //             flight.to ||
-// // // //             "",
-
-// // // //           toAirport:
-// // // //             flight.toAirport ||
-// // // //             "",
-
-// // // //           toCode:
-// // // //             flight.toCode ||
-// // // //             "",
-
-// // // //           departureDate:
-// // // //             flight.departureDate ||
-// // // //             "",
-
-// // // //           departureTime:
-// // // //             flight.departureTime ||
-// // // //             flight.departure ||
-// // // //             "",
-
-// // // //           departureTerminal:
-// // // //             flight.departureTerminal ||
-// // // //             "",
-
-// // // //           arrivalDate:
-// // // //             flight.arrivalDate ||
-// // // //             "",
-
-// // // //           arrivalTime:
-// // // //             flight.arrivalTime ||
-// // // //             flight.arrival ||
-// // // //             "",
-
-// // // //           arrivalTerminal:
-// // // //             flight.arrivalTerminal ||
-// // // //             "",
-
-// // // //           duration:
-// // // //             flight.duration || "",
-
-// // // //           stops:
-// // // //             flight.stops ||
-// // // //             "Non-stop",
-
-// // // //           stopAirport:
-// // // //             flight.stopAirport ||
-// // // //             "",
-
-// // // //           price:
-// // // //             flightPrice,
-
-// // // //           logo:
-// // // //             flight.logo || "",
-// // // //         },
-
-// // // //         seat:
-// // // //           seat || "",
-
-// // // //         seatPrice,
-
-// // // //         meal: {
-// // // //           name:
-// // // //             meal?.name ||
-// // // //             "No Meal",
-
-// // // //           price:
-// // // //             mealPrice,
-// // // //         },
-
-// // // //         baggage: {
-// // // //           weight:
-// // // //             baggage?.weight ||
-// // // //             "15 KG (Included)",
-
-// // // //           price:
-// // // //             baggagePrice,
-// // // //         },
-
-// // // //         paymentMethod,
-
-// // // //         discount,
-
-// // // //         taxes,
-
-// // // //         convenienceFee,
-
-// // // //         total,
-// // // //       };
-
-// // // //       console.log(
-// // // //         "SENDING BOOKING:",
-// // // //         bookingData
-// // // //       );
-
-// // // //       const response =
-// // // //         await fetch(
-// // // //           "http://localhost:5000/api/bookings",
-// // // //           {
-// // // //             method: "POST",
-
-// // // //             headers: {
-// // // //               "Content-Type":
-// // // //                 "application/json",
-// // // //             },
-
-// // // //             body:
-// // // //               JSON.stringify(
-// // // //                 bookingData
-// // // //               ),
-// // // //           }
-// // // //         );
-
-// // // //       const data =
-// // // //         await response.json();
-
-// // // //       console.log(
-// // // //         "BOOKING RESPONSE:",
-// // // //         data
-// // // //       );
-
-// // // //       if (!response.ok) {
-
-// // // //         throw new Error(
-// // // //           data.message ||
-// // // //           "Payment failed"
-// // // //         );
-// // // //       }
-
-// // // //       // ======================================
-// // // //       // SUCCESS
-// // // //       // ======================================
-
-// // // //       navigate("/success", {
-
-// // // //         state: {
-
-// // // //           flight,
-
-// // // //           passenger,
-
-// // // //           seat,
-
-// // // //           meal,
-
-// // // //           baggage,
-
-// // // //           total,
-
-// // // //           bookingId:
-// // // //             data.booking.bookingId,
-
-// // // //           pnr:
-// // // //             data.booking.pnr,
-
-// // // //         },
-
-// // // //       });
-
-// // // //     } catch (error) {
-
-// // // //       console.error(
-// // // //         "PAYMENT ERROR:",
-// // // //         error
-// // // //       );
-
-// // // //       alert(
-// // // //         error.message ||
-// // // //         "Unable to complete booking."
-// // // //       );
-
-// // // //     } finally {
-
-// // // //       setLoading(false);
-
-// // // //     }
-
-// // // //   };
-
-// // // //   // ==========================================
-// // // //   // UI
-// // // //   // ==========================================
-
-// // // //   return (
-// // // //     <>
-// // // //       <Navbar />
-
-// // // //       <section className="payment-page">
-
-// // // //         {/* ==================================
-// // // //                     PROGRESS
-// // // //         ================================== */}
-
-// // // //         <div className="payment-progress">
-
-// // // //           <div className="step active">
-// // // //             <span>✓</span>
-// // // //             <p>Booking</p>
-// // // //           </div>
-
-// // // //           <div className="line active"></div>
-
-// // // //           <div className="step active">
-// // // //             <span>✓</span>
-// // // //             <p>Seat</p>
-// // // //           </div>
-
-// // // //           <div className="line active"></div>
-
-// // // //           <div className="step active">
-// // // //             <span>✓</span>
-// // // //             <p>Meal</p>
-// // // //           </div>
-
-// // // //           <div className="line active"></div>
-
-// // // //           <div className="step active">
-// // // //             <span>✓</span>
-// // // //             <p>Baggage</p>
-// // // //           </div>
-
-// // // //           <div className="line active"></div>
-
-// // // //           <div className="step current">
-// // // //             <span>5</span>
-// // // //             <p>Payment</p>
-// // // //           </div>
-
-// // // //         </div>
-
-// // // //         {/* ==================================
-// // // //                     CONTAINER
-// // // //         ================================== */}
-
-// // // //         <div className="payment-container">
-
-// // // //           {/* =================================
-// // // //                     LEFT
-// // // //           ================================= */}
-
-// // // //           <div className="payment-left">
-
-// // // //             <h2>
-// // // //               Select Payment Method
-// // // //             </h2>
-
-// // // //             {/* UPI */}
-
-// // // //             <div className="payment-card">
-
-// // // //               <label>
-
-// // // //                 <input
-// // // //                   type="radio"
-// // // //                   checked={
-// // // //                     paymentMethod === "upi"
-// // // //                   }
-// // // //                   onChange={() =>
-// // // //                     setPaymentMethod(
-// // // //                       "upi"
-// // // //                     )
-// // // //                   }
-// // // //                 />
-
-// // // //                 UPI Payment
-
-// // // //               </label>
-
-// // // //               {paymentMethod ===
-// // // //                 "upi" && (
-
-// // // //                 <div className="upi-apps">
-
-// // // //                   <button type="button">
-// // // //                     PhonePe
-// // // //                   </button>
-
-// // // //                   <button type="button">
-// // // //                     Google Pay
-// // // //                   </button>
-
-// // // //                   <button type="button">
-// // // //                     Paytm
-// // // //                   </button>
-
-// // // //                 </div>
-
-// // // //               )}
-
-// // // //             </div>
-
-// // // //             {/* CARD */}
-
-// // // //             <div className="payment-card">
-
-// // // //               <label>
-
-// // // //                 <input
-// // // //                   type="radio"
-// // // //                   checked={
-// // // //                     paymentMethod ===
-// // // //                     "card"
-// // // //                   }
-// // // //                   onChange={() =>
-// // // //                     setPaymentMethod(
-// // // //                       "card"
-// // // //                     )
-// // // //                   }
-// // // //                 />
-
-// // // //                 Credit / Debit Card
-
-// // // //               </label>
-
-// // // //               {paymentMethod ===
-// // // //                 "card" && (
-
-// // // //                 <>
-// // // //                   <input
-// // // //                     type="text"
-// // // //                     placeholder="Card Number"
-// // // //                   />
-
-// // // //                   <div className="card-row">
-
-// // // //                     <input
-// // // //                       type="text"
-// // // //                       placeholder="MM / YY"
-// // // //                     />
-
-// // // //                     <input
-// // // //                       type="password"
-// // // //                       placeholder="CVV"
-// // // //                     />
-
-// // // //                   </div>
-// // // //                 </>
-
-// // // //               )}
-
-// // // //             </div>
-
-// // // //             {/* NET BANKING */}
-
-// // // //             <div className="payment-card">
-
-// // // //               <label>
-
-// // // //                 <input
-// // // //                   type="radio"
-// // // //                   checked={
-// // // //                     paymentMethod ===
-// // // //                     "netbanking"
-// // // //                   }
-// // // //                   onChange={() =>
-// // // //                     setPaymentMethod(
-// // // //                       "netbanking"
-// // // //                     )
-// // // //                   }
-// // // //                 />
-
-// // // //                 Net Banking
-
-// // // //               </label>
-
-// // // //               {paymentMethod ===
-// // // //                 "netbanking" && (
-
-// // // //                 <select>
-
-// // // //                   <option>
-// // // //                     Select Bank
-// // // //                   </option>
-
-// // // //                   <option>
-// // // //                     State Bank of India
-// // // //                   </option>
-
-// // // //                   <option>
-// // // //                     HDFC Bank
-// // // //                   </option>
-
-// // // //                   <option>
-// // // //                     ICICI Bank
-// // // //                   </option>
-
-// // // //                   <option>
-// // // //                     Axis Bank
-// // // //                   </option>
-
-// // // //                 </select>
-
-// // // //               )}
-
-// // // //             </div>
-
-// // // //             {/* COUPON */}
-
-// // // //             <div className="coupon-box">
-
-// // // //               <h3>
-// // // //                 Apply Coupon
-// // // //               </h3>
-
-// // // //               <div className="coupon-input">
-
-// // // //                 <input
-// // // //                   type="text"
-// // // //                   placeholder="Enter Coupon Code"
-// // // //                   value={coupon}
-// // // //                   onChange={(e) =>
-// // // //                     setCoupon(
-// // // //                       e.target.value
-// // // //                     )
-// // // //                   }
-// // // //                 />
-
-// // // //                 <button
-// // // //                   type="button"
-// // // //                   onClick={
-// // // //                     applyCoupon
-// // // //                   }
-// // // //                 >
-// // // //                   Apply
-// // // //                 </button>
-
-// // // //               </div>
-
-// // // //               <p className="coupon-note">
-
-// // // //                 Use{" "}
-
-// // // //                 <strong>
-// // // //                   SAVE500
-// // // //                 </strong>
-
-// // // //                 {" "}
-// // // //                 to get ₹500 OFF
-
-// // // //               </p>
-
-// // // //             </div>
-
-// // // //           </div>
-
-// // // //           {/* =================================
-// // // //                     RIGHT
-// // // //           ================================= */}
-
-// // // //           <div className="payment-right">
-
-// // // //             <div className="booking-summary">
-
-// // // //               <h2>
-// // // //                 Booking Summary
-// // // //               </h2>
-
-// // // //               <div className="summary-row">
-
-// // // //                 <span>
-// // // //                   Customer
-// // // //                 </span>
-
-// // // //                 <span>
-// // // //                   {passenger.firstName}{" "}
-// // // //                   {passenger.lastName}
-// // // //                 </span>
-
-// // // //               </div>
-
-// // // //               <div className="summary-row">
-
-// // // //                 <span>
-// // // //                   Airline
-// // // //                 </span>
-
-// // // //                 <span>
-// // // //                   {flight.airline}
-// // // //                 </span>
-
-// // // //               </div>
-
-// // // //               <div className="summary-row">
-
-// // // //                 <span>
-// // // //                   Route
-// // // //                 </span>
-
-// // // //                 <span>
-// // // //                   {flight.from ||
-// // // //                     flight.fromCity}{" "}
-// // // //                   →{" "}
-// // // //                   {flight.to ||
-// // // //                     flight.toCity}
-// // // //                 </span>
-
-// // // //               </div>
-
-// // // //               <div className="summary-row">
-
-// // // //                 <span>
-// // // //                   Flight No.
-// // // //                 </span>
-
-// // // //                 <span>
-// // // //                   {flight.flightNo}
-// // // //                 </span>
-
-// // // //               </div>
-
-// // // //               <div className="summary-row">
-
-// // // //                 <span>
-// // // //                   Seat
-// // // //                 </span>
-
-// // // //                 <span>
-// // // //                   {seat || "-"}
-// // // //                 </span>
-
-// // // //               </div>
-
-// // // //               <div className="summary-row">
-
-// // // //                 <span>
-// // // //                   Meal
-// // // //                 </span>
-
-// // // //                 <span>
-// // // //                   {meal?.name ||
-// // // //                     "No Meal"}
-// // // //                 </span>
-
-// // // //               </div>
-
-// // // //               <div className="summary-row">
-
-// // // //                 <span>
-// // // //                   Baggage
-// // // //                 </span>
-
-// // // //                 <span>
-// // // //                   {baggage?.weight ||
-// // // //                     "15 KG Included"}
-// // // //                 </span>
-
-// // // //               </div>
-
-// // // //               <hr />
-
-// // // //               <div className="summary-row">
-
-// // // //                 <span>
-// // // //                   Flight Fare
-// // // //                 </span>
-
-// // // //                 <span>
-// // // //                   ₹ {flightPrice}
-// // // //                 </span>
-
-// // // //               </div>
-
-// // // //               <div className="summary-row">
-
-// // // //                 <span>
-// // // //                   Seat Charges
-// // // //                 </span>
-
-// // // //                 <span>
-// // // //                   ₹ {seatPrice}
-// // // //                 </span>
-
-// // // //               </div>
-
-// // // //               <div className="summary-row">
-
-// // // //                 <span>
-// // // //                   Meal Charges
-// // // //                 </span>
-
-// // // //                 <span>
-// // // //                   ₹ {mealPrice}
-// // // //                 </span>
-
-// // // //               </div>
-
-// // // //               <div className="summary-row">
-
-// // // //                 <span>
-// // // //                   Baggage Charges
-// // // //                 </span>
-
-// // // //                 <span>
-// // // //                   ₹ {baggagePrice}
-// // // //                 </span>
-
-// // // //               </div>
-
-// // // //               <div className="summary-row">
-
-// // // //                 <span>
-// // // //                   Taxes
-// // // //                 </span>
-
-// // // //                 <span>
-// // // //                   ₹ {taxes}
-// // // //                 </span>
-
-// // // //               </div>
-
-// // // //               <div className="summary-row">
-
-// // // //                 <span>
-// // // //                   Convenience Fee
-// // // //                 </span>
-
-// // // //                 <span>
-// // // //                   ₹ {convenienceFee}
-// // // //                 </span>
-
-// // // //               </div>
-
-// // // //               <div className="summary-row discount">
-
-// // // //                 <span>
-// // // //                   Coupon Discount
-// // // //                 </span>
-
-// // // //                 <span>
-// // // //                   - ₹ {discount}
-// // // //                 </span>
-
-// // // //               </div>
-
-// // // //               <hr />
-
-// // // //               <div className="summary-total">
-
-// // // //                 <span>
-// // // //                   Total Payable
-// // // //                 </span>
-
-// // // //                 <span>
-// // // //                   ₹ {total}
-// // // //                 </span>
-
-// // // //               </div>
-
-// // // //               <div className="secure-payment">
-
-// // // //                 🔒 100% Secure Payment
-
-// // // //               </div>
-
-// // // //               <button
-// // // //                 className="pay-btn"
-// // // //                 onClick={
-// // // //                   handlePayment
-// // // //                 }
-// // // //                 disabled={loading}
-// // // //               >
-
-// // // //                 {loading
-// // // //                   ? "Processing..."
-// // // //                   : `Pay ₹ ${total}`}
-
-// // // //               </button>
-
-// // // //             </div>
-
-// // // //           </div>
-
-// // // //         </div>
-
-// // // //       </section>
-
-// // // //       <Footer />
-// // // //     </>
-// // // //   );
-// // // // }
-
-// // // // export default Payment;
-
-
-
-// // // import "./Payment.css";
-
-// // // import { useState } from "react";
-// // // import { useLocation, useNavigate } from "react-router-dom";
-
-// // // import Navbar from "../../Components/Navbar/Navbar";
-// // // import Footer from "../../Components/Footer/Footer";
-
-// // // function Payment() {
-// // //   const navigate = useNavigate();
-// // //   const location = useLocation();
-
-// // //   const {
-// // //     flight,
-// // //     passenger,
-// // //     seat,
-// // //     meal,
-// // //     baggage,
-// // //   } = location.state || {};
-
-// // //   const [coupon, setCoupon] = useState("");
-// // //   const [discount, setDiscount] = useState(0);
-// // //   const [paymentMethod, setPaymentMethod] =
-// // //     useState("upi");
-
-// // //   const [loading, setLoading] = useState(false);
-
-// // //   // =====================================================
-// // //   // NO BOOKING
-// // //   // =====================================================
-
-// // //   if (!flight || !passenger) {
-// // //     return (
-// // //       <>
-// // //         <Navbar />
-
-// // //         <section className="payment-page">
-// // //           <div className="no-booking">
-
-// // //             <h2>
-// // //               No Booking Found ✈️
-// // //             </h2>
-
-// // //             <p>
-// // //               Please complete your passenger
-// // //               details before making payment.
-// // //             </p>
-
-// // //             <button
-// // //               onClick={() => navigate("/")}
-// // //             >
-// // //               Back To Home
-// // //             </button>
-
-// // //           </div>
-// // //         </section>
-
-// // //         <Footer />
-// // //       </>
-// // //     );
-// // //   }
-
-// // //   // =====================================================
-// // //   // PRICE CALCULATION
-// // //   // =====================================================
-
-// // //   /*
-// // //     IMPORTANT:
-
-// // //     Admin Flight model me actual ticket price:
-// // //     finalPrice
-
-// // //     Isliye finalPrice ko sabse pehle use karenge.
-// // //     Agar finalPrice available nahi hai to price use hoga.
-// // //   */
-
-// // //   const flightPrice =
-// // //     Number(
-// // //       flight.finalPrice ??
-// // //       flight.price ??
-// // //       0
-// // //     );
-
-// // //   // Seat selected hai to ₹300
-// // //   const seatPrice =
-// // //     seat ? 300 : 0;
-
-// // //   // Meal
-// // //   const mealPrice =
-// // //     Number(meal?.price) || 0;
-
-// // //   // Baggage
-// // //   const baggagePrice =
-// // //     Number(baggage?.price) || 0;
-
-// // //   /*
-// // //     Admin ke flight data se taxes.
-// // //     Agar admin ne 0 rakha hai to 0 hi rahega.
-// // //   */
-// // //   const taxes =
-// // //     Number(flight.taxes) || 0;
-
-// // //   /*
-// // //     Convenience fee ke liye serviceFee use kar rahe hain.
-
-// // //     Agar admin ne serviceFee = 0 rakha hai
-// // //     to convenience fee bhi 0 hogi.
-// // //   */
-// // //   const convenienceFee =
-// // //     Number(flight.serviceFee) || 0;
-
-// // //   // =====================================================
-// // //   // SUBTOTAL
-// // //   // =====================================================
-
-// // //   const subtotal =
-// // //     flightPrice +
-// // //     seatPrice +
-// // //     mealPrice +
-// // //     baggagePrice +
-// // //     taxes +
-// // //     convenienceFee;
-
-// // //   // =====================================================
-// // //   // FINAL TOTAL
-// // //   // =====================================================
-
-// // //   const total =
-// // //     Math.max(
-// // //       0,
-// // //       subtotal - discount
-// // //     );
-
-// // //   // =====================================================
-// // //   // COUPON
-// // //   // =====================================================
-
-// // //   const applyCoupon = () => {
-
-// // //     if (
-// // //       coupon
-// // //         .trim()
-// // //         .toUpperCase() ===
-// // //       "SAVE500"
-// // //     ) {
-
-// // //       setDiscount(500);
-
-// // //       alert(
-// // //         "Coupon Applied Successfully"
-// // //       );
-
-// // //     } else {
-
-// // //       setDiscount(0);
-
-// // //       alert(
-// // //         "Invalid Coupon"
-// // //       );
-// // //     }
-// // //   };
-
-// // //   // =====================================================
-// // //   // COMPLETE BOOKING
-// // //   // =====================================================
-
-// // //   const handlePayment = async () => {
-
-// // //     if (loading) {
-// // //       return;
-// // //     }
-
-// // //     try {
-
-// // //       setLoading(true);
-
-// // //       // =================================================
-// // //       // CHECK FLIGHT ID
-// // //       // =================================================
-
-// // //       const flightId =
-// // //         flight._id ||
-// // //         flight.id ||
-// // //         flight.flightId ||
-// // //         "";
-
-// // //       if (!flightId) {
-
-// // //         console.warn(
-// // //           "Flight ID missing:",
-// // //           flight
-// // //         );
-
-// // //         throw new Error(
-// // //           "Flight ID is missing."
-// // //         );
-// // //       }
-
-// // //       // =================================================
-// // //       // BOOKING DATA
-// // //       // =================================================
-
-// // //       const bookingData = {
-
-// // //         passenger,
-
-// // //         // ===============================================
-// // //         // FLIGHT
-// // //         // ===============================================
-
-// // //         flight: {
-
-// // //           _id:
-// // //             flightId,
-
-// // //           airline:
-// // //             flight.airline || "",
-
-// // //           flightNo:
-// // //             flight.flightNo || "",
-
-// // //           flightType:
-// // //             flight.flightType ||
-// // //             "Domestic",
-
-// // //           aircraft:
-// // //             flight.aircraft || "",
-
-// // //           fromCity:
-// // //             flight.fromCity ||
-// // //             flight.from ||
-// // //             "",
-
-// // //           fromAirport:
-// // //             flight.fromAirport ||
-// // //             "",
-
-// // //           fromCode:
-// // //             flight.fromCode ||
-// // //             "",
-
-// // //           toCity:
-// // //             flight.toCity ||
-// // //             flight.to ||
-// // //             "",
-
-// // //           toAirport:
-// // //             flight.toAirport ||
-// // //             "",
-
-// // //           toCode:
-// // //             flight.toCode ||
-// // //             "",
-
-// // //           departureDate:
-// // //             flight.departureDate ||
-// // //             "",
-
-// // //           departureTime:
-// // //             flight.departureTime ||
-// // //             flight.departure ||
-// // //             "",
-
-// // //           departureTerminal:
-// // //             flight.departureTerminal ||
-// // //             "",
-
-// // //           arrivalDate:
-// // //             flight.arrivalDate ||
-// // //             "",
-
-// // //           arrivalTime:
-// // //             flight.arrivalTime ||
-// // //             flight.arrival ||
-// // //             "",
-
-// // //           arrivalTerminal:
-// // //             flight.arrivalTerminal ||
-// // //             "",
-
-// // //           duration:
-// // //             flight.duration ||
-// // //             "",
-
-// // //           stops:
-// // //             flight.stops ||
-// // //             "Non-stop",
-
-// // //           stopAirport:
-// // //             flight.stopAirport ||
-// // //             "",
-
-// // //           // =============================================
-// // //           // IMPORTANT PRICE
-// // //           // =============================================
-
-// // //           price:
-// // //             flightPrice,
-
-// // //           finalPrice:
-// // //             flightPrice,
-
-// // //           taxes:
-// // //             taxes,
-
-// // //           serviceFee:
-// // //             convenienceFee,
-
-// // //           logo:
-// // //             flight.logo || "",
-// // //         },
-
-// // //         // ===============================================
-// // //         // SEAT
-// // //         // ===============================================
-
-// // //         seat:
-// // //           seat || "",
-
-// // //         seatPrice:
-// // //           seatPrice,
-
-// // //         // ===============================================
-// // //         // MEAL
-// // //         // ===============================================
-
-// // //         meal: {
-
-// // //           name:
-// // //             meal?.name ||
-// // //             "No Meal",
-
-// // //           price:
-// // //             mealPrice,
-// // //         },
-
-// // //         // ===============================================
-// // //         // BAGGAGE
-// // //         // ===============================================
-
-// // //         baggage: {
-
-// // //           weight:
-// // //             baggage?.weight ||
-// // //             "15 KG (Included)",
-
-// // //           price:
-// // //             baggagePrice,
-// // //         },
-
-// // //         // ===============================================
-// // //         // PAYMENT
-// // //         // ===============================================
-
-// // //         paymentMethod:
-
-// // //           paymentMethod ||
-// // //           "upi",
-
-// // //         paymentStatus:
-// // //           "Paid",
-
-// // //         bookingStatus:
-// // //           "Confirmed",
-
-// // //         // ===============================================
-// // //         // PRICE DETAILS
-// // //         // ===============================================
-
-// // //         discount:
-// // //           discount,
-
-// // //         taxes:
-// // //           taxes,
-
-// // //         convenienceFee:
-// // //           convenienceFee,
-
-// // //         total:
-// // //           total,
-// // //       };
-
-// // //       // =================================================
-// // //       // DEBUG
-// // //       // =================================================
-
-// // //       console.log(
-// // //         "===================================="
-// // //       );
-
-// // //       console.log(
-// // //         "FLIGHT PRICE:",
-// // //         flightPrice
-// // //       );
-
-// // //       console.log(
-// // //         "SEAT PRICE:",
-// // //         seatPrice
-// // //       );
-
-// // //       console.log(
-// // //         "MEAL PRICE:",
-// // //         mealPrice
-// // //       );
-
-// // //       console.log(
-// // //         "BAGGAGE PRICE:",
-// // //         baggagePrice
-// // //       );
-
-// // //       console.log(
-// // //         "TAXES:",
-// // //         taxes
-// // //       );
-
-// // //       console.log(
-// // //         "CONVENIENCE FEE:",
-// // //         convenienceFee
-// // //       );
-
-// // //       console.log(
-// // //         "DISCOUNT:",
-// // //         discount
-// // //       );
-
-// // //       console.log(
-// // //         "FINAL TOTAL:",
-// // //         total
-// // //       );
-
-// // //       console.log(
-// // //         "BOOKING DATA:",
-// // //         bookingData
-// // //       );
-
-// // //       console.log(
-// // //         "===================================="
-// // //       );
-
-// // //       // =================================================
-// // //       // API
-// // //       // =================================================
-
-// // //       const response =
-// // //         await fetch(
-// // //           "http://localhost:5000/api/bookings",
-// // //           {
-// // //             method: "POST",
-
-// // //             headers: {
-// // //               "Content-Type":
-// // //                 "application/json",
-// // //             },
-
-// // //             body:
-// // //               JSON.stringify(
-// // //                 bookingData
-// // //               ),
-// // //           }
-// // //         );
-
-// // //       const data =
-// // //         await response.json();
-
-// // //       console.log(
-// // //         "BOOKING RESPONSE:",
-// // //         data
-// // //       );
-
-// // //       // =================================================
-// // //       // ERROR
-// // //       // =================================================
-
-// // //       if (!response.ok) {
-
-// // //         throw new Error(
-// // //           data.message ||
-// // //           "Payment failed"
-// // //         );
-// // //       }
-
-// // //       if (
-// // //         !data.booking
-// // //       ) {
-
-// // //         throw new Error(
-// // //           "Booking was not created."
-// // //         );
-// // //       }
-
-// // //       // =================================================
-// // //       // SUCCESS
-// // //       // =================================================
-
-// // //       navigate(
-// // //         "/success",
-// // //         {
-// // //           state: {
-
-// // //             flight,
-
-// // //             passenger,
-
-// // //             seat,
-
-// // //             meal,
-
-// // //             baggage,
-
-// // //             // IMPORTANT
-// // //             total:
-// // //               data.booking.total ??
-// // //               total,
-
-// // //             bookingId:
-// // //               data.booking.bookingId,
-
-// // //             pnr:
-// // //               data.booking.pnr,
-// // //           },
-// // //         }
-// // //       );
-
-// // //     } catch (error) {
-
-// // //       console.error(
-// // //         "PAYMENT ERROR:",
-// // //         error
-// // //       );
-
-// // //       alert(
-// // //         error.message ||
-// // //         "Unable to complete booking."
-// // //       );
-
-// // //     } finally {
-
-// // //       setLoading(false);
-// // //     }
-// // //   };
-
-// // //   // =====================================================
-// // //   // UI
-// // //   // =====================================================
-
-// // //   return (
-// // //     <>
-// // //       <Navbar />
-
-// // //       <section className="payment-page">
-
-// // //         {/* =============================================
-// // //                     PROGRESS
-// // //         ============================================== */}
-
-// // //         <div className="payment-progress">
-
-// // //           <div className="step active">
-// // //             <span>✓</span>
-// // //             <p>Booking</p>
-// // //           </div>
-
-// // //           <div className="line active"></div>
-
-// // //           <div className="step active">
-// // //             <span>✓</span>
-// // //             <p>Seat</p>
-// // //           </div>
-
-// // //           <div className="line active"></div>
-
-// // //           <div className="step active">
-// // //             <span>✓</span>
-// // //             <p>Meal</p>
-// // //           </div>
-
-// // //           <div className="line active"></div>
-
-// // //           <div className="step active">
-// // //             <span>✓</span>
-// // //             <p>Baggage</p>
-// // //           </div>
-
-// // //           <div className="line active"></div>
-
-// // //           <div className="step current">
-// // //             <span>5</span>
-// // //             <p>Payment</p>
-// // //           </div>
-
-// // //         </div>
-
-// // //         {/* =============================================
-// // //                     CONTAINER
-// // //         ============================================== */}
-
-// // //         <div className="payment-container">
-
-// // //           {/* =========================================
-// // //                         LEFT
-// // //           ========================================== */}
-
-// // //           <div className="payment-left">
-
-// // //             <h2>
-// // //               Select Payment Method
-// // //             </h2>
-
-// // //             {/* UPI */}
-
-// // //             <div className="payment-card">
-
-// // //               <label>
-
-// // //                 <input
-// // //                   type="radio"
-// // //                   checked={
-// // //                     paymentMethod ===
-// // //                     "upi"
-// // //                   }
-// // //                   onChange={() =>
-// // //                     setPaymentMethod(
-// // //                       "upi"
-// // //                     )
-// // //                   }
-// // //                 />
-
-// // //                 UPI Payment
-
-// // //               </label>
-
-// // //               {paymentMethod ===
-// // //                 "upi" && (
-
-// // //                 <div className="upi-apps">
-
-// // //                   <button
-// // //                     type="button"
-// // //                   >
-// // //                     PhonePe
-// // //                   </button>
-
-// // //                   <button
-// // //                     type="button"
-// // //                   >
-// // //                     Google Pay
-// // //                   </button>
-
-// // //                   <button
-// // //                     type="button"
-// // //                   >
-// // //                     Paytm
-// // //                   </button>
-
-// // //                 </div>
-
-// // //               )}
-
-// // //             </div>
-
-// // //             {/* CARD */}
-
-// // //             <div className="payment-card">
-
-// // //               <label>
-
-// // //                 <input
-// // //                   type="radio"
-// // //                   checked={
-// // //                     paymentMethod ===
-// // //                     "card"
-// // //                   }
-// // //                   onChange={() =>
-// // //                     setPaymentMethod(
-// // //                       "card"
-// // //                     )
-// // //                   }
-// // //                 />
-
-// // //                 Credit / Debit Card
-
-// // //               </label>
-
-// // //               {paymentMethod ===
-// // //                 "card" && (
-
-// // //                 <>
-// // //                   <input
-// // //                     type="text"
-// // //                     placeholder="Card Number"
-// // //                   />
-
-// // //                   <div className="card-row">
-
-// // //                     <input
-// // //                       type="text"
-// // //                       placeholder="MM / YY"
-// // //                     />
-
-// // //                     <input
-// // //                       type="password"
-// // //                       placeholder="CVV"
-// // //                     />
-
-// // //                   </div>
-// // //                 </>
-
-// // //               )}
-
-// // //             </div>
-
-// // //             {/* NET BANKING */}
-
-// // //             <div className="payment-card">
-
-// // //               <label>
-
-// // //                 <input
-// // //                   type="radio"
-// // //                   checked={
-// // //                     paymentMethod ===
-// // //                     "netbanking"
-// // //                   }
-// // //                   onChange={() =>
-// // //                     setPaymentMethod(
-// // //                       "netbanking"
-// // //                     )
-// // //                   }
-// // //                 />
-
-// // //                 Net Banking
-
-// // //               </label>
-
-// // //               {paymentMethod ===
-// // //                 "netbanking" && (
-
-// // //                 <select>
-
-// // //                   <option>
-// // //                     Select Bank
-// // //                   </option>
-
-// // //                   <option>
-// // //                     State Bank of India
-// // //                   </option>
-
-// // //                   <option>
-// // //                     HDFC Bank
-// // //                   </option>
-
-// // //                   <option>
-// // //                     ICICI Bank
-// // //                   </option>
-
-// // //                   <option>
-// // //                     Axis Bank
-// // //                   </option>
-
-// // //                 </select>
-
-// // //               )}
-
-// // //             </div>
-
-// // //             {/* COUPON */}
-
-// // //             <div className="coupon-box">
-
-// // //               <h3>
-// // //                 Apply Coupon
-// // //               </h3>
-
-// // //               <div className="coupon-input">
-
-// // //                 <input
-// // //                   type="text"
-// // //                   placeholder="Enter Coupon Code"
-// // //                   value={coupon}
-// // //                   onChange={(e) =>
-// // //                     setCoupon(
-// // //                       e.target.value
-// // //                     )
-// // //                   }
-// // //                 />
-
-// // //                 <button
-// // //                   type="button"
-// // //                   onClick={
-// // //                     applyCoupon
-// // //                   }
-// // //                 >
-// // //                   Apply
-// // //                 </button>
-
-// // //               </div>
-
-// // //               <p className="coupon-note">
-
-// // //                 Use{" "}
-
-// // //                 <strong>
-// // //                   SAVE500
-// // //                 </strong>
-
-// // //                 {" "}
-// // //                 to get ₹500 OFF
-
-// // //               </p>
-
-// // //             </div>
-
-// // //           </div>
-
-// // //           {/* =========================================
-// // //                         RIGHT
-// // //           ========================================== */}
-
-// // //           <div className="payment-right">
-
-// // //             <div className="booking-summary">
-
-// // //               <h2>
-// // //                 Booking Summary
-// // //               </h2>
-
-// // //               <div className="summary-row">
-
-// // //                 <span>
-// // //                   Customer
-// // //                 </span>
-
-// // //                 <span>
-// // //                   {passenger.firstName}{" "}
-// // //                   {passenger.lastName}
-// // //                 </span>
-
-// // //               </div>
-
-// // //               <div className="summary-row">
-
-// // //                 <span>
-// // //                   Airline
-// // //                 </span>
-
-// // //                 <span>
-// // //                   {flight.airline}
-// // //                 </span>
-
-// // //               </div>
-
-// // //               <div className="summary-row">
-
-// // //                 <span>
-// // //                   Route
-// // //                 </span>
-
-// // //                 <span>
-// // //                   {flight.from ||
-// // //                     flight.fromCity}
-// // //                   {" → "}
-// // //                   {flight.to ||
-// // //                     flight.toCity}
-// // //                 </span>
-
-// // //               </div>
-
-// // //               <div className="summary-row">
-
-// // //                 <span>
-// // //                   Flight No.
-// // //                 </span>
-
-// // //                 <span>
-// // //                   {flight.flightNo}
-// // //                 </span>
-
-// // //               </div>
-
-// // //               <div className="summary-row">
-
-// // //                 <span>
-// // //                   Seat
-// // //                 </span>
-
-// // //                 <span>
-// // //                   {seat || "-"}
-// // //                 </span>
-
-// // //               </div>
-
-// // //               <div className="summary-row">
-
-// // //                 <span>
-// // //                   Meal
-// // //                 </span>
-
-// // //                 <span>
-// // //                   {meal?.name ||
-// // //                     "No Meal"}
-// // //                 </span>
-
-// // //               </div>
-
-// // //               <div className="summary-row">
-
-// // //                 <span>
-// // //                   Baggage
-// // //                 </span>
-
-// // //                 <span>
-// // //                   {baggage?.weight ||
-// // //                     "15 KG Included"}
-// // //                 </span>
-
-// // //               </div>
-
-// // //               <hr />
-
-// // //               {/* =====================================
-// // //                         PRICE BREAKDOWN
-// // //               ====================================== */}
-
-// // //               <div className="summary-row">
-
-// // //                 <span>
-// // //                   Flight Fare
-// // //                 </span>
-
-// // //                 <span>
-// // //                   ₹ {flightPrice.toLocaleString("en-IN")}
-// // //                 </span>
-
-// // //               </div>
-
-// // //               <div className="summary-row">
-
-// // //                 <span>
-// // //                   Seat Charges
-// // //                 </span>
-
-// // //                 <span>
-// // //                   ₹ {seatPrice.toLocaleString("en-IN")}
-// // //                 </span>
-
-// // //               </div>
-
-// // //               <div className="summary-row">
-
-// // //                 <span>
-// // //                   Meal Charges
-// // //                 </span>
-
-// // //                 <span>
-// // //                   ₹ {mealPrice.toLocaleString("en-IN")}
-// // //                 </span>
-
-// // //               </div>
-
-// // //               <div className="summary-row">
-
-// // //                 <span>
-// // //                   Baggage Charges
-// // //                 </span>
-
-// // //                 <span>
-// // //                   ₹ {baggagePrice.toLocaleString("en-IN")}
-// // //                 </span>
-
-// // //               </div>
-
-// // //               <div className="summary-row">
-
-// // //                 <span>
-// // //                   Taxes
-// // //                 </span>
-
-// // //                 <span>
-// // //                   ₹ {taxes.toLocaleString("en-IN")}
-// // //                 </span>
-
-// // //               </div>
-
-// // //               <div className="summary-row">
-
-// // //                 <span>
-// // //                   Convenience Fee
-// // //                 </span>
-
-// // //                 <span>
-// // //                   ₹ {convenienceFee.toLocaleString("en-IN")}
-// // //                 </span>
-
-// // //               </div>
-
-// // //               <div className="summary-row discount">
-
-// // //                 <span>
-// // //                   Coupon Discount
-// // //                 </span>
-
-// // //                 <span>
-// // //                   - ₹ {discount.toLocaleString("en-IN")}
-// // //                 </span>
-
-// // //               </div>
-
-// // //               <hr />
-
-// // //               {/* =====================================
-// // //                             FINAL TOTAL
-// // //               ====================================== */}
-
-// // //               <div className="summary-total">
-
-// // //                 <span>
-// // //                   Total Payable
-// // //                 </span>
-
-// // //                 <span>
-// // //                   ₹ {total.toLocaleString("en-IN")}
-// // //                 </span>
-
-// // //               </div>
-
-// // //               <div className="secure-payment">
-
-// // //                 🔒 100% Secure Payment
-
-// // //               </div>
-
-// // //               <button
-// // //                 className="pay-btn"
-// // //                 onClick={
-// // //                   handlePayment
-// // //                 }
-// // //                 disabled={loading}
-// // //               >
-
-// // //                 {loading
-// // //                   ? "Processing..."
-// // //                   : `Pay ₹ ${total.toLocaleString("en-IN")}`}
-
-// // //               </button>
-
-// // //             </div>
-
-// // //           </div>
-
-// // //         </div>
-
-// // //       </section>
-
-// // //       <Footer />
-// // //     </>
-// // //   );
-// // // }
-
-// // // export default Payment;
-
-
 
 // // import "./Payment.css";
 
@@ -3332,6 +36,37 @@
 // //     baggage,
 // //     baggageTotal,
 // //   } = location.state || {};
+
+// //   // =====================================================
+// //   // USER ROLE
+// //   // =====================================================
+
+// //   const getStoredRole = () => {
+// //     const directKeys = ["userRole", "role", "accountType"];
+
+// //     for (const key of directKeys) {
+// //       const value = localStorage.getItem(key);
+// //       if (value) return String(value).toLowerCase();
+// //     }
+
+// //     const objectKeys = ["user", "currentUser", "loggedInUser", "authUser"];
+
+// //     for (const key of objectKeys) {
+// //       const value = localStorage.getItem(key);
+// //       if (!value) continue;
+
+// //       try {
+// //         const parsed = JSON.parse(value);
+// //         const role = parsed?.role || parsed?.user?.role || parsed?.accountType;
+// //         if (role) return String(role).toLowerCase();
+// //       } catch {}
+// //     }
+
+// //     return "customer";
+// //   };
+
+// //   const userRole = getStoredRole();
+// //   const isAgent = userRole === "agent";
 
 
 // //   // =====================================================
@@ -3487,27 +222,27 @@
 
 // //   const adultFare =
 // //     Number(
-// //       pricing?.adultFare ??
-// //       flight?.adultFare ??
-// //       flight?.price ??
-// //       0
-// //     );
+// //       isAgent
+// //         ? (pricing?.agentAdultFare ?? flight?.agentAdultFare)
+// //         : (pricing?.adultFare ?? flight?.adultFare ?? flight?.price)
+// //     ) || 0;
 
 
 // //   const childFare =
 // //     Number(
-// //       pricing?.childFare ??
-// //       flight?.childFare ??
-// //       adultFare
-// //     );
+// //       isAgent
+// //         ? (pricing?.agentChildFare ?? flight?.agentChildFare)
+// //         : (pricing?.childFare ?? flight?.childFare ?? adultFare)
+// //     ) || 0;
 
 
 // //   const infantFare =
 // //     Number(
-// //       pricing?.infantFare ??
-// //       flight?.infantFare ??
-// //       0
-// //     );
+// //       isAgent
+// //         ? (pricing?.agentInfantFare ?? flight?.agentInfantFare)
+// //         : (pricing?.infantFare ?? flight?.infantFare)
+// //     ) || 0;
+
 
 
 // //   /*
@@ -3545,11 +280,7 @@
 // //     );
 
 
-// //   const fallbackSeatPrice =
-// //     selectedSeats.length > 0
-// //       ? selectedSeats.length *
-// //         300
-// //       : 0;
+// //   const fallbackSeatPrice = 0;
 
 
 // //   const seatPrice =
@@ -3642,10 +373,7 @@
 // //   // CONVENIENCE FEE
 // //   // =====================================================
 
-// //   const convenienceFee =
-// //     Number(
-// //       flight?.serviceFee
-// //     ) || 0;
+// //   const convenienceFee = 0;
 
 
 // //   // =====================================================
@@ -3854,6 +582,31 @@
 // //         const bookingData = {
 
 // //           // ===============================================
+// //           // CUSTOMER USER ID
+// //           // IMPORTANT FOR MY BOOKINGS
+// //           // ===============================================
+
+// //           userId:
+// //             localStorage.getItem("userId") ||
+// //             (() => {
+// //               try {
+// //                 const user =
+// //                   JSON.parse(
+// //                     localStorage.getItem("user") || "{}"
+// //                   );
+
+// //                 return (
+// //                   user?._id ||
+// //                   user?.id ||
+// //                   null
+// //                 );
+// //               } catch (error) {
+// //                 return null;
+// //               }
+// //             })(),
+
+
+// //           // ===============================================
 // //           // CUSTOMER / MAIN PASSENGER
 // //           // ===============================================
 
@@ -4002,6 +755,18 @@
 
 // //             infantFare:
 // //               infantFare,
+
+// //             agentAdultFare:
+// //               Number(flight.agentAdultFare) || 0,
+
+// //             agentChildFare:
+// //               Number(flight.agentChildFare) || 0,
+
+// //             agentInfantFare:
+// //               Number(flight.agentInfantFare) || 0,
+
+// //             fareRole:
+// //               userRole,
 
 
 // //             // ===========================================
@@ -4187,6 +952,15 @@
 // //           paymentStatus:
 // //             "Paid",
 
+// //           fareRole:
+// //             userRole,
+
+// //           farePerPassenger:
+// //             adultFare,
+
+// //           agentAdultFare:
+// //             Number(flight.agentAdultFare) || 0,
+
 // //           bookingStatus:
 // //             "Confirmed",
 
@@ -4265,6 +1039,11 @@
 // //         console.log(
 // //           "FINAL TOTAL:",
 // //           total
+// //         );
+
+// //         console.log(
+// //           "CUSTOMER USER ID:",
+// //           bookingData.userId
 // //         );
 
 // //         console.log(
@@ -5147,10 +1926,26 @@
 
 // // export default Payment;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import "./Payment.css";
 
 // import { useState } from "react";
-
+// import { QRCodeSVG } from "qrcode.react";
 // import {
 //   useLocation,
 //   useNavigate,
@@ -5172,32 +1967,51 @@
 
 //   const {
 //     flight,
-
 //     passenger,
-
-//     passengers,
-
 //     travellers,
-
 //     pricing,
 
 //     seats,
-
 //     seat,
 
-//     seatAssignments,
-
 //     meals,
-
 //     meal,
 
-//     mealAssignments,
-
 //     baggage,
-
 //     baggageTotal,
-
 //   } = location.state || {};
+
+//   // =====================================================
+//   // USER ROLE
+//   // =====================================================
+
+//   const getStoredRole = () => {
+//     const directKeys = ["userRole", "role", "accountType"];
+
+//     for (const key of directKeys) {
+//       const value = localStorage.getItem(key);
+//       if (value) return String(value).toLowerCase();
+//     }
+
+//     const objectKeys = ["user", "currentUser", "loggedInUser", "authUser"];
+
+//     for (const key of objectKeys) {
+//       const value = localStorage.getItem(key);
+//       if (!value) continue;
+
+//       try {
+//         const parsed = JSON.parse(value);
+//         const role = parsed?.role || parsed?.user?.role || parsed?.accountType;
+//         if (role) return String(role).toLowerCase();
+//       } catch {}
+//     }
+
+//     return "customer";
+//   };
+
+//   const userRole = getStoredRole();
+//   const isAgent = userRole === "agent";
+//   const isAdmin = userRole === "admin";
 
 
 //   // =====================================================
@@ -5215,6 +2029,48 @@
 
 //   const [loading, setLoading] =
 //     useState(false);
+
+
+//   // =====================================================
+//   // NO BOOKING
+//   // =====================================================
+
+//   if (!flight || !passenger) {
+
+//     return (
+//       <>
+//         <Navbar />
+
+//         <section className="payment-page">
+
+//           <div className="no-booking">
+
+//             <h2>
+//               No Booking Found ✈️
+//             </h2>
+
+//             <p>
+//               Please complete your passenger
+//               details before making payment.
+//             </p>
+
+//             <button
+//               onClick={() =>
+//                 navigate("/")
+//               }
+//             >
+//               Back To Home
+//             </button>
+
+//           </div>
+
+//         </section>
+
+//         <Footer />
+//       </>
+//     );
+
+//   }
 
 
 //   // =====================================================
@@ -5255,233 +2111,6 @@
 
 
 //   // =====================================================
-//   // FINAL PASSENGER LIST
-//   //
-//   // IMPORTANT:
-//   // Backend ko complete passengers array bhejna hai.
-//   // =====================================================
-
-//   const existingPassengers =
-//     Array.isArray(passengers)
-//       ? passengers
-//       : [];
-
-
-//   const existingAdults =
-//     existingPassengers.filter(
-//       (item) =>
-//         String(
-//           item?.type || "Adult"
-//         ).toLowerCase() ===
-//         "adult"
-//     );
-
-
-//   const existingChildren =
-//     existingPassengers.filter(
-//       (item) =>
-//         String(
-//           item?.type || ""
-//         ).toLowerCase() ===
-//         "child"
-//     );
-
-
-//   const existingInfants =
-//     existingPassengers.filter(
-//       (item) =>
-//         String(
-//           item?.type || ""
-//         ).toLowerCase() ===
-//         "infant"
-//     );
-
-
-//   const finalPassengers = [];
-
-
-//   // =====================================================
-//   // ADULTS
-//   // =====================================================
-
-//   for (
-//     let i = 0;
-//     i < adultCount;
-//     i++
-//   ) {
-
-//     finalPassengers.push(
-//       existingAdults[i] || {
-
-//         type: "Adult",
-
-//         firstName:
-//           i === 0 &&
-//           passenger?.firstName
-//             ? passenger.firstName
-//             : `Adult ${i + 1}`,
-
-//         lastName:
-//           i === 0 &&
-//           passenger?.lastName
-//             ? passenger.lastName
-//             : "",
-
-//         email:
-//           i === 0
-//             ? passenger?.email || ""
-//             : "",
-
-//         phone:
-//           i === 0
-//             ? passenger?.phone || ""
-//             : "",
-
-//       }
-//     );
-
-//   }
-
-
-//   // =====================================================
-//   // CHILDREN
-//   // =====================================================
-
-//   for (
-//     let i = 0;
-//     i < childCount;
-//     i++
-//   ) {
-
-//     finalPassengers.push(
-//       existingChildren[i] || {
-
-//         type: "Child",
-
-//         firstName:
-//           `Child ${i + 1}`,
-
-//         lastName: "",
-
-//       }
-//     );
-
-//   }
-
-
-//   // =====================================================
-//   // INFANTS
-//   // =====================================================
-
-//   for (
-//     let i = 0;
-//     i < infantCount;
-//     i++
-//   ) {
-
-//     finalPassengers.push(
-//       existingInfants[i] || {
-
-//         type: "Infant",
-
-//         firstName:
-//           `Infant ${i + 1}`,
-
-//         lastName: "",
-
-//       }
-//     );
-
-//   }
-
-
-//   // =====================================================
-//   // DEBUG PASSENGERS
-//   // =====================================================
-
-//   console.log(
-//     "===================================="
-//   );
-
-//   console.log(
-//     "PAYMENT PASSENGERS:",
-//     finalPassengers
-//   );
-
-//   console.log(
-//     "ADULT COUNT:",
-//     adultCount
-//   );
-
-//   console.log(
-//     "CHILD COUNT:",
-//     childCount
-//   );
-
-//   console.log(
-//     "INFANT COUNT:",
-//     infantCount
-//   );
-
-//   console.log(
-//     "TOTAL PASSENGERS:",
-//     totalPassengers
-//   );
-
-//   console.log(
-//     "REQUIRED SEATS:",
-//     adultCount + childCount
-//   );
-
-//   console.log(
-//     "===================================="
-//   );
-
-
-//   // =====================================================
-//   // NO BOOKING
-//   // =====================================================
-
-//   if (!flight) {
-
-//     return (
-//       <>
-//         <Navbar />
-
-//         <section className="payment-page">
-
-//           <div className="no-booking">
-
-//             <h2>
-//               No Booking Found ✈️
-//             </h2>
-
-//             <p>
-//               Please complete your passenger
-//               details before making payment.
-//             </p>
-
-//             <button
-//               type="button"
-//               onClick={() =>
-//                 navigate("/")
-//               }
-//             >
-//               Back To Home
-//             </button>
-
-//           </div>
-
-//         </section>
-
-//         <Footer />
-//       </>
-//     );
-
-//   }
-
-
-//   // =====================================================
 //   // ARRAYS
 //   // =====================================================
 
@@ -5510,66 +2139,80 @@
 
 
 //   // =====================================================
-//   // TICKET FARES
+//   // TICKET FARE
 //   // =====================================================
 
-//   const adultFare =
+//   /*
+//     Priority:
+
+//     1. pricing calculated by Booking page
+//     2. passengerFareTotal
+//     3. flight finalPrice
+//   */
+
+
+//   const flightPrice =
 //     Number(
-//       pricing?.adultFare ??
-//       flight?.adultFare ??
+//       pricing?.passengerFareTotal ??
+//       flight?.passengerFareTotal ??
+//       flight?.finalPrice ??
 //       flight?.price ??
 //       0
 //     );
 
 
+//   // =====================================================
+//   // FALLBACK TICKET CALCULATION
+//   // =====================================================
+
+//   const adultFare =
+//     Number(
+//       isAgent
+//         ? (pricing?.agentAdultFare ?? flight?.agentAdultFare)
+//         : (pricing?.adultFare ?? flight?.adultFare ?? flight?.price)
+//     ) || 0;
+
+
 //   const childFare =
 //     Number(
-//       pricing?.childFare ??
-//       flight?.childFare ??
-//       adultFare
-//     );
+//       isAgent
+//         ? (pricing?.agentChildFare ?? flight?.agentChildFare)
+//         : (pricing?.childFare ?? flight?.childFare ?? adultFare)
+//     ) || 0;
 
 
 //   const infantFare =
 //     Number(
-//       pricing?.infantFare ??
-//       flight?.infantFare ??
-//       0
-//     );
+//       isAgent
+//         ? (pricing?.agentInfantFare ?? flight?.agentInfantFare)
+//         : (pricing?.infantFare ?? flight?.infantFare)
+//     ) || 0;
 
 
-//   // =====================================================
-//   // FARE TOTALS
-//   // =====================================================
 
-//   const adultFareTotal =
-//     adultFare *
-//     adultCount;
-
-
-//   const childFareTotal =
-//     childFare *
-//     childCount;
-
-
-//   const infantFareTotal =
-//     infantFare *
-//     infantCount;
-
+//   /*
+//     Agar Booking page ne passengerFareTotal
+//     nahi bheja hai to yahan calculate hoga.
+//   */
 
 //   const calculatedPassengerFare =
-//     adultFareTotal +
-//     childFareTotal +
-//     infantFareTotal;
-
-
-//   const finalFlightFare =
 //     pricing?.passengerFareTotal !==
-//     undefined
+//       undefined
 //       ? Number(
 //           pricing.passengerFareTotal
 //         )
-//       : calculatedPassengerFare;
+//       : (
+//           adultFare *
+//             adultCount
+//         ) +
+//         (
+//           childFare *
+//             childCount
+//         ) +
+//         (
+//           infantFare *
+//             infantCount
+//         );
 
 
 //   // =====================================================
@@ -5582,9 +2225,7 @@
 //     );
 
 
-//   const fallbackSeatPrice =
-//     selectedSeats.length *
-//     300;
+//   const fallbackSeatPrice = 0;
 
 
 //   const seatPrice =
@@ -5592,9 +2233,7 @@
 //       calculatedSeatPrice
 //     ) &&
 //     calculatedSeatPrice > 0
-
 //       ? calculatedSeatPrice
-
 //       : fallbackSeatPrice;
 
 
@@ -5626,9 +2265,7 @@
 //     Number.isFinite(
 //       calculatedMealPrice
 //     )
-
 //       ? calculatedMealPrice
-
 //       : fallbackMealPrice;
 
 
@@ -5663,14 +2300,12 @@
 //     Number.isFinite(
 //       calculatedBaggagePrice
 //     )
-
 //       ? calculatedBaggagePrice
-
 //       : fallbackBaggagePrice;
 
 
 //   // =====================================================
-//   // TAX
+//   // TAXES
 //   // =====================================================
 
 //   const taxes =
@@ -5683,10 +2318,25 @@
 //   // CONVENIENCE FEE
 //   // =====================================================
 
-//   const convenienceFee =
-//     Number(
-//       flight?.serviceFee
-//     ) || 0;
+//   const convenienceFee = 0;
+
+
+//   // =====================================================
+//   // PASSENGER FARE
+//   // =====================================================
+
+//   /*
+//     Agar pricing passengerFareTotal
+//     nahi hai to calculated value use hogi.
+//   */
+
+//   const finalFlightFare =
+//     pricing?.passengerFareTotal !==
+//       undefined
+//       ? Number(
+//           pricing.passengerFareTotal
+//         )
+//       : calculatedPassengerFare;
 
 
 //   // =====================================================
@@ -5715,6 +2365,22 @@
 
 
 //   // =====================================================
+//   // DYNAMIC UPI PAYMENT QR
+//   // =====================================================
+
+//   const UPI_ID = "eazypay.0000064618@icici";
+//   const UPI_NAME = "Saiyed Travels";
+//   const upiAmount = Number(total || 0).toFixed(2);
+
+//   const upiPaymentUrl =
+//     `upi://pay?pa=${encodeURIComponent(UPI_ID)}` +
+//     `&pn=${encodeURIComponent(UPI_NAME)}` +
+//     `&am=${upiAmount}` +
+//     `&cu=INR` +
+//     `&tn=${encodeURIComponent("Saiyed Travels Flight Booking")}`;
+
+
+//   // =====================================================
 //   // COUPON
 //   // =====================================================
 
@@ -5730,6 +2396,11 @@
 //       code ===
 //       "SAVE500"
 //     ) {
+
+//       /*
+//         Discount subtotal se zyada
+//         nahi hona chahiye.
+//       */
 
 //       const finalDiscount =
 //         Math.min(
@@ -5761,7 +2432,59 @@
 
 
 //   // =====================================================
-//   // PAYMENT
+//   // PASSENGER TYPE
+//   // =====================================================
+
+//   const getPassengerType =
+//     (index) => {
+
+//       if (
+//         index <
+//         adultCount
+//       ) {
+
+//         return "Adult";
+
+//       }
+
+
+//       if (
+//         index <
+//         adultCount +
+//           childCount
+//       ) {
+
+//         return "Child";
+
+//       }
+
+
+//       return "Infant";
+
+//     };
+
+
+//   // =====================================================
+//   // TOTALS BY PASSENGER TYPE
+//   // =====================================================
+
+//   const adultFareTotal =
+//     adultFare *
+//     adultCount;
+
+
+//   const childFareTotal =
+//     childFare *
+//     childCount;
+
+
+//   const infantFareTotal =
+//     infantFare *
+//     infantCount;
+
+
+//   // =====================================================
+//   // COMPLETE BOOKING
 //   // =====================================================
 
 //   const handlePayment =
@@ -5778,7 +2501,7 @@
 
 
 //         // =================================================
-//         // FLIGHT ID
+//         // CHECK FLIGHT ID
 //         // =================================================
 
 //         const flightId =
@@ -5798,39 +2521,16 @@
 
 
 //         // =================================================
-//         // PASSENGER VALIDATION
+//         // CHECK PASSENGER DATA
 //         // =================================================
 
 //         if (
-//           finalPassengers.length !==
-//           totalPassengers
+//           totalPassengers <=
+//           0
 //         ) {
 
 //           throw new Error(
-//             `Passenger data mismatch. Expected ${totalPassengers} passengers but found ${finalPassengers.length}.`
-//           );
-
-//         }
-
-
-//         // =================================================
-//         // SEAT VALIDATION
-//         //
-//         // Infant does NOT require seat
-//         // =================================================
-
-//         const requiredSeatCount =
-//           adultCount +
-//           childCount;
-
-
-//         if (
-//           selectedSeats.length !==
-//           requiredSeatCount
-//         ) {
-
-//           throw new Error(
-//             `Please select exactly ${requiredSeatCount} seat(s) for ${adultCount} adult(s) and ${childCount} child(ren).`
+//             "Passenger information is missing."
 //           );
 
 //         }
@@ -5843,24 +2543,39 @@
 //         const bookingData = {
 
 //           // ===============================================
-//           // IMPORTANT:
-//           // ALL PASSENGERS
+//           // CUSTOMER USER ID
+//           // IMPORTANT FOR MY BOOKINGS
 //           // ===============================================
 
-//           passengers:
-//             finalPassengers,
+//           userId:
+//             localStorage.getItem("userId") ||
+//             (() => {
+//               try {
+//                 const user =
+//                   JSON.parse(
+//                     localStorage.getItem("user") || "{}"
+//                   );
+
+//                 return (
+//                   user?._id ||
+//                   user?.id ||
+//                   null
+//                 );
+//               } catch (error) {
+//                 return null;
+//               }
+//             })(),
 
 
 //           // ===============================================
-//           // BACKWARD COMPATIBILITY
+//           // CUSTOMER / MAIN PASSENGER
 //           // ===============================================
 
-//           passenger:
-//             finalPassengers[0],
+//           passenger,
 
 
 //           // ===============================================
-//           // TRAVELLERS
+//           // PASSENGER COUNTS
 //           // ===============================================
 
 //           travellers: {
@@ -5881,39 +2596,12 @@
 
 
 //           // ===============================================
-//           // ALSO SEND COUNTS DIRECTLY
-//           // ===============================================
-
-//           adults:
-//             adultCount,
-
-//           children:
-//             childCount,
-
-//           infants:
-//             infantCount,
-
-
-//           // ===============================================
-//           // FLIGHT ID
-//           // ===============================================
-
-//           flightId:
-
-
-//             flightId,
-
-
-//           // ===============================================
 //           // FLIGHT
 //           // ===============================================
 
 //           flight: {
 
 //             _id:
-//               flightId,
-
-//             flightId:
 //               flightId,
 
 //             airline:
@@ -5967,6 +2655,10 @@
 //               flight.departure ||
 //               "",
 
+//             departureTerminal:
+//               flight.departureTerminal ||
+//               "",
+
 //             arrivalDate:
 //               flight.arrivalDate ||
 //               "",
@@ -5976,6 +2668,10 @@
 //               flight.arrival ||
 //               "",
 
+//             arrivalTerminal:
+//               flight.arrivalTerminal ||
+//               "",
+
 //             duration:
 //               flight.duration ||
 //               "",
@@ -5983,6 +2679,15 @@
 //             stops:
 //               flight.stops ||
 //               "Non-stop",
+
+//             stopAirport:
+//               flight.stopAirport ||
+//               "",
+
+
+//             // ===========================================
+//             // ORIGINAL FLIGHT PRICE
+//             // ===========================================
 
 //             price:
 //               Number(
@@ -5999,7 +2704,9 @@
 //               0,
 
 
-//             // PASSENGER FARES
+//             // ===========================================
+//             // PASSENGER PRICES
+//             // ===========================================
 
 //             adultFare:
 //               adultFare,
@@ -6010,8 +2717,22 @@
 //             infantFare:
 //               infantFare,
 
+//             agentAdultFare:
+//               Number(flight.agentAdultFare) || 0,
 
-//             // SEAT
+//             agentChildFare:
+//               Number(flight.agentChildFare) || 0,
+
+//             agentInfantFare:
+//               Number(flight.agentInfantFare) || 0,
+
+//             fareRole:
+//               userRole,
+
+
+//             // ===========================================
+//             // EXTRA SERVICE PRICES
+//             // ===========================================
 
 //             adultSeatPrice:
 //               Number(
@@ -6029,8 +2750,6 @@
 //               ) || 0,
 
 
-//             // MEAL
-
 //             adultMealPrice:
 //               Number(
 //                 flight.adultMealPrice
@@ -6046,8 +2765,6 @@
 //                 flight.infantMealPrice
 //               ) || 0,
 
-
-//             // BAGGAGE
 
 //             adultBaggagePrice:
 //               Number(
@@ -6085,7 +2802,6 @@
 //           seats:
 //             selectedSeats,
 
-
 //           seat:
 //             selectedSeats[0] ||
 //             "",
@@ -6093,15 +2809,6 @@
 
 //           seatCount:
 //             selectedSeats.length,
-
-
-//           seatAssignments:
-//             Array.isArray(
-//               seatAssignments
-//             )
-//               ? seatAssignments
-//               : [],
-
 
 //           seatPrice:
 //             seatPrice,
@@ -6113,7 +2820,6 @@
 
 //           meals:
 //             selectedMeals,
-
 
 //           meal:
 //             selectedMeals[0] ||
@@ -6129,15 +2835,6 @@
 //           mealCount:
 //             selectedMeals.length,
 
-
-//           mealAssignments:
-//             Array.isArray(
-//               mealAssignments
-//             )
-//               ? mealAssignments
-//               : [],
-
-
 //           mealPrice:
 //             mealPrice,
 
@@ -6149,17 +2846,15 @@
 //           baggage:
 //             selectedBaggage,
 
-
 //           baggageCount:
 //             selectedBaggage.length,
-
 
 //           baggagePrice:
 //             baggagePrice,
 
 
 //           // ===============================================
-//           // PRICE DETAILS
+//           // PRICE BREAKDOWN
 //           // ===============================================
 
 //           priceDetails: {
@@ -6181,10 +2876,8 @@
 //             seatCharges:
 //               seatPrice,
 
-
 //             mealCharges:
 //               mealPrice,
-
 
 //             baggageCharges:
 //               baggagePrice,
@@ -6193,10 +2886,8 @@
 //             taxes:
 //               taxes,
 
-
 //             convenienceFee:
 //               convenienceFee,
-
 
 //             discount:
 //               discount,
@@ -6204,7 +2895,6 @@
 
 //             subtotal:
 //               subtotal,
-
 
 //             total:
 //               total,
@@ -6221,15 +2911,27 @@
 //             "upi",
 
 //           paymentStatus:
-//             "Paid",
+//             isAdmin ? "Paid" : "Pending",
+
+//           fareRole:
+//             userRole,
+
+//           farePerPassenger:
+//             adultFare,
+
+//           agentAdultFare:
+//             Number(flight.agentAdultFare) || 0,
 
 //           bookingStatus:
-//             "Confirmed",
+//             isAdmin ? "Confirmed" : "Pending Payment",
 
+
+//           // ===============================================
+//           // OLD / BACKWARD COMPATIBILITY
+//           // ===============================================
 
 //           discount:
 //             discount,
-
 
 //           total:
 //             total,
@@ -6243,11 +2945,6 @@
 
 //         console.log(
 //           "===================================="
-//         );
-
-//         console.log(
-//           "FINAL PASSENGERS SENT:",
-//           finalPassengers
 //         );
 
 //         console.log(
@@ -6266,18 +2963,48 @@
 //         );
 
 //         console.log(
-//           "TOTAL PASSENGERS:",
-//           totalPassengers
+//           "FLIGHT FARE:",
+//           finalFlightFare
 //         );
 
 //         console.log(
-//           "REQUIRED SEATS:",
-//           requiredSeatCount
+//           "SEAT PRICE:",
+//           seatPrice
 //         );
 
 //         console.log(
-//           "SELECTED SEATS:",
-//           selectedSeats
+//           "MEAL PRICE:",
+//           mealPrice
+//         );
+
+//         console.log(
+//           "BAGGAGE PRICE:",
+//           baggagePrice
+//         );
+
+//         console.log(
+//           "TAXES:",
+//           taxes
+//         );
+
+//         console.log(
+//           "CONVENIENCE FEE:",
+//           convenienceFee
+//         );
+
+//         console.log(
+//           "DISCOUNT:",
+//           discount
+//         );
+
+//         console.log(
+//           "FINAL TOTAL:",
+//           total
+//         );
+
+//         console.log(
+//           "CUSTOMER USER ID:",
+//           bookingData.userId
 //         );
 
 //         console.log(
@@ -6298,22 +3025,18 @@
 //           await fetch(
 //             "http://localhost:5000/api/bookings",
 //             {
-
 //               method:
 //                 "POST",
 
 //               headers: {
-
 //                 "Content-Type":
 //                   "application/json",
-
 //               },
 
 //               body:
 //                 JSON.stringify(
 //                   bookingData
 //                 ),
-
 //             }
 //           );
 
@@ -6332,9 +3055,7 @@
 //         // ERROR
 //         // =================================================
 
-//         if (
-//           !response.ok
-//         ) {
+//         if (!response.ok) {
 
 //           throw new Error(
 //             data.message ||
@@ -6362,46 +3083,18 @@
 //         navigate(
 //           "/success",
 //           {
-
 //             state: {
 
 //               flight,
 
-//               passenger:
-//                 finalPassengers[0],
+//               passenger,
 
-//               passengers:
-//                 finalPassengers,
-
-
-//               travellers: {
-
-//                 adults:
-//                   adultCount,
-
-//                 children:
-//                   childCount,
-
-//                 infants:
-//                   infantCount,
-
-//                 total:
-//                   totalPassengers,
-
-//               },
-
+//               travellers,
 
 //               pricing: {
-
 //                 ...pricing,
 
 //                 finalFlightFare,
-
-//                 adultFareTotal,
-
-//                 childFareTotal,
-
-//                 infantFareTotal,
 
 //                 seatPrice,
 
@@ -6425,7 +3118,6 @@
 //               seats:
 //                 selectedSeats,
 
-
 //               seat:
 //                 selectedSeats[0] ||
 //                 "",
@@ -6433,7 +3125,6 @@
 
 //               meals:
 //                 selectedMeals,
-
 
 //               meal:
 //                 selectedMeals[0] ||
@@ -6462,9 +3153,7 @@
 //         );
 
 
-//       } catch (
-//         error
-//       ) {
+//       } catch (error) {
 
 //         console.error(
 //           "PAYMENT ERROR:",
@@ -6476,7 +3165,6 @@
 //           error.message ||
 //           "Unable to complete booking."
 //         );
-
 
 //       } finally {
 
@@ -6499,81 +3187,58 @@
 //       <section className="payment-page">
 
 
-//         {/* ===============================================
+//         {/* =================================================
 //                     PROGRESS
-//         =============================================== */}
+//         ================================================= */}
 
 //         <div className="payment-progress">
 
 //           <div className="step active">
-
 //             <span>✓</span>
-
 //             <p>Booking</p>
-
 //           </div>
-
 
 //           <div className="line active"></div>
 
-
 //           <div className="step active">
-
 //             <span>✓</span>
-
 //             <p>Seat</p>
-
 //           </div>
-
 
 //           <div className="line active"></div>
 
-
 //           <div className="step active">
-
 //             <span>✓</span>
-
 //             <p>Meal</p>
-
 //           </div>
 
-
 //           <div className="line active"></div>
-
 
 //           <div className="step active">
-
 //             <span>✓</span>
-
 //             <p>Baggage</p>
-
 //           </div>
 
-
 //           <div className="line active"></div>
-
 
 //           <div className="step current">
-
 //             <span>5</span>
-
 //             <p>Payment</p>
-
 //           </div>
 
 //         </div>
 
 
-//         {/* ===============================================
+//         {/* =================================================
 //                     CONTAINER
-//         =============================================== */}
+//         ================================================= */}
 
 //         <div className="payment-container">
 
 
-//           {/* =============================================
+//           {/* =================================================
 //                     LEFT
-//           ============================================= */}
+//           ================================================= */}
 
 //           <div className="payment-left">
 
@@ -6606,25 +3271,55 @@
 //               </label>
 
 
-//               {paymentMethod ===
-//                 "upi" && (
+//               {paymentMethod === "upi" && (
+//                 <div className="dynamic-upi-payment">
 
-//                 <div className="upi-apps">
+//                   <div className="upi-amount-box">
+//                     <span>Amount Payable</span>
+//                     <strong>
+//                       ₹{Number(total || 0).toLocaleString("en-IN")}
+//                     </strong>
+//                   </div>
 
-//                   <button type="button">
-//                     PhonePe
-//                   </button>
+//                   <div className="upi-qr-card">
+//                     <h3>Scan & Pay</h3>
+//                     <p className="upi-subtitle">
+//                       Scan this QR with PhonePe, Google Pay, Paytm or any UPI app.
+//                     </p>
 
-//                   <button type="button">
-//                     Google Pay
-//                   </button>
+//                     <div className="upi-qr-wrapper">
+//                       <QRCodeSVG
+//                         value={upiPaymentUrl}
+//                         size={230}
+//                         level="H"
+//                         includeMargin={true}
+//                       />
+//                     </div>
 
-//                   <button type="button">
-//                     Paytm
-//                   </button>
+//                     <div className="upi-details">
+//                       <p>UPI ID</p>
+//                       <strong>{UPI_ID}</strong>
+//                     </div>
+
+//                     <div className="upi-payment-info">
+//                       <span>💰 Pay exactly</span>
+//                       <strong>
+//                         ₹{Number(total || 0).toLocaleString("en-IN")}
+//                       </strong>
+//                     </div>
+
+//                     <button
+//                       type="button"
+//                       className="open-upi-btn"
+//                       onClick={() => {
+//                         window.location.href = upiPaymentUrl;
+//                       }}
+//                     >
+//                       Open UPI App
+//                     </button>
+//                   </div>
 
 //                 </div>
-
 //               )}
 
 //             </div>
@@ -6794,9 +3489,9 @@
 //           </div>
 
 
-//           {/* =============================================
+//           {/* =================================================
 //                     RIGHT
-//           ============================================= */}
+//           ================================================= */}
 
 //           <div className="payment-right">
 
@@ -6816,17 +3511,8 @@
 //                 </span>
 
 //                 <span>
-
-//                   {finalPassengers[0]
-//                     ?.firstName ||
-//                     "Passenger"}
-
-//                   {" "}
-
-//                   {finalPassengers[0]
-//                     ?.lastName ||
-//                     ""}
-
+//                   {passenger.firstName}{" "}
+//                   {passenger.lastName}
 //                 </span>
 
 //               </div>
@@ -6843,22 +3529,25 @@
 //                 <span>
 
 //                   {adultCount} Adult
-//                   {adultCount > 1
+//                   {adultCount >
+//                   1
 //                     ? "s"
 //                     : ""}
 
-
-//                   {childCount > 0 &&
+//                   {childCount >
+//                     0 &&
 //                     `, ${childCount} Child${
-//                       childCount > 1
+//                       childCount >
+//                       1
 //                         ? "ren"
 //                         : ""
 //                     }`}
 
-
-//                   {infantCount > 0 &&
+//                   {infantCount >
+//                     0 &&
 //                     `, ${infantCount} Infant${
-//                       infantCount > 1
+//                       infantCount >
+//                       1
 //                         ? "s"
 //                         : ""
 //                     }`}
@@ -6933,11 +3622,9 @@
 
 //                   {selectedSeats.length >
 //                   0
-
 //                     ? selectedSeats.join(
 //                         ", "
 //                       )
-
 //                     : "-"}
 
 //                 </span>
@@ -6957,7 +3644,6 @@
 
 //                   {selectedMeals.length >
 //                   0
-
 //                     ? selectedMeals
 //                         .map(
 //                           (item) =>
@@ -6967,7 +3653,6 @@
 //                         .join(
 //                           ", "
 //                         )
-
 //                     : "No Meal"}
 
 //                 </span>
@@ -6987,7 +3672,6 @@
 
 //                   {selectedBaggage.length >
 //                   0
-
 //                     ? selectedBaggage
 //                         .map(
 //                           (item) =>
@@ -6996,7 +3680,6 @@
 //                         .join(
 //                           ", "
 //                         )
-
 //                     : "15 KG Included"}
 
 //                 </span>
@@ -7007,51 +3690,43 @@
 //               <hr />
 
 
-//               {/* ADULT FARE */}
+//               {/* =================================================
+//                         PRICE BREAKDOWN
+//               ================================================= */}
+
 
 //               <div className="summary-row">
 
 //                 <span>
-
 //                   Adult Fare
 //                   ({adultCount})
-
 //                 </span>
 
 //                 <span>
-
 //                   ₹{" "}
-
 //                   {adultFareTotal.toLocaleString(
 //                     "en-IN"
 //                   )}
-
 //                 </span>
 
 //               </div>
 
 
-//               {/* CHILD FARE */}
-
-//               {childCount > 0 && (
+//               {childCount >
+//                 0 && (
 
 //                 <div className="summary-row">
 
 //                   <span>
-
 //                     Child Fare
 //                     ({childCount})
-
 //                   </span>
 
 //                   <span>
-
 //                     ₹{" "}
-
 //                     {childFareTotal.toLocaleString(
 //                       "en-IN"
 //                     )}
-
 //                   </span>
 
 //                 </div>
@@ -7059,35 +3734,27 @@
 //               )}
 
 
-//               {/* INFANT FARE */}
-
-//               {infantCount > 0 && (
+//               {infantCount >
+//                 0 && (
 
 //                 <div className="summary-row">
 
 //                   <span>
-
 //                     Infant Fare
 //                     ({infantCount})
-
 //                   </span>
 
 //                   <span>
-
 //                     ₹{" "}
-
 //                     {infantFareTotal.toLocaleString(
 //                       "en-IN"
 //                     )}
-
 //                   </span>
 
 //                 </div>
 
 //               )}
 
-
-//               {/* SEAT */}
 
 //               <div className="summary-row">
 
@@ -7096,19 +3763,14 @@
 //                 </span>
 
 //                 <span>
-
 //                   ₹{" "}
-
 //                   {seatPrice.toLocaleString(
 //                     "en-IN"
 //                   )}
-
 //                 </span>
 
 //               </div>
 
-
-//               {/* MEAL */}
 
 //               <div className="summary-row">
 
@@ -7117,19 +3779,14 @@
 //                 </span>
 
 //                 <span>
-
 //                   ₹{" "}
-
 //                   {mealPrice.toLocaleString(
 //                     "en-IN"
 //                   )}
-
 //                 </span>
 
 //               </div>
 
-
-//               {/* BAGGAGE */}
 
 //               <div className="summary-row">
 
@@ -7138,19 +3795,14 @@
 //                 </span>
 
 //                 <span>
-
 //                   ₹{" "}
-
 //                   {baggagePrice.toLocaleString(
 //                     "en-IN"
 //                   )}
-
 //                 </span>
 
 //               </div>
 
-
-//               {/* TAX */}
 
 //               <div className="summary-row">
 
@@ -7159,19 +3811,14 @@
 //                 </span>
 
 //                 <span>
-
 //                   ₹{" "}
-
 //                   {taxes.toLocaleString(
 //                     "en-IN"
 //                   )}
-
 //                 </span>
 
 //               </div>
 
-
-//               {/* CONVENIENCE */}
 
 //               <div className="summary-row">
 
@@ -7180,19 +3827,14 @@
 //                 </span>
 
 //                 <span>
-
 //                   ₹{" "}
-
 //                   {convenienceFee.toLocaleString(
 //                     "en-IN"
 //                   )}
-
 //                 </span>
 
 //               </div>
 
-
-//               {/* DISCOUNT */}
 
 //               <div className="summary-row discount">
 
@@ -7201,13 +3843,10 @@
 //                 </span>
 
 //                 <span>
-
 //                   - ₹{" "}
-
 //                   {discount.toLocaleString(
 //                     "en-IN"
 //                   )}
-
 //                 </span>
 
 //               </div>
@@ -7216,7 +3855,7 @@
 //               <hr />
 
 
-//               {/* FINAL TOTAL */}
+//               {/* FINAL */}
 
 //               <div className="summary-total">
 
@@ -7225,13 +3864,10 @@
 //                 </span>
 
 //                 <span>
-
 //                   ₹{" "}
-
 //                   {total.toLocaleString(
 //                     "en-IN"
 //                   )}
-
 //                 </span>
 
 //               </div>
@@ -7246,7 +3882,6 @@
 
 //               <button
 //                 className="pay-btn"
-//                 type="button"
 //                 onClick={
 //                   handlePayment
 //                 }
@@ -7256,9 +3891,7 @@
 //               >
 
 //                 {loading
-
 //                   ? "Processing..."
-
 //                   : `Pay ₹ ${total.toLocaleString(
 //                       "en-IN"
 //                     )}`}
@@ -7282,13 +3915,78 @@
 // }
 
 
-// export default Payment; 
+// export default Payment;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 import "./Payment.css";
 
 import { useState } from "react";
+
+import { QRCodeSVG } from "qrcode.react";
+
 import {
   useLocation,
   useNavigate,
@@ -7297,10 +3995,21 @@ import {
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 
+// =====================================================
+// BANK OF BARODA QR IMAGE
+// =====================================================
+
+import BankofQR from "../../assets/Bankof.jpeg";
+
+
+// =====================================================
+// PAYMENT PAGE
+// =====================================================
 
 function Payment() {
 
   const navigate = useNavigate();
+
   const location = useLocation();
 
 
@@ -7322,7 +4031,104 @@ function Payment() {
 
     baggage,
     baggageTotal,
+
   } = location.state || {};
+
+
+  // =====================================================
+  // USER ROLE
+  // =====================================================
+
+  const getStoredRole = () => {
+
+    const directKeys = [
+      "userRole",
+      "role",
+      "accountType",
+    ];
+
+    for (const key of directKeys) {
+
+      const value =
+        localStorage.getItem(key);
+
+      if (value) {
+
+        return String(value)
+          .toLowerCase()
+          .trim();
+
+      }
+
+    }
+
+
+    const objectKeys = [
+      "user",
+      "currentUser",
+      "loggedInUser",
+      "authUser",
+    ];
+
+
+    for (const key of objectKeys) {
+
+      const value =
+        localStorage.getItem(key);
+
+      if (!value) continue;
+
+
+      try {
+
+        const parsed =
+          JSON.parse(value);
+
+        const role =
+          parsed?.role ||
+          parsed?.user?.role ||
+          parsed?.accountType;
+
+
+        if (role) {
+
+          return String(role)
+            .toLowerCase()
+            .trim();
+
+        }
+
+      } catch (error) {
+
+        console.log(
+          "Role parsing error:",
+          error
+        );
+
+      }
+
+    }
+
+
+    return "customer";
+
+  };
+
+
+  const userRole =
+    getStoredRole();
+
+
+  const isAdmin =
+    userRole === "admin";
+
+
+  const isAgent =
+    userRole === "agent";
+
+
+  const isCustomer =
+    userRole === "customer";
 
 
   // =====================================================
@@ -7332,11 +4138,14 @@ function Payment() {
   const [coupon, setCoupon] =
     useState("");
 
+
   const [discount, setDiscount] =
     useState(0);
 
+
   const [paymentMethod, setPaymentMethod] =
     useState("upi");
+
 
   const [loading, setLoading] =
     useState(false);
@@ -7450,80 +4259,106 @@ function Payment() {
 
 
   // =====================================================
-  // TICKET FARE
-  // =====================================================
-
-  /*
-    Priority:
-
-    1. pricing calculated by Booking page
-    2. passengerFareTotal
-    3. flight finalPrice
-  */
-
-
-  const flightPrice =
-    Number(
-      pricing?.passengerFareTotal ??
-      flight?.passengerFareTotal ??
-      flight?.finalPrice ??
-      flight?.price ??
-      0
-    );
-
-
-  // =====================================================
-  // FALLBACK TICKET CALCULATION
+  // ADULT FARE
   // =====================================================
 
   const adultFare =
     Number(
-      pricing?.adultFare ??
-      flight?.adultFare ??
-      flight?.price ??
-      0
-    );
+      isAgent
+        ? (
+            pricing?.agentAdultFare ??
+            flight?.agentAdultFare ??
+            pricing?.adultFare ??
+            flight?.adultFare ??
+            flight?.price
+          )
+        : (
+            pricing?.adultFare ??
+            flight?.adultFare ??
+            flight?.price
+          )
+    ) || 0;
 
+
+  // =====================================================
+  // CHILD FARE
+  // =====================================================
 
   const childFare =
     Number(
-      pricing?.childFare ??
-      flight?.childFare ??
-      adultFare
-    );
+      isAgent
+        ? (
+            pricing?.agentChildFare ??
+            flight?.agentChildFare ??
+            pricing?.childFare ??
+            flight?.childFare ??
+            adultFare
+          )
+        : (
+            pricing?.childFare ??
+            flight?.childFare ??
+            adultFare
+          )
+    ) || 0;
 
+
+  // =====================================================
+  // INFANT FARE
+  // =====================================================
 
   const infantFare =
     Number(
-      pricing?.infantFare ??
-      flight?.infantFare ??
-      0
-    );
+      isAgent
+        ? (
+            pricing?.agentInfantFare ??
+            flight?.agentInfantFare ??
+            pricing?.infantFare ??
+            flight?.infantFare
+          )
+        : (
+            pricing?.infantFare ??
+            flight?.infantFare
+          )
+    ) || 0;
 
 
-  /*
-    Agar Booking page ne passengerFareTotal
-    nahi bheja hai to yahan calculate hoga.
-  */
+  // =====================================================
+  // PASSENGER FARE
+  // =====================================================
 
   const calculatedPassengerFare =
     pricing?.passengerFareTotal !==
-      undefined
+    undefined
+
       ? Number(
           pricing.passengerFareTotal
         )
+
       : (
           adultFare *
-            adultCount
+          adultCount
         ) +
+
         (
           childFare *
-            childCount
+          childCount
         ) +
+
         (
           infantFare *
-            infantCount
+          infantCount
         );
+
+
+  const finalFlightFare =
+    pricing?.passengerFareTotal !==
+    undefined
+
+      ? Number(
+          pricing.passengerFareTotal
+        )
+
+      : calculatedPassengerFare;
 
 
   // =====================================================
@@ -7536,20 +4371,15 @@ function Payment() {
     );
 
 
-  const fallbackSeatPrice =
-    selectedSeats.length > 0
-      ? selectedSeats.length *
-        300
-      : 0;
-
-
   const seatPrice =
     Number.isFinite(
       calculatedSeatPrice
     ) &&
     calculatedSeatPrice > 0
+
       ? calculatedSeatPrice
-      : fallbackSeatPrice;
+
+      : 0;
 
 
   // =====================================================
@@ -7567,11 +4397,16 @@ function Payment() {
       (
         total,
         item
-      ) =>
-        total +
-        Number(
-          item?.price || 0
-        ),
+      ) => {
+
+        return (
+          total +
+          Number(
+            item?.price || 0
+          )
+        );
+
+      },
       0
     );
 
@@ -7580,7 +4415,9 @@ function Payment() {
     Number.isFinite(
       calculatedMealPrice
     )
+
       ? calculatedMealPrice
+
       : fallbackMealPrice;
 
 
@@ -7598,15 +4435,21 @@ function Payment() {
     Number(
       baggageTotal
     ) ||
+
     selectedBaggage.reduce(
       (
         total,
         item
-      ) =>
-        total +
-        Number(
-          item?.price || 0
-        ),
+      ) => {
+
+        return (
+          total +
+          Number(
+            item?.price || 0
+          )
+        );
+
+      },
       0
     );
 
@@ -7615,7 +4458,9 @@ function Payment() {
     Number.isFinite(
       calculatedBaggagePrice
     )
+
       ? calculatedBaggagePrice
+
       : fallbackBaggagePrice;
 
 
@@ -7633,28 +4478,7 @@ function Payment() {
   // CONVENIENCE FEE
   // =====================================================
 
-  const convenienceFee =
-    Number(
-      flight?.serviceFee
-    ) || 0;
-
-
-  // =====================================================
-  // PASSENGER FARE
-  // =====================================================
-
-  /*
-    Agar pricing passengerFareTotal
-    nahi hai to calculated value use hogi.
-  */
-
-  const finalFlightFare =
-    pricing?.passengerFareTotal !==
-      undefined
-      ? Number(
-          pricing.passengerFareTotal
-        )
-      : calculatedPassengerFare;
+  const convenienceFee = 0;
 
 
   // =====================================================
@@ -7678,8 +4502,67 @@ function Payment() {
     Math.max(
       0,
       subtotal -
-        discount
+      discount
     );
+
+
+  // =====================================================
+  // ICICI BANK UPI
+  // =====================================================
+
+  const ICICI_UPI_ID =
+    "eazypay.0000064618@icici";
+
+
+  const ICICI_UPI_NAME =
+    "Saiyed Travels";
+
+
+  const upiAmount =
+    Number(total || 0)
+      .toFixed(2);
+
+
+  const iciciPaymentUrl =
+    `upi://pay?pa=${encodeURIComponent(
+      ICICI_UPI_ID
+    )}` +
+
+    `&pn=${encodeURIComponent(
+      ICICI_UPI_NAME
+    )}` +
+
+    `&am=${upiAmount}` +
+
+    `&cu=INR` +
+
+    `&tn=${encodeURIComponent(
+      "Saiyed Travels Flight Booking"
+    )}`;
+
+
+  // =====================================================
+  // BANK OF BARODA DETAILS
+  // =====================================================
+
+  const BARODA_UPI_ID =
+    "9414080277@barodampay";
+
+
+  const BARODA_ACCOUNT_NAME =
+    "SAYED TRAVELS";
+
+
+  const BARODA_ACCOUNT_NUMBER =
+    "1687020000107";
+
+
+  const BARODA_IFSC =
+    "BARB0MOJHHU";
+
+
+  const BARODA_CITY =
+    "JHUNJHUNU";
 
 
   // =====================================================
@@ -7698,11 +4581,6 @@ function Payment() {
       code ===
       "SAVE500"
     ) {
-
-      /*
-        Discount subtotal se zyada
-        nahi hona chahiye.
-      */
 
       const finalDiscount =
         Math.min(
@@ -7723,6 +4601,7 @@ function Payment() {
     } else {
 
       setDiscount(0);
+
 
       alert(
         "Invalid Coupon"
@@ -7753,7 +4632,7 @@ function Payment() {
       if (
         index <
         adultCount +
-          childCount
+        childCount
       ) {
 
         return "Child";
@@ -7767,7 +4646,7 @@ function Payment() {
 
 
   // =====================================================
-  // TOTALS BY PASSENGER TYPE
+  // FARE TOTALS
   // =====================================================
 
   const adultFareTotal =
@@ -7803,7 +4682,7 @@ function Payment() {
 
 
         // =================================================
-        // CHECK FLIGHT ID
+        // FLIGHT ID
         // =================================================
 
         const flightId =
@@ -7823,7 +4702,7 @@ function Payment() {
 
 
         // =================================================
-        // CHECK PASSENGER DATA
+        // PASSENGER CHECK
         // =================================================
 
         if (
@@ -7839,46 +4718,50 @@ function Payment() {
 
 
         // =================================================
+        // USER ID
+        // =================================================
+
+        let userId =
+          localStorage.getItem(
+            "userId"
+          );
+
+
+        if (!userId) {
+
+          try {
+
+            const user =
+              JSON.parse(
+                localStorage.getItem(
+                  "user"
+                ) || "{}"
+              );
+
+
+            userId =
+              user?._id ||
+              user?.id ||
+              null;
+
+          } catch (error) {
+
+            userId = null;
+
+          }
+
+        }
+
+
+        // =================================================
         // BOOKING DATA
         // =================================================
 
         const bookingData = {
 
-          // ===============================================
-          // CUSTOMER USER ID
-          // IMPORTANT FOR MY BOOKINGS
-          // ===============================================
-
-          userId:
-            localStorage.getItem("userId") ||
-            (() => {
-              try {
-                const user =
-                  JSON.parse(
-                    localStorage.getItem("user") || "{}"
-                  );
-
-                return (
-                  user?._id ||
-                  user?.id ||
-                  null
-                );
-              } catch (error) {
-                return null;
-              }
-            })(),
-
-
-          // ===============================================
-          // CUSTOMER / MAIN PASSENGER
-          // ===============================================
+          userId,
 
           passenger,
-
-
-          // ===============================================
-          // PASSENGER COUNTS
-          // ===============================================
 
           travellers: {
 
@@ -7987,28 +4870,25 @@ function Payment() {
               "",
 
 
-            // ===========================================
-            // ORIGINAL FLIGHT PRICE
-            // ===========================================
-
             price:
               Number(
                 flight.price
               ) || 0,
 
+
             finalPrice:
               Number(
                 flight.finalPrice
               ) ||
+
               Number(
                 flight.price
               ) ||
+
               0,
 
 
-            // ===========================================
-            // PASSENGER PRICES
-            // ===========================================
+            // PASSENGER FARES
 
             adultFare:
               adultFare,
@@ -8020,9 +4900,27 @@ function Payment() {
               infantFare,
 
 
-            // ===========================================
-            // EXTRA SERVICE PRICES
-            // ===========================================
+            agentAdultFare:
+              Number(
+                flight.agentAdultFare
+              ) || 0,
+
+            agentChildFare:
+              Number(
+                flight.agentChildFare
+              ) || 0,
+
+            agentInfantFare:
+              Number(
+                flight.agentInfantFare
+              ) || 0,
+
+
+            fareRole:
+              userRole,
+
+
+            // SERVICES
 
             adultSeatPrice:
               Number(
@@ -8072,8 +4970,7 @@ function Payment() {
               ) || 0,
 
 
-            taxes:
-              taxes,
+            taxes,
 
             serviceFee:
               convenienceFee,
@@ -8096,12 +4993,10 @@ function Payment() {
             selectedSeats[0] ||
             "",
 
-
           seatCount:
             selectedSeats.length,
 
-          seatPrice:
-            seatPrice,
+          seatPrice,
 
 
           // ===============================================
@@ -8121,12 +5016,10 @@ function Payment() {
                 0,
             },
 
-
           mealCount:
             selectedMeals.length,
 
-          mealPrice:
-            mealPrice,
+          mealPrice,
 
 
           // ===============================================
@@ -8139,12 +5032,11 @@ function Payment() {
           baggageCount:
             selectedBaggage.length,
 
-          baggagePrice:
-            baggagePrice,
+          baggagePrice,
 
 
           // ===============================================
-          // PRICE BREAKDOWN
+          // PRICE DETAILS
           // ===============================================
 
           priceDetails: {
@@ -8158,10 +5050,8 @@ function Payment() {
             infantFare:
               infantFareTotal,
 
-
             flightFare:
               finalFlightFare,
-
 
             seatCharges:
               seatPrice,
@@ -8172,22 +5062,15 @@ function Payment() {
             baggageCharges:
               baggagePrice,
 
+            taxes,
 
-            taxes:
-              taxes,
+            convenienceFee,
 
-            convenienceFee:
-              convenienceFee,
+            discount,
 
-            discount:
-              discount,
+            subtotal,
 
-
-            subtotal:
-              subtotal,
-
-            total:
-              total,
+            total,
 
           },
 
@@ -8200,102 +5083,68 @@ function Payment() {
             paymentMethod ||
             "upi",
 
+
+          /*
+            ADMIN:
+            payment automatically Paid
+
+            CUSTOMER / AGENT:
+            payment Pending until
+            payment verification
+          */
+
           paymentStatus:
-            "Paid",
+            isAdmin
+              ? "Paid"
+              : "Pending",
+
+
+          fareRole:
+            userRole,
+
+
+          farePerPassenger:
+            adultFare,
+
+
+          agentAdultFare:
+            Number(
+              flight.agentAdultFare
+            ) || 0,
+
 
           bookingStatus:
-            "Confirmed",
+            isAdmin
+              ? "Confirmed"
+              : "Pending Payment",
 
 
-          // ===============================================
-          // OLD / BACKWARD COMPATIBILITY
-          // ===============================================
+          // OLD COMPATIBILITY
 
-          discount:
-            discount,
+          discount,
 
-          total:
-            total,
+          total,
 
         };
 
 
         // =================================================
-        // DEBUG
+        // ADMIN PAYMENT BYPASS
         // =================================================
 
-        console.log(
-          "===================================="
-        );
+        if (isAdmin) {
 
-        console.log(
-          "ADULTS:",
-          adultCount
-        );
+          console.log(
+            "ADMIN BOOKING - PAYMENT BYPASS"
+          );
 
-        console.log(
-          "CHILDREN:",
-          childCount
-        );
+        } else {
 
-        console.log(
-          "INFANTS:",
-          infantCount
-        );
+          console.log(
+            "CUSTOMER / AGENT PAYMENT REQUIRED"
+          );
 
-        console.log(
-          "FLIGHT FARE:",
-          finalFlightFare
-        );
-
-        console.log(
-          "SEAT PRICE:",
-          seatPrice
-        );
-
-        console.log(
-          "MEAL PRICE:",
-          mealPrice
-        );
-
-        console.log(
-          "BAGGAGE PRICE:",
-          baggagePrice
-        );
-
-        console.log(
-          "TAXES:",
-          taxes
-        );
-
-        console.log(
-          "CONVENIENCE FEE:",
-          convenienceFee
-        );
-
-        console.log(
-          "DISCOUNT:",
-          discount
-        );
-
-        console.log(
-          "FINAL TOTAL:",
-          total
-        );
-
-        console.log(
-          "CUSTOMER USER ID:",
-          bookingData.userId
-        );
-
-        console.log(
-          "BOOKING DATA:",
-          bookingData
-        );
-
-        console.log(
-          "===================================="
-        );
+        }
 
 
         // =================================================
@@ -8306,18 +5155,22 @@ function Payment() {
           await fetch(
             "http://localhost:5000/api/bookings",
             {
+
               method:
                 "POST",
 
               headers: {
+
                 "Content-Type":
                   "application/json",
+
               },
 
               body:
                 JSON.stringify(
                   bookingData
                 ),
+
             }
           );
 
@@ -8364,6 +5217,7 @@ function Payment() {
         navigate(
           "/success",
           {
+
             state: {
 
               flight,
@@ -8372,7 +5226,9 @@ function Payment() {
 
               travellers,
 
+
               pricing: {
+
                 ...pricing,
 
                 finalFlightFare,
@@ -8447,6 +5303,7 @@ function Payment() {
           "Unable to complete booking."
         );
 
+
       } finally {
 
         setLoading(false);
@@ -8462,6 +5319,7 @@ function Payment() {
 
   return (
     <>
+
       <Navbar />
 
 
@@ -8469,7 +5327,7 @@ function Payment() {
 
 
         {/* =================================================
-                    PROGRESS
+            PROGRESS
         ================================================= */}
 
         <div className="payment-progress">
@@ -8511,14 +5369,14 @@ function Payment() {
 
 
         {/* =================================================
-                    CONTAINER
+            PAYMENT CONTAINER
         ================================================= */}
 
         <div className="payment-container">
 
 
           {/* =================================================
-                    LEFT
+              LEFT SIDE
           ================================================= */}
 
           <div className="payment-left">
@@ -8528,7 +5386,9 @@ function Payment() {
             </h2>
 
 
-            {/* UPI */}
+            {/* =================================================
+                UPI
+            ================================================= */}
 
             <div className="payment-card">
 
@@ -8536,15 +5396,18 @@ function Payment() {
 
                 <input
                   type="radio"
+
                   checked={
                     paymentMethod ===
                     "upi"
                   }
+
                   onChange={() =>
                     setPaymentMethod(
                       "upi"
                     )
                   }
+
                 />
 
                 UPI Payment
@@ -8552,22 +5415,290 @@ function Payment() {
               </label>
 
 
-              {paymentMethod ===
-                "upi" && (
+              {paymentMethod === "upi" && (
 
-                <div className="upi-apps">
+                <div className="dynamic-upi-payment">
 
-                  <button type="button">
-                    PhonePe
-                  </button>
 
-                  <button type="button">
-                    Google Pay
-                  </button>
+                  {/* AMOUNT */}
 
-                  <button type="button">
-                    Paytm
-                  </button>
+                  <div className="upi-amount-box">
+
+                    <span>
+                      Amount Payable
+                    </span>
+
+                    <strong>
+                      ₹
+                      {Number(
+                        total || 0
+                      ).toLocaleString(
+                        "en-IN"
+                      )}
+                    </strong>
+
+                  </div>
+
+
+                  {/* =================================================
+                      ICICI QR
+                  ================================================= */}
+
+                  <div className="upi-qr-card">
+
+                    <div className="upi-bank-title">
+
+                      <strong>
+                        ICICI Bank
+                      </strong>
+
+                      <span>
+                        UPI Payment
+                      </span>
+
+                    </div>
+
+
+                    <h3>
+                      Scan & Pay
+                    </h3>
+
+
+                    <p className="upi-subtitle">
+
+                      Scan this QR using
+                      PhonePe, Google Pay,
+                      Paytm or any UPI app.
+
+                    </p>
+
+
+                    <div className="upi-qr-wrapper">
+
+                      <QRCodeSVG
+
+                        value={
+                          iciciPaymentUrl
+                        }
+
+                        size={230}
+
+                        level="H"
+
+                        includeMargin={true}
+
+                      />
+
+                    </div>
+
+
+                    <div className="upi-details">
+
+                      <span>
+                        UPI ID
+                      </span>
+
+                      <strong>
+                        {ICICI_UPI_ID}
+                      </strong>
+
+                    </div>
+
+
+                    <div className="upi-payment-info">
+
+                      <span>
+                        💰 Pay Exactly
+                      </span>
+
+                      <strong>
+                        ₹
+                        {Number(
+                          total || 0
+                        ).toLocaleString(
+                          "en-IN"
+                        )}
+                      </strong>
+
+                    </div>
+
+
+                    <button
+
+                      type="button"
+
+                      className="open-upi-btn"
+
+                      onClick={() => {
+
+                        window.location.href =
+                          iciciPaymentUrl;
+
+                      }}
+
+                    >
+                      Open UPI App
+                    </button>
+
+                  </div>
+
+
+                  {/* =================================================
+                      BANK OF BARODA QR
+                  ================================================= */}
+
+                  <div className="upi-qr-card baroda-card">
+
+                    <div className="upi-bank-title">
+
+                      <strong>
+                        Bank of Baroda
+                      </strong>
+
+                      <span>
+                        UPI Payment
+                      </span>
+
+                    </div>
+
+
+                    <h3>
+                      Scan & Pay
+                    </h3>
+
+
+                    <p className="upi-subtitle">
+
+                      Scan this Bank of Baroda
+                      QR using any UPI app.
+
+                    </p>
+
+
+                    <div className="upi-qr-wrapper">
+
+                      <img
+
+                        src={BankofQR}
+
+                        alt="Saiyed Travels Bank of Baroda UPI QR"
+
+                        className="bankof-qr-image"
+
+                      />
+
+                    </div>
+
+
+                    <div className="upi-details">
+
+                      <span>
+                        UPI ID
+                      </span>
+
+                      <strong>
+                        {BARODA_UPI_ID}
+                      </strong>
+
+                    </div>
+
+
+                    <div className="bank-details-box">
+
+                      <div>
+                        <span>
+                          Account Name
+                        </span>
+
+                        <strong>
+                          {BARODA_ACCOUNT_NAME}
+                        </strong>
+                      </div>
+
+
+                      <div>
+                        <span>
+                          Account Number
+                        </span>
+
+                        <strong>
+                          {BARODA_ACCOUNT_NUMBER}
+                        </strong>
+                      </div>
+
+
+                      <div>
+                        <span>
+                          IFSC Code
+                        </span>
+
+                        <strong>
+                          {BARODA_IFSC}
+                        </strong>
+                      </div>
+
+
+                      <div>
+                        <span>
+                          City
+                        </span>
+
+                        <strong>
+                          {BARODA_CITY}
+                        </strong>
+                      </div>
+
+                    </div>
+
+
+                    <div className="upi-payment-info">
+
+                      <span>
+                        💰 Amount Payable
+                      </span>
+
+                      <strong>
+                        ₹
+                        {Number(
+                          total || 0
+                        ).toLocaleString(
+                          "en-IN"
+                        )}
+                      </strong>
+
+                    </div>
+
+
+                    <div className="upi-payment-note">
+
+                      🔒
+
+                      <span>
+                        After making payment,
+                        your booking will be
+                        processed according to
+                        payment verification.
+                      </span>
+
+                    </div>
+
+                  </div>
+
+
+                  {/* =================================================
+                      PAYMENT SECURITY
+                  ================================================= */}
+
+                  <div className="upi-security-note">
+
+                    🔒 Secure UPI Payment
+
+                    <span>
+                      Pay the exact amount shown
+                      above.
+                    </span>
+
+                  </div>
 
                 </div>
 
@@ -8576,7 +5707,9 @@ function Payment() {
             </div>
 
 
-            {/* CARD */}
+            {/* =================================================
+                CREDIT / DEBIT CARD
+            ================================================= */}
 
             <div className="payment-card">
 
@@ -8584,15 +5717,18 @@ function Payment() {
 
                 <input
                   type="radio"
+
                   checked={
                     paymentMethod ===
                     "card"
                   }
+
                   onChange={() =>
                     setPaymentMethod(
                       "card"
                     )
                   }
+
                 />
 
                 Credit / Debit Card
@@ -8600,38 +5736,49 @@ function Payment() {
               </label>
 
 
-              {paymentMethod ===
-                "card" && (
+              {paymentMethod === "card" && (
 
-                <>
+                <div className="card-payment-form">
 
                   <input
                     type="text"
                     placeholder="Card Number"
+                    maxLength="19"
                   />
+
 
                   <div className="card-row">
 
                     <input
                       type="text"
                       placeholder="MM / YY"
+                      maxLength="5"
                     />
 
                     <input
                       type="password"
                       placeholder="CVV"
+                      maxLength="4"
                     />
 
                   </div>
 
-                </>
+
+                  <input
+                    type="text"
+                    placeholder="Card Holder Name"
+                  />
+
+                </div>
 
               )}
 
             </div>
 
 
-            {/* NET BANKING */}
+            {/* =================================================
+                NET BANKING
+            ================================================= */}
 
             <div className="payment-card">
 
@@ -8639,15 +5786,18 @@ function Payment() {
 
                 <input
                   type="radio"
+
                   checked={
                     paymentMethod ===
                     "netbanking"
                   }
+
                   onChange={() =>
                     setPaymentMethod(
                       "netbanking"
                     )
                   }
+
                 />
 
                 Net Banking
@@ -8658,36 +5808,68 @@ function Payment() {
               {paymentMethod ===
                 "netbanking" && (
 
-                <select>
+                <div className="netbanking-box">
 
-                  <option>
-                    Select Bank
-                  </option>
+                  <select>
 
-                  <option>
-                    State Bank of India
-                  </option>
+                    <option value="">
+                      Select Bank
+                    </option>
 
-                  <option>
-                    HDFC Bank
-                  </option>
+                    <option>
+                      Bank of Baroda
+                    </option>
 
-                  <option>
-                    ICICI Bank
-                  </option>
+                    <option>
+                      State Bank of India
+                    </option>
 
-                  <option>
-                    Axis Bank
-                  </option>
+                    <option>
+                      HDFC Bank
+                    </option>
 
-                </select>
+                    <option>
+                      ICICI Bank
+                    </option>
+
+                    <option>
+                      Axis Bank
+                    </option>
+
+                    <option>
+                      Punjab National Bank
+                    </option>
+
+                  </select>
+
+
+                  <div className="netbanking-info">
+
+                    <strong>
+                      Saiyed Travels Bank Details
+                    </strong>
+
+                    <p>
+                      Bank of Baroda -
+                      Account ending 0107
+                    </p>
+
+                    <p>
+                      IFSC: BARB0MOJHHU
+                    </p>
+
+                  </div>
+
+                </div>
 
               )}
 
             </div>
 
 
-            {/* COUPON */}
+            {/* =================================================
+                COUPON
+            ================================================= */}
 
             <div className="coupon-box">
 
@@ -8741,7 +5923,7 @@ function Payment() {
 
 
           {/* =================================================
-                    RIGHT
+              RIGHT SIDE
           ================================================= */}
 
           <div className="payment-right">
@@ -8780,25 +5962,20 @@ function Payment() {
                 <span>
 
                   {adultCount} Adult
-                  {adultCount >
-                  1
+                  {adultCount > 1
                     ? "s"
                     : ""}
 
-                  {childCount >
-                    0 &&
+                  {childCount > 0 &&
                     `, ${childCount} Child${
-                      childCount >
-                      1
+                      childCount > 1
                         ? "ren"
                         : ""
                     }`}
 
-                  {infantCount >
-                    0 &&
+                  {infantCount > 0 &&
                     `, ${infantCount} Infant${
-                      infantCount >
-                      1
+                      infantCount > 1
                         ? "s"
                         : ""
                     }`}
@@ -8871,8 +6048,7 @@ function Payment() {
 
                 <span>
 
-                  {selectedSeats.length >
-                  0
+                  {selectedSeats.length > 0
                     ? selectedSeats.join(
                         ", "
                       )
@@ -8893,17 +6069,16 @@ function Payment() {
 
                 <span>
 
-                  {selectedMeals.length >
-                  0
+                  {selectedMeals.length > 0
+
                     ? selectedMeals
                         .map(
                           (item) =>
                             item?.name ||
                             "No Meal"
                         )
-                        .join(
-                          ", "
-                        )
+                        .join(", ")
+
                     : "No Meal"}
 
                 </span>
@@ -8921,16 +6096,15 @@ function Payment() {
 
                 <span>
 
-                  {selectedBaggage.length >
-                  0
+                  {selectedBaggage.length > 0
+
                     ? selectedBaggage
                         .map(
                           (item) =>
                             item?.weight
                         )
-                        .join(
-                          ", "
-                        )
+                        .join(", ")
+
                     : "15 KG Included"}
 
                 </span>
@@ -8941,10 +6115,7 @@ function Payment() {
               <hr />
 
 
-              {/* =================================================
-                        PRICE BREAKDOWN
-              ================================================= */}
-
+              {/* ADULT FARE */}
 
               <div className="summary-row">
 
@@ -8954,7 +6125,7 @@ function Payment() {
                 </span>
 
                 <span>
-                  ₹{" "}
+                  ₹
                   {adultFareTotal.toLocaleString(
                     "en-IN"
                   )}
@@ -8963,8 +6134,9 @@ function Payment() {
               </div>
 
 
-              {childCount >
-                0 && (
+              {/* CHILD */}
+
+              {childCount > 0 && (
 
                 <div className="summary-row">
 
@@ -8974,7 +6146,7 @@ function Payment() {
                   </span>
 
                   <span>
-                    ₹{" "}
+                    ₹
                     {childFareTotal.toLocaleString(
                       "en-IN"
                     )}
@@ -8985,8 +6157,9 @@ function Payment() {
               )}
 
 
-              {infantCount >
-                0 && (
+              {/* INFANT */}
+
+              {infantCount > 0 && (
 
                 <div className="summary-row">
 
@@ -8996,7 +6169,7 @@ function Payment() {
                   </span>
 
                   <span>
-                    ₹{" "}
+                    ₹
                     {infantFareTotal.toLocaleString(
                       "en-IN"
                     )}
@@ -9007,6 +6180,8 @@ function Payment() {
               )}
 
 
+              {/* SEAT */}
+
               <div className="summary-row">
 
                 <span>
@@ -9014,7 +6189,7 @@ function Payment() {
                 </span>
 
                 <span>
-                  ₹{" "}
+                  ₹
                   {seatPrice.toLocaleString(
                     "en-IN"
                   )}
@@ -9023,6 +6198,8 @@ function Payment() {
               </div>
 
 
+              {/* MEAL */}
+
               <div className="summary-row">
 
                 <span>
@@ -9030,7 +6207,7 @@ function Payment() {
                 </span>
 
                 <span>
-                  ₹{" "}
+                  ₹
                   {mealPrice.toLocaleString(
                     "en-IN"
                   )}
@@ -9039,6 +6216,8 @@ function Payment() {
               </div>
 
 
+              {/* BAGGAGE */}
+
               <div className="summary-row">
 
                 <span>
@@ -9046,7 +6225,7 @@ function Payment() {
                 </span>
 
                 <span>
-                  ₹{" "}
+                  ₹
                   {baggagePrice.toLocaleString(
                     "en-IN"
                   )}
@@ -9055,6 +6234,8 @@ function Payment() {
               </div>
 
 
+              {/* TAX */}
+
               <div className="summary-row">
 
                 <span>
@@ -9062,7 +6243,7 @@ function Payment() {
                 </span>
 
                 <span>
-                  ₹{" "}
+                  ₹
                   {taxes.toLocaleString(
                     "en-IN"
                   )}
@@ -9071,6 +6252,8 @@ function Payment() {
               </div>
 
 
+              {/* CONVENIENCE */}
+
               <div className="summary-row">
 
                 <span>
@@ -9078,7 +6261,7 @@ function Payment() {
                 </span>
 
                 <span>
-                  ₹{" "}
+                  ₹
                   {convenienceFee.toLocaleString(
                     "en-IN"
                   )}
@@ -9087,6 +6270,8 @@ function Payment() {
               </div>
 
 
+              {/* DISCOUNT */}
+
               <div className="summary-row discount">
 
                 <span>
@@ -9094,7 +6279,7 @@ function Payment() {
                 </span>
 
                 <span>
-                  - ₹{" "}
+                  - ₹
                   {discount.toLocaleString(
                     "en-IN"
                   )}
@@ -9106,7 +6291,7 @@ function Payment() {
               <hr />
 
 
-              {/* FINAL */}
+              {/* TOTAL */}
 
               <div className="summary-total">
 
@@ -9115,7 +6300,7 @@ function Payment() {
                 </span>
 
                 <span>
-                  ₹{" "}
+                  ₹
                   {total.toLocaleString(
                     "en-IN"
                   )}
@@ -9124,25 +6309,70 @@ function Payment() {
               </div>
 
 
-              <div className="secure-payment">
+              {/* ADMIN MESSAGE */}
 
-                🔒 100% Secure Payment
+              {isAdmin && (
 
-              </div>
+                <div className="admin-payment-bypass">
 
+                  👑
+
+                  <strong>
+                    Admin Booking
+                  </strong>
+
+                  <span>
+                    Payment is not required
+                    for admin.
+                  </span>
+
+                </div>
+
+              )}
+
+
+              {/* CUSTOMER / AGENT MESSAGE */}
+
+              {!isAdmin && (
+
+                <div className="secure-payment">
+
+                  🔒
+
+                  <span>
+                    Payment is required
+                    before ticket confirmation.
+                  </span>
+
+                </div>
+
+              )}
+
+
+              {/* PAY BUTTON */}
 
               <button
+
                 className="pay-btn"
+
                 onClick={
                   handlePayment
                 }
+
                 disabled={
                   loading
                 }
+
               >
 
                 {loading
+
                   ? "Processing..."
+
+                  : isAdmin
+
+                  ? "Confirm Ticket"
+
                   : `Pay ₹ ${total.toLocaleString(
                       "en-IN"
                     )}`}
@@ -9162,8 +6392,62 @@ function Payment() {
 
     </>
   );
-
 }
 
 
 export default Payment;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

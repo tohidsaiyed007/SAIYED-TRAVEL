@@ -1,3 +1,66 @@
+// import "./SearchSummary.css";
+// import { FaPlane, FaCalendarAlt, FaUserFriends } from "react-icons/fa";
+
+// function SearchSummary({
+//   from,
+//   to,
+//   departureDate,
+//   travellers,
+// }) {
+//   return (
+//     <div className="search-summary">
+
+//       <div className="summary-route">
+
+//         <h2>
+//           {from}
+//           <FaPlane className="plane-icon" />
+//           {to}
+//         </h2>
+
+//       </div>
+
+//       <div className="summary-info">
+
+//         <div className="summary-item">
+
+//           <FaCalendarAlt />
+
+//           <span>
+//             {new Date(departureDate).toLocaleDateString(
+//               "en-IN",
+//               {
+//                 day: "numeric",
+//                 month: "long",
+//                 year: "numeric",
+//               }
+//             )}
+//           </span>
+
+//         </div>
+
+//         <div className="summary-item">
+
+//           <FaUserFriends />
+
+//           <span>
+//             {travellers.adults} Adult
+//             {travellers.adults > 1 ? "s" : ""}
+//             {" • "}
+//             {travellers.cabin}
+//           </span>
+
+//         </div>
+
+//       </div>
+
+//     </div>
+//   );
+// }
+
+// export default SearchSummary;
+
+
 import "./SearchSummary.css";
 import { FaPlane, FaCalendarAlt, FaUserFriends } from "react-icons/fa";
 
@@ -11,45 +74,38 @@ function SearchSummary({
     <div className="search-summary">
 
       <div className="summary-route">
+        <span>{from}</span>
 
-        <h2>
-          {from}
-          <FaPlane className="plane-icon" />
-          {to}
-        </h2>
+        <FaPlane className="plane-icon" />
 
+        <span>{to}</span>
       </div>
 
       <div className="summary-info">
 
         <div className="summary-item">
-
           <FaCalendarAlt />
-
           <span>
-            {new Date(departureDate).toLocaleDateString(
-              "en-IN",
-              {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              }
-            )}
+            {departureDate
+              ? new Date(departureDate).toLocaleDateString(
+                  "en-IN",
+                  {
+                    day: "numeric",
+                    month: "short",
+                  }
+                )
+              : "--"}
           </span>
-
         </div>
 
         <div className="summary-item">
-
           <FaUserFriends />
-
           <span>
-            {travellers.adults} Adult
-            {travellers.adults > 1 ? "s" : ""}
+            {travellers?.adults || 1} Adult
+            {(travellers?.adults || 1) > 1 ? "s" : ""}
             {" • "}
-            {travellers.cabin}
+            {travellers?.cabin || "Economy"}
           </span>
-
         </div>
 
       </div>

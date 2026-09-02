@@ -1,6 +1,7 @@
-/* =====================================================
-   ADD FLIGHT OVERLAY
-===================================================== */
+/* =========================================
+   ADD FLIGHT MODAL
+   FULL RESPONSIVE CSS
+========================================= */
 
 .add-flight-overlay {
   position: fixed;
@@ -8,36 +9,38 @@
   z-index: 9999;
 
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
   padding: 25px;
 
-  background: rgba(15, 23, 42, 0.68);
+  background: rgba(15, 23, 42, 0.65);
 
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 
   overflow-y: auto;
 }
 
 
-/* =====================================================
+/* =========================================
    MODAL
-===================================================== */
+========================================= */
 
 .add-flight-modal {
-  width: min(1150px, 100%);
+  width: 100%;
+  max-width: 1050px;
 
-  max-height: 94vh;
+  max-height: 92vh;
 
   background: #ffffff;
 
   border-radius: 20px;
 
-  overflow: hidden;
-
   box-shadow:
-    0 25px 70px rgba(15, 23, 42, 0.25);
+    0 25px 70px rgba(0, 0, 0, 0.20);
+
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
@@ -47,7 +50,6 @@
 
 
 @keyframes addFlightModalIn {
-
   from {
     opacity: 0;
     transform: translateY(20px) scale(0.98);
@@ -57,86 +59,69 @@
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-
 }
 
 
-/* =====================================================
+/* =========================================
    HEADER
-===================================================== */
+========================================= */
 
 .add-flight-header {
   min-height: 82px;
 
-  padding: 18px 25px;
+  padding: 20px 28px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  border-bottom: 1px solid #e5e7eb;
+  gap: 20px;
 
-  background: #ffffff;
+  background: linear-gradient(
+    135deg,
+    #0b5ed7,
+    #2d8cff
+  );
+
+  color: #ffffff;
 
   flex-shrink: 0;
 }
 
 
-.add-flight-title {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-
-.add-flight-icon {
-  width: 48px;
-  height: 48px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 13px;
-
-  background: #eef2ff;
-
-  color: #4f46e5;
-
-  font-size: 20px;
-}
-
-
-.add-flight-title h2 {
+.add-flight-header h2 {
   margin: 0;
 
-  color: #111827;
+  font-size: 25px;
 
-  font-size: 22px;
   font-weight: 700;
+
+  line-height: 1.2;
 }
 
 
-.add-flight-title p {
-  margin: 4px 0 0;
+.add-flight-header p {
+  margin: 6px 0 0;
 
-  color: #6b7280;
+  font-size: 14px;
 
-  font-size: 13px;
+  opacity: 0.9;
 }
 
 
-.close-flight-btn {
-  width: 40px;
-  height: 40px;
+.close-modal-btn {
+  width: 42px;
+  height: 42px;
 
   border: none;
+  border-radius: 50%;
 
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.16);
 
-  background: #f3f4f6;
+  color: #ffffff;
 
-  color: #4b5563;
+  font-size: 28px;
+  line-height: 1;
 
   display: flex;
   align-items: center;
@@ -144,32 +129,39 @@
 
   cursor: pointer;
 
-  font-size: 16px;
+  transition: 0.25s;
 
-  transition: 0.2s ease;
+  flex-shrink: 0;
 }
 
 
-.close-flight-btn:hover {
-  background: #fee2e2;
-  color: #dc2626;
+.close-modal-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
 
   transform: rotate(90deg);
 }
 
 
-/* =====================================================
+.close-modal-btn:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================
    FORM
-===================================================== */
+========================================= */
 
 .add-flight-form {
-  overflow-y: auto;
+  padding: 30px;
 
-  padding: 25px;
+  overflow-y: auto;
 
   flex: 1;
 
   scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
 }
 
 
@@ -179,14 +171,14 @@
 
 
 .add-flight-form::-webkit-scrollbar-track {
-  background: #f8fafc;
+  background: transparent;
 }
 
 
 .add-flight-form::-webkit-scrollbar-thumb {
   background: #cbd5e1;
 
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 
@@ -195,648 +187,227 @@
 }
 
 
-/* =====================================================
-   SECTION
-===================================================== */
+/* =========================================
+   FORM SECTION
+========================================= */
 
 .form-section {
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 
-  padding: 22px;
+  padding-bottom: 28px;
 
-  border: 1px solid #e5e7eb;
-
-  border-radius: 15px;
-
-  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 
-.section-heading {
-  margin-bottom: 20px;
+.form-section:last-of-type {
+  border-bottom: none;
 
-  padding-bottom: 13px;
-
-  border-bottom: 1px solid #eef0f3;
+  margin-bottom: 10px;
 }
 
 
-.section-heading h3 {
-  margin: 0;
+.form-section h3 {
+  margin: 0 0 20px;
+
+  padding-left: 12px;
+
+  border-left: 4px solid #0b5ed7;
 
   color: #111827;
 
-  font-size: 17px;
+  font-size: 19px;
 
   font-weight: 700;
 }
 
 
-.section-heading span {
-  display: block;
+/* =========================================
+   FORM GRID
+========================================= */
 
-  margin-top: 5px;
-
-  color: #6b7280;
-
-  font-size: 12px;
-}
-
-
-/* =====================================================
-   FORM ROW
-===================================================== */
-
-.form-row {
+.form-grid {
   display: grid;
 
   grid-template-columns:
     repeat(2, minmax(0, 1fr));
 
-  gap: 17px;
-
-  margin-bottom: 17px;
+  gap: 20px;
 }
 
 
-.form-row:last-child {
-  margin-bottom: 0;
-}
+/* =========================================
+   FORM FIELD
+========================================= */
 
+.form-field {
+  width: 100%;
 
-/* =====================================================
-   FORM GROUP
-===================================================== */
-
-.form-group {
   min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
 }
 
 
-.form-group label {
-  display: block;
-
-  margin-bottom: 7px;
+.form-field label {
+  margin-bottom: 8px;
 
   color: #374151;
 
-  font-size: 13px;
+  font-size: 14px;
 
   font-weight: 600;
 }
 
 
-.form-group input,
-.form-group select,
-.form-group textarea {
+.form-field input,
+.form-field select {
   width: 100%;
+
+  height: 50px;
 
   box-sizing: border-box;
 
   border: 1px solid #d1d5db;
 
-  border-radius: 9px;
+  border-radius: 10px;
+
+  padding: 0 14px;
 
   background: #ffffff;
 
   color: #111827;
-
-  font-family: inherit;
 
   font-size: 14px;
 
   outline: none;
 
   transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+    border-color 0.25s,
+    box-shadow 0.25s,
+    background 0.25s;
 }
 
 
-.form-group input,
-.form-group select {
-  height: 44px;
-
-  padding: 0 12px;
-}
-
-
-.form-group textarea {
-  min-height: 115px;
-
-  padding: 12px;
-
-  resize: vertical;
-}
-
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
+.form-field input::placeholder {
   color: #9ca3af;
 }
 
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: #6366f1;
+.form-field input:hover,
+.form-field select:hover {
+  border-color: #94a3b8;
+}
+
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: #0b5ed7;
 
   box-shadow:
-    0 0 0 3px rgba(99, 102, 241, 0.10);
+    0 0 0 4px rgba(11, 94, 215, 0.10);
 }
 
 
-.form-group input:hover,
-.form-group select:hover,
-.form-group textarea:hover {
-  border-color: #9ca3af;
+.form-field input:disabled,
+.form-field select:disabled {
+  background: #f3f4f6;
+
+  cursor: not-allowed;
 }
 
 
-/* =====================================================
-   ROUTE
-===================================================== */
-
-.route-box {
-  padding: 18px;
-
-  border: 1px solid #e5e7eb;
-
-  border-radius: 12px;
-
-  background: #f8fafc;
-}
-
-
-.route-title {
-  margin-bottom: 12px;
-
-  color: #4f46e5;
-
-  font-size: 13px;
-
-  font-weight: 700;
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.5px;
-}
-
-
-.route-box .form-row {
-  margin-bottom: 18px;
-}
-
-
-.route-box .form-row:last-child {
-  margin-bottom: 0;
-}
-
-
-/* =====================================================
-   CABIN
-===================================================== */
-
-.cabin-heading {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-}
-
-
-.cabin-heading > div {
-  min-width: 0;
-}
-
-
-.add-cabin-btn {
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 7px;
-
-  min-height: 38px;
-
-  padding: 0 13px;
-
-  border: none;
-
-  border-radius: 8px;
-
-  background: #4f46e5;
-
-  color: #ffffff;
-
-  font-size: 13px;
-
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: 0.2s ease;
-}
-
-
-.add-cabin-btn:hover {
-  background: #4338ca;
-
-  transform: translateY(-1px);
-}
-
-
-.cabin-card {
-  margin-bottom: 15px;
-
-  padding: 16px;
-
-  border: 1px solid #e5e7eb;
-
-  border-radius: 12px;
-
-  background: #f8fafc;
-}
-
-
-.cabin-card:last-child {
-  margin-bottom: 0;
-}
-
-
-.cabin-card-header {
-  margin-bottom: 15px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-}
-
-
-.cabin-card-header strong {
-  color: #1f2937;
-
-  font-size: 14px;
-}
-
-
-.remove-cabin-btn {
-  width: 34px;
-  height: 34px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  border: none;
-
-  border-radius: 8px;
-
-  background: #fee2e2;
-
-  color: #dc2626;
-
-  cursor: pointer;
-
-  transition: 0.2s ease;
-}
-
-
-.remove-cabin-btn:hover {
-  background: #fecaca;
-}
-
-
-/* =====================================================
-   TICKET INVENTORY
-===================================================== */
-
-.ticket-inventory-box {
-  padding: 18px;
-
-  border: 1px solid #e0e7ff;
-
-  border-radius: 13px;
-
-  background: #f8faff;
-}
-
-
-.ticket-inventory-top {
-  display: grid;
-
-  grid-template-columns:
-    260px minmax(0, 1fr);
-
-  gap: 20px;
-}
-
-
-.ticket-count-box label,
-.pnr-box label {
-  display: block;
-
-  margin-bottom: 7px;
-
-  color: #374151;
-
-  font-size: 13px;
-
-  font-weight: 600;
-}
-
-
-.ticket-count-box input {
-  width: 100%;
-
-  height: 44px;
-
-  box-sizing: border-box;
-
-  padding: 0 12px;
-
-  border: 1px solid #d1d5db;
-
-  border-radius: 9px;
-
-  outline: none;
-
-  font-size: 14px;
-}
-
-
-.ticket-count-box input:focus {
-  border-color: #6366f1;
-
-  box-shadow:
-    0 0 0 3px rgba(99, 102, 241, 0.10);
-}
-
-
-.pnr-box textarea {
-  width: 100%;
-
-  min-height: 150px;
-
-  box-sizing: border-box;
-
-  padding: 12px;
-
-  border: 1px solid #d1d5db;
-
-  border-radius: 9px;
-
-  background: #ffffff;
-
-  color: #111827;
-
-  font-family: monospace;
-
-  font-size: 13px;
-
-  line-height: 1.7;
-
-  resize: vertical;
-
-  outline: none;
-}
-
-
-.pnr-box textarea:focus {
-  border-color: #6366f1;
-
-  box-shadow:
-    0 0 0 3px rgba(99, 102, 241, 0.10);
-}
-
-
-.pnr-help {
-  margin: 8px 0 0;
+/* =========================================
+   SMALL HELP TEXT
+========================================= */
+
+.form-field small {
+  margin-top: 6px;
 
   color: #6b7280;
 
   font-size: 12px;
 
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 
-.pnr-count {
-  margin-top: 12px;
+/* =========================================
+   STOP BOX
+========================================= */
 
-  padding: 10px 13px;
+.stop-box {
+  margin-top: 22px;
 
-  display: flex;
+  padding: 22px;
 
-  align-items: center;
+  border: 1px solid #dbeafe;
 
-  justify-content: space-between;
+  border-radius: 14px;
 
-  border-radius: 8px;
-
-  background: #eef2ff;
-
-  color: #4338ca;
-
-  font-size: 13px;
+  background: #f8fbff;
 }
 
 
-.pnr-count strong {
-  font-size: 15px;
+.stop-box h4 {
+  margin: 0 0 18px;
+
+  color: #0b5ed7;
+
+  font-size: 16px;
+
+  font-weight: 700;
 }
 
 
-/* =====================================================
-   PASSENGER PRICING
-===================================================== */
+/* =========================================
+   ACTION BUTTONS
+========================================= */
 
-.passenger-pricing-section {
-  border-color: #c7d2fe;
-
-  background:
-    linear-gradient(
-      180deg,
-      #fafaff 0%,
-      #ffffff 100%
-    );
-}
-
-
-.passenger-pricing-section .section-heading {
-  border-bottom-color: #e0e7ff;
-}
-
-
-.pricing-info-box {
-  margin-bottom: 18px;
-
-  padding: 13px 15px;
-
-  border-left: 4px solid #6366f1;
-
-  border-radius: 8px;
-
-  background: #eef2ff;
-}
-
-
-.pricing-info-box strong {
-  display: block;
-
-  margin-bottom: 3px;
-
-  color: #4338ca;
-
-  font-size: 13px;
-}
-
-
-.pricing-info-box p {
-  margin: 0;
-
-  color: #4b5563;
-
-  font-size: 12px;
-
-  line-height: 1.5;
-}
-
-
-/* =====================================================
-   PRICING INPUTS
-===================================================== */
-
-.passenger-pricing-section
-.form-group input {
-  background: #ffffff;
-}
-
-
-/* =====================================================
-   CHECKBOX
-===================================================== */
-
-.checkbox-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(4, minmax(0, 1fr));
-
-  gap: 12px;
-}
-
-
-.check-item {
-  min-height: 46px;
-
-  padding: 0 13px;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 9px;
-
-  border: 1px solid #e5e7eb;
-
-  border-radius: 9px;
-
-  background: #f9fafb;
-
-  color: #374151;
-
-  font-size: 13px;
-
-  font-weight: 500;
-
-  cursor: pointer;
-
-  transition: 0.2s ease;
-}
-
-
-.check-item:hover {
-  border-color: #a5b4fc;
-
-  background: #f5f3ff;
-}
-
-
-.check-item input {
-  width: 17px;
-  height: 17px;
-
-  margin: 0;
-
-  accent-color: #4f46e5;
-
-  cursor: pointer;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-.add-flight-footer {
+.add-flight-actions {
   position: sticky;
 
   bottom: 0;
 
-  z-index: 10;
-
-  padding: 17px 25px;
+  z-index: 5;
 
   display: flex;
 
-  align-items: center;
-
   justify-content: flex-end;
 
-  gap: 12px;
+  align-items: center;
 
-  border-top: 1px solid #e5e7eb;
+  gap: 14px;
+
+  margin-top: 10px;
+
+  padding: 20px 0 0;
 
   background: #ffffff;
+
+  border-top: 1px solid #e5e7eb;
 }
 
 
 .cancel-flight-btn,
 .save-flight-btn {
-  min-width: 135px;
+  min-width: 145px;
 
-  height: 44px;
+  height: 50px;
 
-  padding: 0 18px;
+  padding: 0 22px;
 
-  display: inline-flex;
+  border-radius: 10px;
 
-  align-items: center;
+  font-size: 15px;
 
-  justify-content: center;
-
-  gap: 8px;
-
-  border-radius: 9px;
-
-  font-family: inherit;
-
-  font-size: 13px;
-
-  font-weight: 600;
+  font-weight: 700;
 
   cursor: pointer;
 
-  transition: 0.2s ease;
+  transition: 0.25s;
 }
 
 
@@ -859,19 +430,24 @@
 .save-flight-btn {
   border: none;
 
-  background: #4f46e5;
+  background: linear-gradient(
+    135deg,
+    #0b5ed7,
+    #2d8cff
+  );
 
   color: #ffffff;
 
   box-shadow:
-    0 5px 14px rgba(79, 70, 229, 0.20);
+    0 8px 20px rgba(11, 94, 215, 0.25);
 }
 
 
 .save-flight-btn:hover {
-  background: #4338ca;
+  transform: translateY(-2px);
 
-  transform: translateY(-1px);
+  box-shadow:
+    0 12px 25px rgba(11, 94, 215, 0.30);
 }
 
 
@@ -885,211 +461,334 @@
 }
 
 
-/* =====================================================
-   RESPONSIVE - TABLET
-===================================================== */
+/* =========================================
+   TABLET
+========================================= */
 
 @media (max-width: 900px) {
 
   .add-flight-overlay {
-    padding: 15px;
+    padding: 18px;
   }
 
 
   .add-flight-modal {
+    max-height: 94vh;
+
+    border-radius: 18px;
+  }
+
+
+  .add-flight-header {
+    padding: 18px 22px;
+  }
+
+
+  .add-flight-form {
+    padding: 24px;
+  }
+
+
+  .form-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+  }
+
+
+  .form-section {
+    margin-bottom: 25px;
+
+    padding-bottom: 24px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE TABLET
+========================================= */
+
+@media (max-width: 700px) {
+
+  .add-flight-overlay {
+    padding: 10px;
+  }
+
+
+  .add-flight-modal {
+    width: 100%;
+
     max-height: 96vh;
 
     border-radius: 15px;
   }
 
 
-  .form-row {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+  .add-flight-header {
+    min-height: 70px;
+
+    padding: 16px 18px;
   }
 
 
-  .ticket-inventory-top {
+  .add-flight-header h2 {
+    font-size: 21px;
+  }
+
+
+  .add-flight-header p {
+    font-size: 12px;
+  }
+
+
+  .close-modal-btn {
+    width: 38px;
+    height: 38px;
+
+    font-size: 25px;
+  }
+
+
+  .add-flight-form {
+    padding: 20px 17px;
+  }
+
+
+  .form-grid {
     grid-template-columns: 1fr;
+
+    gap: 15px;
   }
 
 
-  .checkbox-grid {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+  .form-section h3 {
+    font-size: 17px;
+
+    margin-bottom: 17px;
+  }
+
+
+  .form-field input,
+  .form-field select {
+    height: 48px;
+
+    font-size: 14px;
+  }
+
+
+  .stop-box {
+    padding: 17px;
+
+    border-radius: 12px;
+  }
+
+
+  .add-flight-actions {
+    flex-direction: column-reverse;
+
+    gap: 10px;
+
+    padding-top: 16px;
+  }
+
+
+  .cancel-flight-btn,
+  .save-flight-btn {
+    width: 100%;
+
+    min-width: 0;
+
+    height: 50px;
   }
 
 }
 
 
-/* =====================================================
-   RESPONSIVE - MOBILE
-===================================================== */
+/* =========================================
+   SMALL MOBILE
+========================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
 
   .add-flight-overlay {
     padding: 0;
-
-    align-items: stretch;
   }
 
 
   .add-flight-modal {
     width: 100%;
 
-    max-height: 100vh;
+    height: 100vh;
 
-    min-height: 100vh;
+    max-height: 100vh;
 
     border-radius: 0;
   }
 
 
   .add-flight-header {
-    padding: 15px;
+    min-height: 66px;
 
-    min-height: 70px;
+    padding: 14px 15px;
   }
 
 
-  .add-flight-icon {
-    width: 42px;
-    height: 42px;
-
-    font-size: 17px;
+  .add-flight-header h2 {
+    font-size: 19px;
   }
 
 
-  .add-flight-title {
-    gap: 10px;
-  }
-
-
-  .add-flight-title h2 {
-    font-size: 18px;
-  }
-
-
-  .add-flight-title p {
+  .add-flight-header p {
     display: none;
   }
 
 
-  .close-flight-btn {
+  .close-modal-btn {
     width: 36px;
     height: 36px;
+
+    font-size: 24px;
   }
 
 
   .add-flight-form {
-    padding: 15px;
+    padding: 18px 14px;
   }
 
 
   .form-section {
-    padding: 15px;
+    margin-bottom: 22px;
+
+    padding-bottom: 20px;
+  }
+
+
+  .form-section h3 {
+    font-size: 16px;
 
     margin-bottom: 15px;
 
-    border-radius: 12px;
+    padding-left: 9px;
+
+    border-left-width: 3px;
   }
 
 
-  .form-row {
-    grid-template-columns: 1fr;
+  .form-field label {
+    font-size: 13px;
 
-    gap: 14px;
-
-    margin-bottom: 14px;
+    margin-bottom: 6px;
   }
 
 
-  .route-box {
-    padding: 13px;
+  .form-field input,
+  .form-field select {
+    height: 46px;
+
+    border-radius: 9px;
+
+    padding: 0 12px;
+
+    font-size: 13px;
   }
 
 
-  .cabin-heading {
-    align-items: flex-start;
-
-    gap: 12px;
+  .form-field small {
+    font-size: 11px;
   }
 
 
-  .add-cabin-btn {
-    flex-shrink: 0;
+  .stop-box {
+    margin-top: 16px;
+
+    padding: 14px;
   }
 
 
-  .checkbox-grid {
-    grid-template-columns: 1fr;
+  .stop-box h4 {
+    font-size: 15px;
+
+    margin-bottom: 15px;
   }
 
 
-  .ticket-inventory-top {
-    grid-template-columns: 1fr;
-  }
+  .add-flight-actions {
+    margin-top: 5px;
 
-
-  .ticket-inventory-box {
-    padding: 13px;
-  }
-
-
-  .add-flight-footer {
-    padding: 13px 15px;
-
-    gap: 8px;
+    padding-top: 14px;
   }
 
 
   .cancel-flight-btn,
   .save-flight-btn {
-    min-width: 0;
+    height: 48px;
 
-    flex: 1;
-
-    height: 42px;
+    font-size: 14px;
   }
 
 }
 
 
-/* =====================================================
-   VERY SMALL MOBILE
-===================================================== */
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
 
-@media (max-width: 380px) {
+@media (max-width: 360px) {
 
   .add-flight-form {
-    padding: 10px;
+    padding: 15px 11px;
   }
 
 
-  .form-section {
-    padding: 12px;
+  .add-flight-header {
+    padding: 13px 12px;
   }
 
 
-  .section-heading h3 {
+  .add-flight-header h2 {
+    font-size: 18px;
+  }
+
+
+  .form-field input,
+  .form-field select {
+    height: 44px;
+
+    font-size: 12px;
+  }
+
+
+  .form-section h3 {
     font-size: 15px;
   }
 
 
-  .section-heading span {
-    font-size: 11px;
+  .stop-box {
+    padding: 12px;
+  }
+
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .add-flight-modal {
+    animation: none;
   }
 
 
-  .add-flight-footer {
-    flex-direction: column;
-  }
-
-
+  .close-modal-btn,
+  .save-flight-btn,
   .cancel-flight-btn,
-  .save-flight-btn {
-    width: 100%;
+  .form-field input,
+  .form-field select {
+    transition: none;
   }
 
 }

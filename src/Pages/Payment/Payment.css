@@ -782,3 +782,526 @@
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================
+   PAYMENT PAGE
+================================ */
+
+.payment-page {
+  min-height: 100vh;
+  padding: 30px 20px;
+  background: #f5f7fb;
+  box-sizing: border-box;
+}
+
+.payment-container {
+  max-width: 1150px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 24px;
+}
+
+.payment-left,
+.payment-right {
+  min-width: 0;
+}
+
+
+/* ================================
+   PAYMENT METHOD CARD
+================================ */
+
+.payment-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.04);
+}
+
+.payment-card label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  color: #111827;
+  cursor: pointer;
+}
+
+.payment-card input[type="radio"] {
+  accent-color: #1268e8;
+}
+
+
+/* ================================
+   DYNAMIC UPI
+================================ */
+
+.dynamic-upi-payment {
+  margin-top: 15px;
+}
+
+.upi-amount-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 16px;
+  margin-bottom: 14px;
+
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+}
+
+.upi-amount-box span {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.upi-amount-box strong {
+  color: #1268e8;
+  font-size: 22px;
+}
+
+
+/* QR CARD */
+
+.upi-qr-card {
+  text-align: center;
+
+  padding: 20px 16px;
+
+  background: #fff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 16px;
+
+  box-shadow: 0 6px 20px rgba(0,0,0,.06);
+}
+
+.upi-qr-card h3 {
+  margin: 0;
+
+  font-size: 20px;
+
+  color: #111827;
+}
+
+.upi-subtitle {
+  max-width: 380px;
+
+  margin: 7px auto 16px;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  color: #64748b;
+}
+
+
+/* QR */
+
+.upi-qr-wrapper {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  width: fit-content;
+
+  margin: 0 auto 14px;
+
+  padding: 10px;
+
+  background: #fff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+}
+
+
+/* UPI ID */
+
+.upi-details {
+  padding: 10px;
+
+  background: #f8fafc;
+
+  border-radius: 9px;
+}
+
+.upi-details p {
+  margin: 0 0 4px;
+
+  font-size: 11px;
+
+  color: #64748b;
+}
+
+.upi-details strong {
+  font-size: 13px;
+
+  color: #111827;
+
+  word-break: break-all;
+}
+
+
+/* AMOUNT */
+
+.upi-payment-info {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 10px;
+
+  padding: 11px 13px;
+
+  background: #f8fafc;
+
+  border-radius: 9px;
+
+  font-size: 12px;
+
+  color: #475569;
+}
+
+.upi-payment-info strong {
+  font-size: 16px;
+
+  color: #111827;
+}
+
+
+/* OPEN UPI BUTTON */
+
+.open-upi-btn {
+  width: 100%;
+
+  margin-top: 12px;
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #1268e8;
+
+  color: #fff;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .2s ease;
+}
+
+.open-upi-btn:hover {
+  background: #0b5dcc;
+  transform: translateY(-1px);
+}
+
+
+/* ================================
+   CARD INPUTS
+================================ */
+
+.payment-card input[type="text"],
+.payment-card input[type="password"],
+.payment-card select {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 12px;
+
+  margin-top: 12px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  font-size: 13px;
+}
+
+.payment-card input:focus,
+.payment-card select:focus {
+  border-color: #1268e8;
+
+  box-shadow: 0 0 0 3px rgba(18,104,232,.08);
+}
+
+.card-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+}
+
+
+/* ================================
+   BOOKING SUMMARY
+================================ */
+
+.booking-summary {
+  background: #fff;
+
+  padding: 20px;
+
+  border-radius: 16px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow: 0 6px 20px rgba(0,0,0,.05);
+}
+
+.booking-summary h2 {
+  margin: 0 0 16px;
+
+  font-size: 19px;
+
+  color: #111827;
+}
+
+.summary-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 7px 0;
+
+  font-size: 13px;
+
+  color: #475569;
+}
+
+.summary-row span:last-child {
+  text-align: right;
+
+  font-weight: 600;
+
+  color: #111827;
+}
+
+.summary-total {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding-top: 14px;
+
+  font-size: 17px;
+
+  font-weight: 800;
+
+  color: #111827;
+}
+
+.summary-total span:last-child {
+  color: #1268e8;
+}
+
+.secure-payment {
+  margin: 13px 0;
+
+  padding: 10px;
+
+  text-align: center;
+
+  border-radius: 9px;
+
+  background: #f0fdf4;
+
+  color: #15803d;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+.pay-btn {
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #1268e8;
+
+  color: #fff;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.pay-btn:disabled {
+  opacity: .6;
+
+  cursor: not-allowed;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+  .payment-page {
+    padding: 15px 10px;
+  }
+
+  .payment-container {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .payment-right {
+    order: -1;
+  }
+
+  .payment-card {
+    padding: 14px;
+  }
+
+  .booking-summary {
+    padding: 15px;
+  }
+
+  .upi-qr-card {
+    padding: 17px 10px;
+  }
+
+  .upi-amount-box strong {
+    font-size: 19px;
+  }
+
+  .summary-row {
+    font-size: 12px;
+  }
+}
+
+
+/* ================================
+   SMALL PHONE
+================================ */
+
+@media (max-width: 420px) {
+
+  .payment-page {
+    padding: 10px 7px;
+  }
+
+  .upi-qr-wrapper {
+    padding: 7px;
+  }
+
+  .upi-qr-wrapper svg {
+    width: 190px;
+    height: 190px;
+  }
+
+  .upi-qr-card h3 {
+    font-size: 17px;
+  }
+
+  .upi-subtitle {
+    font-size: 11px;
+  }
+
+  .upi-payment-info {
+    font-size: 11px;
+  }
+
+  .pay-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+}

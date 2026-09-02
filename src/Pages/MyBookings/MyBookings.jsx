@@ -1628,9 +1628,41 @@ function MyBookings() {
                 {};
 
 
+              // const passenger =
+              //   booking?.passengers?.[0] ||
+              //   {};
+
               const passenger =
-                booking?.passengers?.[0] ||
-                {};
+  booking?.passengers?.[0] ||
+  booking?.passenger ||
+  {};
+
+
+  const passengerName =
+  `${passenger?.firstName || ""} ${
+    passenger?.lastName || ""
+  }`.trim() || "Customer";
+
+const passengerEmail =
+  passenger?.email || "No Email";
+
+const passengerPhone =
+  passenger?.phone || "No Phone";
+
+const passengerDOB =
+  passenger?.dob || "N/A";
+
+const passengerGender =
+  passenger?.gender || "N/A";
+
+const passengerPassport =
+  passenger?.passport || "N/A";
+
+const passengerCity =
+  passenger?.city || "N/A";
+
+const passengerAddress =
+  passenger?.address || "N/A";
 
 
               const status =

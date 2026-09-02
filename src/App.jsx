@@ -1,5 +1,231 @@
+// // // // // // // // // // // import "./App.css";
+// // // // // // // // // // // import { Routes, Route } from "react-router-dom";
+// // // // // // // // // // // import Home from "./Pages/Home/Home";
+// // // // // // // // // // // import Flights from "./Pages/Flights/Flights";
+// // // // // // // // // // // import Booking from "./Pages/Booking/Booking";
+// // // // // // // // // // // import SeatSelection from "./Pages/SeatSelection/SeatSelection";
+// // // // // // // // // // // import MealSelection from "./Pages/MealSelection/MealSelection";
+// // // // // // // // // // // import ExtraBaggage from "./Pages/ExtraBaggage/ExtraBaggage";
+// // // // // // // // // // // import Payment from "./Pages/Payment/Payment";
+// // // // // // // // // // // import Success from "./Pages/Success/Success";
+// // // // // // // // // // // import Login from "./Pages/Login/Login";
+// // // // // // // // // // // import Signup from "./Pages/Signup/Signup";
+// // // // // // // // // // // import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
+// // // // // // // // // // // import Offers from "./Pages/Offers/Offers";
+// // // // // // // // // // // import About from "./Pages/About/About";
+// // // // // // // // // // // import Contact from "./Pages/Contact/Contact";
+// // // // // // // // // // // import MyBookings from "./Pages/MyBookings/MyBookings";
+// // // // // // // // // // // import Ticket from "./Pages/Ticket/Ticket";
+// // // // // // // // // // // import Profile from "./Pages/Profile/Profile";
+// // // // // // // // // // // import EditProfile from "./Pages/EditProfile/EditProfile";
+// // // // // // // // // // // import ChangePassword from "./Pages/ChangePassword/ChangePassword";
+// // // // // // // // // // // import Notifications from "./Pages/Notifications/Notifications";
+// // // // // // // // // // // import Wishlist from "./Pages/Wishlist/Wishlist";
+// // // // // // // // // // // import FlightDetails from "./Pages/FlightDetails/FlightDetails";
+
+
+// // // // // // // // // // // function App() {
+// // // // // // // // // // //   return (
+// // // // // // // // // // //     <Routes>
+// // // // // // // // // // //       <Route path="/" element={<Home />} />
+// // // // // // // // // // //       <Route path="/flights" element={<Flights />} />
+// // // // // // // // // // //       <Route path="/booking" element={<Booking />} />
+// // // // // // // // // // //       <Route path="/seat-selection" element={<SeatSelection />} />
+// // // // // // // // // // //       <Route path="/meal-selection" element={<MealSelection />} />
+// // // // // // // // // // //       <Route path="/extra-baggage" element={<ExtraBaggage />} />
+// // // // // // // // // // //       <Route path="/payment" element={<Payment />} />
+// // // // // // // // // // //       <Route path="/success" element={<Success />} />
+// // // // // // // // // // //       <Route path="/login" element={<Login />} />
+// // // // // // // // // // //       <Route path="/signup" element={<Signup />} />
+// // // // // // // // // // //       <Route path="/forgot-password" element={<ForgotPassword />} />
+// // // // // // // // // // //       <Route path="/offers" element={<Offers />} />
+// // // // // // // // // // //       <Route path="/about" element={<About />} />
+// // // // // // // // // // //       <Route path="/contact" element={<Contact />} />
+// // // // // // // // // // //       <Route path="/my-bookings" element={<MyBookings />} />
+// // // // // // // // // // //       <Route path="/ticket" element={<Ticket />} />
+// // // // // // // // // // //       <Route path="/profile" element={<Profile />} />
+// // // // // // // // // // //       <Route path="/edit-profile" element={<EditProfile />} />
+// // // // // // // // // // //       <Route path="/change-password" element={<ChangePassword />} />
+// // // // // // // // // // //       <Route path="/notifications" element={<Notifications />} />
+// // // // // // // // // // //       <Route path="/wishlist" element={<Wishlist />} />
+// // // // // // // // // // //       <Route
+// // // // // // // // // // //   path="/flight-details"
+// // // // // // // // // // //   element={<FlightDetails />}
+// // // // // // // // // // // />
+// // // // // // // // // // //     </Routes>
+// // // // // // // // // // //   );
+// // // // // // // // // // // }
+
+// // // // // // // // // // // export default App;
+
+
+// // // // // // // // // // import "./App.css";
+// // // // // // // // // // import { Routes, Route } from "react-router-dom";
+
+// // // // // // // // // // import Home from "./Pages/Home/Home";
+// // // // // // // // // // import Flights from "./Pages/Flights/Flights";
+// // // // // // // // // // import Booking from "./Pages/Booking/Booking";
+// // // // // // // // // // import SeatSelection from "./Pages/SeatSelection/SeatSelection";
+// // // // // // // // // // import MealSelection from "./Pages/MealSelection/MealSelection";
+// // // // // // // // // // import ExtraBaggage from "./Pages/ExtraBaggage/ExtraBaggage";
+// // // // // // // // // // import Payment from "./Pages/Payment/Payment";
+// // // // // // // // // // import Success from "./Pages/Success/Success";
+// // // // // // // // // // import Login from "./Pages/Login/Login";
+// // // // // // // // // // import Signup from "./Pages/Signup/Signup";
+// // // // // // // // // // import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
+// // // // // // // // // // import Offers from "./Pages/Offers/Offers";
+// // // // // // // // // // import About from "./Pages/About/About";
+// // // // // // // // // // import Contact from "./Pages/Contact/Contact";
+// // // // // // // // // // import MyBookings from "./Pages/MyBookings/MyBookings";
+// // // // // // // // // // import Ticket from "./Pages/Ticket/Ticket";
+// // // // // // // // // // import Profile from "./Pages/Profile/Profile";
+// // // // // // // // // // import EditProfile from "./Pages/EditProfile/EditProfile";
+// // // // // // // // // // import ChangePassword from "./Pages/ChangePassword/ChangePassword";
+// // // // // // // // // // import Notifications from "./Pages/Notifications/Notifications";
+// // // // // // // // // // import Wishlist from "./Pages/Wishlist/Wishlist";
+// // // // // // // // // // import FlightDetails from "./Pages/FlightDetails/FlightDetails";
+// // // // // // // // // // import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
+// // // // // // // // // // import FlightBooking from "./Pages/Dashboard/FlightBooking/FlightBooking";
+// // // // // // // // // // function App() {
+
+// // // // // // // // // //   return (
+
+// // // // // // // // // //     <Routes>
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //   path="/dashboard/flights"
+// // // // // // // // // //   element={<FlightBooking />}
+// // // // // // // // // // />
+
+// // // // // // // // // //       <Route path="/" element={<Home />} />
+
+// // // // // // // // // //       <Route path="/flights" element={<Flights />} />
+
+// // // // // // // // // //       <Route path="/booking" element={<Booking />} />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/seat-selection"
+// // // // // // // // // //         element={<SeatSelection />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/meal-selection"
+// // // // // // // // // //         element={<MealSelection />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/extra-baggage"
+// // // // // // // // // //         element={<ExtraBaggage />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/payment"
+// // // // // // // // // //         element={<Payment />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/success"
+// // // // // // // // // //         element={<Success />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/login"
+// // // // // // // // // //         element={<Login />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/signup"
+// // // // // // // // // //         element={<Signup />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/forgot-password"
+// // // // // // // // // //         element={<ForgotPassword />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/offers"
+// // // // // // // // // //         element={<Offers />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/about"
+// // // // // // // // // //         element={<About />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/contact"
+// // // // // // // // // //         element={<Contact />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/my-bookings"
+// // // // // // // // // //         element={<MyBookings />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/ticket"
+// // // // // // // // // //         element={<Ticket />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/profile"
+// // // // // // // // // //         element={<Profile />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/edit-profile"
+// // // // // // // // // //         element={<EditProfile />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/change-password"
+// // // // // // // // // //         element={<ChangePassword />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/notifications"
+// // // // // // // // // //         element={<Notifications />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/wishlist"
+// // // // // // // // // //         element={<Wishlist />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //         path="/flight-details"
+// // // // // // // // // //         element={<FlightDetails />}
+// // // // // // // // // //       />
+
+// // // // // // // // // //       {/* Dashboard */}
+
+// // // // // // // // // //       <Route
+// // // // // // // // // //   path="/dashboard"
+// // // // // // // // // //   element={<Dashboard />}
+// // // // // // // // // // />
+
+// // // // // // // // // //     </Routes>
+
+// // // // // // // // // //   );
+
+// // // // // // // // // // }
+
+// // // // // // // // // // export default App;
+
+
+
+
+
+
+
+
+
+
+
 // // // // // // // // // import "./App.css";
 // // // // // // // // // import { Routes, Route } from "react-router-dom";
+
 // // // // // // // // // import Home from "./Pages/Home/Home";
 // // // // // // // // // import Flights from "./Pages/Flights/Flights";
 // // // // // // // // // import Booking from "./Pages/Booking/Booking";
@@ -22,11 +248,22 @@
 // // // // // // // // // import Notifications from "./Pages/Notifications/Notifications";
 // // // // // // // // // import Wishlist from "./Pages/Wishlist/Wishlist";
 // // // // // // // // // import FlightDetails from "./Pages/FlightDetails/FlightDetails";
+// // // // // // // // // // import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
+// // // // // // // // // // import FlightBooking from "./Pages/Dashboard/FlightBooking/FlightBooking";
 
+// // // // // // // // // /* Dashboard */
+// // // // // // // // // import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
+// // // // // // // // // import FlightBooking from "./Pages/Dashboard/FlightBooking/FlightBooking";
+// // // // // // // // // import AdminLogin from "./Pages/AdminLogin/AdminLogin";
 
 // // // // // // // // // function App() {
+
 // // // // // // // // //   return (
+
 // // // // // // // // //     <Routes>
+
+// // // // // // // // //       {/* Website */}
+
 // // // // // // // // //       <Route path="/" element={<Home />} />
 // // // // // // // // //       <Route path="/flights" element={<Flights />} />
 // // // // // // // // //       <Route path="/booking" element={<Booking />} />
@@ -35,12 +272,15 @@
 // // // // // // // // //       <Route path="/extra-baggage" element={<ExtraBaggage />} />
 // // // // // // // // //       <Route path="/payment" element={<Payment />} />
 // // // // // // // // //       <Route path="/success" element={<Success />} />
+
 // // // // // // // // //       <Route path="/login" element={<Login />} />
 // // // // // // // // //       <Route path="/signup" element={<Signup />} />
 // // // // // // // // //       <Route path="/forgot-password" element={<ForgotPassword />} />
+
 // // // // // // // // //       <Route path="/offers" element={<Offers />} />
 // // // // // // // // //       <Route path="/about" element={<About />} />
 // // // // // // // // //       <Route path="/contact" element={<Contact />} />
+
 // // // // // // // // //       <Route path="/my-bookings" element={<MyBookings />} />
 // // // // // // // // //       <Route path="/ticket" element={<Ticket />} />
 // // // // // // // // //       <Route path="/profile" element={<Profile />} />
@@ -48,19 +288,53 @@
 // // // // // // // // //       <Route path="/change-password" element={<ChangePassword />} />
 // // // // // // // // //       <Route path="/notifications" element={<Notifications />} />
 // // // // // // // // //       <Route path="/wishlist" element={<Wishlist />} />
+// // // // // // // // //       <Route path="/flight-details" element={<FlightDetails />} />
+
 // // // // // // // // //       <Route
-// // // // // // // // //   path="/flight-details"
-// // // // // // // // //   element={<FlightDetails />}
+// // // // // // // // //   path="/admin-login"
+// // // // // // // // //   element={<AdminLogin />}
+// // // // // // // // // />
+
+// // // // // // // // //       {/* Dashboard */}
+// // // // // // // // // {/* 
+// // // // // // // // //       <Route path="/dashboard" element={<Dashboard />} />
+
+// // // // // // // // //       <Route
+// // // // // // // // //         path="/dashboard/flights"
+// // // // // // // // //         element={<FlightBooking />}
+// // // // // // // // //       /> */}
+// // // // // // // // // {/* Dashboard */}
+
+// // // // // // // // // <Route
+// // // // // // // // //   path="/dashboard"
+// // // // // // // // //   element={<Dashboard />}
+// // // // // // // // // />
+
+// // // // // // // // // <Route
+// // // // // // // // //   path="/dashboard/flights"
+// // // // // // // // //   element={<FlightBooking />}
 // // // // // // // // // />
 // // // // // // // // //     </Routes>
+
 // // // // // // // // //   );
+
 // // // // // // // // // }
 
 // // // // // // // // // export default App;
 
 
+
 // // // // // // // // import "./App.css";
-// // // // // // // // import { Routes, Route } from "react-router-dom";
+
+// // // // // // // // import {
+// // // // // // // //   Routes,
+// // // // // // // //   Route,
+// // // // // // // // } from "react-router-dom";
+
+
+// // // // // // // // // ==========================================
+// // // // // // // // // WEBSITE PAGES
+// // // // // // // // // ==========================================
 
 // // // // // // // // import Home from "./Pages/Home/Home";
 // // // // // // // // import Flights from "./Pages/Flights/Flights";
@@ -70,38 +344,75 @@
 // // // // // // // // import ExtraBaggage from "./Pages/ExtraBaggage/ExtraBaggage";
 // // // // // // // // import Payment from "./Pages/Payment/Payment";
 // // // // // // // // import Success from "./Pages/Success/Success";
+
 // // // // // // // // import Login from "./Pages/Login/Login";
 // // // // // // // // import Signup from "./Pages/Signup/Signup";
 // // // // // // // // import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
+
 // // // // // // // // import Offers from "./Pages/Offers/Offers";
 // // // // // // // // import About from "./Pages/About/About";
 // // // // // // // // import Contact from "./Pages/Contact/Contact";
+
 // // // // // // // // import MyBookings from "./Pages/MyBookings/MyBookings";
 // // // // // // // // import Ticket from "./Pages/Ticket/Ticket";
+
 // // // // // // // // import Profile from "./Pages/Profile/Profile";
 // // // // // // // // import EditProfile from "./Pages/EditProfile/EditProfile";
 // // // // // // // // import ChangePassword from "./Pages/ChangePassword/ChangePassword";
+
 // // // // // // // // import Notifications from "./Pages/Notifications/Notifications";
 // // // // // // // // import Wishlist from "./Pages/Wishlist/Wishlist";
+
 // // // // // // // // import FlightDetails from "./Pages/FlightDetails/FlightDetails";
+
+
+// // // // // // // // // ==========================================
+// // // // // // // // // ADMIN DASHBOARD
+// // // // // // // // // ==========================================
+
 // // // // // // // // import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
+
 // // // // // // // // import FlightBooking from "./Pages/Dashboard/FlightBooking/FlightBooking";
+
+
+// // // // // // // // // ==========================================
+// // // // // // // // // PROTECTED ROUTE
+// // // // // // // // // ==========================================
+
+// // // // // // // // import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+// // // // // // // // import Users from "./Pages/Dashboard/Users/Users";
+
+
 // // // // // // // // function App() {
 
 // // // // // // // //   return (
 
 // // // // // // // //     <Routes>
 
+
+// // // // // // // //       {/* =====================================
+// // // // // // // //                   WEBSITE
+// // // // // // // //       ===================================== */}
+
 // // // // // // // //       <Route
-// // // // // // // //   path="/dashboard/flights"
-// // // // // // // //   element={<FlightBooking />}
+// // // // // // // //         path="/"
+// // // // // // // //         element={<Home />}
+// // // // // // // //       />
+
+// // // // // // // //       <Route
+// // // // // // // //   path="/dashboard/users"
+// // // // // // // //   element={<Users />}
 // // // // // // // // />
 
-// // // // // // // //       <Route path="/" element={<Home />} />
+// // // // // // // //       <Route
+// // // // // // // //         path="/flights"
+// // // // // // // //         element={<Flights />}
+// // // // // // // //       />
 
-// // // // // // // //       <Route path="/flights" element={<Flights />} />
-
-// // // // // // // //       <Route path="/booking" element={<Booking />} />
+// // // // // // // //       <Route
+// // // // // // // //         path="/booking"
+// // // // // // // //         element={<Booking />}
+// // // // // // // //       />
 
 // // // // // // // //       <Route
 // // // // // // // //         path="/seat-selection"
@@ -128,6 +439,11 @@
 // // // // // // // //         element={<Success />}
 // // // // // // // //       />
 
+
+// // // // // // // //       {/* =====================================
+// // // // // // // //                   AUTH
+// // // // // // // //       ===================================== */}
+
 // // // // // // // //       <Route
 // // // // // // // //         path="/login"
 // // // // // // // //         element={<Login />}
@@ -142,6 +458,11 @@
 // // // // // // // //         path="/forgot-password"
 // // // // // // // //         element={<ForgotPassword />}
 // // // // // // // //       />
+
+
+// // // // // // // //       {/* =====================================
+// // // // // // // //                   OTHER PAGES
+// // // // // // // //       ===================================== */}
 
 // // // // // // // //       <Route
 // // // // // // // //         path="/offers"
@@ -198,12 +519,30 @@
 // // // // // // // //         element={<FlightDetails />}
 // // // // // // // //       />
 
-// // // // // // // //       {/* Dashboard */}
 
-// // // // // // // //       <Route
-// // // // // // // //   path="/dashboard"
-// // // // // // // //   element={<Dashboard />}
-// // // // // // // // />
+// // // // // // // //       {/* =====================================
+// // // // // // // //               ADMIN DASHBOARD PROTECTED
+// // // // // // // //       ===================================== */}
+
+// // // // // // // //       <Route element={<ProtectedRoute allowedRole="admin" />}>
+
+// // // // // // // //         {/* Admin Dashboard */}
+
+// // // // // // // //         <Route
+// // // // // // // //           path="/dashboard"
+// // // // // // // //           element={<Dashboard />}
+// // // // // // // //         />
+
+
+// // // // // // // //         {/* Flight Management */}
+
+// // // // // // // //         <Route
+// // // // // // // //           path="/dashboard/flights"
+// // // // // // // //           element={<FlightBooking />}
+// // // // // // // //         />
+
+// // // // // // // //       </Route>
+
 
 // // // // // // // //     </Routes>
 
@@ -215,16 +554,17 @@
 
 
 
-
-
-
-
-
-
-
-
 // // // // // // // import "./App.css";
-// // // // // // // import { Routes, Route } from "react-router-dom";
+
+// // // // // // // import {
+// // // // // // //   Routes,
+// // // // // // //   Route,
+// // // // // // // } from "react-router-dom";
+
+
+// // // // // // // // ==========================================
+// // // // // // // // WEBSITE PAGES
+// // // // // // // // ==========================================
 
 // // // // // // // import Home from "./Pages/Home/Home";
 // // // // // // // import Flights from "./Pages/Flights/Flights";
@@ -234,27 +574,51 @@
 // // // // // // // import ExtraBaggage from "./Pages/ExtraBaggage/ExtraBaggage";
 // // // // // // // import Payment from "./Pages/Payment/Payment";
 // // // // // // // import Success from "./Pages/Success/Success";
+
 // // // // // // // import Login from "./Pages/Login/Login";
 // // // // // // // import Signup from "./Pages/Signup/Signup";
 // // // // // // // import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
+
 // // // // // // // import Offers from "./Pages/Offers/Offers";
 // // // // // // // import About from "./Pages/About/About";
 // // // // // // // import Contact from "./Pages/Contact/Contact";
+
 // // // // // // // import MyBookings from "./Pages/MyBookings/MyBookings";
 // // // // // // // import Ticket from "./Pages/Ticket/Ticket";
+
 // // // // // // // import Profile from "./Pages/Profile/Profile";
 // // // // // // // import EditProfile from "./Pages/EditProfile/EditProfile";
 // // // // // // // import ChangePassword from "./Pages/ChangePassword/ChangePassword";
+
 // // // // // // // import Notifications from "./Pages/Notifications/Notifications";
 // // // // // // // import Wishlist from "./Pages/Wishlist/Wishlist";
-// // // // // // // import FlightDetails from "./Pages/FlightDetails/FlightDetails";
-// // // // // // // // import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
-// // // // // // // // import FlightBooking from "./Pages/Dashboard/FlightBooking/FlightBooking";
 
-// // // // // // // /* Dashboard */
+// // // // // // // import FlightDetails from "./Pages/FlightDetails/FlightDetails";
+
+
+// // // // // // // // ==========================================
+// // // // // // // // ADMIN DASHBOARD
+// // // // // // // // ==========================================
+
 // // // // // // // import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
+
+// // // // // // // import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
+
 // // // // // // // import FlightBooking from "./Pages/Dashboard/FlightBooking/FlightBooking";
-// // // // // // // import AdminLogin from "./Pages/AdminLogin/AdminLogin";
+
+// // // // // // // import Users from "./Pages/Dashboard/Users/Users";
+
+
+
+
+// // // // // // // // ==========================================
+// // // // // // // // PROTECTED ROUTE
+// // // // // // // // ==========================================
+
+// // // // // // // import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+
+// // // // // // // import MyBookings from "./Pages/Dashboard/MyBookings/MyBookings";
+
 
 // // // // // // // function App() {
 
@@ -262,66 +626,203 @@
 
 // // // // // // //     <Routes>
 
-// // // // // // //       {/* Website */}
 
-// // // // // // //       <Route path="/" element={<Home />} />
-// // // // // // //       <Route path="/flights" element={<Flights />} />
-// // // // // // //       <Route path="/booking" element={<Booking />} />
-// // // // // // //       <Route path="/seat-selection" element={<SeatSelection />} />
-// // // // // // //       <Route path="/meal-selection" element={<MealSelection />} />
-// // // // // // //       <Route path="/extra-baggage" element={<ExtraBaggage />} />
-// // // // // // //       <Route path="/payment" element={<Payment />} />
-// // // // // // //       <Route path="/success" element={<Success />} />
-
-// // // // // // //       <Route path="/login" element={<Login />} />
-// // // // // // //       <Route path="/signup" element={<Signup />} />
-// // // // // // //       <Route path="/forgot-password" element={<ForgotPassword />} />
-
-// // // // // // //       <Route path="/offers" element={<Offers />} />
-// // // // // // //       <Route path="/about" element={<About />} />
-// // // // // // //       <Route path="/contact" element={<Contact />} />
-
-// // // // // // //       <Route path="/my-bookings" element={<MyBookings />} />
-// // // // // // //       <Route path="/ticket" element={<Ticket />} />
-// // // // // // //       <Route path="/profile" element={<Profile />} />
-// // // // // // //       <Route path="/edit-profile" element={<EditProfile />} />
-// // // // // // //       <Route path="/change-password" element={<ChangePassword />} />
-// // // // // // //       <Route path="/notifications" element={<Notifications />} />
-// // // // // // //       <Route path="/wishlist" element={<Wishlist />} />
-// // // // // // //       <Route path="/flight-details" element={<FlightDetails />} />
+// // // // // // //       {/* =====================================
+// // // // // // //                   WEBSITE
+// // // // // // //       ===================================== */}
 
 // // // // // // //       <Route
-// // // // // // //   path="/admin-login"
-// // // // // // //   element={<AdminLogin />}
-// // // // // // // />
+// // // // // // //         path="/"
+// // // // // // //         element={<Home />}
+// // // // // // //       />
 
-// // // // // // //       {/* Dashboard */}
-// // // // // // // {/* 
-// // // // // // //       <Route path="/dashboard" element={<Dashboard />} />
+// // // // // // // <Route
+// // // // // // //   path="my-bookings"
+// // // // // // //   element={<MyBookings />}
+// // // // // // // />
+// // // // // // //       <Route
+// // // // // // //         path="/flights"
+// // // // // // //         element={<Flights />}
+// // // // // // //       />
 
 // // // // // // //       <Route
-// // // // // // //         path="/dashboard/flights"
-// // // // // // //         element={<FlightBooking />}
-// // // // // // //       /> */}
-// // // // // // // {/* Dashboard */}
+// // // // // // //         path="/booking"
+// // // // // // //         element={<Booking />}
+// // // // // // //       />
 
-// // // // // // // <Route
-// // // // // // //   path="/dashboard"
-// // // // // // //   element={<Dashboard />}
-// // // // // // // />
+// // // // // // //       <Route
+// // // // // // //         path="/seat-selection"
+// // // // // // //         element={<SeatSelection />}
+// // // // // // //       />
 
-// // // // // // // <Route
-// // // // // // //   path="/dashboard/flights"
-// // // // // // //   element={<FlightBooking />}
-// // // // // // // />
+// // // // // // //       <Route
+// // // // // // //         path="/meal-selection"
+// // // // // // //         element={<MealSelection />}
+// // // // // // //       />
+
+// // // // // // //       <Route
+// // // // // // //         path="/extra-baggage"
+// // // // // // //         element={<ExtraBaggage />}
+// // // // // // //       />
+
+// // // // // // //       <Route
+// // // // // // //         path="/payment"
+// // // // // // //         element={<Payment />}
+// // // // // // //       />
+
+// // // // // // //       <Route
+// // // // // // //         path="/success"
+// // // // // // //         element={<Success />}
+// // // // // // //       />
+
+
+// // // // // // //       {/* =====================================
+// // // // // // //                   AUTH
+// // // // // // //       ===================================== */}
+
+// // // // // // //       <Route
+// // // // // // //         path="/login"
+// // // // // // //         element={<Login />}
+// // // // // // //       />
+
+// // // // // // //       <Route
+// // // // // // //         path="/signup"
+// // // // // // //         element={<Signup />}
+// // // // // // //       />
+
+// // // // // // //       <Route
+// // // // // // //         path="/forgot-password"
+// // // // // // //         element={<ForgotPassword />}
+// // // // // // //       />
+
+
+// // // // // // //       {/* =====================================
+// // // // // // //                   OTHER PAGES
+// // // // // // //       ===================================== */}
+
+// // // // // // //       <Route
+// // // // // // //         path="/offers"
+// // // // // // //         element={<Offers />}
+// // // // // // //       />
+
+// // // // // // //       <Route
+// // // // // // //         path="/about"
+// // // // // // //         element={<About />}
+// // // // // // //       />
+
+// // // // // // //       <Route
+// // // // // // //         path="/contact"
+// // // // // // //         element={<Contact />}
+// // // // // // //       />
+
+// // // // // // //       <Route
+// // // // // // //         path="/my-bookings"
+// // // // // // //         element={<MyBookings />}
+// // // // // // //       />
+
+// // // // // // //       <Route
+// // // // // // //         path="/ticket"
+// // // // // // //         element={<Ticket />}
+// // // // // // //       />
+
+// // // // // // //       <Route
+// // // // // // //         path="/profile"
+// // // // // // //         element={<Profile />}
+// // // // // // //       />
+
+// // // // // // //       <Route
+// // // // // // //         path="/edit-profile"
+// // // // // // //         element={<EditProfile />}
+// // // // // // //       />
+
+// // // // // // //       <Route
+// // // // // // //         path="/change-password"
+// // // // // // //         element={<ChangePassword />}
+// // // // // // //       />
+
+// // // // // // //       <Route
+// // // // // // //         path="/notifications"
+// // // // // // //         element={<Notifications />}
+// // // // // // //       />
+
+// // // // // // //       <Route
+// // // // // // //         path="/wishlist"
+// // // // // // //         element={<Wishlist />}
+// // // // // // //       />
+
+// // // // // // //       <Route
+// // // // // // //         path="/flight-details"
+// // // // // // //         element={<FlightDetails />}
+// // // // // // //       />
+
+
+// // // // // // //       {/* =====================================
+// // // // // // //               ADMIN DASHBOARD PROTECTED
+// // // // // // //       ===================================== */}
+
+// // // // // // //       <Route
+// // // // // // //         element={
+// // // // // // //           <ProtectedRoute
+// // // // // // //             allowedRole="admin"
+// // // // // // //           />
+// // // // // // //         }
+// // // // // // //       >
+
+
+// // // // // // //         {/* ==================================
+// // // // // // //                   DASHBOARD LAYOUT
+// // // // // // //         ================================== */}
+
+// // // // // // //         <Route
+// // // // // // //           path="/dashboard"
+// // // // // // //           element={<Dashboard />}
+// // // // // // //         >
+
+
+// // // // // // //           {/* =================================
+// // // // // // //                     DASHBOARD HOME
+// // // // // // //           ================================= */}
+
+// // // // // // //           <Route
+// // // // // // //             index
+// // // // // // //             element={<DashboardHome />}
+// // // // // // //           />
+
+
+// // // // // // //           {/* =================================
+// // // // // // //                     FLIGHT BOOKING
+// // // // // // //           ================================= */}
+
+// // // // // // //           <Route
+// // // // // // //             path="flights"
+// // // // // // //             element={<FlightBooking />}
+// // // // // // //           />
+
+
+// // // // // // //           {/* =================================
+// // // // // // //                     USERS
+// // // // // // //           ================================= */}
+
+// // // // // // //           <Route
+// // // // // // //             path="users"
+// // // // // // //             element={<Users />}
+// // // // // // //           />
+
+
+// // // // // // //         </Route>
+
+
+// // // // // // //       </Route>
+
+
 // // // // // // //     </Routes>
 
 // // // // // // //   );
 
 // // // // // // // }
 
-// // // // // // // export default App;
 
+// // // // // // // export default App;
 
 
 // // // // // // import "./App.css";
@@ -330,7 +831,6 @@
 // // // // // //   Routes,
 // // // // // //   Route,
 // // // // // // } from "react-router-dom";
-
 
 // // // // // // // ==========================================
 // // // // // // // WEBSITE PAGES
@@ -365,22 +865,29 @@
 
 // // // // // // import FlightDetails from "./Pages/FlightDetails/FlightDetails";
 
-
 // // // // // // // ==========================================
 // // // // // // // ADMIN DASHBOARD
 // // // // // // // ==========================================
 
 // // // // // // import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 
+// // // // // // import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
+
 // // // // // // import FlightBooking from "./Pages/Dashboard/FlightBooking/FlightBooking";
 
+// // // // // // import Users from "./Pages/Dashboard/Users/Users";
+
+// // // // // // // ==========================================
+// // // // // // // ADMIN MY BOOKINGS
+// // // // // // // ==========================================
+
+// // // // // // import AdminMyBookings from "./Pages/Dashboard/MyBookings/MyBookings";
 
 // // // // // // // ==========================================
 // // // // // // // PROTECTED ROUTE
 // // // // // // // ==========================================
 
 // // // // // // import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
-// // // // // // import Users from "./Pages/Dashboard/Users/Users";
 
 
 // // // // // // function App() {
@@ -388,7 +895,6 @@
 // // // // // //   return (
 
 // // // // // //     <Routes>
-
 
 // // // // // //       {/* =====================================
 // // // // // //                   WEBSITE
@@ -398,11 +904,6 @@
 // // // // // //         path="/"
 // // // // // //         element={<Home />}
 // // // // // //       />
-
-// // // // // //       <Route
-// // // // // //   path="/dashboard/users"
-// // // // // //   element={<Users />}
-// // // // // // />
 
 // // // // // //       <Route
 // // // // // //         path="/flights"
@@ -461,7 +962,7 @@
 
 
 // // // // // //       {/* =====================================
-// // // // // //                   OTHER PAGES
+// // // // // //                   OTHER WEBSITE PAGES
 // // // // // //       ===================================== */}
 
 // // // // // //       <Route
@@ -524,34 +1025,73 @@
 // // // // // //               ADMIN DASHBOARD PROTECTED
 // // // // // //       ===================================== */}
 
-// // // // // //       <Route element={<ProtectedRoute allowedRole="admin" />}>
+// // // // // //       <Route
+// // // // // //         element={
+// // // // // //           <ProtectedRoute
+// // // // // //             allowedRole="admin"
+// // // // // //           />
+// // // // // //         }
+// // // // // //       >
 
-// // // // // //         {/* Admin Dashboard */}
+// // // // // //         {/* ==================================
+// // // // // //                   DASHBOARD LAYOUT
+// // // // // //         ================================== */}
 
 // // // // // //         <Route
 // // // // // //           path="/dashboard"
 // // // // // //           element={<Dashboard />}
-// // // // // //         />
+// // // // // //         >
+
+// // // // // //           {/* =================================
+// // // // // //                     DASHBOARD HOME
+// // // // // //           ================================= */}
+
+// // // // // //           <Route
+// // // // // //             index
+// // // // // //             element={<DashboardHome />}
+// // // // // //           />
 
 
-// // // // // //         {/* Flight Management */}
+// // // // // //           {/* =================================
+// // // // // //                     FLIGHT BOOKING
+// // // // // //           ================================= */}
 
-// // // // // //         <Route
-// // // // // //           path="/dashboard/flights"
-// // // // // //           element={<FlightBooking />}
-// // // // // //         />
+// // // // // //           <Route
+// // // // // //             path="flights"
+// // // // // //             element={<FlightBooking />}
+// // // // // //           />
+
+
+// // // // // //           {/* =================================
+// // // // // //                     MY BOOKINGS
+// // // // // //           ================================= */}
+
+// // // // // //           <Route
+// // // // // //             path="my-bookings"
+// // // // // //             element={<AdminMyBookings />}
+// // // // // //           />
+
+
+// // // // // //           {/* =================================
+// // // // // //                     USERS
+// // // // // //           ================================= */}
+
+// // // // // //           <Route
+// // // // // //             path="users"
+// // // // // //             element={<Users />}
+// // // // // //           />
+
+// // // // // //         </Route>
 
 // // // // // //       </Route>
-
 
 // // // // // //     </Routes>
 
 // // // // // //   );
-
 // // // // // // }
 
-// // // // // // export default App;
 
+// // // // // // export default App;
 
 
 // // // // // import "./App.css";
@@ -560,7 +1100,6 @@
 // // // // //   Routes,
 // // // // //   Route,
 // // // // // } from "react-router-dom";
-
 
 // // // // // // ==========================================
 // // // // // // WEBSITE PAGES
@@ -595,7 +1134,6 @@
 
 // // // // // import FlightDetails from "./Pages/FlightDetails/FlightDetails";
 
-
 // // // // // // ==========================================
 // // // // // // ADMIN DASHBOARD
 // // // // // // ==========================================
@@ -608,8 +1146,17 @@
 
 // // // // // import Users from "./Pages/Dashboard/Users/Users";
 
+// // // // // // ==========================================
+// // // // // // ADMIN MY BOOKINGS
+// // // // // // ==========================================
 
+// // // // // import AdminMyBookings from "./Pages/Dashboard/MyBookings/MyBookings";
 
+// // // // // // ==========================================
+// // // // // // ADMIN PROFILE
+// // // // // // ==========================================
+
+// // // // // import AdminProfile from "./Pages/Dashboard/AdminProfile/AdminProfile";
 
 // // // // // // ==========================================
 // // // // // // PROTECTED ROUTE
@@ -617,15 +1164,12 @@
 
 // // // // // import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 
-// // // // // import MyBookings from "./Pages/Dashboard/MyBookings/MyBookings";
-
 
 // // // // // function App() {
 
 // // // // //   return (
 
 // // // // //     <Routes>
-
 
 // // // // //       {/* =====================================
 // // // // //                   WEBSITE
@@ -636,10 +1180,6 @@
 // // // // //         element={<Home />}
 // // // // //       />
 
-// // // // // <Route
-// // // // //   path="my-bookings"
-// // // // //   element={<MyBookings />}
-// // // // // />
 // // // // //       <Route
 // // // // //         path="/flights"
 // // // // //         element={<Flights />}
@@ -697,7 +1237,7 @@
 
 
 // // // // //       {/* =====================================
-// // // // //                   OTHER PAGES
+// // // // //               OTHER WEBSITE PAGES
 // // // // //       ===================================== */}
 
 // // // // //       <Route
@@ -725,20 +1265,38 @@
 // // // // //         element={<Ticket />}
 // // // // //       />
 
-// // // // //       <Route
-// // // // //         path="/profile"
-// // // // //         element={<Profile />}
-// // // // //       />
+
+// // // // //       {/* =====================================
+// // // // //               CUSTOMER PROFILE PROTECTED
+// // // // //       ===================================== */}
 
 // // // // //       <Route
-// // // // //         path="/edit-profile"
-// // // // //         element={<EditProfile />}
-// // // // //       />
+// // // // //         element={
+// // // // //           <ProtectedRoute />
+// // // // //         }
+// // // // //       >
 
-// // // // //       <Route
-// // // // //         path="/change-password"
-// // // // //         element={<ChangePassword />}
-// // // // //       />
+// // // // //         <Route
+// // // // //           path="/profile"
+// // // // //           element={<Profile />}
+// // // // //         />
+
+// // // // //         <Route
+// // // // //           path="/edit-profile"
+// // // // //           element={<EditProfile />}
+// // // // //         />
+
+// // // // //         <Route
+// // // // //           path="/change-password"
+// // // // //           element={<ChangePassword />}
+// // // // //         />
+
+// // // // //       </Route>
+
+
+// // // // //       {/* =====================================
+// // // // //                   OTHER PAGES
+// // // // //       ===================================== */}
 
 // // // // //       <Route
 // // // // //         path="/notifications"
@@ -768,7 +1326,6 @@
 // // // // //         }
 // // // // //       >
 
-
 // // // // //         {/* ==================================
 // // // // //                   DASHBOARD LAYOUT
 // // // // //         ================================== */}
@@ -777,7 +1334,6 @@
 // // // // //           path="/dashboard"
 // // // // //           element={<Dashboard />}
 // // // // //         >
-
 
 // // // // //           {/* =================================
 // // // // //                     DASHBOARD HOME
@@ -800,6 +1356,16 @@
 
 
 // // // // //           {/* =================================
+// // // // //                     MY BOOKINGS
+// // // // //           ================================= */}
+
+// // // // //           <Route
+// // // // //             path="my-bookings"
+// // // // //             element={<AdminMyBookings />}
+// // // // //           />
+
+
+// // // // //           {/* =================================
 // // // // //                     USERS
 // // // // //           ================================= */}
 
@@ -809,11 +1375,18 @@
 // // // // //           />
 
 
+// // // // //           {/* =================================
+// // // // //                     ADMIN PROFILE
+// // // // //           ================================= */}
+
+// // // // //           <Route
+// // // // //             path="profile"
+// // // // //             element={<AdminProfile />}
+// // // // //           />
+
 // // // // //         </Route>
 
-
 // // // // //       </Route>
-
 
 // // // // //     </Routes>
 
@@ -845,9 +1418,19 @@
 // // // // import Payment from "./Pages/Payment/Payment";
 // // // // import Success from "./Pages/Success/Success";
 
+
+// // // // // ==========================================
+// // // // // AUTH
+// // // // // ==========================================
+
 // // // // import Login from "./Pages/Login/Login";
 // // // // import Signup from "./Pages/Signup/Signup";
 // // // // import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
+
+
+// // // // // ==========================================
+// // // // // OTHER WEBSITE PAGES
+// // // // // ==========================================
 
 // // // // import Offers from "./Pages/Offers/Offers";
 // // // // import About from "./Pages/About/About";
@@ -855,6 +1438,11 @@
 
 // // // // import MyBookings from "./Pages/MyBookings/MyBookings";
 // // // // import Ticket from "./Pages/Ticket/Ticket";
+
+
+// // // // // ==========================================
+// // // // // CUSTOMER PROFILE
+// // // // // ==========================================
 
 // // // // import Profile from "./Pages/Profile/Profile";
 // // // // import EditProfile from "./Pages/EditProfile/EditProfile";
@@ -864,6 +1452,7 @@
 // // // // import Wishlist from "./Pages/Wishlist/Wishlist";
 
 // // // // import FlightDetails from "./Pages/FlightDetails/FlightDetails";
+
 
 // // // // // ==========================================
 // // // // // ADMIN DASHBOARD
@@ -877,11 +1466,27 @@
 
 // // // // import Users from "./Pages/Dashboard/Users/Users";
 
+
 // // // // // ==========================================
 // // // // // ADMIN MY BOOKINGS
 // // // // // ==========================================
 
 // // // // import AdminMyBookings from "./Pages/Dashboard/MyBookings/MyBookings";
+
+
+// // // // // ==========================================
+// // // // // ADMIN PROFILE
+// // // // // ==========================================
+
+// // // // import AdminProfile from "./Pages/Dashboard/AdminProfile/AdminProfile";
+
+
+// // // // // ==========================================
+// // // // // ADMIN EDIT PROFILE
+// // // // // ==========================================
+
+// // // // import AdminEditProfile from "./Pages/Dashboard/AdminEditProfile/AdminEditProfile";
+
 
 // // // // // ==========================================
 // // // // // PROTECTED ROUTE
@@ -896,44 +1501,53 @@
 
 // // // //     <Routes>
 
-// // // //       {/* =====================================
-// // // //                   WEBSITE
-// // // //       ===================================== */}
+
+// // // //       {/* ==================================================
+// // // //                          WEBSITE
+// // // //       ================================================== */}
+
 
 // // // //       <Route
 // // // //         path="/"
 // // // //         element={<Home />}
 // // // //       />
 
+
 // // // //       <Route
 // // // //         path="/flights"
 // // // //         element={<Flights />}
 // // // //       />
+
 
 // // // //       <Route
 // // // //         path="/booking"
 // // // //         element={<Booking />}
 // // // //       />
 
+
 // // // //       <Route
 // // // //         path="/seat-selection"
 // // // //         element={<SeatSelection />}
 // // // //       />
+
 
 // // // //       <Route
 // // // //         path="/meal-selection"
 // // // //         element={<MealSelection />}
 // // // //       />
 
+
 // // // //       <Route
 // // // //         path="/extra-baggage"
 // // // //         element={<ExtraBaggage />}
 // // // //       />
 
+
 // // // //       <Route
 // // // //         path="/payment"
 // // // //         element={<Payment />}
 // // // //       />
+
 
 // // // //       <Route
 // // // //         path="/success"
@@ -941,19 +1555,22 @@
 // // // //       />
 
 
-// // // //       {/* =====================================
-// // // //                   AUTH
-// // // //       ===================================== */}
+// // // //       {/* ==================================================
+// // // //                          AUTH
+// // // //       ================================================== */}
+
 
 // // // //       <Route
 // // // //         path="/login"
 // // // //         element={<Login />}
 // // // //       />
 
+
 // // // //       <Route
 // // // //         path="/signup"
 // // // //         element={<Signup />}
 // // // //       />
+
 
 // // // //       <Route
 // // // //         path="/forgot-password"
@@ -961,59 +1578,52 @@
 // // // //       />
 
 
-// // // //       {/* =====================================
-// // // //                   OTHER WEBSITE PAGES
-// // // //       ===================================== */}
+// // // //       {/* ==================================================
+// // // //                    OTHER WEBSITE PAGES
+// // // //       ================================================== */}
+
 
 // // // //       <Route
 // // // //         path="/offers"
 // // // //         element={<Offers />}
 // // // //       />
 
+
 // // // //       <Route
 // // // //         path="/about"
 // // // //         element={<About />}
 // // // //       />
+
 
 // // // //       <Route
 // // // //         path="/contact"
 // // // //         element={<Contact />}
 // // // //       />
 
+
 // // // //       <Route
 // // // //         path="/my-bookings"
 // // // //         element={<MyBookings />}
 // // // //       />
+
 
 // // // //       <Route
 // // // //         path="/ticket"
 // // // //         element={<Ticket />}
 // // // //       />
 
-// // // //       <Route
-// // // //         path="/profile"
-// // // //         element={<Profile />}
-// // // //       />
-
-// // // //       <Route
-// // // //         path="/edit-profile"
-// // // //         element={<EditProfile />}
-// // // //       />
-
-// // // //       <Route
-// // // //         path="/change-password"
-// // // //         element={<ChangePassword />}
-// // // //       />
 
 // // // //       <Route
 // // // //         path="/notifications"
 // // // //         element={<Notifications />}
 // // // //       />
 
+
 // // // //       <Route
 // // // //         path="/wishlist"
 // // // //         element={<Wishlist />}
 // // // //       />
+
 
 // // // //       <Route
 // // // //         path="/flight-details"
@@ -1021,9 +1631,49 @@
 // // // //       />
 
 
-// // // //       {/* =====================================
-// // // //               ADMIN DASHBOARD PROTECTED
-// // // //       ===================================== */}
+// // // //       {/* ==================================================
+// // // //                     CUSTOMER PROTECTED ROUTES
+// // // //       ================================================== */}
+
+
+// // // //       <Route
+// // // //         element={
+// // // //           <ProtectedRoute />
+// // // //         }
+// // // //       >
+
+
+// // // //         {/* CUSTOMER PROFILE */}
+
+// // // //         <Route
+// // // //           path="/profile"
+// // // //           element={<Profile />}
+// // // //         />
+
+
+// // // //         {/* CUSTOMER EDIT PROFILE */}
+
+// // // //         <Route
+// // // //           path="/edit-profile"
+// // // //           element={<EditProfile />}
+// // // //         />
+
+
+// // // //         {/* CUSTOMER CHANGE PASSWORD */}
+
+// // // //         <Route
+// // // //           path="/change-password"
+// // // //           element={<ChangePassword />}
+// // // //         />
+
+
+// // // //       </Route>
+
+
+// // // //       {/* ==================================================
+// // // //                      ADMIN PROTECTED ROUTES
+// // // //       ================================================== */}
+
 
 // // // //       <Route
 // // // //         element={
@@ -1033,18 +1683,22 @@
 // // // //         }
 // // // //       >
 
-// // // //         {/* ==================================
-// // // //                   DASHBOARD LAYOUT
-// // // //         ================================== */}
+
+// // // //         {/* ==================================================
+// // // //                          DASHBOARD LAYOUT
+// // // //         ================================================== */}
+
 
 // // // //         <Route
 // // // //           path="/dashboard"
 // // // //           element={<Dashboard />}
 // // // //         >
 
-// // // //           {/* =================================
-// // // //                     DASHBOARD HOME
-// // // //           ================================= */}
+
+// // // //           {/* ================================================
+// // // //                          DASHBOARD HOME
+// // // //           ================================================ */}
+
 
 // // // //           <Route
 // // // //             index
@@ -1052,9 +1706,10 @@
 // // // //           />
 
 
-// // // //           {/* =================================
-// // // //                     FLIGHT BOOKING
-// // // //           ================================= */}
+// // // //           {/* ================================================
+// // // //                          FLIGHT BOOKING
+// // // //           ================================================ */}
+
 
 // // // //           <Route
 // // // //             path="flights"
@@ -1062,9 +1717,10 @@
 // // // //           />
 
 
-// // // //           {/* =================================
-// // // //                     MY BOOKINGS
-// // // //           ================================= */}
+// // // //           {/* ================================================
+// // // //                          MY BOOKINGS
+// // // //           ================================================ */}
+
 
 // // // //           <Route
 // // // //             path="my-bookings"
@@ -1072,22 +1728,49 @@
 // // // //           />
 
 
-// // // //           {/* =================================
-// // // //                     USERS
-// // // //           ================================= */}
+// // // //           {/* ================================================
+// // // //                          USERS
+// // // //           ================================================ */}
+
 
 // // // //           <Route
 // // // //             path="users"
 // // // //             element={<Users />}
 // // // //           />
 
+
+// // // //           {/* ================================================
+// // // //                          ADMIN PROFILE
+// // // //           ================================================ */}
+
+
+// // // //           <Route
+// // // //             path="profile"
+// // // //             element={<AdminProfile />}
+// // // //           />
+
+
+// // // //           {/* ================================================
+// // // //                          ADMIN EDIT PROFILE
+// // // //           ================================================ */}
+
+
+// // // //           <Route
+// // // //             path="profile/edit"
+// // // //             element={<AdminEditProfile />}
+// // // //           />
+
+
 // // // //         </Route>
 
+
 // // // //       </Route>
+
 
 // // // //     </Routes>
 
 // // // //   );
+
 // // // // }
 
 
@@ -1114,25 +1797,36 @@
 // // // import Payment from "./Pages/Payment/Payment";
 // // // import Success from "./Pages/Success/Success";
 
+// // // // ==========================================
+// // // // AUTH
+// // // // ==========================================
+
 // // // import Login from "./Pages/Login/Login";
 // // // import Signup from "./Pages/Signup/Signup";
 // // // import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
+
+// // // // ==========================================
+// // // // OTHER WEBSITE PAGES
+// // // // ==========================================
 
 // // // import Offers from "./Pages/Offers/Offers";
 // // // import About from "./Pages/About/About";
 // // // import Contact from "./Pages/Contact/Contact";
 
 // // // import MyBookings from "./Pages/MyBookings/MyBookings";
-// // // import Ticket from "./Pages/Ticket/Ticket";
-
-// // // import Profile from "./Pages/Profile/Profile";
-// // // import EditProfile from "./Pages/EditProfile/EditProfile";
-// // // import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 
 // // // import Notifications from "./Pages/Notifications/Notifications";
 // // // import Wishlist from "./Pages/Wishlist/Wishlist";
 
 // // // import FlightDetails from "./Pages/FlightDetails/FlightDetails";
+
+// // // // ==========================================
+// // // // CUSTOMER PROFILE
+// // // // ==========================================
+
+// // // import Profile from "./Pages/Profile/Profile";
+// // // import EditProfile from "./Pages/EditProfile/EditProfile";
+// // // import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 
 // // // // ==========================================
 // // // // ADMIN DASHBOARD
@@ -1159,6 +1853,12 @@
 // // // import AdminProfile from "./Pages/Dashboard/AdminProfile/AdminProfile";
 
 // // // // ==========================================
+// // // // ADMIN EDIT PROFILE
+// // // // ==========================================
+
+// // // import AdminEditProfile from "./Pages/Dashboard/AdminEditProfile/AdminEditProfile";
+
+// // // // ==========================================
 // // // // PROTECTED ROUTE
 // // // // ==========================================
 
@@ -1171,9 +1871,9 @@
 
 // // //     <Routes>
 
-// // //       {/* =====================================
-// // //                   WEBSITE
-// // //       ===================================== */}
+// // //       {/* ==================================================
+// // //                          WEBSITE
+// // //       ================================================== */}
 
 // // //       <Route
 // // //         path="/"
@@ -1210,15 +1910,19 @@
 // // //         element={<Payment />}
 // // //       />
 
+// // //       {/* ==================================================
+// // //                     SUCCESS / TICKET PAGE
+// // //          Success.jsx ही अब ticket page है
+// // //       ================================================== */}
+
 // // //       <Route
 // // //         path="/success"
 // // //         element={<Success />}
 // // //       />
 
-
-// // //       {/* =====================================
-// // //                   AUTH
-// // //       ===================================== */}
+// // //       {/* ==================================================
+// // //                          AUTH
+// // //       ================================================== */}
 
 // // //       <Route
 // // //         path="/login"
@@ -1235,10 +1939,9 @@
 // // //         element={<ForgotPassword />}
 // // //       />
 
-
-// // //       {/* =====================================
-// // //               OTHER WEBSITE PAGES
-// // //       ===================================== */}
+// // //       {/* ==================================================
+// // //                    OTHER WEBSITE PAGES
+// // //       ================================================== */}
 
 // // //       <Route
 // // //         path="/offers"
@@ -1261,44 +1964,6 @@
 // // //       />
 
 // // //       <Route
-// // //         path="/ticket"
-// // //         element={<Ticket />}
-// // //       />
-
-
-// // //       {/* =====================================
-// // //               CUSTOMER PROFILE PROTECTED
-// // //       ===================================== */}
-
-// // //       <Route
-// // //         element={
-// // //           <ProtectedRoute />
-// // //         }
-// // //       >
-
-// // //         <Route
-// // //           path="/profile"
-// // //           element={<Profile />}
-// // //         />
-
-// // //         <Route
-// // //           path="/edit-profile"
-// // //           element={<EditProfile />}
-// // //         />
-
-// // //         <Route
-// // //           path="/change-password"
-// // //           element={<ChangePassword />}
-// // //         />
-
-// // //       </Route>
-
-
-// // //       {/* =====================================
-// // //                   OTHER PAGES
-// // //       ===================================== */}
-
-// // //       <Route
 // // //         path="/notifications"
 // // //         element={<Notifications />}
 // // //       />
@@ -1313,10 +1978,42 @@
 // // //         element={<FlightDetails />}
 // // //       />
 
+// // //       {/* ==================================================
+// // //                     CUSTOMER PROTECTED ROUTES
+// // //       ================================================== */}
 
-// // //       {/* =====================================
-// // //               ADMIN DASHBOARD PROTECTED
-// // //       ===================================== */}
+// // //       <Route
+// // //         element={
+// // //           <ProtectedRoute />
+// // //         }
+// // //       >
+
+// // //         {/* CUSTOMER PROFILE */}
+
+// // //         <Route
+// // //           path="/profile"
+// // //           element={<Profile />}
+// // //         />
+
+// // //         {/* CUSTOMER EDIT PROFILE */}
+
+// // //         <Route
+// // //           path="/edit-profile"
+// // //           element={<EditProfile />}
+// // //         />
+
+// // //         {/* CUSTOMER CHANGE PASSWORD */}
+
+// // //         <Route
+// // //           path="/change-password"
+// // //           element={<ChangePassword />}
+// // //         />
+
+// // //       </Route>
+
+// // //       {/* ==================================================
+// // //                      ADMIN PROTECTED ROUTES
+// // //       ================================================== */}
 
 // // //       <Route
 // // //         element={
@@ -1326,62 +2023,67 @@
 // // //         }
 // // //       >
 
-// // //         {/* ==================================
-// // //                   DASHBOARD LAYOUT
-// // //         ================================== */}
+// // //         {/* ==================================================
+// // //                          DASHBOARD LAYOUT
+// // //         ================================================== */}
 
 // // //         <Route
 // // //           path="/dashboard"
 // // //           element={<Dashboard />}
 // // //         >
 
-// // //           {/* =================================
-// // //                     DASHBOARD HOME
-// // //           ================================= */}
+// // //           {/* ================================================
+// // //                          DASHBOARD HOME
+// // //           ================================================ */}
 
 // // //           <Route
 // // //             index
 // // //             element={<DashboardHome />}
 // // //           />
 
-
-// // //           {/* =================================
-// // //                     FLIGHT BOOKING
-// // //           ================================= */}
+// // //           {/* ================================================
+// // //                          FLIGHT BOOKING
+// // //           ================================================ */}
 
 // // //           <Route
 // // //             path="flights"
 // // //             element={<FlightBooking />}
 // // //           />
 
-
-// // //           {/* =================================
-// // //                     MY BOOKINGS
-// // //           ================================= */}
+// // //           {/* ================================================
+// // //                          ADMIN MY BOOKINGS
+// // //           ================================================ */}
 
 // // //           <Route
 // // //             path="my-bookings"
 // // //             element={<AdminMyBookings />}
 // // //           />
 
-
-// // //           {/* =================================
-// // //                     USERS
-// // //           ================================= */}
+// // //           {/* ================================================
+// // //                          USERS
+// // //           ================================================ */}
 
 // // //           <Route
 // // //             path="users"
 // // //             element={<Users />}
 // // //           />
 
-
-// // //           {/* =================================
-// // //                     ADMIN PROFILE
-// // //           ================================= */}
+// // //           {/* ================================================
+// // //                          ADMIN PROFILE
+// // //           ================================================ */}
 
 // // //           <Route
 // // //             path="profile"
 // // //             element={<AdminProfile />}
+// // //           />
+
+// // //           {/* ================================================
+// // //                          ADMIN EDIT PROFILE
+// // //           ================================================ */}
+
+// // //           <Route
+// // //             path="profile/edit"
+// // //             element={<AdminEditProfile />}
 // // //           />
 
 // // //         </Route>
@@ -1396,6 +2098,7 @@
 
 
 // // // export default App;
+
 
 
 // // import "./App.css";
@@ -1418,7 +2121,6 @@
 // // import Payment from "./Pages/Payment/Payment";
 // // import Success from "./Pages/Success/Success";
 
-
 // // // ==========================================
 // // // AUTH
 // // // ==========================================
@@ -1427,9 +2129,8 @@
 // // import Signup from "./Pages/Signup/Signup";
 // // import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
 
-
 // // // ==========================================
-// // // OTHER WEBSITE PAGES
+// // // OTHER PAGES
 // // // ==========================================
 
 // // import Offers from "./Pages/Offers/Offers";
@@ -1437,8 +2138,11 @@
 // // import Contact from "./Pages/Contact/Contact";
 
 // // import MyBookings from "./Pages/MyBookings/MyBookings";
-// // import Ticket from "./Pages/Ticket/Ticket";
 
+// // import Notifications from "./Pages/Notifications/Notifications";
+// // import Wishlist from "./Pages/Wishlist/Wishlist";
+
+// // import FlightDetails from "./Pages/FlightDetails/FlightDetails";
 
 // // // ==========================================
 // // // CUSTOMER PROFILE
@@ -1448,45 +2152,19 @@
 // // import EditProfile from "./Pages/EditProfile/EditProfile";
 // // import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 
-// // import Notifications from "./Pages/Notifications/Notifications";
-// // import Wishlist from "./Pages/Wishlist/Wishlist";
-
-// // import FlightDetails from "./Pages/FlightDetails/FlightDetails";
-
-
 // // // ==========================================
-// // // ADMIN DASHBOARD
+// // // ADMIN
 // // // ==========================================
 
 // // import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
-
 // // import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
-
 // // import FlightBooking from "./Pages/Dashboard/FlightBooking/FlightBooking";
-
 // // import Users from "./Pages/Dashboard/Users/Users";
-
-
-// // // ==========================================
-// // // ADMIN MY BOOKINGS
-// // // ==========================================
 
 // // import AdminMyBookings from "./Pages/Dashboard/MyBookings/MyBookings";
 
-
-// // // ==========================================
-// // // ADMIN PROFILE
-// // // ==========================================
-
 // // import AdminProfile from "./Pages/Dashboard/AdminProfile/AdminProfile";
-
-
-// // // ==========================================
-// // // ADMIN EDIT PROFILE
-// // // ==========================================
-
 // // import AdminEditProfile from "./Pages/Dashboard/AdminEditProfile/AdminEditProfile";
-
 
 // // // ==========================================
 // // // PROTECTED ROUTE
@@ -1501,140 +2179,115 @@
 
 // //     <Routes>
 
-
-// //       {/* ==================================================
-// //                          WEBSITE
-// //       ================================================== */}
-
+// //       {/* ==========================================
+// //                     WEBSITE
+// //       ========================================== */}
 
 // //       <Route
 // //         path="/"
 // //         element={<Home />}
 // //       />
 
-
 // //       <Route
 // //         path="/flights"
 // //         element={<Flights />}
 // //       />
-
 
 // //       <Route
 // //         path="/booking"
 // //         element={<Booking />}
 // //       />
 
-
 // //       <Route
 // //         path="/seat-selection"
 // //         element={<SeatSelection />}
 // //       />
-
 
 // //       <Route
 // //         path="/meal-selection"
 // //         element={<MealSelection />}
 // //       />
 
-
 // //       <Route
 // //         path="/extra-baggage"
 // //         element={<ExtraBaggage />}
 // //       />
-
 
 // //       <Route
 // //         path="/payment"
 // //         element={<Payment />}
 // //       />
 
+// //       {/* ==========================================
+// //               SUCCESS = TICKET PAGE
+// //       ========================================== */}
 
 // //       <Route
 // //         path="/success"
 // //         element={<Success />}
 // //       />
 
-
-// //       {/* ==================================================
-// //                          AUTH
-// //       ================================================== */}
-
+// //       {/* ==========================================
+// //                     AUTH
+// //       ========================================== */}
 
 // //       <Route
 // //         path="/login"
 // //         element={<Login />}
 // //       />
 
-
 // //       <Route
 // //         path="/signup"
 // //         element={<Signup />}
 // //       />
-
 
 // //       <Route
 // //         path="/forgot-password"
 // //         element={<ForgotPassword />}
 // //       />
 
-
-// //       {/* ==================================================
-// //                    OTHER WEBSITE PAGES
-// //       ================================================== */}
-
+// //       {/* ==========================================
+// //                   OTHER PAGES
+// //       ========================================== */}
 
 // //       <Route
 // //         path="/offers"
 // //         element={<Offers />}
 // //       />
 
-
 // //       <Route
 // //         path="/about"
 // //         element={<About />}
 // //       />
-
 
 // //       <Route
 // //         path="/contact"
 // //         element={<Contact />}
 // //       />
 
-
 // //       <Route
 // //         path="/my-bookings"
 // //         element={<MyBookings />}
 // //       />
-
-
-// //       <Route
-// //         path="/ticket"
-// //         element={<Ticket />}
-// //       />
-
 
 // //       <Route
 // //         path="/notifications"
 // //         element={<Notifications />}
 // //       />
 
-
 // //       <Route
 // //         path="/wishlist"
 // //         element={<Wishlist />}
 // //       />
-
 
 // //       <Route
 // //         path="/flight-details"
 // //         element={<FlightDetails />}
 // //       />
 
-
-// //       {/* ==================================================
-// //                     CUSTOMER PROTECTED ROUTES
-// //       ================================================== */}
-
+// //       {/* ==========================================
+// //               CUSTOMER PROTECTED ROUTES
+// //       ========================================== */}
 
 // //       <Route
 // //         element={
@@ -1642,38 +2295,26 @@
 // //         }
 // //       >
 
-
-// //         {/* CUSTOMER PROFILE */}
-
 // //         <Route
 // //           path="/profile"
 // //           element={<Profile />}
 // //         />
-
-
-// //         {/* CUSTOMER EDIT PROFILE */}
 
 // //         <Route
 // //           path="/edit-profile"
 // //           element={<EditProfile />}
 // //         />
 
-
-// //         {/* CUSTOMER CHANGE PASSWORD */}
-
 // //         <Route
 // //           path="/change-password"
 // //           element={<ChangePassword />}
 // //         />
 
-
 // //       </Route>
 
-
-// //       {/* ==================================================
-// //                      ADMIN PROTECTED ROUTES
-// //       ================================================== */}
-
+// //       {/* ==========================================
+// //                  ADMIN PROTECTED ROUTES
+// //       ========================================== */}
 
 // //       <Route
 // //         element={
@@ -1683,89 +2324,44 @@
 // //         }
 // //       >
 
-
-// //         {/* ==================================================
-// //                          DASHBOARD LAYOUT
-// //         ================================================== */}
-
-
 // //         <Route
 // //           path="/dashboard"
 // //           element={<Dashboard />}
 // //         >
-
-
-// //           {/* ================================================
-// //                          DASHBOARD HOME
-// //           ================================================ */}
-
 
 // //           <Route
 // //             index
 // //             element={<DashboardHome />}
 // //           />
 
-
-// //           {/* ================================================
-// //                          FLIGHT BOOKING
-// //           ================================================ */}
-
-
 // //           <Route
 // //             path="flights"
 // //             element={<FlightBooking />}
 // //           />
-
-
-// //           {/* ================================================
-// //                          MY BOOKINGS
-// //           ================================================ */}
-
 
 // //           <Route
 // //             path="my-bookings"
 // //             element={<AdminMyBookings />}
 // //           />
 
-
-// //           {/* ================================================
-// //                          USERS
-// //           ================================================ */}
-
-
 // //           <Route
 // //             path="users"
 // //             element={<Users />}
 // //           />
-
-
-// //           {/* ================================================
-// //                          ADMIN PROFILE
-// //           ================================================ */}
-
 
 // //           <Route
 // //             path="profile"
 // //             element={<AdminProfile />}
 // //           />
 
-
-// //           {/* ================================================
-// //                          ADMIN EDIT PROFILE
-// //           ================================================ */}
-
-
 // //           <Route
 // //             path="profile/edit"
 // //             element={<AdminEditProfile />}
 // //           />
 
-
 // //         </Route>
 
-
 // //       </Route>
-
 
 // //     </Routes>
 
@@ -1773,27 +2369,13 @@
 
 // // }
 
-
 // // export default App;
 
 
-// import "./App.css";
-
-// import {
-//   Routes,
-//   Route,
-// } from "react-router-dom";
-
-// // ==========================================
-// // WEBSITE PAGES
-// // ==========================================
 
 // import Home from "./Pages/Home/Home";
 // import Flights from "./Pages/Flights/Flights";
 // import Booking from "./Pages/Booking/Booking";
-// import SeatSelection from "./Pages/SeatSelection/SeatSelection";
-// import MealSelection from "./Pages/MealSelection/MealSelection";
-// import ExtraBaggage from "./Pages/ExtraBaggage/ExtraBaggage";
 // import Payment from "./Pages/Payment/Payment";
 // import Success from "./Pages/Success/Success";
 
@@ -1806,7 +2388,7 @@
 // import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
 
 // // ==========================================
-// // OTHER WEBSITE PAGES
+// // OTHER PAGES
 // // ==========================================
 
 // import Offers from "./Pages/Offers/Offers";
@@ -1829,33 +2411,17 @@
 // import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 
 // // ==========================================
-// // ADMIN DASHBOARD
+// // ADMIN
 // // ==========================================
 
 // import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
-
 // import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
-
 // import FlightBooking from "./Pages/Dashboard/FlightBooking/FlightBooking";
-
 // import Users from "./Pages/Dashboard/Users/Users";
-
-// // ==========================================
-// // ADMIN MY BOOKINGS
-// // ==========================================
 
 // import AdminMyBookings from "./Pages/Dashboard/MyBookings/MyBookings";
 
-// // ==========================================
-// // ADMIN PROFILE
-// // ==========================================
-
 // import AdminProfile from "./Pages/Dashboard/AdminProfile/AdminProfile";
-
-// // ==========================================
-// // ADMIN EDIT PROFILE
-// // ==========================================
-
 // import AdminEditProfile from "./Pages/Dashboard/AdminEditProfile/AdminEditProfile";
 
 // // ==========================================
@@ -1871,9 +2437,9 @@
 
 //     <Routes>
 
-//       {/* ==================================================
-//                          WEBSITE
-//       ================================================== */}
+//       {/* ==========================================
+//                     WEBSITE
+//       ========================================== */}
 
 //       <Route
 //         path="/"
@@ -1885,44 +2451,46 @@
 //         element={<Flights />}
 //       />
 
+//       {/* ==========================================
+//                   FLIGHT DETAILS
+//       ========================================== */}
+
+//       <Route
+//         path="/flight-details"
+//         element={<FlightDetails />}
+//       />
+
+//       {/* ==========================================
+//                     BOOKING
+//       ========================================== */}
+
 //       <Route
 //         path="/booking"
 //         element={<Booking />}
 //       />
 
-//       <Route
-//         path="/seat-selection"
-//         element={<SeatSelection />}
-//       />
-
-//       <Route
-//         path="/meal-selection"
-//         element={<MealSelection />}
-//       />
-
-//       <Route
-//         path="/extra-baggage"
-//         element={<ExtraBaggage />}
-//       />
+//       {/* ==========================================
+//                     PAYMENT
+//       ========================================== */}
 
 //       <Route
 //         path="/payment"
 //         element={<Payment />}
 //       />
 
-//       {/* ==================================================
-//                     SUCCESS / TICKET PAGE
-//          Success.jsx ही अब ticket page है
-//       ================================================== */}
+//       {/* ==========================================
+//               SUCCESS = TICKET PAGE
+//       ========================================== */}
 
 //       <Route
 //         path="/success"
 //         element={<Success />}
 //       />
 
-//       {/* ==================================================
-//                          AUTH
-//       ================================================== */}
+
+//       {/* ==========================================
+//                     AUTH
+//       ========================================== */}
 
 //       <Route
 //         path="/login"
@@ -1939,9 +2507,10 @@
 //         element={<ForgotPassword />}
 //       />
 
-//       {/* ==================================================
-//                    OTHER WEBSITE PAGES
-//       ================================================== */}
+
+//       {/* ==========================================
+//                   OTHER PAGES
+//       ========================================== */}
 
 //       <Route
 //         path="/offers"
@@ -1973,14 +2542,10 @@
 //         element={<Wishlist />}
 //       />
 
-//       <Route
-//         path="/flight-details"
-//         element={<FlightDetails />}
-//       />
 
-//       {/* ==================================================
-//                     CUSTOMER PROTECTED ROUTES
-//       ================================================== */}
+//       {/* ==========================================
+//               CUSTOMER PROTECTED ROUTES
+//       ========================================== */}
 
 //       <Route
 //         element={
@@ -1988,21 +2553,15 @@
 //         }
 //       >
 
-//         {/* CUSTOMER PROFILE */}
-
 //         <Route
 //           path="/profile"
 //           element={<Profile />}
 //         />
 
-//         {/* CUSTOMER EDIT PROFILE */}
-
 //         <Route
 //           path="/edit-profile"
 //           element={<EditProfile />}
 //         />
-
-//         {/* CUSTOMER CHANGE PASSWORD */}
 
 //         <Route
 //           path="/change-password"
@@ -2011,9 +2570,10 @@
 
 //       </Route>
 
-//       {/* ==================================================
-//                      ADMIN PROTECTED ROUTES
-//       ================================================== */}
+
+//       {/* ==========================================
+//                  ADMIN PROTECTED ROUTES
+//       ========================================== */}
 
 //       <Route
 //         element={
@@ -2023,63 +2583,35 @@
 //         }
 //       >
 
-//         {/* ==================================================
-//                          DASHBOARD LAYOUT
-//         ================================================== */}
-
 //         <Route
 //           path="/dashboard"
 //           element={<Dashboard />}
 //         >
-
-//           {/* ================================================
-//                          DASHBOARD HOME
-//           ================================================ */}
 
 //           <Route
 //             index
 //             element={<DashboardHome />}
 //           />
 
-//           {/* ================================================
-//                          FLIGHT BOOKING
-//           ================================================ */}
-
 //           <Route
 //             path="flights"
 //             element={<FlightBooking />}
 //           />
-
-//           {/* ================================================
-//                          ADMIN MY BOOKINGS
-//           ================================================ */}
 
 //           <Route
 //             path="my-bookings"
 //             element={<AdminMyBookings />}
 //           />
 
-//           {/* ================================================
-//                          USERS
-//           ================================================ */}
-
 //           <Route
 //             path="users"
 //             element={<Users />}
 //           />
 
-//           {/* ================================================
-//                          ADMIN PROFILE
-//           ================================================ */}
-
 //           <Route
 //             path="profile"
 //             element={<AdminProfile />}
 //           />
-
-//           {/* ================================================
-//                          ADMIN EDIT PROFILE
-//           ================================================ */}
 
 //           <Route
 //             path="profile/edit"
@@ -2101,23 +2633,19 @@
 
 
 
-import "./App.css";
-
 import {
   Routes,
   Route,
 } from "react-router-dom";
 
 // ==========================================
-// WEBSITE PAGES
+// WEBSITE
 // ==========================================
 
 import Home from "./Pages/Home/Home";
 import Flights from "./Pages/Flights/Flights";
+import FlightDetails from "./Pages/FlightDetails/FlightDetails";
 import Booking from "./Pages/Booking/Booking";
-import SeatSelection from "./Pages/SeatSelection/SeatSelection";
-import MealSelection from "./Pages/MealSelection/MealSelection";
-import ExtraBaggage from "./Pages/ExtraBaggage/ExtraBaggage";
 import Payment from "./Pages/Payment/Payment";
 import Success from "./Pages/Success/Success";
 
@@ -2141,8 +2669,6 @@ import MyBookings from "./Pages/MyBookings/MyBookings";
 
 import Notifications from "./Pages/Notifications/Notifications";
 import Wishlist from "./Pages/Wishlist/Wishlist";
-
-import FlightDetails from "./Pages/FlightDetails/FlightDetails";
 
 // ==========================================
 // CUSTOMER PROFILE
@@ -2179,57 +2705,63 @@ function App() {
 
     <Routes>
 
-      {/* ==========================================
-                    WEBSITE
-      ========================================== */}
+      {/* =====================================================
+                            WEBSITE
+      ===================================================== */}
 
       <Route
         path="/"
         element={<Home />}
       />
 
+      {/* =====================================================
+                            FLIGHTS
+      ===================================================== */}
+
       <Route
         path="/flights"
         element={<Flights />}
       />
+
+      {/* =====================================================
+                        FLIGHT DETAILS
+      ===================================================== */}
+
+      <Route
+        path="/flight-details"
+        element={<FlightDetails />}
+      />
+
+      {/* =====================================================
+                          BOOKING
+      ===================================================== */}
 
       <Route
         path="/booking"
         element={<Booking />}
       />
 
-      <Route
-        path="/seat-selection"
-        element={<SeatSelection />}
-      />
-
-      <Route
-        path="/meal-selection"
-        element={<MealSelection />}
-      />
-
-      <Route
-        path="/extra-baggage"
-        element={<ExtraBaggage />}
-      />
+      {/* =====================================================
+                          PAYMENT
+      ===================================================== */}
 
       <Route
         path="/payment"
         element={<Payment />}
       />
 
-      {/* ==========================================
-              SUCCESS = TICKET PAGE
-      ========================================== */}
+      {/* =====================================================
+                    SUCCESS / TICKET
+      ===================================================== */}
 
       <Route
         path="/success"
         element={<Success />}
       />
 
-      {/* ==========================================
-                    AUTH
-      ========================================== */}
+      {/* =====================================================
+                            AUTH
+      ===================================================== */}
 
       <Route
         path="/login"
@@ -2246,9 +2778,9 @@ function App() {
         element={<ForgotPassword />}
       />
 
-      {/* ==========================================
-                  OTHER PAGES
-      ========================================== */}
+      {/* =====================================================
+                         OTHER PAGES
+      ===================================================== */}
 
       <Route
         path="/offers"
@@ -2280,14 +2812,9 @@ function App() {
         element={<Wishlist />}
       />
 
-      <Route
-        path="/flight-details"
-        element={<FlightDetails />}
-      />
-
-      {/* ==========================================
-              CUSTOMER PROTECTED ROUTES
-      ========================================== */}
+      {/* =====================================================
+                    CUSTOMER PROTECTED ROUTES
+      ===================================================== */}
 
       <Route
         element={
@@ -2312,9 +2839,9 @@ function App() {
 
       </Route>
 
-      {/* ==========================================
-                 ADMIN PROTECTED ROUTES
-      ========================================== */}
+      {/* =====================================================
+                      ADMIN PROTECTED ROUTES
+      ===================================================== */}
 
       <Route
         element={
@@ -2329,30 +2856,42 @@ function App() {
           element={<Dashboard />}
         >
 
+          {/* Dashboard Home */}
+
           <Route
             index
             element={<DashboardHome />}
           />
+
+          {/* Flight Management */}
 
           <Route
             path="flights"
             element={<FlightBooking />}
           />
 
+          {/* Admin Bookings */}
+
           <Route
             path="my-bookings"
             element={<AdminMyBookings />}
           />
+
+          {/* Users */}
 
           <Route
             path="users"
             element={<Users />}
           />
 
+          {/* Admin Profile */}
+
           <Route
             path="profile"
             element={<AdminProfile />}
           />
+
+          {/* Edit Admin Profile */}
 
           <Route
             path="profile/edit"
@@ -2368,5 +2907,6 @@ function App() {
   );
 
 }
+
 
 export default App;
