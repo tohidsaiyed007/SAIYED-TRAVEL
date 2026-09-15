@@ -1,330 +1,995 @@
+// // // // // import "./EditFlight.css";
+
+// // // // // import { useState } from "react";
+
+// // // // // function EditFlight({ closeModal }) {
+
+// // // // //   const [flight, setFlight] = useState({
+
+// // // // //     airline: "Emirates",
+
+// // // // //     flightNo: "EK-501",
+
+// // // // //     from: "Delhi",
+
+// // // // //     to: "Dubai",
+
+// // // // //     departureDate: "2026-08-10",
+
+// // // // //     departureTime: "09:00",
+
+// // // // //     arrivalDate: "2026-08-10",
+
+// // // // //     arrivalTime: "12:15",
+
+// // // // //     aircraft: "Boeing 777",
+
+// // // // //     cabin: "Business",
+
+// // // // //     seats: "180",
+
+// // // // //     price: "28500",
+
+// // // // //     status: "Scheduled",
+
+// // // // //   });
+
+// // // // //   const handleChange = (e) => {
+
+// // // // //     setFlight({
+
+// // // // //       ...flight,
+
+// // // // //       [e.target.name]: e.target.value,
+
+// // // // //     });
+
+// // // // //   };
+
+// // // // //   const handleSubmit = (e) => {
+
+// // // // //     e.preventDefault();
+
+// // // // //     alert("Flight Updated Successfully ✅");
+
+// // // // //   };
+
+// // // // //   return (
+
+// // // // //     <div className="edit-modal-overlay">
+
+// // // // //       <div className="edit-flight-modal">
+
+// // // // //         <div className="edit-modal-header">
+
+// // // // //           <h2>Edit Flight</h2>
+
+// // // // //           <button
+
+// // // // //             className="edit-close-btn"
+
+// // // // //             onClick={closeModal}
+
+// // // // //           >
+
+// // // // //             ✕
+
+// // // // //           </button>
+
+// // // // //         </div>
+
+// // // // //         <form onSubmit={handleSubmit}>
+
+// // // // //           <div className="edit-grid">
+
+// // // // //             <div>
+
+// // // // //               <label>Airline</label>
+
+// // // // //               <input
+
+// // // // //                 type="text"
+
+// // // // //                 name="airline"
+
+// // // // //                 value={flight.airline}
+
+// // // // //                 onChange={handleChange}
+
+// // // // //               />
+
+// // // // //             </div>
+
+// // // // //             <div>
+
+// // // // //               <label>Flight Number</label>
+
+// // // // //               <input
+
+// // // // //                 type="text"
+
+// // // // //                 name="flightNo"
+
+// // // // //                 value={flight.flightNo}
+
+// // // // //                 onChange={handleChange}
+
+// // // // //               />
+
+// // // // //             </div>
+
+// // // // //             <div>
+
+// // // // //               <label>From</label>
+
+// // // // //               <input
+
+// // // // //                 type="text"
+
+// // // // //                 name="from"
+
+// // // // //                 value={flight.from}
+
+// // // // //                 onChange={handleChange}
+
+// // // // //               />
+
+// // // // //             </div>
+
+// // // // //             <div>
+
+// // // // //               <label>To</label>
+
+// // // // //               <input
+
+// // // // //                 type="text"
+
+// // // // //                 name="to"
+
+// // // // //                 value={flight.to}
+
+// // // // //                 onChange={handleChange}
+
+// // // // //               />
+
+// // // // //             </div>
+
+// // // // //                         <div>
+
+// // // // //               <label>Departure Date</label>
+
+// // // // //               <input
+
+// // // // //                 type="date"
+
+// // // // //                 name="departureDate"
+
+// // // // //                 value={flight.departureDate}
+
+// // // // //                 onChange={handleChange}
+
+// // // // //               />
+
+// // // // //             </div>
+
+// // // // //             <div>
+
+// // // // //               <label>Departure Time</label>
+
+// // // // //               <input
+
+// // // // //                 type="time"
+
+// // // // //                 name="departureTime"
+
+// // // // //                 value={flight.departureTime}
+
+// // // // //                 onChange={handleChange}
+
+// // // // //               />
+
+// // // // //             </div>
+
+// // // // //             <div>
+
+// // // // //               <label>Arrival Date</label>
+
+// // // // //               <input
+
+// // // // //                 type="date"
+
+// // // // //                 name="arrivalDate"
+
+// // // // //                 value={flight.arrivalDate}
+
+// // // // //                 onChange={handleChange}
+
+// // // // //               />
+
+// // // // //             </div>
+
+// // // // //             <div>
+
+// // // // //               <label>Arrival Time</label>
+
+// // // // //               <input
+
+// // // // //                 type="time"
+
+// // // // //                 name="arrivalTime"
+
+// // // // //                 value={flight.arrivalTime}
+
+// // // // //                 onChange={handleChange}
+
+// // // // //               />
+
+// // // // //             </div>
+
+// // // // //             <div>
+
+// // // // //               <label>Aircraft</label>
+
+// // // // //               <input
+
+// // // // //                 type="text"
+
+// // // // //                 name="aircraft"
+
+// // // // //                 value={flight.aircraft}
+
+// // // // //                 onChange={handleChange}
+
+// // // // //               />
+
+// // // // //             </div>
+
+// // // // //             <div>
+
+// // // // //               <label>Cabin</label>
+
+// // // // //               <select
+
+// // // // //                 name="cabin"
+
+// // // // //                 value={flight.cabin}
+
+// // // // //                 onChange={handleChange}
+
+// // // // //               >
+
+// // // // //                 <option>Economy</option>
+
+// // // // //                 <option>Premium Economy</option>
+
+// // // // //                 <option>Business</option>
+
+// // // // //                 <option>First Class</option>
+
+// // // // //               </select>
+
+// // // // //             </div>
+
+// // // // //             <div>
+
+// // // // //               <label>Available Seats</label>
+
+// // // // //               <input
+
+// // // // //                 type="number"
+
+// // // // //                 name="seats"
+
+// // // // //                 value={flight.seats}
+
+// // // // //                 onChange={handleChange}
+
+// // // // //               />
+
+// // // // //             </div>
+
+// // // // //             <div>
+
+// // // // //               <label>Ticket Price (₹)</label>
+
+// // // // //               <input
+
+// // // // //                 type="number"
+
+// // // // //                 name="price"
+
+// // // // //                 value={flight.price}
+
+// // // // //                 onChange={handleChange}
+
+// // // // //               />
+
+// // // // //             </div>
+
+// // // // //             <div>
+
+// // // // //               <label>Status</label>
+
+// // // // //               <select
+
+// // // // //                 name="status"
+
+// // // // //                 value={flight.status}
+
+// // // // //                 onChange={handleChange}
+
+// // // // //               >
+
+// // // // //                 <option>Scheduled</option>
+
+// // // // //                 <option>Delayed</option>
+
+// // // // //                 <option>Cancelled</option>
+
+// // // // //               </select>
+
+// // // // //             </div>
+
+// // // // //           </div>
+
+// // // // //           <div className="edit-modal-buttons">
+
+// // // // //             <button
+
+// // // // //               type="button"
+
+// // // // //               className="edit-cancel-btn"
+
+// // // // //               onClick={closeModal}
+
+// // // // //             >
+
+// // // // //               Cancel
+
+// // // // //             </button>
+
+// // // // //             <button
+
+// // // // //               type="submit"
+
+// // // // //               className="update-btn"
+
+// // // // //             >
+
+// // // // //               Update Flight
+
+// // // // //             </button>
+
+// // // // //           </div>
+
+// // // // //         </form>
+
+// // // // //       </div>
+
+// // // // //     </div>
+
+// // // // //   );
+
+// // // // // }
+
+// // // // // export default EditFlight;
+
+
+
 // // // // import "./EditFlight.css";
 
-// // // // import { useState } from "react";
+// // // // import { useEffect, useState } from "react";
 
-// // // // function EditFlight({ closeModal }) {
+// // // // function EditFlight({
+// // // //   flight,
+// // // //   closeModal,
+// // // //   onSuccess,
+// // // // }) {
+// // // //   // =====================================================
+// // // //   // FORM STATE
+// // // //   // =====================================================
 
-// // // //   const [flight, setFlight] = useState({
-
-// // // //     airline: "Emirates",
-
-// // // //     flightNo: "EK-501",
-
-// // // //     from: "Delhi",
-
-// // // //     to: "Dubai",
-
-// // // //     departureDate: "2026-08-10",
-
-// // // //     departureTime: "09:00",
-
-// // // //     arrivalDate: "2026-08-10",
-
-// // // //     arrivalTime: "12:15",
-
-// // // //     aircraft: "Boeing 777",
-
-// // // //     cabin: "Business",
-
-// // // //     seats: "180",
-
-// // // //     price: "28500",
-
+// // // //   const [formData, setFormData] = useState({
+// // // //     airline: "",
+// // // //     flightNo: "",
+// // // //     from: "",
+// // // //     to: "",
+// // // //     departure: "",
+// // // //     arrival: "",
+// // // //     duration: "",
+// // // //     seats: "",
+// // // //     price: "",
 // // // //     status: "Scheduled",
-
+// // // //     availableSeats: "",
 // // // //   });
 
-// // // //   const handleChange = (e) => {
+// // // //   const [loading, setLoading] =
+// // // //     useState(false);
 
-// // // //     setFlight({
+// // // //   const [error, setError] =
+// // // //     useState("");
 
-// // // //       ...flight,
+// // // //   // =====================================================
+// // // //   // LOAD SELECTED FLIGHT
+// // // //   // =====================================================
 
-// // // //       [e.target.name]: e.target.value,
+// // // //   useEffect(() => {
+// // // //     if (!flight) return;
 
+// // // //     setFormData({
+// // // //       airline:
+// // // //         flight.airline || "",
+
+// // // //       flightNo:
+// // // //         flight.flightNo ||
+// // // //         flight.flightNumber ||
+// // // //         "",
+
+// // // //       from:
+// // // //         flight.from ||
+// // // //         flight.fromCity ||
+// // // //         "",
+
+// // // //       to:
+// // // //         flight.to ||
+// // // //         flight.toCity ||
+// // // //         "",
+
+// // // //       departure:
+// // // //         flight.departure ||
+// // // //         flight.departureTime ||
+// // // //         "",
+
+// // // //       arrival:
+// // // //         flight.arrival ||
+// // // //         flight.arrivalTime ||
+// // // //         "",
+
+// // // //       duration:
+// // // //         flight.duration || "",
+
+// // // //       seats:
+// // // //         flight.seats ??
+// // // //         flight.availableSeats ??
+// // // //         "",
+
+// // // //       price:
+// // // //         flight.price ??
+// // // //         flight.finalPrice ??
+// // // //         "",
+
+// // // //       status:
+// // // //         flight.status ||
+// // // //         "Scheduled",
+
+// // // //       availableSeats:
+// // // //         flight.availableSeats ??
+// // // //         flight.seats ??
+// // // //         "",
 // // // //     });
+// // // //   }, [flight]);
 
+// // // //   // =====================================================
+// // // //   // INPUT CHANGE
+// // // //   // =====================================================
+
+// // // //   const handleChange = (e) => {
+// // // //     const { name, value } =
+// // // //       e.target;
+
+// // // //     setFormData((previous) => ({
+// // // //       ...previous,
+// // // //       [name]: value,
+// // // //     }));
 // // // //   };
 
-// // // //   const handleSubmit = (e) => {
+// // // //   // =====================================================
+// // // //   // SUBMIT
+// // // //   // =====================================================
 
+// // // //   const handleSubmit = async (e) => {
 // // // //     e.preventDefault();
 
-// // // //     alert("Flight Updated Successfully ✅");
+// // // //     if (!flight?._id) {
+// // // //       setError(
+// // // //         "Flight ID not found."
+// // // //       );
+// // // //       return;
+// // // //     }
 
+// // // //     // Basic validation
+
+// // // //     if (
+// // // //       !formData.airline.trim() ||
+// // // //       !formData.flightNo.trim() ||
+// // // //       !formData.from.trim() ||
+// // // //       !formData.to.trim() ||
+// // // //       !formData.departure.trim() ||
+// // // //       !formData.arrival.trim() ||
+// // // //       !formData.duration.trim()
+// // // //     ) {
+// // // //       setError(
+// // // //         "Please fill all required fields."
+// // // //       );
+// // // //       return;
+// // // //     }
+
+// // // //     if (
+// // // //       formData.seats === "" ||
+// // // //       formData.price === ""
+// // // //     ) {
+// // // //       setError(
+// // // //         "Seats and price are required."
+// // // //       );
+// // // //       return;
+// // // //     }
+
+// // // //     try {
+// // // //       setLoading(true);
+// // // //       setError("");
+
+// // // //       const token =
+// // // //         localStorage.getItem("token");
+
+// // // //       if (!token) {
+// // // //         setError(
+// // // //           "Admin login session expired. Please login again."
+// // // //         );
+
+// // // //         setLoading(false);
+// // // //         return;
+// // // //       }
+
+// // // //       // =================================================
+// // // //       // UPDATE DATA
+// // // //       // =================================================
+
+// // // //       const updateData = {
+// // // //         airline:
+// // // //           formData.airline.trim(),
+
+// // // //         flightNo:
+// // // //           formData.flightNo
+// // // //             .trim()
+// // // //             .toUpperCase(),
+
+// // // //         from:
+// // // //           formData.from.trim(),
+
+// // // //         to:
+// // // //           formData.to.trim(),
+
+// // // //         departure:
+// // // //           formData.departure.trim(),
+
+// // // //         arrival:
+// // // //           formData.arrival.trim(),
+
+// // // //         duration:
+// // // //           formData.duration.trim(),
+
+// // // //         seats:
+// // // //           Number(formData.seats),
+
+// // // //         price:
+// // // //           Number(formData.price),
+
+// // // //         status:
+// // // //           formData.status,
+
+// // // //         availableSeats:
+// // // //           formData.availableSeats === ""
+// // // //             ? Number(formData.seats)
+// // // //             : Number(
+// // // //                 formData.availableSeats
+// // // //               ),
+// // // //       };
+
+// // // //       console.log(
+// // // //         "Updating Flight:",
+// // // //         flight._id
+// // // //       );
+
+// // // //       console.log(
+// // // //         "Update Data:",
+// // // //         updateData
+// // // //       );
+
+// // // //       // =================================================
+// // // //       // API
+// // // //       // =================================================
+
+// // // //       const response =
+// // // //         await fetch(
+// // // //           `http://localhost:5000/api/flights/${flight._id}`,
+// // // //           {
+// // // //             method: "PUT",
+
+// // // //             headers: {
+// // // //               "Content-Type":
+// // // //                 "application/json",
+
+// // // //               Authorization:
+// // // //                 `Bearer ${token}`,
+// // // //             },
+
+// // // //             body:
+// // // //               JSON.stringify(
+// // // //                 updateData
+// // // //               ),
+// // // //           }
+// // // //         );
+
+// // // //       const data =
+// // // //         await response.json();
+
+// // // //       console.log(
+// // // //         "Update Flight Response:",
+// // // //         data
+// // // //       );
+
+// // // //       // =================================================
+// // // //       // API ERROR
+// // // //       // =================================================
+
+// // // //       if (!response.ok) {
+// // // //         throw new Error(
+// // // //           data.message ||
+// // // //             "Unable to update flight."
+// // // //         );
+// // // //       }
+
+// // // //       // =================================================
+// // // //       // SUCCESS
+// // // //       // =================================================
+
+// // // //       alert(
+// // // //         "Flight updated successfully ✅"
+// // // //       );
+
+// // // //       if (onSuccess) {
+// // // //         onSuccess(
+// // // //           data.flight
+// // // //         );
+// // // //       } else {
+// // // //         closeModal();
+// // // //       }
+
+// // // //     } catch (error) {
+// // // //       console.error(
+// // // //         "Update Flight Error:",
+// // // //         error
+// // // //       );
+
+// // // //       setError(
+// // // //         error.message ||
+// // // //           "Something went wrong while updating flight."
+// // // //       );
+
+// // // //     } finally {
+// // // //       setLoading(false);
+// // // //     }
 // // // //   };
 
-// // // //   return (
+// // // //   // =====================================================
+// // // //   // NO FLIGHT
+// // // //   // =====================================================
 
+// // // //   if (!flight) {
+// // // //     return null;
+// // // //   }
+
+// // // //   // =====================================================
+// // // //   // UI
+// // // //   // =====================================================
+
+// // // //   return (
 // // // //     <div className="edit-modal-overlay">
 
 // // // //       <div className="edit-flight-modal">
 
+// // // //         {/* =================================================
+// // // //             HEADER
+// // // //         ================================================= */}
+
 // // // //         <div className="edit-modal-header">
 
-// // // //           <h2>Edit Flight</h2>
+// // // //           <div>
+// // // //             <h2>
+// // // //               Edit Flight
+// // // //             </h2>
+
+// // // //             <p>
+// // // //               Update flight information
+// // // //             </p>
+// // // //           </div>
 
 // // // //           <button
-
+// // // //             type="button"
 // // // //             className="edit-close-btn"
-
 // // // //             onClick={closeModal}
-
+// // // //             disabled={loading}
 // // // //           >
-
 // // // //             ✕
-
 // // // //           </button>
 
 // // // //         </div>
 
-// // // //         <form onSubmit={handleSubmit}>
+
+// // // //         {/* =================================================
+// // // //             FORM
+// // // //         ================================================= */}
+
+// // // //         <form
+// // // //           onSubmit={
+// // // //             handleSubmit
+// // // //           }
+// // // //         >
 
 // // // //           <div className="edit-grid">
 
-// // // //             <div>
+// // // //             {/* AIRLINE */}
 
-// // // //               <label>Airline</label>
+// // // //             <div className="edit-form-group">
+
+// // // //               <label>
+// // // //                 Airline *
+// // // //               </label>
 
 // // // //               <input
-
 // // // //                 type="text"
-
 // // // //                 name="airline"
-
-// // // //                 value={flight.airline}
-
-// // // //                 onChange={handleChange}
-
+// // // //                 value={
+// // // //                   formData.airline
+// // // //                 }
+// // // //                 onChange={
+// // // //                   handleChange
+// // // //                 }
+// // // //                 placeholder="Emirates"
 // // // //               />
 
 // // // //             </div>
 
-// // // //             <div>
 
-// // // //               <label>Flight Number</label>
+// // // //             {/* FLIGHT NUMBER */}
+
+// // // //             <div className="edit-form-group">
+
+// // // //               <label>
+// // // //                 Flight Number *
+// // // //               </label>
 
 // // // //               <input
-
 // // // //                 type="text"
-
 // // // //                 name="flightNo"
-
-// // // //                 value={flight.flightNo}
-
-// // // //                 onChange={handleChange}
-
+// // // //                 value={
+// // // //                   formData.flightNo
+// // // //                 }
+// // // //                 onChange={
+// // // //                   handleChange
+// // // //                 }
+// // // //                 placeholder="EK-501"
 // // // //               />
 
 // // // //             </div>
 
-// // // //             <div>
 
-// // // //               <label>From</label>
+// // // //             {/* FROM */}
+
+// // // //             <div className="edit-form-group">
+
+// // // //               <label>
+// // // //                 From *
+// // // //               </label>
 
 // // // //               <input
-
 // // // //                 type="text"
-
 // // // //                 name="from"
-
-// // // //                 value={flight.from}
-
-// // // //                 onChange={handleChange}
-
+// // // //                 value={
+// // // //                   formData.from
+// // // //                 }
+// // // //                 onChange={
+// // // //                   handleChange
+// // // //                 }
+// // // //                 placeholder="Delhi"
 // // // //               />
 
 // // // //             </div>
 
-// // // //             <div>
 
-// // // //               <label>To</label>
+// // // //             {/* TO */}
+
+// // // //             <div className="edit-form-group">
+
+// // // //               <label>
+// // // //                 To *
+// // // //               </label>
 
 // // // //               <input
-
 // // // //                 type="text"
-
 // // // //                 name="to"
-
-// // // //                 value={flight.to}
-
-// // // //                 onChange={handleChange}
-
+// // // //                 value={
+// // // //                   formData.to
+// // // //                 }
+// // // //                 onChange={
+// // // //                   handleChange
+// // // //                 }
+// // // //                 placeholder="Dubai"
 // // // //               />
 
 // // // //             </div>
 
-// // // //                         <div>
 
-// // // //               <label>Departure Date</label>
+// // // //             {/* DEPARTURE */}
 
-// // // //               <input
+// // // //             <div className="edit-form-group">
 
-// // // //                 type="date"
-
-// // // //                 name="departureDate"
-
-// // // //                 value={flight.departureDate}
-
-// // // //                 onChange={handleChange}
-
-// // // //               />
-
-// // // //             </div>
-
-// // // //             <div>
-
-// // // //               <label>Departure Time</label>
+// // // //               <label>
+// // // //                 Departure *
+// // // //               </label>
 
 // // // //               <input
-
-// // // //                 type="time"
-
-// // // //                 name="departureTime"
-
-// // // //                 value={flight.departureTime}
-
-// // // //                 onChange={handleChange}
-
-// // // //               />
-
-// // // //             </div>
-
-// // // //             <div>
-
-// // // //               <label>Arrival Date</label>
-
-// // // //               <input
-
-// // // //                 type="date"
-
-// // // //                 name="arrivalDate"
-
-// // // //                 value={flight.arrivalDate}
-
-// // // //                 onChange={handleChange}
-
-// // // //               />
-
-// // // //             </div>
-
-// // // //             <div>
-
-// // // //               <label>Arrival Time</label>
-
-// // // //               <input
-
-// // // //                 type="time"
-
-// // // //                 name="arrivalTime"
-
-// // // //                 value={flight.arrivalTime}
-
-// // // //                 onChange={handleChange}
-
-// // // //               />
-
-// // // //             </div>
-
-// // // //             <div>
-
-// // // //               <label>Aircraft</label>
-
-// // // //               <input
-
 // // // //                 type="text"
-
-// // // //                 name="aircraft"
-
-// // // //                 value={flight.aircraft}
-
-// // // //                 onChange={handleChange}
-
+// // // //                 name="departure"
+// // // //                 value={
+// // // //                   formData.departure
+// // // //                 }
+// // // //                 onChange={
+// // // //                   handleChange
+// // // //                 }
+// // // //                 placeholder="09:00 AM"
 // // // //               />
 
 // // // //             </div>
 
-// // // //             <div>
 
-// // // //               <label>Cabin</label>
+// // // //             {/* ARRIVAL */}
 
-// // // //               <select
+// // // //             <div className="edit-form-group">
 
-// // // //                 name="cabin"
+// // // //               <label>
+// // // //                 Arrival *
+// // // //               </label>
 
-// // // //                 value={flight.cabin}
-
-// // // //                 onChange={handleChange}
-
-// // // //               >
-
-// // // //                 <option>Economy</option>
-
-// // // //                 <option>Premium Economy</option>
-
-// // // //                 <option>Business</option>
-
-// // // //                 <option>First Class</option>
-
-// // // //               </select>
+// // // //               <input
+// // // //                 type="text"
+// // // //                 name="arrival"
+// // // //                 value={
+// // // //                   formData.arrival
+// // // //                 }
+// // // //                 onChange={
+// // // //                   handleChange
+// // // //                 }
+// // // //                 placeholder="12:15 PM"
+// // // //               />
 
 // // // //             </div>
 
-// // // //             <div>
 
-// // // //               <label>Available Seats</label>
+// // // //             {/* DURATION */}
+
+// // // //             <div className="edit-form-group">
+
+// // // //               <label>
+// // // //                 Duration *
+// // // //               </label>
 
 // // // //               <input
+// // // //                 type="text"
+// // // //                 name="duration"
+// // // //                 value={
+// // // //                   formData.duration
+// // // //                 }
+// // // //                 onChange={
+// // // //                   handleChange
+// // // //                 }
+// // // //                 placeholder="3h 15m"
+// // // //               />
 
+// // // //             </div>
+
+
+// // // //             {/* SEATS */}
+
+// // // //             <div className="edit-form-group">
+
+// // // //               <label>
+// // // //                 Total Seats *
+// // // //               </label>
+
+// // // //               <input
 // // // //                 type="number"
-
+// // // //                 min="0"
 // // // //                 name="seats"
-
-// // // //                 value={flight.seats}
-
-// // // //                 onChange={handleChange}
-
+// // // //                 value={
+// // // //                   formData.seats
+// // // //                 }
+// // // //                 onChange={
+// // // //                   handleChange
+// // // //                 }
+// // // //                 placeholder="180"
 // // // //               />
 
 // // // //             </div>
 
-// // // //             <div>
 
-// // // //               <label>Ticket Price (₹)</label>
+// // // //             {/* AVAILABLE SEATS */}
+
+// // // //             <div className="edit-form-group">
+
+// // // //               <label>
+// // // //                 Available Seats
+// // // //               </label>
 
 // // // //               <input
-
 // // // //                 type="number"
-
-// // // //                 name="price"
-
-// // // //                 value={flight.price}
-
-// // // //                 onChange={handleChange}
-
+// // // //                 min="0"
+// // // //                 name="availableSeats"
+// // // //                 value={
+// // // //                   formData.availableSeats
+// // // //                 }
+// // // //                 onChange={
+// // // //                   handleChange
+// // // //                 }
+// // // //                 placeholder="180"
 // // // //               />
 
 // // // //             </div>
 
-// // // //             <div>
 
-// // // //               <label>Status</label>
+// // // //             {/* PRICE */}
+
+// // // //             <div className="edit-form-group">
+
+// // // //               <label>
+// // // //                 Ticket Price (₹) *
+// // // //               </label>
+
+// // // //               <input
+// // // //                 type="number"
+// // // //                 min="0"
+// // // //                 name="price"
+// // // //                 value={
+// // // //                   formData.price
+// // // //                 }
+// // // //                 onChange={
+// // // //                   handleChange
+// // // //                 }
+// // // //                 placeholder="28500"
+// // // //               />
+
+// // // //             </div>
+
+
+// // // //             {/* STATUS */}
+
+// // // //             <div className="edit-form-group">
+
+// // // //               <label>
+// // // //                 Status
+// // // //               </label>
 
 // // // //               <select
-
 // // // //                 name="status"
-
-// // // //                 value={flight.status}
-
-// // // //                 onChange={handleChange}
-
+// // // //                 value={
+// // // //                   formData.status
+// // // //                 }
+// // // //                 onChange={
+// // // //                   handleChange
+// // // //                 }
 // // // //               >
 
-// // // //                 <option>Scheduled</option>
+// // // //                 <option value="Scheduled">
+// // // //                   Scheduled
+// // // //                 </option>
 
-// // // //                 <option>Delayed</option>
+// // // //                 <option value="Delayed">
+// // // //                   Delayed
+// // // //                 </option>
 
-// // // //                 <option>Cancelled</option>
+// // // //                 <option value="Cancelled">
+// // // //                   Cancelled
+// // // //                 </option>
 
 // // // //               </select>
 
@@ -332,31 +997,47 @@
 
 // // // //           </div>
 
+
+// // // //           {/* =================================================
+// // // //               ERROR
+// // // //           ================================================= */}
+
+// // // //           {error && (
+
+// // // //             <div className="edit-error">
+// // // //               {error}
+// // // //             </div>
+
+// // // //           )}
+
+
+// // // //           {/* =================================================
+// // // //               BUTTONS
+// // // //           ================================================= */}
+
 // // // //           <div className="edit-modal-buttons">
 
 // // // //             <button
-
 // // // //               type="button"
-
 // // // //               className="edit-cancel-btn"
-
-// // // //               onClick={closeModal}
-
+// // // //               onClick={
+// // // //                 closeModal
+// // // //               }
+// // // //               disabled={loading}
 // // // //             >
-
 // // // //               Cancel
-
 // // // //             </button>
 
+
 // // // //             <button
-
 // // // //               type="submit"
-
 // // // //               className="update-btn"
-
+// // // //               disabled={loading}
 // // // //             >
 
-// // // //               Update Flight
+// // // //               {loading
+// // // //                 ? "Updating..."
+// // // //                 : "Update Flight"}
 
 // // // //             </button>
 
@@ -367,13 +1048,10 @@
 // // // //       </div>
 
 // // // //     </div>
-
 // // // //   );
-
 // // // // }
 
 // // // // export default EditFlight;
-
 
 
 // // // import "./EditFlight.css";
@@ -386,21 +1064,74 @@
 // // //   onSuccess,
 // // // }) {
 // // //   // =====================================================
-// // //   // FORM STATE
+// // //   // FORM DATA
 // // //   // =====================================================
 
 // // //   const [formData, setFormData] = useState({
 // // //     airline: "",
 // // //     flightNo: "",
-// // //     from: "",
-// // //     to: "",
-// // //     departure: "",
-// // //     arrival: "",
+// // //     flightType: "Domestic",
+// // //     aircraft: "",
+
+// // //     fromCity: "",
+// // //     fromAirport: "",
+// // //     fromCode: "",
+
+// // //     toCity: "",
+// // //     toAirport: "",
+// // //     toCode: "",
+
+// // //     departureDate: "",
+// // //     departureTime: "",
+// // //     departureTerminal: "",
+
+// // //     arrivalDate: "",
+// // //     arrivalTime: "",
+// // //     arrivalTerminal: "",
+
 // // //     duration: "",
-// // //     seats: "",
-// // //     price: "",
+// // //     stops: "Non-stop",
+// // //     stopAirport: "",
+// // //     stopCity: "",
+// // //     layoverDuration: "",
+
+// // //     cabins: [
+// // //       {
+// // //         name: "Economy",
+// // //         totalSeats: "",
+// // //         availableSeats: "",
+// // //         price: "",
+// // //         baggage: "15 KG",
+// // //       },
+// // //     ],
+
+// // //     baseFare: "",
+// // //     taxes: "",
+// // //     airportCharges: "",
+// // //     serviceFee: "",
+// // //     discount: "",
+// // //     finalPrice: "",
+// // //     currency: "INR",
+
+// // //     cabinBaggage: "7 KG",
+// // //     checkinBaggage: "15 KG",
+// // //     extraBaggagePrice: "",
+
+// // //     mealAvailable: false,
+// // //     wifiAvailable: false,
+// // //     entertainmentAvailable: false,
+// // //     powerAvailable: false,
+
+// // //     bookingStartDate: "",
+// // //     bookingClosingDate: "",
+
+// // //     refundable: false,
+// // //     changeable: false,
+
 // // //     status: "Scheduled",
-// // //     availableSeats: "",
+
+// // //     description: "",
+// // //     specialInstructions: "",
 // // //   });
 
 // // //   const [loading, setLoading] =
@@ -421,66 +1152,272 @@
 // // //         flight.airline || "",
 
 // // //       flightNo:
-// // //         flight.flightNo ||
-// // //         flight.flightNumber ||
-// // //         "",
+// // //         flight.flightNo || "",
 
-// // //       from:
-// // //         flight.from ||
-// // //         flight.fromCity ||
-// // //         "",
+// // //       flightType:
+// // //         flight.flightType ||
+// // //         "Domestic",
 
-// // //       to:
-// // //         flight.to ||
-// // //         flight.toCity ||
-// // //         "",
+// // //       aircraft:
+// // //         flight.aircraft || "",
 
-// // //       departure:
-// // //         flight.departure ||
-// // //         flight.departureTime ||
-// // //         "",
+// // //       fromCity:
+// // //         flight.fromCity || "",
 
-// // //       arrival:
-// // //         flight.arrival ||
-// // //         flight.arrivalTime ||
-// // //         "",
+// // //       fromAirport:
+// // //         flight.fromAirport || "",
+
+// // //       fromCode:
+// // //         flight.fromCode || "",
+
+// // //       toCity:
+// // //         flight.toCity || "",
+
+// // //       toAirport:
+// // //         flight.toAirport || "",
+
+// // //       toCode:
+// // //         flight.toCode || "",
+
+// // //       departureDate:
+// // //         flight.departureDate || "",
+
+// // //       departureTime:
+// // //         flight.departureTime || "",
+
+// // //       departureTerminal:
+// // //         flight.departureTerminal || "",
+
+// // //       arrivalDate:
+// // //         flight.arrivalDate || "",
+
+// // //       arrivalTime:
+// // //         flight.arrivalTime || "",
+
+// // //       arrivalTerminal:
+// // //         flight.arrivalTerminal || "",
 
 // // //       duration:
 // // //         flight.duration || "",
 
-// // //       seats:
-// // //         flight.seats ??
-// // //         flight.availableSeats ??
+// // //       stops:
+// // //         flight.stops || "Non-stop",
+
+// // //       stopAirport:
+// // //         flight.stopAirport || "",
+
+// // //       stopCity:
+// // //         flight.stopCity || "",
+
+// // //       layoverDuration:
+// // //         flight.layoverDuration || "",
+
+// // //       cabins:
+// // //         Array.isArray(flight.cabins) &&
+// // //         flight.cabins.length > 0
+// // //           ? flight.cabins.map((cabin) => ({
+// // //               name:
+// // //                 cabin.name ||
+// // //                 "Economy",
+
+// // //               totalSeats:
+// // //                 cabin.totalSeats ?? "",
+
+// // //               availableSeats:
+// // //                 cabin.availableSeats ?? "",
+
+// // //               price:
+// // //                 cabin.price ?? "",
+
+// // //               baggage:
+// // //                 cabin.baggage ||
+// // //                 "15 KG",
+// // //             }))
+// // //           : [
+// // //               {
+// // //                 name: "Economy",
+// // //                 totalSeats: "",
+// // //                 availableSeats: "",
+// // //                 price: "",
+// // //                 baggage: "15 KG",
+// // //               },
+// // //             ],
+
+// // //       baseFare:
+// // //         flight.baseFare ?? "",
+
+// // //       taxes:
+// // //         flight.taxes ?? "",
+
+// // //       airportCharges:
+// // //         flight.airportCharges ?? "",
+
+// // //       serviceFee:
+// // //         flight.serviceFee ?? "",
+
+// // //       discount:
+// // //         flight.discount ?? "",
+
+// // //       finalPrice:
+// // //         flight.finalPrice ?? "",
+
+// // //       currency:
+// // //         flight.currency || "INR",
+
+// // //       cabinBaggage:
+// // //         flight.cabinBaggage ||
+// // //         "7 KG",
+
+// // //       checkinBaggage:
+// // //         flight.checkinBaggage ||
+// // //         "15 KG",
+
+// // //       extraBaggagePrice:
+// // //         flight.extraBaggagePrice ?? "",
+
+// // //       mealAvailable:
+// // //         Boolean(
+// // //           flight.mealAvailable
+// // //         ),
+
+// // //       wifiAvailable:
+// // //         Boolean(
+// // //           flight.wifiAvailable
+// // //         ),
+
+// // //       entertainmentAvailable:
+// // //         Boolean(
+// // //           flight.entertainmentAvailable
+// // //         ),
+
+// // //       powerAvailable:
+// // //         Boolean(
+// // //           flight.powerAvailable
+// // //         ),
+
+// // //       bookingStartDate:
+// // //         flight.bookingStartDate ||
 // // //         "",
 
-// // //       price:
-// // //         flight.price ??
-// // //         flight.finalPrice ??
+// // //       bookingClosingDate:
+// // //         flight.bookingClosingDate ||
 // // //         "",
+
+// // //       refundable:
+// // //         Boolean(
+// // //           flight.refundable
+// // //         ),
+
+// // //       changeable:
+// // //         Boolean(
+// // //           flight.changeable
+// // //         ),
 
 // // //       status:
 // // //         flight.status ||
 // // //         "Scheduled",
 
-// // //       availableSeats:
-// // //         flight.availableSeats ??
-// // //         flight.seats ??
+// // //       description:
+// // //         flight.description || "",
+
+// // //       specialInstructions:
+// // //         flight.specialInstructions ||
 // // //         "",
 // // //     });
 // // //   }, [flight]);
 
 // // //   // =====================================================
-// // //   // INPUT CHANGE
+// // //   // NORMAL INPUT CHANGE
 // // //   // =====================================================
 
 // // //   const handleChange = (e) => {
-// // //     const { name, value } =
-// // //       e.target;
+// // //     const {
+// // //       name,
+// // //       value,
+// // //       type,
+// // //       checked,
+// // //     } = e.target;
 
 // // //     setFormData((previous) => ({
 // // //       ...previous,
-// // //       [name]: value,
+
+// // //       [name]:
+// // //         type === "checkbox"
+// // //           ? checked
+// // //           : value,
 // // //     }));
+// // //   };
+
+// // //   // =====================================================
+// // //   // CABIN CHANGE
+// // //   // =====================================================
+
+// // //   const handleCabinChange = (
+// // //     index,
+// // //     field,
+// // //     value
+// // //   ) => {
+// // //     setFormData((previous) => {
+// // //       const cabins = [
+// // //         ...previous.cabins,
+// // //       ];
+
+// // //       cabins[index] = {
+// // //         ...cabins[index],
+// // //         [field]: value,
+// // //       };
+
+// // //       return {
+// // //         ...previous,
+// // //         cabins,
+// // //       };
+// // //     });
+// // //   };
+
+// // //   // =====================================================
+// // //   // ADD CABIN
+// // //   // =====================================================
+
+// // //   const addCabin = () => {
+// // //     setFormData((previous) => ({
+// // //       ...previous,
+
+// // //       cabins: [
+// // //         ...previous.cabins,
+
+// // //         {
+// // //           name: "Economy",
+// // //           totalSeats: "",
+// // //           availableSeats: "",
+// // //           price: "",
+// // //           baggage: "15 KG",
+// // //         },
+// // //       ],
+// // //     }));
+// // //   };
+
+// // //   // =====================================================
+// // //   // REMOVE CABIN
+// // //   // =====================================================
+
+// // //   const removeCabin = (index) => {
+// // //     setFormData((previous) => {
+// // //       if (
+// // //         previous.cabins.length <= 1
+// // //       ) {
+// // //         return previous;
+// // //       }
+
+// // //       return {
+// // //         ...previous,
+
+// // //         cabins:
+// // //           previous.cabins.filter(
+// // //             (_, cabinIndex) =>
+// // //               cabinIndex !== index
+// // //           ),
+// // //       };
+// // //     });
 // // //   };
 
 // // //   // =====================================================
@@ -497,51 +1434,51 @@
 // // //       return;
 // // //     }
 
-// // //     // Basic validation
-
-// // //     if (
-// // //       !formData.airline.trim() ||
-// // //       !formData.flightNo.trim() ||
-// // //       !formData.from.trim() ||
-// // //       !formData.to.trim() ||
-// // //       !formData.departure.trim() ||
-// // //       !formData.arrival.trim() ||
-// // //       !formData.duration.trim()
-// // //     ) {
-// // //       setError(
-// // //         "Please fill all required fields."
-// // //       );
-// // //       return;
-// // //     }
-
-// // //     if (
-// // //       formData.seats === "" ||
-// // //       formData.price === ""
-// // //     ) {
-// // //       setError(
-// // //         "Seats and price are required."
-// // //       );
-// // //       return;
-// // //     }
+// // //     setLoading(true);
+// // //     setError("");
 
 // // //     try {
-// // //       setLoading(true);
-// // //       setError("");
-
 // // //       const token =
-// // //         localStorage.getItem("token");
-
-// // //       if (!token) {
-// // //         setError(
-// // //           "Admin login session expired. Please login again."
+// // //         localStorage.getItem(
+// // //           "token"
 // // //         );
 
-// // //         setLoading(false);
-// // //         return;
+// // //       if (!token) {
+// // //         throw new Error(
+// // //           "Admin login session expired. Please login again."
+// // //         );
 // // //       }
 
 // // //       // =================================================
-// // //       // UPDATE DATA
+// // //       // PREPARE CABINS
+// // //       // =================================================
+
+// // //       const cleanedCabins =
+// // //         formData.cabins.map(
+// // //           (cabin) => ({
+// // //             name: cabin.name,
+
+// // //             totalSeats:
+// // //               Number(
+// // //                 cabin.totalSeats
+// // //               ),
+
+// // //             availableSeats:
+// // //               Number(
+// // //                 cabin.availableSeats
+// // //               ),
+
+// // //             price:
+// // //               Number(cabin.price),
+
+// // //             baggage:
+// // //               cabin.baggage ||
+// // //               "15 KG",
+// // //           })
+// // //         );
+
+// // //       // =================================================
+// // //       // PREPARE UPDATE DATA
 // // //       // =================================================
 
 // // //       const updateData = {
@@ -553,50 +1490,161 @@
 // // //             .trim()
 // // //             .toUpperCase(),
 
-// // //         from:
-// // //           formData.from.trim(),
+// // //         flightType:
+// // //           formData.flightType,
 
-// // //         to:
-// // //           formData.to.trim(),
+// // //         aircraft:
+// // //           formData.aircraft.trim(),
 
-// // //         departure:
-// // //           formData.departure.trim(),
+// // //         fromCity:
+// // //           formData.fromCity.trim(),
 
-// // //         arrival:
-// // //           formData.arrival.trim(),
+// // //         fromAirport:
+// // //           formData.fromAirport.trim(),
+
+// // //         fromCode:
+// // //           formData.fromCode
+// // //             .trim()
+// // //             .toUpperCase(),
+
+// // //         toCity:
+// // //           formData.toCity.trim(),
+
+// // //         toAirport:
+// // //           formData.toAirport.trim(),
+
+// // //         toCode:
+// // //           formData.toCode
+// // //             .trim()
+// // //             .toUpperCase(),
+
+// // //         departureDate:
+// // //           formData.departureDate,
+
+// // //         departureTime:
+// // //           formData.departureTime,
+
+// // //         departureTerminal:
+// // //           formData.departureTerminal,
+
+// // //         arrivalDate:
+// // //           formData.arrivalDate,
+
+// // //         arrivalTime:
+// // //           formData.arrivalTime,
+
+// // //         arrivalTerminal:
+// // //           formData.arrivalTerminal,
 
 // // //         duration:
 // // //           formData.duration.trim(),
 
-// // //         seats:
-// // //           Number(formData.seats),
+// // //         stops:
+// // //           formData.stops,
 
-// // //         price:
-// // //           Number(formData.price),
+// // //         stopAirport:
+// // //           formData.stopAirport,
+
+// // //         stopCity:
+// // //           formData.stopCity,
+
+// // //         layoverDuration:
+// // //           formData.layoverDuration,
+
+// // //         cabins:
+// // //           cleanedCabins,
+
+// // //         baseFare:
+// // //           Number(
+// // //             formData.baseFare || 0
+// // //           ),
+
+// // //         taxes:
+// // //           Number(
+// // //             formData.taxes || 0
+// // //           ),
+
+// // //         airportCharges:
+// // //           Number(
+// // //             formData.airportCharges || 0
+// // //           ),
+
+// // //         serviceFee:
+// // //           Number(
+// // //             formData.serviceFee || 0
+// // //           ),
+
+// // //         discount:
+// // //           Number(
+// // //             formData.discount || 0
+// // //           ),
+
+// // //         finalPrice:
+// // //           Number(
+// // //             formData.finalPrice || 0
+// // //           ),
+
+// // //         currency:
+// // //           formData.currency,
+
+// // //         cabinBaggage:
+// // //           formData.cabinBaggage,
+
+// // //         checkinBaggage:
+// // //           formData.checkinBaggage,
+
+// // //         extraBaggagePrice:
+// // //           Number(
+// // //             formData.extraBaggagePrice ||
+// // //               0
+// // //           ),
+
+// // //         mealAvailable:
+// // //           formData.mealAvailable,
+
+// // //         wifiAvailable:
+// // //           formData.wifiAvailable,
+
+// // //         entertainmentAvailable:
+// // //           formData.entertainmentAvailable,
+
+// // //         powerAvailable:
+// // //           formData.powerAvailable,
+
+// // //         bookingStartDate:
+// // //           formData.bookingStartDate,
+
+// // //         bookingClosingDate:
+// // //           formData.bookingClosingDate,
+
+// // //         refundable:
+// // //           formData.refundable,
+
+// // //         changeable:
+// // //           formData.changeable,
 
 // // //         status:
 // // //           formData.status,
 
-// // //         availableSeats:
-// // //           formData.availableSeats === ""
-// // //             ? Number(formData.seats)
-// // //             : Number(
-// // //                 formData.availableSeats
-// // //               ),
+// // //         description:
+// // //           formData.description,
+
+// // //         specialInstructions:
+// // //           formData.specialInstructions,
 // // //       };
 
 // // //       console.log(
-// // //         "Updating Flight:",
+// // //         "UPDATING FLIGHT:",
 // // //         flight._id
 // // //       );
 
 // // //       console.log(
-// // //         "Update Data:",
+// // //         "UPDATE DATA:",
 // // //         updateData
 // // //       );
 
 // // //       // =================================================
-// // //       // API
+// // //       // PUT API
 // // //       // =================================================
 
 // // //       const response =
@@ -624,18 +1672,14 @@
 // // //         await response.json();
 
 // // //       console.log(
-// // //         "Update Flight Response:",
+// // //         "UPDATE RESPONSE:",
 // // //         data
 // // //       );
-
-// // //       // =================================================
-// // //       // API ERROR
-// // //       // =================================================
 
 // // //       if (!response.ok) {
 // // //         throw new Error(
 // // //           data.message ||
-// // //             "Unable to update flight."
+// // //             "Flight update failed."
 // // //         );
 // // //       }
 
@@ -663,7 +1707,7 @@
 
 // // //       setError(
 // // //         error.message ||
-// // //           "Something went wrong while updating flight."
+// // //           "Unable to update flight."
 // // //       );
 
 // // //     } finally {
@@ -679,18 +1723,12 @@
 // // //     return null;
 // // //   }
 
-// // //   // =====================================================
-// // //   // UI
-// // //   // =====================================================
-
 // // //   return (
 // // //     <div className="edit-modal-overlay">
 
 // // //       <div className="edit-flight-modal">
 
-// // //         {/* =================================================
-// // //             HEADER
-// // //         ================================================= */}
+// // //         {/* HEADER */}
 
 // // //         <div className="edit-modal-header">
 
@@ -716,10 +1754,6 @@
 // // //         </div>
 
 
-// // //         {/* =================================================
-// // //             FORM
-// // //         ================================================= */}
-
 // // //         <form
 // // //           onSubmit={
 // // //             handleSubmit
@@ -728,10 +1762,16 @@
 
 // // //           <div className="edit-grid">
 
-// // //             {/* AIRLINE */}
+// // //             {/* ========================================
+// // //                 BASIC INFORMATION
+// // //             ======================================== */}
 
-// // //             <div className="edit-form-group">
+// // //             <div className="edit-section-title">
+// // //               Basic Information
+// // //             </div>
 
+
+// // //             <div>
 // // //               <label>
 // // //                 Airline *
 // // //               </label>
@@ -745,16 +1785,11 @@
 // // //                 onChange={
 // // //                   handleChange
 // // //                 }
-// // //                 placeholder="Emirates"
 // // //               />
-
 // // //             </div>
 
 
-// // //             {/* FLIGHT NUMBER */}
-
-// // //             <div className="edit-form-group">
-
+// // //             <div>
 // // //               <label>
 // // //                 Flight Number *
 // // //               </label>
@@ -768,108 +1803,301 @@
 // // //                 onChange={
 // // //                   handleChange
 // // //                 }
-// // //                 placeholder="EK-501"
 // // //               />
-
 // // //             </div>
 
 
-// // //             {/* FROM */}
-
-// // //             <div className="edit-form-group">
-
+// // //             <div>
 // // //               <label>
-// // //                 From *
+// // //                 Flight Type
 // // //               </label>
 
-// // //               <input
-// // //                 type="text"
-// // //                 name="from"
+// // //               <select
+// // //                 name="flightType"
 // // //                 value={
-// // //                   formData.from
+// // //                   formData.flightType
 // // //                 }
 // // //                 onChange={
 // // //                   handleChange
 // // //                 }
-// // //                 placeholder="Delhi"
-// // //               />
+// // //               >
+// // //                 <option value="Domestic">
+// // //                   Domestic
+// // //                 </option>
 
+// // //                 <option value="International">
+// // //                   International
+// // //                 </option>
+// // //               </select>
 // // //             </div>
 
 
-// // //             {/* TO */}
-
-// // //             <div className="edit-form-group">
-
+// // //             <div>
 // // //               <label>
-// // //                 To *
+// // //                 Aircraft *
 // // //               </label>
 
 // // //               <input
 // // //                 type="text"
-// // //                 name="to"
+// // //                 name="aircraft"
 // // //                 value={
-// // //                   formData.to
+// // //                   formData.aircraft
 // // //                 }
 // // //                 onChange={
 // // //                   handleChange
 // // //                 }
-// // //                 placeholder="Dubai"
 // // //               />
-
 // // //             </div>
 
 
-// // //             {/* DEPARTURE */}
+// // //             {/* ========================================
+// // //                 FROM
+// // //             ======================================== */}
 
-// // //             <div className="edit-form-group">
+// // //             <div className="edit-section-title">
+// // //               Departure
+// // //             </div>
 
+
+// // //             <div>
 // // //               <label>
-// // //                 Departure *
+// // //                 From City *
 // // //               </label>
 
 // // //               <input
 // // //                 type="text"
-// // //                 name="departure"
+// // //                 name="fromCity"
 // // //                 value={
-// // //                   formData.departure
+// // //                   formData.fromCity
 // // //                 }
 // // //                 onChange={
 // // //                   handleChange
 // // //                 }
-// // //                 placeholder="09:00 AM"
 // // //               />
-
 // // //             </div>
 
 
-// // //             {/* ARRIVAL */}
-
-// // //             <div className="edit-form-group">
-
+// // //             <div>
 // // //               <label>
-// // //                 Arrival *
+// // //                 From Airport *
 // // //               </label>
 
 // // //               <input
 // // //                 type="text"
-// // //                 name="arrival"
+// // //                 name="fromAirport"
 // // //                 value={
-// // //                   formData.arrival
+// // //                   formData.fromAirport
 // // //                 }
 // // //                 onChange={
 // // //                   handleChange
 // // //                 }
-// // //                 placeholder="12:15 PM"
 // // //               />
-
 // // //             </div>
 
 
-// // //             {/* DURATION */}
+// // //             <div>
+// // //               <label>
+// // //                 From Airport Code *
+// // //               </label>
 
-// // //             <div className="edit-form-group">
+// // //               <input
+// // //                 type="text"
+// // //                 name="fromCode"
+// // //                 value={
+// // //                   formData.fromCode
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //                 maxLength="3"
+// // //               />
+// // //             </div>
 
+
+// // //             <div>
+// // //               <label>
+// // //                 Departure Date *
+// // //               </label>
+
+// // //               <input
+// // //                 type="date"
+// // //                 name="departureDate"
+// // //                 value={
+// // //                   formData.departureDate
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Departure Time *
+// // //               </label>
+
+// // //               <input
+// // //                 type="time"
+// // //                 name="departureTime"
+// // //                 value={
+// // //                   formData.departureTime
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Departure Terminal
+// // //               </label>
+
+// // //               <input
+// // //                 type="text"
+// // //                 name="departureTerminal"
+// // //                 value={
+// // //                   formData.departureTerminal
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //                 placeholder="Terminal 1"
+// // //               />
+// // //             </div>
+
+
+// // //             {/* ========================================
+// // //                 ARRIVAL
+// // //             ======================================== */}
+
+// // //             <div className="edit-section-title">
+// // //               Arrival
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 To City *
+// // //               </label>
+
+// // //               <input
+// // //                 type="text"
+// // //                 name="toCity"
+// // //                 value={
+// // //                   formData.toCity
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 To Airport *
+// // //               </label>
+
+// // //               <input
+// // //                 type="text"
+// // //                 name="toAirport"
+// // //                 value={
+// // //                   formData.toAirport
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 To Airport Code *
+// // //               </label>
+
+// // //               <input
+// // //                 type="text"
+// // //                 name="toCode"
+// // //                 value={
+// // //                   formData.toCode
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //                 maxLength="3"
+// // //               />
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Arrival Date *
+// // //               </label>
+
+// // //               <input
+// // //                 type="date"
+// // //                 name="arrivalDate"
+// // //                 value={
+// // //                   formData.arrivalDate
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Arrival Time *
+// // //               </label>
+
+// // //               <input
+// // //                 type="time"
+// // //                 name="arrivalTime"
+// // //                 value={
+// // //                   formData.arrivalTime
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Arrival Terminal
+// // //               </label>
+
+// // //               <input
+// // //                 type="text"
+// // //                 name="arrivalTerminal"
+// // //                 value={
+// // //                   formData.arrivalTerminal
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //                 placeholder="Terminal 3"
+// // //               />
+// // //             </div>
+
+
+// // //             {/* ========================================
+// // //                 FLIGHT DETAILS
+// // //             ======================================== */}
+
+// // //             <div className="edit-section-title">
+// // //               Flight Details
+// // //             </div>
+
+
+// // //             <div>
 // // //               <label>
 // // //                 Duration *
 // // //               </label>
@@ -885,86 +2113,536 @@
 // // //                 }
 // // //                 placeholder="3h 15m"
 // // //               />
-
 // // //             </div>
 
 
-// // //             {/* SEATS */}
-
-// // //             <div className="edit-form-group">
-
+// // //             <div>
 // // //               <label>
-// // //                 Total Seats *
+// // //                 Stops
+// // //               </label>
+
+// // //               <select
+// // //                 name="stops"
+// // //                 value={
+// // //                   formData.stops
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               >
+// // //                 <option value="Non-stop">
+// // //                   Non-stop
+// // //                 </option>
+
+// // //                 <option value="1 Stop">
+// // //                   1 Stop
+// // //                 </option>
+
+// // //                 <option value="2 Stops">
+// // //                   2 Stops
+// // //                 </option>
+// // //               </select>
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Stop Airport
+// // //               </label>
+
+// // //               <input
+// // //                 type="text"
+// // //                 name="stopAirport"
+// // //                 value={
+// // //                   formData.stopAirport
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Stop City
+// // //               </label>
+
+// // //               <input
+// // //                 type="text"
+// // //                 name="stopCity"
+// // //                 value={
+// // //                   formData.stopCity
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Layover Duration
+// // //               </label>
+
+// // //               <input
+// // //                 type="text"
+// // //                 name="layoverDuration"
+// // //                 value={
+// // //                   formData.layoverDuration
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             {/* ========================================
+// // //                 CABINS
+// // //             ======================================== */}
+
+// // //             <div className="edit-section-title">
+// // //               Cabins
+// // //             </div>
+
+// // //           </div>
+
+
+// // //           {/* CABINS OUTSIDE GRID */}
+
+// // //           <div className="edit-cabins-container">
+
+// // //             {formData.cabins.map(
+// // //               (cabin, index) => (
+
+// // //                 <div
+// // //                   className="edit-cabin-card"
+// // //                   key={index}
+// // //                 >
+
+// // //                   <div className="edit-cabin-header">
+
+// // //                     <h3>
+// // //                       Cabin {index + 1}
+// // //                     </h3>
+
+// // //                     {formData.cabins
+// // //                       .length > 1 && (
+
+// // //                       <button
+// // //                         type="button"
+// // //                         className="remove-cabin-btn"
+// // //                         onClick={() =>
+// // //                           removeCabin(
+// // //                             index
+// // //                           )
+// // //                         }
+// // //                       >
+// // //                         Remove
+// // //                       </button>
+
+// // //                     )}
+
+// // //                   </div>
+
+
+// // //                   <div className="edit-grid">
+
+// // //                     <div>
+// // //                       <label>
+// // //                         Cabin
+// // //                       </label>
+
+// // //                       <select
+// // //                         value={
+// // //                           cabin.name
+// // //                         }
+// // //                         onChange={(e) =>
+// // //                           handleCabinChange(
+// // //                             index,
+// // //                             "name",
+// // //                             e.target.value
+// // //                           )
+// // //                         }
+// // //                       >
+// // //                         <option>
+// // //                           Economy
+// // //                         </option>
+
+// // //                         <option>
+// // //                           Premium Economy
+// // //                         </option>
+
+// // //                         <option>
+// // //                           Business
+// // //                         </option>
+
+// // //                         <option>
+// // //                           First Class
+// // //                         </option>
+// // //                       </select>
+// // //                     </div>
+
+
+// // //                     <div>
+// // //                       <label>
+// // //                         Total Seats
+// // //                       </label>
+
+// // //                       <input
+// // //                         type="number"
+// // //                         min="0"
+// // //                         value={
+// // //                           cabin.totalSeats
+// // //                         }
+// // //                         onChange={(e) =>
+// // //                           handleCabinChange(
+// // //                             index,
+// // //                             "totalSeats",
+// // //                             e.target.value
+// // //                           )
+// // //                         }
+// // //                       />
+// // //                     </div>
+
+
+// // //                     <div>
+// // //                       <label>
+// // //                         Available Seats
+// // //                       </label>
+
+// // //                       <input
+// // //                         type="number"
+// // //                         min="0"
+// // //                         value={
+// // //                           cabin.availableSeats
+// // //                         }
+// // //                         onChange={(e) =>
+// // //                           handleCabinChange(
+// // //                             index,
+// // //                             "availableSeats",
+// // //                             e.target.value
+// // //                           )
+// // //                         }
+// // //                       />
+// // //                     </div>
+
+
+// // //                     <div>
+// // //                       <label>
+// // //                         Cabin Price
+// // //                       </label>
+
+// // //                       <input
+// // //                         type="number"
+// // //                         min="0"
+// // //                         value={
+// // //                           cabin.price
+// // //                         }
+// // //                         onChange={(e) =>
+// // //                           handleCabinChange(
+// // //                             index,
+// // //                             "price",
+// // //                             e.target.value
+// // //                           )
+// // //                         }
+// // //                       />
+// // //                     </div>
+
+
+// // //                     <div>
+// // //                       <label>
+// // //                         Baggage
+// // //                       </label>
+
+// // //                       <input
+// // //                         type="text"
+// // //                         value={
+// // //                           cabin.baggage
+// // //                         }
+// // //                         onChange={(e) =>
+// // //                           handleCabinChange(
+// // //                             index,
+// // //                             "baggage",
+// // //                             e.target.value
+// // //                           )
+// // //                         }
+// // //                       />
+// // //                     </div>
+
+// // //                   </div>
+
+// // //                 </div>
+
+// // //               )
+// // //             )}
+
+// // //             <button
+// // //               type="button"
+// // //               className="add-cabin-btn"
+// // //               onClick={addCabin}
+// // //             >
+// // //               + Add Cabin
+// // //             </button>
+
+// // //           </div>
+
+
+// // //           {/* ========================================
+// // //               PRICING
+// // //           ======================================== */}
+
+// // //           <div className="edit-grid">
+
+// // //             <div className="edit-section-title">
+// // //               Pricing
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Base Fare
 // // //               </label>
 
 // // //               <input
 // // //                 type="number"
 // // //                 min="0"
-// // //                 name="seats"
+// // //                 name="baseFare"
 // // //                 value={
-// // //                   formData.seats
+// // //                   formData.baseFare
 // // //                 }
 // // //                 onChange={
 // // //                   handleChange
 // // //                 }
-// // //                 placeholder="180"
 // // //               />
-
 // // //             </div>
 
 
-// // //             {/* AVAILABLE SEATS */}
-
-// // //             <div className="edit-form-group">
-
+// // //             <div>
 // // //               <label>
-// // //                 Available Seats
+// // //                 Taxes
 // // //               </label>
 
 // // //               <input
 // // //                 type="number"
 // // //                 min="0"
-// // //                 name="availableSeats"
+// // //                 name="taxes"
 // // //                 value={
-// // //                   formData.availableSeats
+// // //                   formData.taxes
 // // //                 }
 // // //                 onChange={
 // // //                   handleChange
 // // //                 }
-// // //                 placeholder="180"
 // // //               />
-
 // // //             </div>
 
 
-// // //             {/* PRICE */}
-
-// // //             <div className="edit-form-group">
-
+// // //             <div>
 // // //               <label>
-// // //                 Ticket Price (₹) *
+// // //                 Airport Charges
 // // //               </label>
 
 // // //               <input
 // // //                 type="number"
 // // //                 min="0"
-// // //                 name="price"
+// // //                 name="airportCharges"
 // // //                 value={
-// // //                   formData.price
+// // //                   formData.airportCharges
 // // //                 }
 // // //                 onChange={
 // // //                   handleChange
 // // //                 }
-// // //                 placeholder="28500"
 // // //               />
-
 // // //             </div>
 
 
-// // //             {/* STATUS */}
+// // //             <div>
+// // //               <label>
+// // //                 Service Fee
+// // //               </label>
 
-// // //             <div className="edit-form-group">
+// // //               <input
+// // //                 type="number"
+// // //                 min="0"
+// // //                 name="serviceFee"
+// // //                 value={
+// // //                   formData.serviceFee
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
 
+
+// // //             <div>
+// // //               <label>
+// // //                 Discount
+// // //               </label>
+
+// // //               <input
+// // //                 type="number"
+// // //                 min="0"
+// // //                 name="discount"
+// // //                 value={
+// // //                   formData.discount
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Final Price *
+// // //               </label>
+
+// // //               <input
+// // //                 type="number"
+// // //                 min="0"
+// // //                 name="finalPrice"
+// // //                 value={
+// // //                   formData.finalPrice
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Currency
+// // //               </label>
+
+// // //               <input
+// // //                 type="text"
+// // //                 name="currency"
+// // //                 value={
+// // //                   formData.currency
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             {/* ========================================
+// // //                 BAGGAGE
+// // //             ======================================== */}
+
+// // //             <div className="edit-section-title">
+// // //               Baggage
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Cabin Baggage
+// // //               </label>
+
+// // //               <input
+// // //                 type="text"
+// // //                 name="cabinBaggage"
+// // //                 value={
+// // //                   formData.cabinBaggage
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Check-in Baggage
+// // //               </label>
+
+// // //               <input
+// // //                 type="text"
+// // //                 name="checkinBaggage"
+// // //                 value={
+// // //                   formData.checkinBaggage
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Extra Baggage Price
+// // //               </label>
+
+// // //               <input
+// // //                 type="number"
+// // //                 min="0"
+// // //                 name="extraBaggagePrice"
+// // //                 value={
+// // //                   formData.extraBaggagePrice
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             {/* ========================================
+// // //                 BOOKING
+// // //             ======================================== */}
+
+// // //             <div className="edit-section-title">
+// // //               Booking & Status
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Booking Start Date
+// // //               </label>
+
+// // //               <input
+// // //                 type="date"
+// // //                 name="bookingStartDate"
+// // //                 value={
+// // //                   formData.bookingStartDate
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             <div>
+// // //               <label>
+// // //                 Booking Closing Date
+// // //               </label>
+
+// // //               <input
+// // //                 type="date"
+// // //                 name="bookingClosingDate"
+// // //                 value={
+// // //                   formData.bookingClosingDate
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+// // //             </div>
+
+
+// // //             <div>
 // // //               <label>
 // // //                 Status
 // // //               </label>
@@ -978,7 +2656,6 @@
 // // //                   handleChange
 // // //                 }
 // // //               >
-
 // // //                 <option value="Scheduled">
 // // //                   Scheduled
 // // //                 </option>
@@ -991,29 +2668,187 @@
 // // //                   Cancelled
 // // //                 </option>
 
+// // //                 <option value="Boarding">
+// // //                   Boarding
+// // //                 </option>
+
+// // //                 <option value="Departed">
+// // //                   Departed
+// // //                 </option>
+
+// // //                 <option value="Arrived">
+// // //                   Arrived
+// // //                 </option>
 // // //               </select>
+// // //             </div>
+
+
+// // //             {/* ========================================
+// // //                 SERVICES
+// // //             ======================================== */}
+
+// // //             <div className="edit-section-title">
+// // //               Services
+// // //             </div>
+
+
+// // //             <label className="edit-checkbox">
+// // //               <input
+// // //                 type="checkbox"
+// // //                 name="mealAvailable"
+// // //                 checked={
+// // //                   formData.mealAvailable
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+
+// // //               Meal Available
+// // //             </label>
+
+
+// // //             <label className="edit-checkbox">
+// // //               <input
+// // //                 type="checkbox"
+// // //                 name="wifiAvailable"
+// // //                 checked={
+// // //                   formData.wifiAvailable
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+
+// // //               Wi-Fi Available
+// // //             </label>
+
+
+// // //             <label className="edit-checkbox">
+// // //               <input
+// // //                 type="checkbox"
+// // //                 name="entertainmentAvailable"
+// // //                 checked={
+// // //                   formData.entertainmentAvailable
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+
+// // //               Entertainment
+// // //             </label>
+
+
+// // //             <label className="edit-checkbox">
+// // //               <input
+// // //                 type="checkbox"
+// // //                 name="powerAvailable"
+// // //                 checked={
+// // //                   formData.powerAvailable
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+
+// // //               Power Available
+// // //             </label>
+
+
+// // //             <label className="edit-checkbox">
+// // //               <input
+// // //                 type="checkbox"
+// // //                 name="refundable"
+// // //                 checked={
+// // //                   formData.refundable
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+
+// // //               Refundable
+// // //             </label>
+
+
+// // //             <label className="edit-checkbox">
+// // //               <input
+// // //                 type="checkbox"
+// // //                 name="changeable"
+// // //                 checked={
+// // //                   formData.changeable
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //               />
+
+// // //               Changeable
+// // //             </label>
+
+
+// // //             {/* ========================================
+// // //                 DESCRIPTION
+// // //             ======================================== */}
+
+// // //             <div className="edit-section-title">
+// // //               Additional Information
+// // //             </div>
+
+
+// // //             <div className="edit-full-field">
+
+// // //               <label>
+// // //                 Description
+// // //               </label>
+
+// // //               <textarea
+// // //                 name="description"
+// // //                 value={
+// // //                   formData.description
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //                 rows="3"
+// // //               />
+
+// // //             </div>
+
+
+// // //             <div className="edit-full-field">
+
+// // //               <label>
+// // //                 Special Instructions
+// // //               </label>
+
+// // //               <textarea
+// // //                 name="specialInstructions"
+// // //                 value={
+// // //                   formData.specialInstructions
+// // //                 }
+// // //                 onChange={
+// // //                   handleChange
+// // //                 }
+// // //                 rows="3"
+// // //               />
 
 // // //             </div>
 
 // // //           </div>
 
 
-// // //           {/* =================================================
-// // //               ERROR
-// // //           ================================================= */}
+// // //           {/* ERROR */}
 
 // // //           {error && (
-
 // // //             <div className="edit-error">
 // // //               {error}
 // // //             </div>
-
 // // //           )}
 
 
-// // //           {/* =================================================
-// // //               BUTTONS
-// // //           ================================================= */}
+// // //           {/* BUTTONS */}
 
 // // //           <div className="edit-modal-buttons">
 
@@ -1028,17 +2863,14 @@
 // // //               Cancel
 // // //             </button>
 
-
 // // //             <button
 // // //               type="submit"
 // // //               className="update-btn"
 // // //               disabled={loading}
 // // //             >
-
 // // //               {loading
 // // //                 ? "Updating..."
 // // //                 : "Update Flight"}
-
 // // //             </button>
 
 // // //           </div>
@@ -1052,6 +2884,7 @@
 // // // }
 
 // // // export default EditFlight;
+
 
 
 // // import "./EditFlight.css";
@@ -2886,20 +4719,10 @@
 // // export default EditFlight;
 
 
-
 // import "./EditFlight.css";
-
 // import { useEffect, useState } from "react";
 
-// function EditFlight({
-//   flight,
-//   closeModal,
-//   onSuccess,
-// }) {
-//   // =====================================================
-//   // FORM DATA
-//   // =====================================================
-
+// function EditFlight({ flight, closeModal, onSuccess }) {
 //   const [formData, setFormData] = useState({
 //     airline: "",
 //     flightNo: "",
@@ -2962,109 +4785,56 @@
 //     changeable: false,
 
 //     status: "Scheduled",
-
 //     description: "",
 //     specialInstructions: "",
 //   });
 
-//   const [loading, setLoading] =
-//     useState(false);
+//   const [loading, setLoading] = useState(false);
+//   const [error, setError] = useState("");
 
-//   const [error, setError] =
-//     useState("");
-
-//   // =====================================================
-//   // LOAD SELECTED FLIGHT
-//   // =====================================================
+//   // ==========================================
+//   // LOAD FLIGHT DATA
+//   // ==========================================
 
 //   useEffect(() => {
 //     if (!flight) return;
 
 //     setFormData({
-//       airline:
-//         flight.airline || "",
+//       airline: flight.airline || "",
+//       flightNo: flight.flightNo || "",
+//       flightType: flight.flightType || "Domestic",
+//       aircraft: flight.aircraft || "",
 
-//       flightNo:
-//         flight.flightNo || "",
+//       fromCity: flight.fromCity || "",
+//       fromAirport: flight.fromAirport || "",
+//       fromCode: flight.fromCode || "",
 
-//       flightType:
-//         flight.flightType ||
-//         "Domestic",
+//       toCity: flight.toCity || "",
+//       toAirport: flight.toAirport || "",
+//       toCode: flight.toCode || "",
 
-//       aircraft:
-//         flight.aircraft || "",
+//       departureDate: flight.departureDate || "",
+//       departureTime: flight.departureTime || "",
+//       departureTerminal: flight.departureTerminal || "",
 
-//       fromCity:
-//         flight.fromCity || "",
+//       arrivalDate: flight.arrivalDate || "",
+//       arrivalTime: flight.arrivalTime || "",
+//       arrivalTerminal: flight.arrivalTerminal || "",
 
-//       fromAirport:
-//         flight.fromAirport || "",
-
-//       fromCode:
-//         flight.fromCode || "",
-
-//       toCity:
-//         flight.toCity || "",
-
-//       toAirport:
-//         flight.toAirport || "",
-
-//       toCode:
-//         flight.toCode || "",
-
-//       departureDate:
-//         flight.departureDate || "",
-
-//       departureTime:
-//         flight.departureTime || "",
-
-//       departureTerminal:
-//         flight.departureTerminal || "",
-
-//       arrivalDate:
-//         flight.arrivalDate || "",
-
-//       arrivalTime:
-//         flight.arrivalTime || "",
-
-//       arrivalTerminal:
-//         flight.arrivalTerminal || "",
-
-//       duration:
-//         flight.duration || "",
-
-//       stops:
-//         flight.stops || "Non-stop",
-
-//       stopAirport:
-//         flight.stopAirport || "",
-
-//       stopCity:
-//         flight.stopCity || "",
-
-//       layoverDuration:
-//         flight.layoverDuration || "",
+//       duration: flight.duration || "",
+//       stops: flight.stops || "Non-stop",
+//       stopAirport: flight.stopAirport || "",
+//       stopCity: flight.stopCity || "",
+//       layoverDuration: flight.layoverDuration || "",
 
 //       cabins:
-//         Array.isArray(flight.cabins) &&
-//         flight.cabins.length > 0
+//         Array.isArray(flight.cabins) && flight.cabins.length
 //           ? flight.cabins.map((cabin) => ({
-//               name:
-//                 cabin.name ||
-//                 "Economy",
-
-//               totalSeats:
-//                 cabin.totalSeats ?? "",
-
-//               availableSeats:
-//                 cabin.availableSeats ?? "",
-
-//               price:
-//                 cabin.price ?? "",
-
-//               baggage:
-//                 cabin.baggage ||
-//                 "15 KG",
+//               name: cabin.name || "Economy",
+//               totalSeats: cabin.totalSeats ?? "",
+//               availableSeats: cabin.availableSeats ?? "",
+//               price: cabin.price ?? "",
+//               baggage: cabin.baggage || "15 KG",
 //             }))
 //           : [
 //               {
@@ -3076,124 +4846,57 @@
 //               },
 //             ],
 
-//       baseFare:
-//         flight.baseFare ?? "",
+//       baseFare: flight.baseFare ?? "",
+//       taxes: flight.taxes ?? "",
+//       airportCharges: flight.airportCharges ?? "",
+//       serviceFee: flight.serviceFee ?? "",
+//       discount: flight.discount ?? "",
+//       finalPrice: flight.finalPrice ?? "",
+//       currency: flight.currency || "INR",
 
-//       taxes:
-//         flight.taxes ?? "",
+//       cabinBaggage: flight.cabinBaggage || "7 KG",
+//       checkinBaggage: flight.checkinBaggage || "15 KG",
+//       extraBaggagePrice: flight.extraBaggagePrice ?? "",
 
-//       airportCharges:
-//         flight.airportCharges ?? "",
+//       mealAvailable: Boolean(flight.mealAvailable),
+//       wifiAvailable: Boolean(flight.wifiAvailable),
+//       entertainmentAvailable: Boolean(
+//         flight.entertainmentAvailable
+//       ),
+//       powerAvailable: Boolean(flight.powerAvailable),
 
-//       serviceFee:
-//         flight.serviceFee ?? "",
+//       bookingStartDate: flight.bookingStartDate || "",
+//       bookingClosingDate: flight.bookingClosingDate || "",
 
-//       discount:
-//         flight.discount ?? "",
+//       refundable: Boolean(flight.refundable),
+//       changeable: Boolean(flight.changeable),
 
-//       finalPrice:
-//         flight.finalPrice ?? "",
-
-//       currency:
-//         flight.currency || "INR",
-
-//       cabinBaggage:
-//         flight.cabinBaggage ||
-//         "7 KG",
-
-//       checkinBaggage:
-//         flight.checkinBaggage ||
-//         "15 KG",
-
-//       extraBaggagePrice:
-//         flight.extraBaggagePrice ?? "",
-
-//       mealAvailable:
-//         Boolean(
-//           flight.mealAvailable
-//         ),
-
-//       wifiAvailable:
-//         Boolean(
-//           flight.wifiAvailable
-//         ),
-
-//       entertainmentAvailable:
-//         Boolean(
-//           flight.entertainmentAvailable
-//         ),
-
-//       powerAvailable:
-//         Boolean(
-//           flight.powerAvailable
-//         ),
-
-//       bookingStartDate:
-//         flight.bookingStartDate ||
-//         "",
-
-//       bookingClosingDate:
-//         flight.bookingClosingDate ||
-//         "",
-
-//       refundable:
-//         Boolean(
-//           flight.refundable
-//         ),
-
-//       changeable:
-//         Boolean(
-//           flight.changeable
-//         ),
-
-//       status:
-//         flight.status ||
-//         "Scheduled",
-
-//       description:
-//         flight.description || "",
-
-//       specialInstructions:
-//         flight.specialInstructions ||
-//         "",
+//       status: flight.status || "Scheduled",
+//       description: flight.description || "",
+//       specialInstructions: flight.specialInstructions || "",
 //     });
 //   }, [flight]);
 
-//   // =====================================================
-//   // NORMAL INPUT CHANGE
-//   // =====================================================
+//   // ==========================================
+//   // INPUT CHANGE
+//   // ==========================================
 
 //   const handleChange = (e) => {
-//     const {
-//       name,
-//       value,
-//       type,
-//       checked,
-//     } = e.target;
+//     const { name, value, type, checked } = e.target;
 
-//     setFormData((previous) => ({
-//       ...previous,
-
-//       [name]:
-//         type === "checkbox"
-//           ? checked
-//           : value,
+//     setFormData((prev) => ({
+//       ...prev,
+//       [name]: type === "checkbox" ? checked : value,
 //     }));
 //   };
 
-//   // =====================================================
+//   // ==========================================
 //   // CABIN CHANGE
-//   // =====================================================
+//   // ==========================================
 
-//   const handleCabinChange = (
-//     index,
-//     field,
-//     value
-//   ) => {
-//     setFormData((previous) => {
-//       const cabins = [
-//         ...previous.cabins,
-//       ];
+//   const handleCabinChange = (index, field, value) => {
+//     setFormData((prev) => {
+//       const cabins = [...prev.cabins];
 
 //       cabins[index] = {
 //         ...cabins[index],
@@ -3201,23 +4904,21 @@
 //       };
 
 //       return {
-//         ...previous,
+//         ...prev,
 //         cabins,
 //       };
 //     });
 //   };
 
-//   // =====================================================
+//   // ==========================================
 //   // ADD CABIN
-//   // =====================================================
+//   // ==========================================
 
 //   const addCabin = () => {
-//     setFormData((previous) => ({
-//       ...previous,
-
+//     setFormData((prev) => ({
+//       ...prev,
 //       cabins: [
-//         ...previous.cabins,
-
+//         ...prev.cabins,
 //         {
 //           name: "Economy",
 //           totalSeats: "",
@@ -3229,41 +4930,30 @@
 //     }));
 //   };
 
-//   // =====================================================
+//   // ==========================================
 //   // REMOVE CABIN
-//   // =====================================================
+//   // ==========================================
 
 //   const removeCabin = (index) => {
-//     setFormData((previous) => {
-//       if (
-//         previous.cabins.length <= 1
-//       ) {
-//         return previous;
-//       }
+//     if (formData.cabins.length === 1) return;
 
-//       return {
-//         ...previous,
-
-//         cabins:
-//           previous.cabins.filter(
-//             (_, cabinIndex) =>
-//               cabinIndex !== index
-//           ),
-//       };
-//     });
+//     setFormData((prev) => ({
+//       ...prev,
+//       cabins: prev.cabins.filter(
+//         (_, i) => i !== index
+//       ),
+//     }));
 //   };
 
-//   // =====================================================
-//   // SUBMIT
-//   // =====================================================
+//   // ==========================================
+//   // UPDATE FLIGHT
+//   // ==========================================
 
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
 
 //     if (!flight?._id) {
-//       setError(
-//         "Flight ID not found."
-//       );
+//       setError("Flight ID not found.");
 //       return;
 //     }
 
@@ -3272,826 +4962,392 @@
 
 //     try {
 //       const token =
-//         localStorage.getItem(
-//           "token"
-//         );
+//         localStorage.getItem("token") ||
+//         localStorage.getItem("adminToken");
 
 //       if (!token) {
 //         throw new Error(
-//           "Admin login session expired. Please login again."
+//           "Login session expired. Please login again."
 //         );
 //       }
 
-//       // =================================================
-//       // PREPARE CABINS
-//       // =================================================
-
-//       const cleanedCabins =
-//         formData.cabins.map(
-//           (cabin) => ({
-//             name: cabin.name,
-
-//             totalSeats:
-//               Number(
-//                 cabin.totalSeats
-//               ),
-
-//             availableSeats:
-//               Number(
-//                 cabin.availableSeats
-//               ),
-
-//             price:
-//               Number(cabin.price),
-
-//             baggage:
-//               cabin.baggage ||
-//               "15 KG",
-//           })
-//         );
-
-//       // =================================================
-//       // PREPARE UPDATE DATA
-//       // =================================================
-
 //       const updateData = {
-//         airline:
-//           formData.airline.trim(),
+//         ...formData,
 
-//         flightNo:
-//           formData.flightNo
-//             .trim()
-//             .toUpperCase(),
+//         flightNo: formData.flightNo
+//           .trim()
+//           .toUpperCase(),
 
-//         flightType:
-//           formData.flightType,
+//         fromCode: formData.fromCode
+//           .trim()
+//           .toUpperCase(),
 
-//         aircraft:
-//           formData.aircraft.trim(),
+//         toCode: formData.toCode
+//           .trim()
+//           .toUpperCase(),
 
-//         fromCity:
-//           formData.fromCity.trim(),
-
-//         fromAirport:
-//           formData.fromAirport.trim(),
-
-//         fromCode:
-//           formData.fromCode
-//             .trim()
-//             .toUpperCase(),
-
-//         toCity:
-//           formData.toCity.trim(),
-
-//         toAirport:
-//           formData.toAirport.trim(),
-
-//         toCode:
-//           formData.toCode
-//             .trim()
-//             .toUpperCase(),
-
-//         departureDate:
-//           formData.departureDate,
-
-//         departureTime:
-//           formData.departureTime,
-
-//         departureTerminal:
-//           formData.departureTerminal,
-
-//         arrivalDate:
-//           formData.arrivalDate,
-
-//         arrivalTime:
-//           formData.arrivalTime,
-
-//         arrivalTerminal:
-//           formData.arrivalTerminal,
-
-//         duration:
-//           formData.duration.trim(),
-
-//         stops:
-//           formData.stops,
-
-//         stopAirport:
-//           formData.stopAirport,
-
-//         stopCity:
-//           formData.stopCity,
-
-//         layoverDuration:
-//           formData.layoverDuration,
-
-//         cabins:
-//           cleanedCabins,
-
-//         baseFare:
-//           Number(
-//             formData.baseFare || 0
+//         cabins: formData.cabins.map((cabin) => ({
+//           name: cabin.name,
+//           totalSeats: Number(cabin.totalSeats || 0),
+//           availableSeats: Number(
+//             cabin.availableSeats || 0
 //           ),
+//           price: Number(cabin.price || 0),
+//           baggage: cabin.baggage || "15 KG",
+//         })),
 
-//         taxes:
-//           Number(
-//             formData.taxes || 0
-//           ),
-
-//         airportCharges:
-//           Number(
-//             formData.airportCharges || 0
-//           ),
-
-//         serviceFee:
-//           Number(
-//             formData.serviceFee || 0
-//           ),
-
-//         discount:
-//           Number(
-//             formData.discount || 0
-//           ),
-
-//         finalPrice:
-//           Number(
-//             formData.finalPrice || 0
-//           ),
-
-//         currency:
-//           formData.currency,
-
-//         cabinBaggage:
-//           formData.cabinBaggage,
-
-//         checkinBaggage:
-//           formData.checkinBaggage,
-
-//         extraBaggagePrice:
-//           Number(
-//             formData.extraBaggagePrice ||
-//               0
-//           ),
-
-//         mealAvailable:
-//           formData.mealAvailable,
-
-//         wifiAvailable:
-//           formData.wifiAvailable,
-
-//         entertainmentAvailable:
-//           formData.entertainmentAvailable,
-
-//         powerAvailable:
-//           formData.powerAvailable,
-
-//         bookingStartDate:
-//           formData.bookingStartDate,
-
-//         bookingClosingDate:
-//           formData.bookingClosingDate,
-
-//         refundable:
-//           formData.refundable,
-
-//         changeable:
-//           formData.changeable,
-
-//         status:
-//           formData.status,
-
-//         description:
-//           formData.description,
-
-//         specialInstructions:
-//           formData.specialInstructions,
+//         baseFare: Number(formData.baseFare || 0),
+//         taxes: Number(formData.taxes || 0),
+//         airportCharges: Number(
+//           formData.airportCharges || 0
+//         ),
+//         serviceFee: Number(
+//           formData.serviceFee || 0
+//         ),
+//         discount: Number(
+//           formData.discount || 0
+//         ),
+//         finalPrice: Number(
+//           formData.finalPrice || 0
+//         ),
+//         extraBaggagePrice: Number(
+//           formData.extraBaggagePrice || 0
+//         ),
 //       };
 
-//       console.log(
-//         "UPDATING FLIGHT:",
-//         flight._id
+//       console.log("UPDATE FLIGHT ID:", flight._id);
+//       console.log("UPDATE DATA:", updateData);
+
+//       const response = await fetch(
+//         `http://localhost:5000/api/flights/${flight._id}`,
+//         {
+//           method: "PUT",
+
+//           headers: {
+//             "Content-Type": "application/json",
+//             Authorization: `Bearer ${token}`,
+//           },
+
+//           body: JSON.stringify(updateData),
+//         }
 //       );
 
-//       console.log(
-//         "UPDATE DATA:",
-//         updateData
-//       );
+//       const data = await response.json();
 
-//       // =================================================
-//       // PUT API
-//       // =================================================
-
-//       const response =
-//         await fetch(
-//           `http://localhost:5000/api/flights/${flight._id}`,
-//           {
-//             method: "PUT",
-
-//             headers: {
-//               "Content-Type":
-//                 "application/json",
-
-//               Authorization:
-//                 `Bearer ${token}`,
-//             },
-
-//             body:
-//               JSON.stringify(
-//                 updateData
-//               ),
-//           }
-//         );
-
-//       const data =
-//         await response.json();
-
-//       console.log(
-//         "UPDATE RESPONSE:",
-//         data
-//       );
+//       console.log("UPDATE RESPONSE:", data);
 
 //       if (!response.ok) {
 //         throw new Error(
-//           data.message ||
-//             "Flight update failed."
+//           data.message || "Flight update failed."
 //         );
 //       }
 
-//       // =================================================
-//       // SUCCESS
-//       // =================================================
-
-//       alert(
-//         "Flight updated successfully ✅"
-//       );
+//       alert("Flight updated successfully ✅");
 
 //       if (onSuccess) {
-//         onSuccess(
-//           data.flight
-//         );
-//       } else {
-//         closeModal();
+//         onSuccess(data.flight);
 //       }
 
+//       closeModal();
 //     } catch (error) {
-//       console.error(
-//         "Update Flight Error:",
-//         error
-//       );
+//       console.error("Update Flight Error:", error);
 
 //       setError(
-//         error.message ||
-//           "Unable to update flight."
+//         error.message || "Unable to update flight."
 //       );
-
 //     } finally {
 //       setLoading(false);
 //     }
 //   };
 
-//   // =====================================================
-//   // NO FLIGHT
-//   // =====================================================
-
-//   if (!flight) {
-//     return null;
-//   }
+//   if (!flight) return null;
 
 //   return (
 //     <div className="edit-modal-overlay">
-
 //       <div className="edit-flight-modal">
 
-//         {/* HEADER */}
-
 //         <div className="edit-modal-header">
-
 //           <div>
-//             <h2>
-//               Edit Flight
-//             </h2>
-
-//             <p>
-//               Update flight information
-//             </p>
+//             <h2>Edit Flight</h2>
+//             <p>Update flight information</p>
 //           </div>
 
 //           <button
 //             type="button"
 //             className="edit-close-btn"
 //             onClick={closeModal}
-//             disabled={loading}
 //           >
 //             ✕
 //           </button>
-
 //         </div>
 
-
-//         <form
-//           onSubmit={
-//             handleSubmit
-//           }
-//         >
+//         <form onSubmit={handleSubmit}>
 
 //           <div className="edit-grid">
-
-//             {/* ========================================
-//                 BASIC INFORMATION
-//             ======================================== */}
 
 //             <div className="edit-section-title">
 //               Basic Information
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Airline *
-//               </label>
-
+//               <label>Airline *</label>
 //               <input
-//                 type="text"
 //                 name="airline"
-//                 value={
-//                   formData.airline
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.airline}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Flight Number *
-//               </label>
-
+//               <label>Flight Number *</label>
 //               <input
-//                 type="text"
 //                 name="flightNo"
-//                 value={
-//                   formData.flightNo
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.flightNo}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Flight Type
-//               </label>
-
+//               <label>Flight Type</label>
 //               <select
 //                 name="flightType"
-//                 value={
-//                   formData.flightType
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.flightType}
+//                 onChange={handleChange}
 //               >
 //                 <option value="Domestic">
 //                   Domestic
 //                 </option>
-
 //                 <option value="International">
 //                   International
 //                 </option>
 //               </select>
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Aircraft *
-//               </label>
-
+//               <label>Aircraft *</label>
 //               <input
-//                 type="text"
 //                 name="aircraft"
-//                 value={
-//                   formData.aircraft
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.aircraft}
+//                 onChange={handleChange}
 //               />
 //             </div>
-
-
-//             {/* ========================================
-//                 FROM
-//             ======================================== */}
 
 //             <div className="edit-section-title">
 //               Departure
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 From City *
-//               </label>
-
+//               <label>From City *</label>
 //               <input
-//                 type="text"
 //                 name="fromCity"
-//                 value={
-//                   formData.fromCity
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.fromCity}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 From Airport *
-//               </label>
-
+//               <label>From Airport *</label>
 //               <input
-//                 type="text"
 //                 name="fromAirport"
-//                 value={
-//                   formData.fromAirport
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.fromAirport}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 From Airport Code *
-//               </label>
-
+//               <label>From Code *</label>
 //               <input
-//                 type="text"
 //                 name="fromCode"
-//                 value={
-//                   formData.fromCode
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
 //                 maxLength="3"
+//                 value={formData.fromCode}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Departure Date *
-//               </label>
-
+//               <label>Departure Date *</label>
 //               <input
 //                 type="date"
 //                 name="departureDate"
-//                 value={
-//                   formData.departureDate
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.departureDate}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Departure Time *
-//               </label>
-
+//               <label>Departure Time *</label>
 //               <input
 //                 type="time"
 //                 name="departureTime"
-//                 value={
-//                   formData.departureTime
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.departureTime}
+//                 onChange={handleChange}
 //               />
 //             </div>
-
 
 //             <div>
-//               <label>
-//                 Departure Terminal
-//               </label>
-
+//               <label>Departure Terminal</label>
 //               <input
-//                 type="text"
 //                 name="departureTerminal"
-//                 value={
-//                   formData.departureTerminal
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
-//                 placeholder="Terminal 1"
+//                 value={formData.departureTerminal}
+//                 onChange={handleChange}
 //               />
 //             </div>
-
-
-//             {/* ========================================
-//                 ARRIVAL
-//             ======================================== */}
 
 //             <div className="edit-section-title">
 //               Arrival
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 To City *
-//               </label>
-
+//               <label>To City *</label>
 //               <input
-//                 type="text"
 //                 name="toCity"
-//                 value={
-//                   formData.toCity
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.toCity}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 To Airport *
-//               </label>
-
+//               <label>To Airport *</label>
 //               <input
-//                 type="text"
 //                 name="toAirport"
-//                 value={
-//                   formData.toAirport
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.toAirport}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 To Airport Code *
-//               </label>
-
+//               <label>To Code *</label>
 //               <input
-//                 type="text"
 //                 name="toCode"
-//                 value={
-//                   formData.toCode
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
 //                 maxLength="3"
+//                 value={formData.toCode}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Arrival Date *
-//               </label>
-
+//               <label>Arrival Date *</label>
 //               <input
 //                 type="date"
 //                 name="arrivalDate"
-//                 value={
-//                   formData.arrivalDate
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.arrivalDate}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Arrival Time *
-//               </label>
-
+//               <label>Arrival Time *</label>
 //               <input
 //                 type="time"
 //                 name="arrivalTime"
-//                 value={
-//                   formData.arrivalTime
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.arrivalTime}
+//                 onChange={handleChange}
 //               />
 //             </div>
-
 
 //             <div>
-//               <label>
-//                 Arrival Terminal
-//               </label>
-
+//               <label>Arrival Terminal</label>
 //               <input
-//                 type="text"
 //                 name="arrivalTerminal"
-//                 value={
-//                   formData.arrivalTerminal
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
-//                 placeholder="Terminal 3"
+//                 value={formData.arrivalTerminal}
+//                 onChange={handleChange}
 //               />
 //             </div>
-
-
-//             {/* ========================================
-//                 FLIGHT DETAILS
-//             ======================================== */}
 
 //             <div className="edit-section-title">
 //               Flight Details
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Duration *
-//               </label>
-
+//               <label>Duration *</label>
 //               <input
-//                 type="text"
 //                 name="duration"
-//                 value={
-//                   formData.duration
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.duration}
+//                 onChange={handleChange}
 //                 placeholder="3h 15m"
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Stops
-//               </label>
-
+//               <label>Stops</label>
 //               <select
 //                 name="stops"
-//                 value={
-//                   formData.stops
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.stops}
+//                 onChange={handleChange}
 //               >
-//                 <option value="Non-stop">
-//                   Non-stop
-//                 </option>
-
-//                 <option value="1 Stop">
-//                   1 Stop
-//                 </option>
-
-//                 <option value="2 Stops">
-//                   2 Stops
-//                 </option>
+//                 <option>Non-stop</option>
+//                 <option>1 Stop</option>
+//                 <option>2 Stops</option>
 //               </select>
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Stop Airport
-//               </label>
-
+//               <label>Stop Airport</label>
 //               <input
-//                 type="text"
 //                 name="stopAirport"
-//                 value={
-//                   formData.stopAirport
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.stopAirport}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Stop City
-//               </label>
-
+//               <label>Stop City</label>
 //               <input
-//                 type="text"
 //                 name="stopCity"
-//                 value={
-//                   formData.stopCity
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.stopCity}
+//                 onChange={handleChange}
 //               />
 //             </div>
-
 
 //             <div>
-//               <label>
-//                 Layover Duration
-//               </label>
-
+//               <label>Layover Duration</label>
 //               <input
-//                 type="text"
 //                 name="layoverDuration"
-//                 value={
-//                   formData.layoverDuration
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.layoverDuration}
+//                 onChange={handleChange}
 //               />
-//             </div>
-
-
-//             {/* ========================================
-//                 CABINS
-//             ======================================== */}
-
-//             <div className="edit-section-title">
-//               Cabins
 //             </div>
 
 //           </div>
 
+//           {/* CABINS */}
 
-//           {/* CABINS OUTSIDE GRID */}
+//           <div className="edit-section-title">
+//             Cabins
+//           </div>
 
 //           <div className="edit-cabins-container">
 
 //             {formData.cabins.map(
 //               (cabin, index) => (
-
 //                 <div
 //                   className="edit-cabin-card"
 //                   key={index}
 //                 >
-
 //                   <div className="edit-cabin-header">
-
 //                     <h3>
 //                       Cabin {index + 1}
 //                     </h3>
 
-//                     {formData.cabins
-//                       .length > 1 && (
-
+//                     {formData.cabins.length > 1 && (
 //                       <button
 //                         type="button"
 //                         className="remove-cabin-btn"
 //                         onClick={() =>
-//                           removeCabin(
-//                             index
-//                           )
+//                           removeCabin(index)
 //                         }
 //                       >
 //                         Remove
 //                       </button>
-
 //                     )}
-
 //                   </div>
-
 
 //                   <div className="edit-grid">
 
 //                     <div>
-//                       <label>
-//                         Cabin
-//                       </label>
-
+//                       <label>Cabin</label>
 //                       <select
-//                         value={
-//                           cabin.name
-//                         }
+//                         value={cabin.name}
 //                         onChange={(e) =>
 //                           handleCabinChange(
 //                             index,
@@ -4100,36 +5356,22 @@
 //                           )
 //                         }
 //                       >
-//                         <option>
-//                           Economy
-//                         </option>
-
+//                         <option>Economy</option>
 //                         <option>
 //                           Premium Economy
 //                         </option>
-
-//                         <option>
-//                           Business
-//                         </option>
-
+//                         <option>Business</option>
 //                         <option>
 //                           First Class
 //                         </option>
 //                       </select>
 //                     </div>
 
-
 //                     <div>
-//                       <label>
-//                         Total Seats
-//                       </label>
-
+//                       <label>Total Seats</label>
 //                       <input
 //                         type="number"
-//                         min="0"
-//                         value={
-//                           cabin.totalSeats
-//                         }
+//                         value={cabin.totalSeats}
 //                         onChange={(e) =>
 //                           handleCabinChange(
 //                             index,
@@ -4140,18 +5382,11 @@
 //                       />
 //                     </div>
 
-
 //                     <div>
-//                       <label>
-//                         Available Seats
-//                       </label>
-
+//                       <label>Available Seats</label>
 //                       <input
 //                         type="number"
-//                         min="0"
-//                         value={
-//                           cabin.availableSeats
-//                         }
+//                         value={cabin.availableSeats}
 //                         onChange={(e) =>
 //                           handleCabinChange(
 //                             index,
@@ -4162,18 +5397,11 @@
 //                       />
 //                     </div>
 
-
 //                     <div>
-//                       <label>
-//                         Cabin Price
-//                       </label>
-
+//                       <label>Cabin Price</label>
 //                       <input
 //                         type="number"
-//                         min="0"
-//                         value={
-//                           cabin.price
-//                         }
+//                         value={cabin.price}
 //                         onChange={(e) =>
 //                           handleCabinChange(
 //                             index,
@@ -4184,17 +5412,10 @@
 //                       />
 //                     </div>
 
-
 //                     <div>
-//                       <label>
-//                         Baggage
-//                       </label>
-
+//                       <label>Baggage</label>
 //                       <input
-//                         type="text"
-//                         value={
-//                           cabin.baggage
-//                         }
+//                         value={cabin.baggage}
 //                         onChange={(e) =>
 //                           handleCabinChange(
 //                             index,
@@ -4206,9 +5427,7 @@
 //                     </div>
 
 //                   </div>
-
 //                 </div>
-
 //               )
 //             )}
 
@@ -4222,10 +5441,7 @@
 
 //           </div>
 
-
-//           {/* ========================================
-//               PRICING
-//           ======================================== */}
+//           {/* PRICING */}
 
 //           <div className="edit-grid">
 
@@ -4233,446 +5449,219 @@
 //               Pricing
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Base Fare
-//               </label>
-
+//               <label>Base Fare</label>
 //               <input
 //                 type="number"
-//                 min="0"
 //                 name="baseFare"
-//                 value={
-//                   formData.baseFare
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.baseFare}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Taxes
-//               </label>
-
+//               <label>Taxes</label>
 //               <input
 //                 type="number"
-//                 min="0"
 //                 name="taxes"
-//                 value={
-//                   formData.taxes
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.taxes}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Airport Charges
-//               </label>
-
+//               <label>Airport Charges</label>
 //               <input
 //                 type="number"
-//                 min="0"
 //                 name="airportCharges"
-//                 value={
-//                   formData.airportCharges
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.airportCharges}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Service Fee
-//               </label>
-
+//               <label>Service Fee</label>
 //               <input
 //                 type="number"
-//                 min="0"
 //                 name="serviceFee"
-//                 value={
-//                   formData.serviceFee
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.serviceFee}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Discount
-//               </label>
-
+//               <label>Discount</label>
 //               <input
 //                 type="number"
-//                 min="0"
 //                 name="discount"
-//                 value={
-//                   formData.discount
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.discount}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Final Price *
-//               </label>
-
+//               <label>Final Price *</label>
 //               <input
 //                 type="number"
-//                 min="0"
 //                 name="finalPrice"
-//                 value={
-//                   formData.finalPrice
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.finalPrice}
+//                 onChange={handleChange}
 //               />
 //             </div>
-
 
 //             <div>
-//               <label>
-//                 Currency
-//               </label>
-
+//               <label>Currency</label>
 //               <input
-//                 type="text"
 //                 name="currency"
-//                 value={
-//                   formData.currency
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.currency}
+//                 onChange={handleChange}
 //               />
 //             </div>
-
-
-//             {/* ========================================
-//                 BAGGAGE
-//             ======================================== */}
 
 //             <div className="edit-section-title">
 //               Baggage
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Cabin Baggage
-//               </label>
-
+//               <label>Cabin Baggage</label>
 //               <input
-//                 type="text"
 //                 name="cabinBaggage"
-//                 value={
-//                   formData.cabinBaggage
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.cabinBaggage}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Check-in Baggage
-//               </label>
-
+//               <label>Check-in Baggage</label>
 //               <input
-//                 type="text"
 //                 name="checkinBaggage"
-//                 value={
-//                   formData.checkinBaggage
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.checkinBaggage}
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Extra Baggage Price
-//               </label>
-
+//               <label>Extra Baggage Price</label>
 //               <input
 //                 type="number"
-//                 min="0"
 //                 name="extraBaggagePrice"
 //                 value={
 //                   formData.extraBaggagePrice
 //                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 onChange={handleChange}
 //               />
 //             </div>
-
-
-//             {/* ========================================
-//                 BOOKING
-//             ======================================== */}
 
 //             <div className="edit-section-title">
 //               Booking & Status
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Booking Start Date
-//               </label>
-
+//               <label>Booking Start Date</label>
 //               <input
 //                 type="date"
 //                 name="bookingStartDate"
 //                 value={
 //                   formData.bookingStartDate
 //                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 onChange={handleChange}
 //               />
 //             </div>
 
-
 //             <div>
-//               <label>
-//                 Booking Closing Date
-//               </label>
-
+//               <label>Booking Closing Date</label>
 //               <input
 //                 type="date"
 //                 name="bookingClosingDate"
 //                 value={
 //                   formData.bookingClosingDate
 //                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 onChange={handleChange}
 //               />
 //             </div>
-
 
 //             <div>
-//               <label>
-//                 Status
-//               </label>
-
+//               <label>Status</label>
 //               <select
 //                 name="status"
-//                 value={
-//                   formData.status
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
+//                 value={formData.status}
+//                 onChange={handleChange}
 //               >
-//                 <option value="Scheduled">
-//                   Scheduled
-//                 </option>
-
-//                 <option value="Delayed">
-//                   Delayed
-//                 </option>
-
-//                 <option value="Cancelled">
-//                   Cancelled
-//                 </option>
-
-//                 <option value="Boarding">
-//                   Boarding
-//                 </option>
-
-//                 <option value="Departed">
-//                   Departed
-//                 </option>
-
-//                 <option value="Arrived">
-//                   Arrived
-//                 </option>
+//                 <option>Scheduled</option>
+//                 <option>Delayed</option>
+//                 <option>Cancelled</option>
+//                 <option>Boarding</option>
+//                 <option>Departed</option>
+//                 <option>Arrived</option>
 //               </select>
-//             </div>
-
-
-//             {/* ========================================
-//                 SERVICES
-//             ======================================== */}
-
-//             <div className="edit-section-title">
-//               Services
-//             </div>
-
-
-//             <label className="edit-checkbox">
-//               <input
-//                 type="checkbox"
-//                 name="mealAvailable"
-//                 checked={
-//                   formData.mealAvailable
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
-//               />
-
-//               Meal Available
-//             </label>
-
-
-//             <label className="edit-checkbox">
-//               <input
-//                 type="checkbox"
-//                 name="wifiAvailable"
-//                 checked={
-//                   formData.wifiAvailable
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
-//               />
-
-//               Wi-Fi Available
-//             </label>
-
-
-//             <label className="edit-checkbox">
-//               <input
-//                 type="checkbox"
-//                 name="entertainmentAvailable"
-//                 checked={
-//                   formData.entertainmentAvailable
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
-//               />
-
-//               Entertainment
-//             </label>
-
-
-//             <label className="edit-checkbox">
-//               <input
-//                 type="checkbox"
-//                 name="powerAvailable"
-//                 checked={
-//                   formData.powerAvailable
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
-//               />
-
-//               Power Available
-//             </label>
-
-
-//             <label className="edit-checkbox">
-//               <input
-//                 type="checkbox"
-//                 name="refundable"
-//                 checked={
-//                   formData.refundable
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
-//               />
-
-//               Refundable
-//             </label>
-
-
-//             <label className="edit-checkbox">
-//               <input
-//                 type="checkbox"
-//                 name="changeable"
-//                 checked={
-//                   formData.changeable
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
-//               />
-
-//               Changeable
-//             </label>
-
-
-//             {/* ========================================
-//                 DESCRIPTION
-//             ======================================== */}
-
-//             <div className="edit-section-title">
-//               Additional Information
-//             </div>
-
-
-//             <div className="edit-full-field">
-
-//               <label>
-//                 Description
-//               </label>
-
-//               <textarea
-//                 name="description"
-//                 value={
-//                   formData.description
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
-//                 rows="3"
-//               />
-
-//             </div>
-
-
-//             <div className="edit-full-field">
-
-//               <label>
-//                 Special Instructions
-//               </label>
-
-//               <textarea
-//                 name="specialInstructions"
-//                 value={
-//                   formData.specialInstructions
-//                 }
-//                 onChange={
-//                   handleChange
-//                 }
-//                 rows="3"
-//               />
-
 //             </div>
 
 //           </div>
 
+//           {/* SERVICES */}
 
-//           {/* ERROR */}
+//           <div className="edit-section-title">
+//             Services
+//           </div>
+
+//           <div className="edit-services">
+
+//             {[
+//               ["mealAvailable", "Meal Available"],
+//               ["wifiAvailable", "Wi-Fi Available"],
+//               [
+//                 "entertainmentAvailable",
+//                 "Entertainment",
+//               ],
+//               ["powerAvailable", "Power Available"],
+//               ["refundable", "Refundable"],
+//               ["changeable", "Changeable"],
+//             ].map(([name, label]) => (
+//               <label
+//                 className="edit-checkbox"
+//                 key={name}
+//               >
+//                 <input
+//                   type="checkbox"
+//                   name={name}
+//                   checked={formData[name]}
+//                   onChange={handleChange}
+//                 />
+//                 {label}
+//               </label>
+//             ))}
+
+//           </div>
+
+//           {/* DESCRIPTION */}
+
+//           <div className="edit-section-title">
+//             Additional Information
+//           </div>
+
+//           <div className="edit-full-field">
+//             <label>Description</label>
+//             <textarea
+//               name="description"
+//               value={formData.description}
+//               onChange={handleChange}
+//               rows="3"
+//             />
+//           </div>
+
+//           <div className="edit-full-field">
+//             <label>
+//               Special Instructions
+//             </label>
+//             <textarea
+//               name="specialInstructions"
+//               value={
+//                 formData.specialInstructions
+//               }
+//               onChange={handleChange}
+//               rows="3"
+//             />
+//           </div>
 
 //           {error && (
 //             <div className="edit-error">
@@ -4680,17 +5669,12 @@
 //             </div>
 //           )}
 
-
-//           {/* BUTTONS */}
-
 //           <div className="edit-modal-buttons">
 
 //             <button
 //               type="button"
 //               className="edit-cancel-btn"
-//               onClick={
-//                 closeModal
-//               }
+//               onClick={closeModal}
 //               disabled={loading}
 //             >
 //               Cancel
@@ -4709,9 +5693,7 @@
 //           </div>
 
 //         </form>
-
 //       </div>
-
 //     </div>
 //   );
 // }
@@ -4719,241 +5701,439 @@
 // export default EditFlight;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 import "./EditFlight.css";
 import { useEffect, useState } from "react";
 
 function EditFlight({ flight, closeModal, onSuccess }) {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const [formData, setFormData] = useState({
     airline: "",
-    flightNo: "",
+    flightNumber: "",
     flightType: "Domestic",
     aircraft: "",
 
     fromCity: "",
     fromAirport: "",
-    fromCode: "",
+    fromAirportCode: "",
+    fromTerminal: "",
 
     toCity: "",
     toAirport: "",
-    toCode: "",
+    toAirportCode: "",
+    toTerminal: "",
 
     departureDate: "",
     departureTime: "",
-    departureTerminal: "",
-
     arrivalDate: "",
     arrivalTime: "",
-    arrivalTerminal: "",
-
     duration: "",
+
     stops: "Non-stop",
-    stopAirport: "",
-    stopCity: "",
-    layoverDuration: "",
 
-    cabins: [
-      {
-        name: "Economy",
-        totalSeats: "",
-        availableSeats: "",
-        price: "",
-        baggage: "15 KG",
-      },
-    ],
+    stop1City: "",
+    stop1Airport: "",
+    stop1AirportCode: "",
+    stop1Terminal: "",
+    stop1Layover: "",
 
-    baseFare: "",
-    taxes: "",
-    airportCharges: "",
-    serviceFee: "",
-    discount: "",
-    finalPrice: "",
-    currency: "INR",
+    stop2City: "",
+    stop2Airport: "",
+    stop2AirportCode: "",
+    stop2Terminal: "",
+    stop2Layover: "",
 
-    cabinBaggage: "7 KG",
-    checkinBaggage: "15 KG",
-    extraBaggagePrice: "",
+    ticketInventory: "",
+    pnr: "",
 
-    mealAvailable: false,
-    wifiAvailable: false,
-    entertainmentAvailable: false,
-    powerAvailable: false,
+    adultFare: "",
+    childFare: "",
+    infantFare: "",
 
-    bookingStartDate: "",
-    bookingClosingDate: "",
+    agentAdultFare: "",
+    agentChildFare: "",
+    agentInfantFare: "",
 
-    refundable: false,
-    changeable: false,
+    cabinBaggage: "",
+    checkinBaggage: "",
 
-    status: "Scheduled",
-    description: "",
-    specialInstructions: "",
+    bookingRule: "Refundable",
   });
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  // =====================================================
+  // HELPERS
+  // =====================================================
 
-  // ==========================================
-  // LOAD FLIGHT DATA
-  // ==========================================
+  const value = (...values) => {
+    for (const item of values) {
+      if (
+        item !== undefined &&
+        item !== null &&
+        String(item).trim() !== ""
+      ) {
+        return item;
+      }
+    }
+
+    return "";
+  };
+
+  // =====================================================
+  // LOAD FLIGHT
+  // =====================================================
 
   useEffect(() => {
     if (!flight) return;
 
     setFormData({
-      airline: flight.airline || "",
-      flightNo: flight.flightNo || "",
-      flightType: flight.flightType || "Domestic",
-      aircraft: flight.aircraft || "",
-
-      fromCity: flight.fromCity || "",
-      fromAirport: flight.fromAirport || "",
-      fromCode: flight.fromCode || "",
-
-      toCity: flight.toCity || "",
-      toAirport: flight.toAirport || "",
-      toCode: flight.toCode || "",
-
-      departureDate: flight.departureDate || "",
-      departureTime: flight.departureTime || "",
-      departureTerminal: flight.departureTerminal || "",
-
-      arrivalDate: flight.arrivalDate || "",
-      arrivalTime: flight.arrivalTime || "",
-      arrivalTerminal: flight.arrivalTerminal || "",
-
-      duration: flight.duration || "",
-      stops: flight.stops || "Non-stop",
-      stopAirport: flight.stopAirport || "",
-      stopCity: flight.stopCity || "",
-      layoverDuration: flight.layoverDuration || "",
-
-      cabins:
-        Array.isArray(flight.cabins) && flight.cabins.length
-          ? flight.cabins.map((cabin) => ({
-              name: cabin.name || "Economy",
-              totalSeats: cabin.totalSeats ?? "",
-              availableSeats: cabin.availableSeats ?? "",
-              price: cabin.price ?? "",
-              baggage: cabin.baggage || "15 KG",
-            }))
-          : [
-              {
-                name: "Economy",
-                totalSeats: "",
-                availableSeats: "",
-                price: "",
-                baggage: "15 KG",
-              },
-            ],
-
-      baseFare: flight.baseFare ?? "",
-      taxes: flight.taxes ?? "",
-      airportCharges: flight.airportCharges ?? "",
-      serviceFee: flight.serviceFee ?? "",
-      discount: flight.discount ?? "",
-      finalPrice: flight.finalPrice ?? "",
-      currency: flight.currency || "INR",
-
-      cabinBaggage: flight.cabinBaggage || "7 KG",
-      checkinBaggage: flight.checkinBaggage || "15 KG",
-      extraBaggagePrice: flight.extraBaggagePrice ?? "",
-
-      mealAvailable: Boolean(flight.mealAvailable),
-      wifiAvailable: Boolean(flight.wifiAvailable),
-      entertainmentAvailable: Boolean(
-        flight.entertainmentAvailable
+      airline: value(
+        flight.airline
       ),
-      powerAvailable: Boolean(flight.powerAvailable),
 
-      bookingStartDate: flight.bookingStartDate || "",
-      bookingClosingDate: flight.bookingClosingDate || "",
+      flightNumber: value(
+        flight.flightNumber,
+        flight.flightNo
+      ),
 
-      refundable: Boolean(flight.refundable),
-      changeable: Boolean(flight.changeable),
+      flightType: value(
+        flight.flightType,
+        "Domestic"
+      ),
 
-      status: flight.status || "Scheduled",
-      description: flight.description || "",
-      specialInstructions: flight.specialInstructions || "",
+      aircraft: value(
+        flight.aircraft
+      ),
+
+      fromCity: value(
+        flight.fromCity,
+        flight.from
+      ),
+
+      fromAirport: value(
+        flight.fromAirport
+      ),
+
+      fromAirportCode: value(
+        flight.fromAirportCode,
+        flight.fromCode
+      ),
+
+      fromTerminal: value(
+        flight.fromTerminal,
+        flight.departureTerminal
+      ),
+
+      toCity: value(
+        flight.toCity,
+        flight.to
+      ),
+
+      toAirport: value(
+        flight.toAirport
+      ),
+
+      toAirportCode: value(
+        flight.toAirportCode,
+        flight.toCode
+      ),
+
+      toTerminal: value(
+        flight.toTerminal,
+        flight.arrivalTerminal
+      ),
+
+      departureDate: value(
+        flight.departureDate,
+        flight.date
+      ),
+
+      departureTime: value(
+        flight.departureTime
+      ),
+
+      arrivalDate: value(
+        flight.arrivalDate
+      ),
+
+      arrivalTime: value(
+        flight.arrivalTime
+      ),
+
+      duration: value(
+        flight.duration
+      ),
+
+      stops: value(
+        flight.stops,
+        "Non-stop"
+      ),
+
+      stop1City: value(
+        flight.stop1City
+      ),
+
+      stop1Airport: value(
+        flight.stop1Airport
+      ),
+
+      stop1AirportCode: value(
+        flight.stop1AirportCode
+      ),
+
+      stop1Terminal: value(
+        flight.stop1Terminal
+      ),
+
+      stop1Layover: value(
+        flight.stop1Layover
+      ),
+
+      stop2City: value(
+        flight.stop2City
+      ),
+
+      stop2Airport: value(
+        flight.stop2Airport
+      ),
+
+      stop2AirportCode: value(
+        flight.stop2AirportCode
+      ),
+
+      stop2Terminal: value(
+        flight.stop2Terminal
+      ),
+
+      stop2Layover: value(
+        flight.stop2Layover
+      ),
+
+      ticketInventory: value(
+        flight.ticketInventory
+      ),
+
+      pnr: value(
+        flight.pnr,
+        flight.PNR
+      ),
+
+      adultFare: value(
+        flight.adultFare
+      ),
+
+      childFare: value(
+        flight.childFare
+      ),
+
+      infantFare: value(
+        flight.infantFare
+      ),
+
+      agentAdultFare: value(
+        flight.agentAdultFare
+      ),
+
+      agentChildFare: value(
+        flight.agentChildFare
+      ),
+
+      agentInfantFare: value(
+        flight.agentInfantFare
+      ),
+
+      cabinBaggage: value(
+        flight.cabinBaggage,
+        flight.cabinBag
+      ),
+
+      checkinBaggage: value(
+        flight.checkinBaggage,
+        flight.checkinBag
+      ),
+
+      bookingRule: value(
+        flight.bookingRule,
+        flight.bookingRules,
+        "Refundable"
+      ),
     });
   }, [flight]);
 
-  // ==========================================
+  // =====================================================
   // INPUT CHANGE
-  // ==========================================
+  // =====================================================
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
 
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value,
     }));
+
+    setError("");
   };
 
-  // ==========================================
-  // CABIN CHANGE
-  // ==========================================
+  // =====================================================
+  // VALIDATION
+  // =====================================================
 
-  const handleCabinChange = (index, field, value) => {
-    setFormData((prev) => {
-      const cabins = [...prev.cabins];
+  const validateForm = () => {
+    const requiredFields = [
+      ["airline", "Airline Name"],
+      ["flightNumber", "Flight Number"],
+      ["aircraft", "Aircraft"],
 
-      cabins[index] = {
-        ...cabins[index],
-        [field]: value,
-      };
+      ["fromCity", "From City"],
+      ["fromAirport", "From Airport"],
+      ["fromAirportCode", "From Airport Code"],
+      ["fromTerminal", "From Terminal"],
 
-      return {
-        ...prev,
-        cabins,
-      };
-    });
+      ["toCity", "To City"],
+      ["toAirport", "To Airport"],
+      ["toAirportCode", "To Airport Code"],
+      ["toTerminal", "To Terminal"],
+
+      ["departureDate", "Departure Date"],
+      ["departureTime", "Departure Time"],
+
+      ["arrivalDate", "Arrival Date"],
+      ["arrivalTime", "Arrival Time"],
+
+      ["duration", "Duration"],
+
+      ["ticketInventory", "Ticket Inventory"],
+      ["pnr", "PNR"],
+
+      ["adultFare", "Adult Customer Fare"],
+      ["childFare", "Child Customer Fare"],
+      ["infantFare", "Infant Customer Fare"],
+
+      ["agentAdultFare", "Adult Agent Fare"],
+      ["agentChildFare", "Child Agent Fare"],
+      ["agentInfantFare", "Infant Agent Fare"],
+
+      ["cabinBaggage", "Cabin Baggage"],
+      ["checkinBaggage", "Check-in Baggage"],
+    ];
+
+    for (const [field, label] of requiredFields) {
+      if (!String(formData[field] || "").trim()) {
+        setError(`Please enter ${label}.`);
+        return false;
+      }
+    }
+
+    if (Number(formData.ticketInventory) <= 0) {
+      setError("Ticket Inventory must be greater than 0.");
+      return false;
+    }
+
+    if (Number(formData.adultFare) < 0) {
+      setError("Adult Customer Fare cannot be negative.");
+      return false;
+    }
+
+    if (Number(formData.childFare) < 0) {
+      setError("Child Customer Fare cannot be negative.");
+      return false;
+    }
+
+    if (Number(formData.infantFare) < 0) {
+      setError("Infant Customer Fare cannot be negative.");
+      return false;
+    }
+
+    if (Number(formData.agentAdultFare) < 0) {
+      setError("Adult Agent Fare cannot be negative.");
+      return false;
+    }
+
+    if (Number(formData.agentChildFare) < 0) {
+      setError("Child Agent Fare cannot be negative.");
+      return false;
+    }
+
+    if (Number(formData.agentInfantFare) < 0) {
+      setError("Infant Agent Fare cannot be negative.");
+      return false;
+    }
+
+    // ----------------------------------------------
+    // STOP VALIDATION
+    // ----------------------------------------------
+
+    if (formData.stops === "1 Stop") {
+      const fields = [
+        ["stop1City", "Stop 1 City"],
+        ["stop1Airport", "Stop 1 Airport"],
+        ["stop1AirportCode", "Stop 1 Airport Code"],
+        ["stop1Terminal", "Stop 1 Terminal"],
+        ["stop1Layover", "Stop 1 Layover"],
+      ];
+
+      for (const [field, label] of fields) {
+        if (!String(formData[field] || "").trim()) {
+          setError(`Please enter ${label}.`);
+          return false;
+        }
+      }
+    }
+
+    if (formData.stops === "2 Stops") {
+      const fields = [
+        ["stop1City", "Stop 1 City"],
+        ["stop1Airport", "Stop 1 Airport"],
+        ["stop1AirportCode", "Stop 1 Airport Code"],
+        ["stop1Terminal", "Stop 1 Terminal"],
+        ["stop1Layover", "Stop 1 Layover"],
+
+        ["stop2City", "Stop 2 City"],
+        ["stop2Airport", "Stop 2 Airport"],
+        ["stop2AirportCode", "Stop 2 Airport Code"],
+        ["stop2Terminal", "Stop 2 Terminal"],
+        ["stop2Layover", "Stop 2 Layover"],
+      ];
+
+      for (const [field, label] of fields) {
+        if (!String(formData[field] || "").trim()) {
+          setError(`Please enter ${label}.`);
+          return false;
+        }
+      }
+    }
+
+    return true;
   };
 
-  // ==========================================
-  // ADD CABIN
-  // ==========================================
-
-  const addCabin = () => {
-    setFormData((prev) => ({
-      ...prev,
-      cabins: [
-        ...prev.cabins,
-        {
-          name: "Economy",
-          totalSeats: "",
-          availableSeats: "",
-          price: "",
-          baggage: "15 KG",
-        },
-      ],
-    }));
-  };
-
-  // ==========================================
-  // REMOVE CABIN
-  // ==========================================
-
-  const removeCabin = (index) => {
-    if (formData.cabins.length === 1) return;
-
-    setFormData((prev) => ({
-      ...prev,
-      cabins: prev.cabins.filter(
-        (_, i) => i !== index
-      ),
-    }));
-  };
-
-  // ==========================================
+  // =====================================================
   // UPDATE FLIGHT
-  // ==========================================
+  // =====================================================
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (loading) return;
+
     if (!flight?._id) {
       setError("Flight ID not found.");
+      return;
+    }
+
+    if (!validateForm()) {
       return;
     }
 
@@ -4972,51 +6152,268 @@ function EditFlight({ flight, closeModal, onSuccess }) {
       }
 
       const updateData = {
-        ...formData,
+        airline: formData.airline.trim(),
 
-        flightNo: formData.flightNo
-          .trim()
-          .toUpperCase(),
+        flightNumber:
+          formData.flightNumber
+            .trim()
+            .toUpperCase(),
 
-        fromCode: formData.fromCode
-          .trim()
-          .toUpperCase(),
+        flightNo:
+          formData.flightNumber
+            .trim()
+            .toUpperCase(),
 
-        toCode: formData.toCode
-          .trim()
-          .toUpperCase(),
+        flightType:
+          formData.flightType,
 
-        cabins: formData.cabins.map((cabin) => ({
-          name: cabin.name,
-          totalSeats: Number(cabin.totalSeats || 0),
-          availableSeats: Number(
-            cabin.availableSeats || 0
-          ),
-          price: Number(cabin.price || 0),
-          baggage: cabin.baggage || "15 KG",
-        })),
+        aircraft:
+          formData.aircraft.trim(),
 
-        baseFare: Number(formData.baseFare || 0),
-        taxes: Number(formData.taxes || 0),
-        airportCharges: Number(
-          formData.airportCharges || 0
-        ),
-        serviceFee: Number(
-          formData.serviceFee || 0
-        ),
-        discount: Number(
-          formData.discount || 0
-        ),
-        finalPrice: Number(
-          formData.finalPrice || 0
-        ),
-        extraBaggagePrice: Number(
-          formData.extraBaggagePrice || 0
-        ),
+        // ---------------------------------------------
+        // FROM
+        // ---------------------------------------------
+
+        fromCity:
+          formData.fromCity.trim(),
+
+        fromAirport:
+          formData.fromAirport.trim(),
+
+        fromAirportCode:
+          formData.fromAirportCode
+            .trim()
+            .toUpperCase(),
+
+        fromCode:
+          formData.fromAirportCode
+            .trim()
+            .toUpperCase(),
+
+        fromTerminal:
+          formData.fromTerminal.trim(),
+
+        // ---------------------------------------------
+        // TO
+        // ---------------------------------------------
+
+        toCity:
+          formData.toCity.trim(),
+
+        toAirport:
+          formData.toAirport.trim(),
+
+        toAirportCode:
+          formData.toAirportCode
+            .trim()
+            .toUpperCase(),
+
+        toCode:
+          formData.toAirportCode
+            .trim()
+            .toUpperCase(),
+
+        toTerminal:
+          formData.toTerminal.trim(),
+
+        // ---------------------------------------------
+        // DATE / TIME
+        // ---------------------------------------------
+
+        departureDate:
+          formData.departureDate,
+
+        departureTime:
+          formData.departureTime,
+
+        arrivalDate:
+          formData.arrivalDate,
+
+        arrivalTime:
+          formData.arrivalTime,
+
+        // Keep both names for compatibility
+        departureTerminal:
+          formData.fromTerminal.trim(),
+
+        arrivalTerminal:
+          formData.toTerminal.trim(),
+
+        // ---------------------------------------------
+        // DETAILS
+        // ---------------------------------------------
+
+        duration:
+          formData.duration.trim(),
+
+        stops:
+          formData.stops,
+
+        stop1City:
+          formData.stop1City.trim(),
+
+        stop1Airport:
+          formData.stop1Airport.trim(),
+
+        stop1AirportCode:
+          formData.stop1AirportCode
+            .trim()
+            .toUpperCase(),
+
+        stop1Terminal:
+          formData.stop1Terminal.trim(),
+
+        stop1Layover:
+          formData.stop1Layover.trim(),
+
+        stop2City:
+          formData.stop2City.trim(),
+
+        stop2Airport:
+          formData.stop2Airport.trim(),
+
+        stop2AirportCode:
+          formData.stop2AirportCode
+            .trim()
+            .toUpperCase(),
+
+        stop2Terminal:
+          formData.stop2Terminal.trim(),
+
+        stop2Layover:
+          formData.stop2Layover.trim(),
+
+        // Backend-compatible stopDetails
+        stopDetails:
+          formData.stops === "Non-stop"
+            ? []
+            : formData.stops === "1 Stop"
+            ? [
+                {
+                  city:
+                    formData.stop1City.trim(),
+                  airport:
+                    formData.stop1Airport.trim(),
+                  airportCode:
+                    formData.stop1AirportCode
+                      .trim()
+                      .toUpperCase(),
+                  terminal:
+                    formData.stop1Terminal.trim(),
+                  layover:
+                    formData.stop1Layover.trim(),
+                },
+              ]
+            : [
+                {
+                  city:
+                    formData.stop1City.trim(),
+                  airport:
+                    formData.stop1Airport.trim(),
+                  airportCode:
+                    formData.stop1AirportCode
+                      .trim()
+                      .toUpperCase(),
+                  terminal:
+                    formData.stop1Terminal.trim(),
+                  layover:
+                    formData.stop1Layover.trim(),
+                },
+                {
+                  city:
+                    formData.stop2City.trim(),
+                  airport:
+                    formData.stop2Airport.trim(),
+                  airportCode:
+                    formData.stop2AirportCode
+                      .trim()
+                      .toUpperCase(),
+                  terminal:
+                    formData.stop2Terminal.trim(),
+                  layover:
+                    formData.stop2Layover.trim(),
+                },
+              ],
+
+        // ---------------------------------------------
+        // INVENTORY
+        // ---------------------------------------------
+
+        ticketInventory:
+          Number(formData.ticketInventory),
+
+        pnr:
+          formData.pnr
+            .trim()
+            .toUpperCase(),
+
+        // ---------------------------------------------
+        // CUSTOMER FARES
+        // ---------------------------------------------
+
+        adultFare:
+          Number(formData.adultFare),
+
+        childFare:
+          Number(formData.childFare),
+
+        infantFare:
+          Number(formData.infantFare),
+
+        // ---------------------------------------------
+        // AGENT FARES
+        // ---------------------------------------------
+
+        agentAdultFare:
+          Number(formData.agentAdultFare),
+
+        agentChildFare:
+          Number(formData.agentChildFare),
+
+        agentInfantFare:
+          Number(formData.agentInfantFare),
+
+        // ---------------------------------------------
+        // BAGGAGE
+        // ---------------------------------------------
+
+        cabinBaggage:
+          formData.cabinBaggage.trim(),
+
+        checkinBaggage:
+          formData.checkinBaggage.trim(),
+
+        // compatibility names
+        cabinBag:
+          formData.cabinBaggage.trim(),
+
+        checkinBag:
+          formData.checkinBaggage.trim(),
+
+        // ---------------------------------------------
+        // BOOKING RULE
+        // ---------------------------------------------
+
+        bookingRule:
+          formData.bookingRule,
+
+        bookingRules:
+          formData.bookingRule,
+
+        refundable:
+          formData.bookingRule ===
+          "Refundable",
       };
 
-      console.log("UPDATE FLIGHT ID:", flight._id);
-      console.log("UPDATE DATA:", updateData);
+      console.log(
+        "UPDATE FLIGHT ID:",
+        flight._id
+      );
+
+      console.log(
+        "UPDATE DATA:",
+        updateData
+      );
 
       const response = await fetch(
         `http://localhost:5000/api/flights/${flight._id}`,
@@ -5024,73 +6421,116 @@ function EditFlight({ flight, closeModal, onSuccess }) {
           method: "PUT",
 
           headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            "Content-Type":
+              "application/json",
+
+            Authorization:
+              `Bearer ${token}`,
           },
 
-          body: JSON.stringify(updateData),
+          body:
+            JSON.stringify(updateData),
         }
       );
 
-      const data = await response.json();
+      const data =
+        await response.json();
 
-      console.log("UPDATE RESPONSE:", data);
+      console.log(
+        "UPDATE RESPONSE:",
+        data
+      );
 
       if (!response.ok) {
         throw new Error(
-          data.message || "Flight update failed."
+          data.message ||
+            "Flight update failed."
         );
       }
 
-      alert("Flight updated successfully ✅");
+      alert(
+        "Flight updated successfully ✅"
+      );
 
       if (onSuccess) {
-        onSuccess(data.flight);
+        onSuccess(
+          data.flight
+        );
       }
 
       closeModal();
     } catch (error) {
-      console.error("Update Flight Error:", error);
+      console.error(
+        "Update Flight Error:",
+        error
+      );
 
       setError(
-        error.message || "Unable to update flight."
+        error.message ||
+          "Unable to update flight."
       );
     } finally {
       setLoading(false);
     }
   };
 
-  if (!flight) return null;
+  // =====================================================
+  // NO FLIGHT
+  // =====================================================
+
+  if (!flight) {
+    return null;
+  }
+
+  // =====================================================
+  // UI
+  // =====================================================
 
   return (
     <div className="edit-modal-overlay">
       <div className="edit-flight-modal">
 
+        {/* =========================================
+            HEADER
+        ========================================== */}
+
         <div className="edit-modal-header">
           <div>
             <h2>Edit Flight</h2>
-            <p>Update flight information</p>
+            <p>
+              Update flight information
+            </p>
           </div>
 
           <button
             type="button"
             className="edit-close-btn"
             onClick={closeModal}
+            disabled={loading}
           >
             ✕
           </button>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+        >
 
           <div className="edit-grid">
+
+            {/* =====================================
+                BASIC INFORMATION
+            ====================================== */}
 
             <div className="edit-section-title">
               Basic Information
             </div>
 
             <div>
-              <label>Airline *</label>
+              <label>
+                Airline *
+              </label>
+
               <input
                 name="airline"
                 value={formData.airline}
@@ -5099,24 +6539,35 @@ function EditFlight({ flight, closeModal, onSuccess }) {
             </div>
 
             <div>
-              <label>Flight Number *</label>
+              <label>
+                Flight Number *
+              </label>
+
               <input
-                name="flightNo"
-                value={formData.flightNo}
+                name="flightNumber"
+                value={
+                  formData.flightNumber
+                }
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label>Flight Type</label>
+              <label>
+                Flight Type
+              </label>
+
               <select
                 name="flightType"
-                value={formData.flightType}
+                value={
+                  formData.flightType
+                }
                 onChange={handleChange}
               >
                 <option value="Domestic">
                   Domestic
                 </option>
+
                 <option value="International">
                   International
                 </option>
@@ -5124,550 +6575,673 @@ function EditFlight({ flight, closeModal, onSuccess }) {
             </div>
 
             <div>
-              <label>Aircraft *</label>
+              <label>
+                Aircraft *
+              </label>
+
               <input
                 name="aircraft"
-                value={formData.aircraft}
+                value={
+                  formData.aircraft
+                }
                 onChange={handleChange}
               />
             </div>
+
+            {/* =====================================
+                FROM
+            ====================================== */}
 
             <div className="edit-section-title">
               Departure
             </div>
 
             <div>
-              <label>From City *</label>
+              <label>
+                From City *
+              </label>
+
               <input
                 name="fromCity"
-                value={formData.fromCity}
+                value={
+                  formData.fromCity
+                }
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label>From Airport *</label>
+              <label>
+                From Airport *
+              </label>
+
               <input
                 name="fromAirport"
-                value={formData.fromAirport}
+                value={
+                  formData.fromAirport
+                }
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label>From Code *</label>
+              <label>
+                From Airport Code *
+              </label>
+
               <input
-                name="fromCode"
-                maxLength="3"
-                value={formData.fromCode}
+                name="fromAirportCode"
+                maxLength={3}
+                value={
+                  formData.fromAirportCode
+                }
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label>Departure Date *</label>
+              <label>
+                From Terminal *
+              </label>
+
+              <input
+                name="fromTerminal"
+                value={
+                  formData.fromTerminal
+                }
+                onChange={handleChange}
+              />
+            </div>
+
+            <div>
+              <label>
+                Departure Date *
+              </label>
+
               <input
                 type="date"
                 name="departureDate"
-                value={formData.departureDate}
+                value={
+                  formData.departureDate
+                }
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label>Departure Time *</label>
+              <label>
+                Departure Time *
+              </label>
+
               <input
                 type="time"
                 name="departureTime"
-                value={formData.departureTime}
+                value={
+                  formData.departureTime
+                }
                 onChange={handleChange}
               />
             </div>
 
-            <div>
-              <label>Departure Terminal</label>
-              <input
-                name="departureTerminal"
-                value={formData.departureTerminal}
-                onChange={handleChange}
-              />
-            </div>
+            {/* =====================================
+                TO
+            ====================================== */}
 
             <div className="edit-section-title">
               Arrival
             </div>
 
             <div>
-              <label>To City *</label>
+              <label>
+                To City *
+              </label>
+
               <input
                 name="toCity"
-                value={formData.toCity}
+                value={
+                  formData.toCity
+                }
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label>To Airport *</label>
+              <label>
+                To Airport *
+              </label>
+
               <input
                 name="toAirport"
-                value={formData.toAirport}
+                value={
+                  formData.toAirport
+                }
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label>To Code *</label>
+              <label>
+                To Airport Code *
+              </label>
+
               <input
-                name="toCode"
-                maxLength="3"
-                value={formData.toCode}
+                name="toAirportCode"
+                maxLength={3}
+                value={
+                  formData.toAirportCode
+                }
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label>Arrival Date *</label>
+              <label>
+                To Terminal *
+              </label>
+
+              <input
+                name="toTerminal"
+                value={
+                  formData.toTerminal
+                }
+                onChange={handleChange}
+              />
+            </div>
+
+            <div>
+              <label>
+                Arrival Date *
+              </label>
+
               <input
                 type="date"
                 name="arrivalDate"
-                value={formData.arrivalDate}
+                value={
+                  formData.arrivalDate
+                }
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label>Arrival Time *</label>
+              <label>
+                Arrival Time *
+              </label>
+
               <input
                 type="time"
                 name="arrivalTime"
-                value={formData.arrivalTime}
+                value={
+                  formData.arrivalTime
+                }
                 onChange={handleChange}
               />
             </div>
 
-            <div>
-              <label>Arrival Terminal</label>
-              <input
-                name="arrivalTerminal"
-                value={formData.arrivalTerminal}
-                onChange={handleChange}
-              />
-            </div>
+            {/* =====================================
+                FLIGHT DETAILS
+            ====================================== */}
 
             <div className="edit-section-title">
               Flight Details
             </div>
 
             <div>
-              <label>Duration *</label>
+              <label>
+                Duration *
+              </label>
+
               <input
                 name="duration"
-                value={formData.duration}
+                value={
+                  formData.duration
+                }
                 onChange={handleChange}
                 placeholder="3h 15m"
               />
             </div>
 
             <div>
-              <label>Stops</label>
+              <label>
+                Stops
+              </label>
+
               <select
                 name="stops"
-                value={formData.stops}
+                value={
+                  formData.stops
+                }
                 onChange={handleChange}
               >
-                <option>Non-stop</option>
-                <option>1 Stop</option>
-                <option>2 Stops</option>
+                <option value="Non-stop">
+                  Non-stop
+                </option>
+
+                <option value="1 Stop">
+                  1 Stop
+                </option>
+
+                <option value="2 Stops">
+                  2 Stops
+                </option>
               </select>
             </div>
 
-            <div>
-              <label>Stop Airport</label>
-              <input
-                name="stopAirport"
-                value={formData.stopAirport}
-                onChange={handleChange}
-              />
-            </div>
+            {/* =====================================
+                STOP 1
+            ====================================== */}
 
-            <div>
-              <label>Stop City</label>
-              <input
-                name="stopCity"
-                value={formData.stopCity}
-                onChange={handleChange}
-              />
-            </div>
+            {formData.stops !==
+              "Non-stop" && (
+              <>
+                <div>
+                  <label>
+                    Stop 1 City
+                  </label>
 
-            <div>
-              <label>Layover Duration</label>
-              <input
-                name="layoverDuration"
-                value={formData.layoverDuration}
-                onChange={handleChange}
-              />
-            </div>
-
-          </div>
-
-          {/* CABINS */}
-
-          <div className="edit-section-title">
-            Cabins
-          </div>
-
-          <div className="edit-cabins-container">
-
-            {formData.cabins.map(
-              (cabin, index) => (
-                <div
-                  className="edit-cabin-card"
-                  key={index}
-                >
-                  <div className="edit-cabin-header">
-                    <h3>
-                      Cabin {index + 1}
-                    </h3>
-
-                    {formData.cabins.length > 1 && (
-                      <button
-                        type="button"
-                        className="remove-cabin-btn"
-                        onClick={() =>
-                          removeCabin(index)
-                        }
-                      >
-                        Remove
-                      </button>
-                    )}
-                  </div>
-
-                  <div className="edit-grid">
-
-                    <div>
-                      <label>Cabin</label>
-                      <select
-                        value={cabin.name}
-                        onChange={(e) =>
-                          handleCabinChange(
-                            index,
-                            "name",
-                            e.target.value
-                          )
-                        }
-                      >
-                        <option>Economy</option>
-                        <option>
-                          Premium Economy
-                        </option>
-                        <option>Business</option>
-                        <option>
-                          First Class
-                        </option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label>Total Seats</label>
-                      <input
-                        type="number"
-                        value={cabin.totalSeats}
-                        onChange={(e) =>
-                          handleCabinChange(
-                            index,
-                            "totalSeats",
-                            e.target.value
-                          )
-                        }
-                      />
-                    </div>
-
-                    <div>
-                      <label>Available Seats</label>
-                      <input
-                        type="number"
-                        value={cabin.availableSeats}
-                        onChange={(e) =>
-                          handleCabinChange(
-                            index,
-                            "availableSeats",
-                            e.target.value
-                          )
-                        }
-                      />
-                    </div>
-
-                    <div>
-                      <label>Cabin Price</label>
-                      <input
-                        type="number"
-                        value={cabin.price}
-                        onChange={(e) =>
-                          handleCabinChange(
-                            index,
-                            "price",
-                            e.target.value
-                          )
-                        }
-                      />
-                    </div>
-
-                    <div>
-                      <label>Baggage</label>
-                      <input
-                        value={cabin.baggage}
-                        onChange={(e) =>
-                          handleCabinChange(
-                            index,
-                            "baggage",
-                            e.target.value
-                          )
-                        }
-                      />
-                    </div>
-
-                  </div>
+                  <input
+                    name="stop1City"
+                    value={
+                      formData.stop1City
+                    }
+                    onChange={
+                      handleChange
+                    }
+                  />
                 </div>
-              )
+
+                <div>
+                  <label>
+                    Stop 1 Airport
+                  </label>
+
+                  <input
+                    name="stop1Airport"
+                    value={
+                      formData.stop1Airport
+                    }
+                    onChange={
+                      handleChange
+                    }
+                  />
+                </div>
+
+                <div>
+                  <label>
+                    Stop 1 Airport Code
+                  </label>
+
+                  <input
+                    name="stop1AirportCode"
+                    maxLength={3}
+                    value={
+                      formData.stop1AirportCode
+                    }
+                    onChange={
+                      handleChange
+                    }
+                  />
+                </div>
+
+                <div>
+                  <label>
+                    Stop 1 Terminal
+                  </label>
+
+                  <input
+                    name="stop1Terminal"
+                    value={
+                      formData.stop1Terminal
+                    }
+                    onChange={
+                      handleChange
+                    }
+                  />
+                </div>
+
+                <div>
+                  <label>
+                    Stop 1 Layover
+                  </label>
+
+                  <input
+                    name="stop1Layover"
+                    value={
+                      formData.stop1Layover
+                    }
+                    onChange={
+                      handleChange
+                    }
+                  />
+                </div>
+              </>
             )}
 
-            <button
-              type="button"
-              className="add-cabin-btn"
-              onClick={addCabin}
-            >
-              + Add Cabin
-            </button>
+            {/* =====================================
+                STOP 2
+            ====================================== */}
 
-          </div>
+            {formData.stops ===
+              "2 Stops" && (
+              <>
+                <div>
+                  <label>
+                    Stop 2 City
+                  </label>
 
-          {/* PRICING */}
+                  <input
+                    name="stop2City"
+                    value={
+                      formData.stop2City
+                    }
+                    onChange={
+                      handleChange
+                    }
+                  />
+                </div>
 
-          <div className="edit-grid">
+                <div>
+                  <label>
+                    Stop 2 Airport
+                  </label>
+
+                  <input
+                    name="stop2Airport"
+                    value={
+                      formData.stop2Airport
+                    }
+                    onChange={
+                      handleChange
+                    }
+                  />
+                </div>
+
+                <div>
+                  <label>
+                    Stop 2 Airport Code
+                  </label>
+
+                  <input
+                    name="stop2AirportCode"
+                    maxLength={3}
+                    value={
+                      formData.stop2AirportCode
+                    }
+                    onChange={
+                      handleChange
+                    }
+                  />
+                </div>
+
+                <div>
+                  <label>
+                    Stop 2 Terminal
+                  </label>
+
+                  <input
+                    name="stop2Terminal"
+                    value={
+                      formData.stop2Terminal
+                    }
+                    onChange={
+                      handleChange
+                    }
+                  />
+                </div>
+
+                <div>
+                  <label>
+                    Stop 2 Layover
+                  </label>
+
+                  <input
+                    name="stop2Layover"
+                    value={
+                      formData.stop2Layover
+                    }
+                    onChange={
+                      handleChange
+                    }
+                  />
+                </div>
+              </>
+            )}
+
+            {/* =====================================
+                INVENTORY
+            ====================================== */}
 
             <div className="edit-section-title">
-              Pricing
+              Ticket & PNR
             </div>
 
             <div>
-              <label>Base Fare</label>
+              <label>
+                Ticket Inventory *
+              </label>
+
               <input
                 type="number"
-                name="baseFare"
-                value={formData.baseFare}
+                name="ticketInventory"
+                min="1"
+                value={
+                  formData.ticketInventory
+                }
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label>Taxes</label>
+              <label>
+                PNR *
+              </label>
+
+              <input
+                name="pnr"
+                value={
+                  formData.pnr
+                }
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* =====================================
+                CUSTOMER FARES
+            ====================================== */}
+
+            <div className="edit-section-title">
+              Customer Fare
+            </div>
+
+            <div>
+              <label>
+                Adult Fare *
+              </label>
+
               <input
                 type="number"
-                name="taxes"
-                value={formData.taxes}
+                min="0"
+                name="adultFare"
+                value={
+                  formData.adultFare
+                }
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label>Airport Charges</label>
+              <label>
+                Child Fare *
+              </label>
+
               <input
                 type="number"
-                name="airportCharges"
-                value={formData.airportCharges}
+                min="0"
+                name="childFare"
+                value={
+                  formData.childFare
+                }
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label>Service Fee</label>
+              <label>
+                Infant Fare *
+              </label>
+
               <input
                 type="number"
-                name="serviceFee"
-                value={formData.serviceFee}
+                min="0"
+                name="infantFare"
+                value={
+                  formData.infantFare
+                }
                 onChange={handleChange}
               />
             </div>
 
+            {/* =====================================
+                AGENT FARES
+            ====================================== */}
+
+            <div className="edit-section-title">
+              Agent Fare
+            </div>
+
             <div>
-              <label>Discount</label>
+              <label>
+                Adult Agent Fare *
+              </label>
+
               <input
                 type="number"
-                name="discount"
-                value={formData.discount}
+                min="0"
+                name="agentAdultFare"
+                value={
+                  formData.agentAdultFare
+                }
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label>Final Price *</label>
+              <label>
+                Child Agent Fare *
+              </label>
+
               <input
                 type="number"
-                name="finalPrice"
-                value={formData.finalPrice}
+                min="0"
+                name="agentChildFare"
+                value={
+                  formData.agentChildFare
+                }
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label>Currency</label>
+              <label>
+                Infant Agent Fare *
+              </label>
+
               <input
-                name="currency"
-                value={formData.currency}
+                type="number"
+                min="0"
+                name="agentInfantFare"
+                value={
+                  formData.agentInfantFare
+                }
                 onChange={handleChange}
               />
             </div>
+
+            {/* =====================================
+                BAGGAGE
+            ====================================== */}
 
             <div className="edit-section-title">
               Baggage
             </div>
 
             <div>
-              <label>Cabin Baggage</label>
+              <label>
+                Cabin Baggage *
+              </label>
+
               <input
                 name="cabinBaggage"
-                value={formData.cabinBaggage}
+                value={
+                  formData.cabinBaggage
+                }
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label>Check-in Baggage</label>
+              <label>
+                Check-in Baggage *
+              </label>
+
               <input
                 name="checkinBaggage"
-                value={formData.checkinBaggage}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div>
-              <label>Extra Baggage Price</label>
-              <input
-                type="number"
-                name="extraBaggagePrice"
                 value={
-                  formData.extraBaggagePrice
+                  formData.checkinBaggage
                 }
                 onChange={handleChange}
               />
             </div>
+
+            {/* =====================================
+                BOOKING RULE
+            ====================================== */}
 
             <div className="edit-section-title">
-              Booking & Status
+              Booking Rule
             </div>
 
             <div>
-              <label>Booking Start Date</label>
-              <input
-                type="date"
-                name="bookingStartDate"
-                value={
-                  formData.bookingStartDate
-                }
-                onChange={handleChange}
-              />
-            </div>
+              <label>
+                Booking Rule
+              </label>
 
-            <div>
-              <label>Booking Closing Date</label>
-              <input
-                type="date"
-                name="bookingClosingDate"
-                value={
-                  formData.bookingClosingDate
-                }
-                onChange={handleChange}
-              />
-            </div>
-
-            <div>
-              <label>Status</label>
               <select
-                name="status"
-                value={formData.status}
+                name="bookingRule"
+                value={
+                  formData.bookingRule
+                }
                 onChange={handleChange}
               >
-                <option>Scheduled</option>
-                <option>Delayed</option>
-                <option>Cancelled</option>
-                <option>Boarding</option>
-                <option>Departed</option>
-                <option>Arrived</option>
+                <option value="Refundable">
+                  Refundable
+                </option>
+
+                <option value="Non-Refundable">
+                  Non-Refundable
+                </option>
+
+                <option value="Partial Refundable">
+                  Partial Refundable
+                </option>
               </select>
             </div>
 
           </div>
 
-          {/* SERVICES */}
-
-          <div className="edit-section-title">
-            Services
-          </div>
-
-          <div className="edit-services">
-
-            {[
-              ["mealAvailable", "Meal Available"],
-              ["wifiAvailable", "Wi-Fi Available"],
-              [
-                "entertainmentAvailable",
-                "Entertainment",
-              ],
-              ["powerAvailable", "Power Available"],
-              ["refundable", "Refundable"],
-              ["changeable", "Changeable"],
-            ].map(([name, label]) => (
-              <label
-                className="edit-checkbox"
-                key={name}
-              >
-                <input
-                  type="checkbox"
-                  name={name}
-                  checked={formData[name]}
-                  onChange={handleChange}
-                />
-                {label}
-              </label>
-            ))}
-
-          </div>
-
-          {/* DESCRIPTION */}
-
-          <div className="edit-section-title">
-            Additional Information
-          </div>
-
-          <div className="edit-full-field">
-            <label>Description</label>
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              rows="3"
-            />
-          </div>
-
-          <div className="edit-full-field">
-            <label>
-              Special Instructions
-            </label>
-            <textarea
-              name="specialInstructions"
-              value={
-                formData.specialInstructions
-              }
-              onChange={handleChange}
-              rows="3"
-            />
-          </div>
+          {/* =========================================
+              ERROR
+          ========================================== */}
 
           {error && (
             <div className="edit-error">
               {error}
             </div>
           )}
+
+          {/* =========================================
+              BUTTONS
+          ========================================== */}
 
           <div className="edit-modal-buttons">
 
