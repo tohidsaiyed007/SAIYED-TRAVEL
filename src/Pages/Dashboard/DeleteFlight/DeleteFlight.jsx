@@ -157,7 +157,7 @@ function DeleteFlight({
       );
 
       const response = await fetch(
-        `http://localhost:5000/api/flights/${flight._id}`,
+        `https://saiyed-travels-backend-1.onrender.com/api/flights/${flight._id}`,
         {
           method: "DELETE",
 

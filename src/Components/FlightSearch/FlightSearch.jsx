@@ -220,7 +220,7 @@
 
 // // // //         const response =
 // // // //           await fetch(
-// // // //             "http://localhost:5000/api/flights"
+// // // //             "https://saiyed-travels-backend-1.onrender.com/api/flights"
 // // // //           );
 
 // // // //         const data =
@@ -1310,7 +1310,7 @@
 // // //         console.log("Checking available dates for:", from, "→", to);
 
 // // //         const response = await fetch(
-// // //           "http://localhost:5000/api/flights"
+// // //           "https://saiyed-travels-backend-1.onrender.com/api/flights"
 // // //         );
 
 // // //         const data = await response.json();
@@ -2303,7 +2303,7 @@
 // //         console.log("Checking available dates for:", from, "→", to);
 
 // //         const response = await fetch(
-// //           "http://localhost:5000/api/flights"
+// //           "https://saiyed-travels-backend-1.onrender.com/api/flights"
 // //         );
 
 // //         const data = await response.json();
@@ -3303,7 +3303,7 @@
 
 //         const response =
 //           await fetch(
-//             "http://localhost:5000/api/flights"
+//             "https://saiyed-travels-backend-1.onrender.com/api/flights"
 //           );
 
 //         const data =
@@ -4486,7 +4486,7 @@ function FlightSearch() {
 
         const response =
           await fetch(
-            "http://localhost:5000/api/flights"
+            "https://saiyed-travels-backend-1.onrender.com/api/flights"
           );
 
         const data =

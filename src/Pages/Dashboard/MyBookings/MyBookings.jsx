@@ -31,7 +31,7 @@ function MyBookings() {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:5000/api/bookings"
+        "https://saiyed-travels-backend-1.onrender.com/api/bookings"
       );
 
       const data = await response.json();
@@ -162,7 +162,7 @@ function MyBookings() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/bookings/${id}`,
+        `https://saiyed-travels-backend-1.onrender.com/api/bookings/${id}`,
         {
           method: "DELETE",
         }

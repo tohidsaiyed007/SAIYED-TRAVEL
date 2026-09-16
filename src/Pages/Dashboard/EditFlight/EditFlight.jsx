@@ -601,7 +601,7 @@
 
 // // // //       const response =
 // // // //         await fetch(
-// // // //           `http://localhost:5000/api/flights/${flight._id}`,
+// // // //           `https://saiyed-travels-backend-1.onrender.com/api/flights/${flight._id}`,
 // // // //           {
 // // // //             method: "PUT",
 
@@ -1649,7 +1649,7 @@
 
 // // //       const response =
 // // //         await fetch(
-// // //           `http://localhost:5000/api/flights/${flight._id}`,
+// // //           `https://saiyed-travels-backend-1.onrender.com/api/flights/${flight._id}`,
 // // //           {
 // // //             method: "PUT",
 
@@ -3482,7 +3482,7 @@
 
 // //       const response =
 // //         await fetch(
-// //           `http://localhost:5000/api/flights/${flight._id}`,
+// //           `https://saiyed-travels-backend-1.onrender.com/api/flights/${flight._id}`,
 // //           {
 // //             method: "PUT",
 
@@ -5019,7 +5019,7 @@
 //       console.log("UPDATE DATA:", updateData);
 
 //       const response = await fetch(
-//         `http://localhost:5000/api/flights/${flight._id}`,
+//         `https://saiyed-travels-backend-1.onrender.com/api/flights/${flight._id}`,
 //         {
 //           method: "PUT",
 
@@ -6416,7 +6416,7 @@ function EditFlight({ flight, closeModal, onSuccess }) {
       );
 
       const response = await fetch(
-        `http://localhost:5000/api/flights/${flight._id}`,
+        `https://saiyed-travels-backend-1.onrender.com/api/flights/${flight._id}`,
         {
           method: "PUT",
 

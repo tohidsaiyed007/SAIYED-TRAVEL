@@ -90,7 +90,7 @@ function AdminEditProfile() {
 
           const response =
             await fetch(
-              "http://localhost:5000/api/users/profile",
+              "https://saiyed-travels-backend-1.onrender.com/api/users/profile",
               {
                 method: "GET",
 
@@ -331,7 +331,7 @@ function AdminEditProfile() {
 
       const response =
         await fetch(
-          "http://localhost:5000/api/users/profile",
+          "https://saiyed-travels-backend-1.onrender.com/api/users/profile",
           {
             method: "PUT",
 

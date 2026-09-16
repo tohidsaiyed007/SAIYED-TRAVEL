@@ -105,7 +105,7 @@ function AddFlight({ closeModal }) {
       console.log("Sending Flight Data:", flightData);
 
       const response = await fetch(
-        "http://localhost:5000/api/flights",
+        "https://saiyed-travels-backend-1.onrender.com/api/flights",
         {
           method: "POST",
 

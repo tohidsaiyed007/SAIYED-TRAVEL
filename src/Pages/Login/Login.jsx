@@ -79,7 +79,7 @@
 // //       // ======================================
 
 // //       const response = await fetch(
-// //         "http://localhost:5000/api/auth/login",
+// //         "https://saiyed-travels-backend-1.onrender.com/api/auth/login",
 // //         {
 // //           method: "POST",
 
@@ -771,7 +771,7 @@
 // //       // ======================================
 
 // //       const response = await fetch(
-// //         "http://localhost:5000/api/auth/login",
+// //         "https://saiyed-travels-backend-1.onrender.com/api/auth/login",
 // //         {
 // //           method: "POST",
 
@@ -1672,7 +1672,7 @@
 
 //       const response =
 //         await fetch(
-//           "http://localhost:5000/api/auth/login",
+//           "https://saiyed-travels-backend-1.onrender.com/api/auth/login",
 //           {
 //             method: "POST",
 
@@ -1815,7 +1815,7 @@
 
 //         const result =
 //           await fetch(
-//             "http://localhost:5000/api/auth/google-login",
+//             "https://saiyed-travels-backend-1.onrender.com/api/auth/google-login",
 //             {
 //               method: "POST",
 
@@ -2693,7 +2693,7 @@ function Login() {
 
         const response =
           await fetch(
-            "http://localhost:5000/api/auth/login",
+            "https://saiyed-travels-backend-1.onrender.com/api/auth/login",
             {
               method:
                 "POST",

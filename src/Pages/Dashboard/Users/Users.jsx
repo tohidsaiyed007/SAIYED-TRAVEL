@@ -77,7 +77,7 @@
 
 
 //       const response = await fetch(
-//         "http://localhost:5000/api/users",
+//         "https://saiyed-travels-backend-1.onrender.com/api/users",
 //         {
 //           method: "GET",
 
@@ -246,7 +246,7 @@
 
 //       const response = await fetch(
 
-//         `http://localhost:5000/api/users/${selectedUser._id}`,
+//         `https://saiyed-travels-backend-1.onrender.com/api/users/${selectedUser._id}`,
 
 //         {
 //           method: "PUT",
@@ -353,7 +353,7 @@
 
 //       const response = await fetch(
 
-//         `http://localhost:5000/api/users/${user._id}`,
+//         `https://saiyed-travels-backend-1.onrender.com/api/users/${user._id}`,
 
 //         {
 //           method: "DELETE",
@@ -1272,7 +1272,7 @@ function Users() {
 
 
       const response = await fetch(
-        "http://localhost:5000/api/users",
+        "https://saiyed-travels-backend-1.onrender.com/api/users",
         {
           method: "GET",
 
@@ -1559,7 +1559,7 @@ function Users() {
       const response =
         await fetch(
 
-          `http://localhost:5000/api/users/${selectedUser._id}`,
+          `https://saiyed-travels-backend-1.onrender.com/api/users/${selectedUser._id}`,
 
           {
 
@@ -1680,7 +1680,7 @@ function Users() {
       const response =
         await fetch(
 
-          `http://localhost:5000/api/users/${user._id}`,
+          `https://saiyed-travels-backend-1.onrender.com/api/users/${user._id}`,
 
           {
 

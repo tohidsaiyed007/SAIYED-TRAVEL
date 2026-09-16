@@ -1028,7 +1028,7 @@ function MyBookings() {
       // -------------------------------------------------
 
       let url =
-        "http://localhost:5000/api/bookings/my-bookings";
+        "https://saiyed-travels-backend-1.onrender.com/api/bookings/my-bookings";
 
 
       // Agar JWT token nahi hai,
@@ -1339,7 +1339,7 @@ function MyBookings() {
 
       const response =
         await fetch(
-          `http://localhost:5000/api/bookings/${booking._id}`,
+          `https://saiyed-travels-backend-1.onrender.com/api/bookings/${booking._id}`,
           {
             method: "DELETE",
 

@@ -75,7 +75,7 @@
 
 
 // //       const response = await fetch(
-// //         "http://localhost:5000/api/flights"
+// //         "https://saiyed-travels-backend-1.onrender.com/api/flights"
 // //       );
 
 
@@ -909,7 +909,7 @@
 //       setError("");
 
 //       const response = await fetch(
-//         "http://localhost:5000/api/flights"
+//         "https://saiyed-travels-backend-1.onrender.com/api/flights"
 //       );
 
 //       const data = await response.json();
@@ -1830,7 +1830,7 @@ function FlightTable() {
 
       const response =
         await fetch(
-          "http://localhost:5000/api/flights"
+          "https://saiyed-travels-backend-1.onrender.com/api/flights"
         );
 
       const data =
