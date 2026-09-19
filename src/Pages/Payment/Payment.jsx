@@ -1,8 +1,6 @@
-
 // import "./Payment.css";
 
 // import { useState } from "react";
-
 // import {
 //   useLocation,
 //   useNavigate,
@@ -12,40 +10,11 @@
 // import Footer from "../../Components/Footer/Footer";
 
 // // =====================================================
-// // RAZORPAY SCRIPT
+// // QR IMAGES
 // // =====================================================
 
-// const loadRazorpayScript = () => {
-//   return new Promise((resolve) => {
-//     if (
-//       document.getElementById(
-//         "razorpay-checkout-js"
-//       )
-//     ) {
-//       resolve(true);
-//       return;
-//     }
-
-//     const script =
-//       document.createElement("script");
-
-//     script.id =
-//       "razorpay-checkout-js";
-
-//     script.src =
-//       "https://checkout.razorpay.com/v1/checkout.js";
-
-//     script.onload = () => {
-//       resolve(true);
-//     };
-
-//     script.onerror = () => {
-//       resolve(false);
-//     };
-
-//     document.body.appendChild(script);
-//   });
-// };
+// import ICICIQR from "../../assets/ANANT.jpeg";
+// import BankOfBarodaQR from "../../assets/Bankof.jpeg";
 
 // // =====================================================
 // // PAYMENT PAGE
@@ -53,7 +22,6 @@
 
 // function Payment() {
 //   const navigate = useNavigate();
-
 //   const location = useLocation();
 
 //   // =====================================================
@@ -87,8 +55,7 @@
 //     ];
 
 //     for (const key of directKeys) {
-//       const value =
-//         localStorage.getItem(key);
+//       const value = localStorage.getItem(key);
 
 //       if (value) {
 //         return String(value)
@@ -105,14 +72,12 @@
 //     ];
 
 //     for (const key of objectKeys) {
-//       const value =
-//         localStorage.getItem(key);
+//       const value = localStorage.getItem(key);
 
 //       if (!value) continue;
 
 //       try {
-//         const parsed =
-//           JSON.parse(value);
+//         const parsed = JSON.parse(value);
 
 //         const role =
 //           parsed?.role ||
@@ -135,29 +100,37 @@
 //     return "customer";
 //   };
 
-//   const userRole =
-//     getStoredRole();
+//   const userRole = getStoredRole();
 
-//   const isAdmin =
-//     userRole === "admin";
-
-//   const isAgent =
-//     userRole === "agent";
+//   const isAdmin = userRole === "admin";
+//   const isAgent = userRole === "agent";
 
 //   // =====================================================
 //   // STATE
 //   // =====================================================
 
-//   const [coupon, setCoupon] =
-//     useState("");
-
-//   const [discount, setDiscount] =
-//     useState(0);
+//   const [coupon, setCoupon] = useState("");
+//   const [discount, setDiscount] = useState(0);
 
 //   const [paymentMethod, setPaymentMethod] =
-//     useState("razorpay");
+//     useState("ICICI Bank");
+
+//   const [paymentId, setPaymentId] =
+//     useState("");
+
+//   const [paymentScreenshot, setPaymentScreenshot] =
+//     useState(null);
+
+//   const [paymentDateTime, setPaymentDateTime] =
+//     useState("");
+
+//   const [whatsappNumber, setWhatsappNumber] =
+//     useState(passenger?.phone || "");
 
 //   const [loading, setLoading] =
+//     useState(false);
+
+//   const [submitted, setSubmitted] =
 //     useState(false);
 
 //   // =====================================================
@@ -182,9 +155,7 @@
 
 //             <button
 //               type="button"
-//               onClick={() =>
-//                 navigate("/")
-//               }
+//               onClick={() => navigate("/")}
 //             >
 //               Back To Home
 //             </button>
@@ -200,33 +171,22 @@
 //   // PASSENGER COUNTS
 //   // =====================================================
 
-//   const adultCount =
-//     Math.max(
-//       Number(
-//         travellers?.adults
-//       ) ||
-//         Number(
-//           pricing?.adultCount
-//         ) ||
-//         1,
-//       1
-//     );
+//   const adultCount = Math.max(
+//     Number(travellers?.adults) ||
+//       Number(pricing?.adultCount) ||
+//       1,
+//     1
+//   );
 
-//   const childCount =
-//     Math.max(
-//       Number(
-//         travellers?.children
-//       ) || 0,
-//       0
-//     );
+//   const childCount = Math.max(
+//     Number(travellers?.children) || 0,
+//     0
+//   );
 
-//   const infantCount =
-//     Math.max(
-//       Number(
-//         travellers?.infants
-//       ) || 0,
-//       0
-//     );
+//   const infantCount = Math.max(
+//     Number(travellers?.infants) || 0,
+//     0
+//   );
 
 //   const totalPassengers =
 //     adultCount +
@@ -237,28 +197,27 @@
 //   // NORMALIZE ARRAYS
 //   // =====================================================
 
-//   const selectedSeats =
-//     Array.isArray(seats)
-//       ? seats
-//       : seat
-//       ? [seat]
-//       : [];
+//   const selectedSeats = Array.isArray(seats)
+//     ? seats
+//     : seat
+//     ? [seat]
+//     : [];
 
-//   const selectedMeals =
-//     Array.isArray(meals)
-//       ? meals
-//       : meal
-//       ? [meal]
-//       : [];
+//   const selectedMeals = Array.isArray(meals)
+//     ? meals
+//     : meal
+//     ? [meal]
+//     : [];
 
-//   const selectedBaggage =
-//     Array.isArray(baggages)
-//       ? baggages
-//       : Array.isArray(baggage)
-//       ? baggage
-//       : baggage
-//       ? [baggage]
-//       : [];
+//   const selectedBaggage = Array.isArray(
+//     baggages
+//   )
+//     ? baggages
+//     : Array.isArray(baggage)
+//     ? baggage
+//     : baggage
+//     ? [baggage]
+//     : [];
 
 //   // =====================================================
 //   // FARE
@@ -323,8 +282,7 @@
 //     infantFare * infantCount;
 
 //   const finalFlightFare =
-//     pricing?.passengerFareTotal !==
-//     undefined
+//     pricing?.passengerFareTotal !== undefined
 //       ? Number(
 //           pricing.passengerFareTotal
 //         ) || 0
@@ -335,73 +293,57 @@
 //   // =====================================================
 
 //   const seatPrice =
-//     Number(
-//       pricing?.totalSeatPrice
-//     ) || 0;
+//     Number(pricing?.totalSeatPrice) || 0;
 
 //   // =====================================================
 //   // MEAL
 //   // =====================================================
 
 //   const calculatedMealPrice =
-//     Number(
-//       pricing?.mealTotal
-//     );
+//     Number(pricing?.mealTotal);
 
 //   const fallbackMealPrice =
 //     selectedMeals.reduce(
 //       (sum, item) =>
 //         sum +
-//         Number(
-//           item?.price || 0
-//         ),
+//         Number(item?.price || 0),
 //       0
 //     );
 
-//   const mealPrice =
-//     Number.isFinite(
-//       calculatedMealPrice
-//     )
-//       ? calculatedMealPrice
-//       : fallbackMealPrice;
+//   const mealPrice = Number.isFinite(
+//     calculatedMealPrice
+//   )
+//     ? calculatedMealPrice
+//     : fallbackMealPrice;
 
 //   // =====================================================
 //   // BAGGAGE
 //   // =====================================================
 
 //   const calculatedBaggagePrice =
-//     Number(
-//       pricing?.baggageTotal
-//     );
+//     Number(pricing?.baggageTotal);
 
 //   const fallbackBaggagePrice =
-//     Number(
-//       baggageTotal
-//     ) ||
+//     Number(baggageTotal) ||
 //     selectedBaggage.reduce(
 //       (sum, item) =>
 //         sum +
-//         Number(
-//           item?.price || 0
-//         ),
+//         Number(item?.price || 0),
 //       0
 //     );
 
-//   const baggagePrice =
-//     Number.isFinite(
-//       calculatedBaggagePrice
-//     )
-//       ? calculatedBaggagePrice
-//       : fallbackBaggagePrice;
+//   const baggagePrice = Number.isFinite(
+//     calculatedBaggagePrice
+//   )
+//     ? calculatedBaggagePrice
+//     : fallbackBaggagePrice;
 
 //   // =====================================================
 //   // TAX
 //   // =====================================================
 
 //   const taxes =
-//     Number(
-//       flight?.taxes
-//     ) || 0;
+//     Number(flight?.taxes) || 0;
 
 //   // =====================================================
 //   // CONVENIENCE FEE
@@ -436,20 +378,15 @@
 
 //   const applyCoupon = () => {
 //     const code =
-//       coupon
-//         .trim()
-//         .toUpperCase();
+//       coupon.trim().toUpperCase();
 
 //     if (code === "SAVE500") {
-//       const finalDiscount =
-//         Math.min(
-//           500,
-//           subtotal
-//         );
-
-//       setDiscount(
-//         finalDiscount
+//       const finalDiscount = Math.min(
+//         500,
+//         subtotal
 //       );
+
+//       setDiscount(finalDiscount);
 
 //       alert(
 //         "Coupon Applied Successfully"
@@ -457,9 +394,7 @@
 //     } else {
 //       setDiscount(0);
 
-//       alert(
-//         "Invalid Coupon"
-//       );
+//       alert("Invalid Coupon");
 //     }
 //   };
 
@@ -469,9 +404,7 @@
 
 //   const getUserId = () => {
 //     let userId =
-//       localStorage.getItem(
-//         "userId"
-//       );
+//       localStorage.getItem("userId");
 
 //     if (userId) {
 //       return userId;
@@ -480,9 +413,8 @@
 //     try {
 //       const storedUser =
 //         JSON.parse(
-//           localStorage.getItem(
-//             "user"
-//           ) || "{}"
+//           localStorage.getItem("user") ||
+//             "{}"
 //         );
 
 //       return (
@@ -513,15 +445,13 @@
 //   // =====================================================
 
 //   const buildFlightData = () => {
-//     const flightId =
-//       getFlightId();
+//     const flightId = getFlightId();
 
 //     return {
 //       _id: flightId,
 
 //       airline:
-//         flight?.airline ||
-//         "",
+//         flight?.airline || "",
 
 //       flightNo:
 //         flight?.flightNo ||
@@ -533,8 +463,7 @@
 //         "Domestic",
 
 //       aircraft:
-//         flight?.aircraft ||
-//         "",
+//         flight?.aircraft || "",
 
 //       fromCity:
 //         flight?.fromCity ||
@@ -542,12 +471,10 @@
 //         "",
 
 //       fromAirport:
-//         flight?.fromAirport ||
-//         "",
+//         flight?.fromAirport || "",
 
 //       fromCode:
-//         flight?.fromCode ||
-//         "",
+//         flight?.fromCode || "",
 
 //       toCity:
 //         flight?.toCity ||
@@ -555,16 +482,13 @@
 //         "",
 
 //       toAirport:
-//         flight?.toAirport ||
-//         "",
+//         flight?.toAirport || "",
 
 //       toCode:
-//         flight?.toCode ||
-//         "",
+//         flight?.toCode || "",
 
 //       departureDate:
-//         flight?.departureDate ||
-//         "",
+//         flight?.departureDate || "",
 
 //       departureTime:
 //         flight?.departureTime ||
@@ -576,8 +500,7 @@
 //         "",
 
 //       arrivalDate:
-//         flight?.arrivalDate ||
-//         "",
+//         flight?.arrivalDate || "",
 
 //       arrivalTime:
 //         flight?.arrivalTime ||
@@ -589,25 +512,18 @@
 //         "",
 
 //       duration:
-//         flight?.duration ||
-//         "",
+//         flight?.duration || "",
 
 //       stops:
 //         flight?.stops ||
 //         "Non-stop",
 
 //       price:
-//         Number(
-//           flight?.price
-//         ) || 0,
+//         Number(flight?.price) || 0,
 
 //       finalPrice:
-//         Number(
-//           flight?.finalPrice
-//         ) ||
-//         Number(
-//           flight?.price
-//         ) ||
+//         Number(flight?.finalPrice) ||
+//         Number(flight?.price) ||
 //         0,
 
 //       adultFare,
@@ -629,8 +545,7 @@
 //           flight?.agentInfantFare
 //         ) || 0,
 
-//       fareRole:
-//         userRole,
+//       fareRole: userRole,
 
 //       adultSeatPrice:
 //         Number(
@@ -690,15 +605,11 @@
 //   };
 
 //   // =====================================================
-//   // CREATE BOOKING AFTER PAYMENT
+//   // BUILD BOOKING DATA
 //   // =====================================================
 
-//   const createConfirmedBooking = async ({
-//     paymentId = "",
-//     orderId = "",
-//   } = {}) => {
-//     const flightId =
-//       getFlightId();
+//   const buildBookingData = () => {
+//     const flightId = getFlightId();
 
 //     if (!flightId) {
 //       throw new Error(
@@ -706,64 +617,46 @@
 //       );
 //     }
 
-//     const userId =
-//       getUserId();
+//     const userId = getUserId();
 
-//     const bookingData = {
+//     return {
 //       userId,
 
 //       passenger,
 
 //       passengers:
-//         Array.isArray(
-//           passengers
-//         ) &&
+//         Array.isArray(passengers) &&
 //         passengers.length > 0
 //           ? passengers
 //           : [passenger],
 
 //       travellers: {
-//         adults:
-//           adultCount,
-
-//         children:
-//           childCount,
-
-//         infants:
-//           infantCount,
-
-//         total:
-//           totalPassengers,
+//         adults: adultCount,
+//         children: childCount,
+//         infants: infantCount,
+//         total: totalPassengers,
 //       },
 
-//       adults:
-//         adultCount,
-
-//       children:
-//         childCount,
-
-//       infants:
-//         infantCount,
+//       adults: adultCount,
+//       children: childCount,
+//       infants: infantCount,
 
 //       flight:
 //         buildFlightData(),
 
 //       flightId,
 
-//       seats:
-//         selectedSeats,
+//       seats: selectedSeats,
 
 //       seat:
-//         selectedSeats[0] ||
-//         "",
+//         selectedSeats[0] || "",
 
 //       seatCount:
 //         selectedSeats.length,
 
 //       seatPrice,
 
-//       meals:
-//         selectedMeals,
+//       meals: selectedMeals,
 
 //       meal:
 //         selectedMeals[0] || {
@@ -776,13 +669,11 @@
 
 //       mealPrice,
 
-//       baggages:
-//         selectedBaggage,
+//       baggages: selectedBaggage,
 
 //       baggage:
 //         selectedBaggage[0] || {
-//           weight:
-//             "15 KG (Included)",
+//           weight: "15 KG (Included)",
 //           price: 0,
 //         },
 
@@ -793,16 +684,13 @@
 
 //       priceDetails: {
 //         adultFare:
-//           adultFare *
-//           adultCount,
+//           adultFare * adultCount,
 
 //         childFare:
-//           childFare *
-//           childCount,
+//           childFare * childCount,
 
 //         infantFare:
-//           infantFare *
-//           infantCount,
+//           infantFare * infantCount,
 
 //         flightFare:
 //           finalFlightFare,
@@ -828,435 +716,310 @@
 //       },
 
 //       paymentMethod:
-//         isAdmin
-//           ? "admin"
-//           : "razorpay",
+//         paymentMethod,
 
-//       paymentVerified:
-//         isAdmin
-//           ? true
-//           : true,
+//       paymentVerified: false,
 
-//       paymentStatus:
-//         "Paid",
+//       paymentStatus: "Pending",
 
-//       bookingStatus:
-//         "Confirmed",
+//       bookingStatus: "Pending",
 
 //       paymentId:
-//         paymentId || "",
+//         paymentId.trim(),
 
-//       orderId:
-//         orderId || "",
+//       orderId: "",
 
-//       fareRole:
-//         userRole,
+//       fareRole: userRole,
 
 //       discount,
 
 //       total,
+
+//       whatsappNumber:
+//         whatsappNumber.trim(),
 //     };
-
-//     console.log(
-//       "CREATING CONFIRMED BOOKING:",
-//       bookingData
-//     );
-
-//     const response =
-//       await fetch(
-//         "https://saiyed-travels-backend-1.onrender.com/api/bookings",
-//         {
-//           method: "POST",
-
-//           headers: {
-//             "Content-Type":
-//               "application/json",
-
-//             ...(localStorage.getItem(
-//               "token"
-//             )
-//               ? {
-//                   Authorization:
-//                     `Bearer ${localStorage.getItem(
-//                       "token"
-//                     )}`,
-//                 }
-//               : {}),
-//           },
-
-//           body:
-//             JSON.stringify(
-//               bookingData
-//             ),
-//         }
-//       );
-
-//     const data =
-//       await response.json();
-
-//     console.log(
-//       "BOOKING RESPONSE:",
-//       data
-//     );
-
-//     if (!response.ok) {
-//       throw new Error(
-//         data.message ||
-//           "Unable to confirm booking."
-//       );
-//     }
-
-//     if (
-//       !data.success ||
-//       !data.booking
-//     ) {
-//       throw new Error(
-//         "Booking was not created."
-//       );
-//     }
-
-//     return data;
 //   };
 
 //   // =====================================================
 //   // ADMIN BOOKING
 //   // =====================================================
 
-//   const handleAdminBooking =
-//     async () => {
-//       try {
-//         setLoading(true);
+//   const handleAdminBooking = async () => {
+//     try {
+//       setLoading(true);
 
-//         const data =
-//           await createConfirmedBooking({
-//             paymentId:
-//               "ADMIN_NO_PAYMENT",
+//       const bookingData =
+//         buildBookingData();
 
-//             orderId:
-//               "ADMIN_BOOKING",
-//           });
+//       bookingData.paymentMethod =
+//         "admin";
 
-//         navigate(
-//           "/success",
+//       bookingData.paymentVerified =
+//         true;
+
+//       bookingData.paymentStatus =
+//         "Paid";
+
+//       bookingData.bookingStatus =
+//         "Confirmed";
+
+//       bookingData.paymentId =
+//         "ADMIN_NO_PAYMENT";
+
+//       bookingData.orderId =
+//         "ADMIN_BOOKING";
+
+//       const response =
+//         await fetch(
+//           "https://saiyed-travels-backend-1.onrender.com/api/bookings",
 //           {
-//             state: {
-//               booking:
-//                 data.booking,
+//             method: "POST",
 
-//               autoDownload:
-//                 false,
+//             headers: {
+//               "Content-Type":
+//                 "application/json",
+
+//               ...(localStorage.getItem(
+//                 "token"
+//               )
+//                 ? {
+//                     Authorization:
+//                       `Bearer ${localStorage.getItem(
+//                         "token"
+//                       )}`,
+//                   }
+//                 : {}),
 //             },
+
+//             body:
+//               JSON.stringify(
+//                 bookingData
+//               ),
 //           }
 //         );
-//       } catch (error) {
-//         console.error(
-//           "ADMIN BOOKING ERROR:",
-//           error
-//         );
 
-//         alert(
-//           error.message ||
+//       const data =
+//         await response.json();
+
+//       if (!response.ok) {
+//         throw new Error(
+//           data.message ||
 //             "Unable to create admin booking."
 //         );
-//       } finally {
-//         setLoading(false);
 //       }
-//     };
+
+//       if (
+//         !data.success ||
+//         !data.booking
+//       ) {
+//         throw new Error(
+//           "Booking was not created."
+//         );
+//       }
+
+//       navigate("/success", {
+//         state: {
+//           booking: data.booking,
+//           autoDownload: false,
+//         },
+//       });
+//     } catch (error) {
+//       console.error(
+//         "ADMIN BOOKING ERROR:",
+//         error
+//       );
+
+//       alert(
+//         error.message ||
+//           "Unable to create admin booking."
+//       );
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
 
 //   // =====================================================
-//   // RAZORPAY PAYMENT
+//   // SUBMIT MANUAL PAYMENT REQUEST
 //   // =====================================================
 
-//   const handleRazorpayPayment =
+//   const handlePaymentRequest =
 //     async () => {
 //       if (loading) {
+//         return;
+//       }
+
+//       // -------------------------------------------------
+//       // VALIDATION
+//       // -------------------------------------------------
+
+//       if (!paymentMethod) {
+//         alert(
+//           "Please select a bank."
+//         );
+//         return;
+//       }
+
+//       if (!paymentId.trim()) {
+//         alert(
+//           "Please enter Payment ID / UTR."
+//         );
+//         return;
+//       }
+
+//       if (!paymentScreenshot) {
+//         alert(
+//           "Please upload payment screenshot."
+//         );
+//         return;
+//       }
+
+//       if (!paymentDateTime) {
+//         alert(
+//           "Please select payment date and time."
+//         );
+//         return;
+//       }
+
+//       if (!whatsappNumber.trim()) {
+//         alert(
+//           "Please enter WhatsApp number."
+//         );
+//         return;
+//       }
+
+//       const cleanWhatsappNumber = whatsappNumber.replace(/\D/g, "");
+
+//       if (cleanWhatsappNumber.length < 10 || cleanWhatsappNumber.length > 15) {
+//         alert(
+//           "Please enter a valid WhatsApp number."
+//         );
 //         return;
 //       }
 
 //       try {
 //         setLoading(true);
 
-//         // =============================================
-//         // LOAD RAZORPAY
-//         // =============================================
+//         // -------------------------------------------------
+//         // BUILD BOOKING SNAPSHOT
+//         // -------------------------------------------------
 
-//         const loaded =
-//           await loadRazorpayScript();
+//         const bookingData =
+//           buildBookingData();
 
-//         if (!loaded) {
-//           throw new Error(
-//             "Razorpay Checkout could not be loaded."
-//           );
-//         }
+//         // -------------------------------------------------
+//         // FORM DATA
+//         // -------------------------------------------------
 
-//         // =============================================
-//         // CREATE ORDER
-//         // =============================================
+//         const formData =
+//           new FormData();
 
-//         const orderResponse =
+//         formData.append(
+//           "bookingData",
+//           JSON.stringify(
+//             bookingData
+//           )
+//         );
+
+//         formData.append(
+//           "amount",
+//           String(total)
+//         );
+
+//         formData.append(
+//           "bankName",
+//           paymentMethod
+//         );
+
+//         formData.append(
+//           "paymentId",
+//           paymentId.trim()
+//         );
+
+//         formData.append(
+//           "paymentDateTime",
+//           paymentDateTime
+//         );
+
+//         formData.append(
+//           "whatsappNumber",
+//           cleanWhatsappNumber
+//         );
+
+//         formData.append(
+//           "screenshot",
+//           paymentScreenshot
+//         );
+
+//         // -------------------------------------------------
+//         // SEND TO BACKEND
+//         // -------------------------------------------------
+
+//         const response =
 //           await fetch(
-//             "https://saiyed-travels-backend-1.onrender.com/api/bookings/payment/create-order",
+//             "https://saiyed-travels-backend-1.onrender.com/api/payment-requests",
 //             {
-//               method:
-//                 "POST",
+//               method: "POST",
 
 //               headers: {
-//                 "Content-Type":
-//                   "application/json",
+//                 ...(localStorage.getItem(
+//                   "token"
+//                 )
+//                   ? {
+//                       Authorization:
+//                         `Bearer ${localStorage.getItem(
+//                           "token"
+//                         )}`,
+//                     }
+//                   : {}),
 //               },
 
-//               body:
-//                 JSON.stringify({
-//                   amount:
-//                     total,
-
-//                   receipt:
-//                     `ST_${Date.now()}`,
-//                 }),
+//               body: formData,
 //             }
 //           );
 
-//         const orderData =
-//           await orderResponse.json();
+//         const data =
+//           await response.json();
 
 //         console.log(
-//           "RAZORPAY ORDER:",
-//           orderData
+//           "PAYMENT REQUEST RESPONSE:",
+//           data
 //         );
 
-//         if (
-//           !orderResponse.ok ||
-//           !orderData.success ||
-//           !orderData.order?.id
-//         ) {
+//         if (!response.ok) {
 //           throw new Error(
-//             orderData.message ||
-//               "Unable to create Razorpay order."
+//             data.message ||
+//               "Unable to submit payment request."
 //           );
 //         }
 
-//         // =============================================
-//         // CHECKOUT OPTIONS
-//         // =============================================
-
-//         const options = {
-//           key:
-//             orderData.keyId,
-
-//           amount:
-//             orderData.order.amount,
-
-//           currency:
-//             orderData.order.currency ||
-//             "INR",
-
-//           name:
-//             "Saiyed Travels",
-
-//           description:
-//             "Flight Booking Payment",
-
-//           order_id:
-//             orderData.order.id,
-
-//           prefill: {
-//             name:
-//               `${passenger?.firstName || ""} ${
-//                 passenger?.lastName || ""
-//               }`.trim(),
-
-//             email:
-//               passenger?.email ||
-//               localStorage.getItem(
-//                 "userEmail"
-//               ) ||
-//               "",
-
-//             contact:
-//               passenger?.phone ||
-//               "",
-//           },
-
-//           notes: {
-//             flightId:
-//               String(
-//                 getFlightId()
-//               ),
-
-//             bookingUserRole:
-//               userRole,
-//           },
-
-//           theme: {
-//             color:
-//               "#176fe1",
-//           },
-
-//           modal: {
-//             ondismiss:
-//               () => {
-//                 setLoading(
-//                   false
-//                 );
-//               },
-//           },
-
-//           handler:
-//             async function (
-//               response
-//             ) {
-//               try {
-//                 console.log(
-//                   "RAZORPAY PAYMENT SUCCESS:",
-//                   response
-//                 );
-
-//                 // =========================================
-//                 // VERIFY PAYMENT
-//                 // =========================================
-
-//                 const verifyResponse =
-//                   await fetch(
-//                     "https://saiyed-travels-backend-1.onrender.com/api/bookings/payment/verify",
-//                     {
-//                       method:
-//                         "POST",
-
-//                       headers: {
-//                         "Content-Type":
-//                           "application/json",
-//                       },
-
-//                       body:
-//                         JSON.stringify({
-//                           razorpay_order_id:
-//                             response.razorpay_order_id,
-
-//                           razorpay_payment_id:
-//                             response.razorpay_payment_id,
-
-//                           razorpay_signature:
-//                             response.razorpay_signature,
-//                         }),
-//                     }
-//                   );
-
-//                 const verifyData =
-//                   await verifyResponse.json();
-
-//                 console.log(
-//                   "PAYMENT VERIFY RESPONSE:",
-//                   verifyData
-//                 );
-
-//                 if (
-//                   !verifyResponse.ok ||
-//                   !verifyData.success ||
-//                   !verifyData.paymentVerified
-//                 ) {
-//                   throw new Error(
-//                     verifyData.message ||
-//                       "Payment verification failed."
-//                   );
-//                 }
-
-//                 // =========================================
-//                 // PAYMENT VERIFIED
-//                 // CREATE BOOKING
-//                 // =========================================
-
-//                 const bookingResult =
-//                   await createConfirmedBooking({
-//                     paymentId:
-//                       response.razorpay_payment_id,
-
-//                     orderId:
-//                       response.razorpay_order_id,
-//                   });
-
-//                 console.log(
-//                   "CONFIRMED BOOKING:",
-//                   bookingResult
-//                 );
-
-//                 // =========================================
-//                 // GO TO TICKET PAGE
-//                 // =========================================
-
-//                 navigate(
-//                   "/success",
-//                   {
-//                     state: {
-//                       booking:
-//                         bookingResult.booking,
-
-//                       autoDownload:
-//                         false,
-//                     },
-//                   }
-//                 );
-//               } catch (error) {
-//                 console.error(
-//                   "PAYMENT SUCCESS HANDLER ERROR:",
-//                   error
-//                 );
-
-//                 alert(
-//                   error.message ||
-//                     "Payment succeeded but ticket confirmation failed."
-//                 );
-//               } finally {
-//                 setLoading(
-//                   false
-//                 );
-//               }
-//             },
-//         };
-
-//         // =============================================
-//         // OPEN RAZORPAY
-//         // =============================================
-
-//         const razorpay =
-//           new window.Razorpay(
-//             options
+//         if (!data.success) {
+//           throw new Error(
+//             data.message ||
+//               "Payment request failed."
 //           );
+//         }
 
-//         razorpay.on(
-//           "payment.failed",
-//           (response) => {
-//             console.error(
-//               "RAZORPAY PAYMENT FAILED:",
-//               response
-//             );
+//         // -------------------------------------------------
+//         // SUCCESS
+//         // -------------------------------------------------
 
-//             setLoading(
-//               false
-//             );
+//         setSubmitted(true);
 
-//             alert(
-//               response?.error
-//                 ?.description ||
-//                 "Payment failed. Please try again."
-//             );
-//           }
+//         alert(
+//           "Payment request submitted successfully. Admin will verify your payment and confirm the ticket."
 //         );
-
-//         razorpay.open();
 //       } catch (error) {
 //         console.error(
-//           "RAZORPAY PAYMENT ERROR:",
+//           "PAYMENT REQUEST ERROR:",
 //           error
 //         );
 
 //         alert(
 //           error.message ||
-//             "Unable to start payment."
+//             "Unable to submit payment request."
 //         );
-
-//         setLoading(
-//           false
-//         );
+//       } finally {
+//         setLoading(false);
 //       }
 //     };
 
@@ -1271,8 +1034,115 @@
 //         return;
 //       }
 
-//       await handleRazorpayPayment();
+//       await handlePaymentRequest();
 //     };
+
+//   // =====================================================
+//   // SUCCESS / PENDING SCREEN
+//   // =====================================================
+
+//   if (submitted) {
+//     return (
+//       <>
+//         <Navbar />
+
+//         <section className="payment-page">
+//           <div
+//             className="payment-container"
+//             style={{
+//               display: "flex",
+//               justifyContent:
+//                 "center",
+//               width: "100%",
+//             }}
+//           >
+//             <div
+//               className="payment-card"
+//               style={{
+//                 maxWidth: "650px",
+//                 width: "100%",
+//                 textAlign: "center",
+//                 padding: "40px 25px",
+//               }}
+//             >
+//               <div
+//                 style={{
+//                   fontSize: "60px",
+//                   marginBottom: "15px",
+//                 }}
+//               >
+//                 ⏳
+//               </div>
+
+//               <h2>
+//                 Payment Request Submitted
+//               </h2>
+
+//               <p
+//                 style={{
+//                   marginTop: "15px",
+//                   lineHeight: "1.7",
+//                 }}
+//               >
+//                 Your payment details and
+//                 screenshot have been
+//                 submitted successfully.
+//               </p>
+
+//               <p
+//                 style={{
+//                   marginTop: "10px",
+//                   lineHeight: "1.7",
+//                 }}
+//               >
+//                 Our admin team will manually
+//                 verify your payment.
+//                 <br />
+//                 After approval, your booking
+//                 will be confirmed after admin verification.
+//               </p>
+
+//               <strong>
+//                 WhatsApp: {whatsappNumber}
+//               </strong>
+
+//               <div
+//                 style={{
+//                   marginTop: "25px",
+//                   padding: "15px",
+//                   borderRadius: "10px",
+//                   background:
+//                     "#fff7e6",
+//                 }}
+//               >
+//                 <strong>
+//                   Payment Status: Pending
+//                 </strong>
+//                 <br />
+//                 Please wait for admin
+//                 verification.
+//               </div>
+
+//               <button
+//                 type="button"
+//                 className="pay-btn"
+//                 style={{
+//                   marginTop: "25px",
+//                 }}
+//                 onClick={() =>
+//                   navigate("/")
+//                 }
+//               >
+//                 Back To Home
+//               </button>
+//             </div>
+//           </div>
+//         </section>
+
+//         <Footer />
+//       </>
+//     );
+//   }
 
 //   // =====================================================
 //   // UI
@@ -1285,11 +1155,13 @@
 //       <section className="payment-page">
 //         <div className="payment-container">
 
-//           {/* =========================================
+//           {/* =================================================
 //               LEFT
-//           ========================================= */}
+//           ================================================= */}
 
 //           <div className="payment-left">
+
+//             {/* PROGRESS */}
 
 //             <div className="payment-progress">
 
@@ -1333,36 +1205,428 @@
 //               <h2>
 //                 {isAdmin
 //                   ? "Confirm Booking"
-//                   : "Secure Payment"}
+//                   : "Manual Payment"}
 //               </h2>
+
+//               {/* =================================================
+//                   CUSTOMER PAYMENT
+//               ================================================= */}
 
 //               {!isAdmin ? (
 //                 <>
+
+//                   {/* SECURITY */}
+
 //                   <div className="secure-payment">
 //                     🔒
 
 //                     <span>
-//                       You will be redirected to
-//                       secure Razorpay Checkout.
+//                       Pay using the QR code below.
+//                       Your payment will be manually
+//                       verified by the admin.
 //                     </span>
 //                   </div>
 
-//                   <div className="razorpay-method-box">
+//                   {/* AMOUNT */}
+
+//                   <div
+//                     style={{
+//                       marginTop: "20px",
+//                       padding: "18px",
+//                       borderRadius: "12px",
+//                       background:
+//                         "#f5f8ff",
+//                       textAlign: "center",
+//                     }}
+//                   >
+//                     <p
+//                       style={{
+//                         margin: 0,
+//                       }}
+//                     >
+//                       Total Amount To Pay
+//                     </p>
+
+//                     <h2
+//                       style={{
+//                         margin:
+//                           "8px 0 0",
+//                       }}
+//                     >
+//                       ₹
+//                       {total.toLocaleString(
+//                         "en-IN"
+//                       )}
+//                     </h2>
+//                   </div>
+
+//                   {/* BANK SELECT */}
+
+//                   <div
+//                     className="payment-bank-selection"
+//                     style={{
+//                       marginTop: "25px",
+//                     }}
+//                   >
 //                     <h3>
-//                       Razorpay
+//                       Select Bank
 //                     </h3>
 
-//                     <p>
-//                       Pay securely using:
+//                     <div
+//                       style={{
+//                         display: "grid",
+//                         gridTemplateColumns:
+//                           "1fr 1fr",
+//                         gap: "12px",
+//                         marginTop: "12px",
+//                       }}
+//                     >
+
+//                       <button
+//                         type="button"
+//                         onClick={() =>
+//                           setPaymentMethod(
+//                             "ICICI Bank"
+//                           )
+//                         }
+//                         style={{
+//                           padding:
+//                             "14px",
+//                           borderRadius:
+//                             "10px",
+//                           border:
+//                             paymentMethod ===
+//                             "ICICI Bank"
+//                               ? "2px solid #176fe1"
+//                               : "1px solid #ddd",
+//                           background:
+//                             paymentMethod ===
+//                             "ICICI Bank"
+//                               ? "#eef5ff"
+//                               : "#fff",
+//                           cursor:
+//                             "pointer",
+//                           fontWeight:
+//                             "600",
+//                         }}
+//                       >
+//                         ICICI Bank
+//                       </button>
+
+//                       <button
+//                         type="button"
+//                         onClick={() =>
+//                           setPaymentMethod(
+//                             "Bank of Baroda"
+//                           )
+//                         }
+//                         style={{
+//                           padding:
+//                             "14px",
+//                           borderRadius:
+//                             "10px",
+//                           border:
+//                             paymentMethod ===
+//                             "Bank of Baroda"
+//                               ? "2px solid #176fe1"
+//                               : "1px solid #ddd",
+//                           background:
+//                             paymentMethod ===
+//                             "Bank of Baroda"
+//                               ? "#eef5ff"
+//                               : "#fff",
+//                           cursor:
+//                             "pointer",
+//                           fontWeight:
+//                             "600",
+//                         }}
+//                       >
+//                         Bank of Baroda
+//                       </button>
+
+//                     </div>
+//                   </div>
+
+//                   {/* QR CODE */}
+
+//                   <div
+//                     style={{
+//                       marginTop: "25px",
+//                       textAlign: "center",
+//                     }}
+//                   >
+
+//                     <h3>
+//                       {paymentMethod}
+//                     </h3>
+
+//                     <p
+//                       style={{
+//                         marginTop:
+//                           "8px",
+//                         marginBottom:
+//                           "15px",
+//                       }}
+//                     >
+//                       Scan this QR and pay
+//                       <strong>
+//                         {" "}
+//                         ₹
+//                         {total.toLocaleString(
+//                           "en-IN"
+//                         )}
+//                       </strong>
 //                     </p>
 
-//                     <p>
-//                       UPI • Credit Card • Debit Card
-//                       • Net Banking
-//                     </p>
+//                     <div
+//                       style={{
+//                         display:
+//                           "flex",
+//                         justifyContent:
+//                           "center",
+//                       }}
+//                     >
+//                       <img
+//                         src={
+//                           paymentMethod ===
+//                           "ICICI Bank"
+//                             ? ICICIQR
+//                             : BankOfBarodaQR
+//                         }
+//                         alt={`${paymentMethod} QR Code`}
+//                         style={{
+//                           width:
+//                             "260px",
+//                           height:
+//                             "260px",
+//                           objectFit:
+//                             "contain",
+//                           border:
+//                             "1px solid #ddd",
+//                           borderRadius:
+//                             "12px",
+//                           padding:
+//                             "10px",
+//                           background:
+//                             "#fff",
+//                         }}
+//                       />
+//                     </div>
+
 //                   </div>
+
+//                   {/* PAYMENT DETAILS */}
+
+//                   <div
+//                     style={{
+//                       marginTop: "30px",
+//                     }}
+//                   >
+
+//                     <h3>
+//                       Payment Details
+//                     </h3>
+
+//                     {/* UTR */}
+
+//                     <div
+//                       style={{
+//                         marginTop:
+//                           "15px",
+//                       }}
+//                     >
+//                       <label>
+//                         Payment ID / UTR
+//                       </label>
+
+//                       <input
+//                         type="text"
+//                         placeholder="Enter UTR / Transaction ID"
+//                         value={paymentId}
+//                         onChange={(e) =>
+//                           setPaymentId(
+//                             e.target.value
+//                           )
+//                         }
+//                         style={{
+//                           width:
+//                             "100%",
+//                           marginTop:
+//                             "8px",
+//                           padding:
+//                             "13px",
+//                           borderRadius:
+//                             "8px",
+//                           border:
+//                             "1px solid #ddd",
+//                           boxSizing:
+//                             "border-box",
+//                         }}
+//                       />
+//                     </div>
+
+//                     {/* SCREENSHOT */}
+
+//                     <div
+//                       style={{
+//                         marginTop:
+//                           "18px",
+//                       }}
+//                     >
+//                       <label>
+//                         Payment Screenshot
+//                       </label>
+
+//                       <input
+//                         type="file"
+//                         accept="image/jpeg,image/jpg,image/png,image/webp"
+//                         onChange={(e) =>
+//                           setPaymentScreenshot(
+//                             e.target
+//                               .files?.[0] ||
+//                               null
+//                           )
+//                         }
+//                         style={{
+//                           width:
+//                             "100%",
+//                           marginTop:
+//                             "8px",
+//                         }}
+//                       />
+
+//                       {paymentScreenshot && (
+//                         <p
+//                           style={{
+//                             marginTop:
+//                               "7px",
+//                             fontSize:
+//                               "14px",
+//                           }}
+//                         >
+//                           Selected:{" "}
+//                           {
+//                             paymentScreenshot.name
+//                           }
+//                         </p>
+//                       )}
+//                     </div>
+
+//                     {/* DATE TIME */}
+
+//                     <div
+//                       style={{
+//                         marginTop:
+//                           "18px",
+//                       }}
+//                     >
+//                       <label>
+//                         Payment Date & Time
+//                       </label>
+
+//                       <input
+//                         type="datetime-local"
+//                         value={
+//                           paymentDateTime
+//                         }
+//                         onChange={(e) =>
+//                           setPaymentDateTime(
+//                             e.target
+//                               .value
+//                           )
+//                         }
+//                         style={{
+//                           width:
+//                             "100%",
+//                           marginTop:
+//                             "8px",
+//                           padding:
+//                             "13px",
+//                           borderRadius:
+//                             "8px",
+//                           border:
+//                             "1px solid #ddd",
+//                           boxSizing:
+//                             "border-box",
+//                         }}
+//                       />
+//                     </div>
+
+//                     {/* EMAIL */}
+
+//                     <div
+//                       style={{
+//                         marginTop:
+//                           "18px",
+//                       }}
+//                     >
+//                       <label>
+//                         WhatsApp Number
+//                       </label>
+
+//                       <input
+//                         type="tel"
+//                         inputMode="numeric"
+//                         placeholder="Enter WhatsApp number"
+//                         value={
+//                           whatsappNumber
+//                         }
+//                         onChange={(e) =>
+//                           setWhatsappNumber(
+//                             e.target.value
+//                           )
+//                         }
+//                         style={{
+//                           width:
+//                             "100%",
+//                           marginTop:
+//                             "8px",
+//                           padding:
+//                             "13px",
+//                           borderRadius:
+//                             "8px",
+//                           border:
+//                             "1px solid #ddd",
+//                           boxSizing:
+//                             "border-box",
+//                         }}
+//                       />
+//                     </div>
+
+//                   </div>
+
+//                   {/* IMPORTANT MESSAGE */}
+
+//                   <div
+//                     style={{
+//                       marginTop: "22px",
+//                       padding: "15px",
+//                       borderRadius: "10px",
+//                       background:
+//                         "#fff7e6",
+//                       lineHeight: "1.6",
+//                       fontSize: "14px",
+//                     }}
+//                   >
+//                     ⚠️ <strong>Important:</strong>
+//                     <br />
+//                     Please pay exactly ₹
+//                     {total.toLocaleString(
+//                       "en-IN"
+//                     )}
+//                     . After submitting the
+//                     payment details, your booking
+//                     will remain pending until the
+//                     admin verifies your payment.
+//                   </div>
+
 //                 </>
 //               ) : (
+
+//                 /* =================================================
+//                    ADMIN
+//                 ================================================= */
+
 //                 <div className="admin-payment-bypass">
 //                   👑
 
@@ -1375,7 +1639,12 @@
 //                     for admin.
 //                   </span>
 //                 </div>
+
 //               )}
+
+//               {/* =================================================
+//                   COUPON
+//               ================================================= */}
 
 //               <div className="coupon-box">
 
@@ -1420,9 +1689,9 @@
 //             </div>
 //           </div>
 
-//           {/* =========================================
-//               RIGHT
-//           ========================================= */}
+//           {/* =================================================
+//               RIGHT - BOOKING SUMMARY
+//           ================================================= */}
 
 //           <div className="payment-right">
 
@@ -1754,21 +2023,21 @@
 //                 </span>
 //               </div>
 
-//               {/* SECURITY MESSAGE */}
+//               {/* SECURITY */}
 
 //               {!isAdmin && (
 //                 <div className="secure-payment">
 //                   🔒
 
 //                   <span>
-//                     Payment is verified
-//                     securely before ticket
-//                     confirmation.
+//                     Your payment will be
+//                     manually verified before
+//                     ticket confirmation.
 //                   </span>
 //                 </div>
 //               )}
 
-//               {/* PAY BUTTON */}
+//               {/* BUTTON */}
 
 //               <button
 //                 type="button"
@@ -1776,22 +2045,20 @@
 //                 onClick={
 //                   handlePayment
 //                 }
-//                 disabled={
-//                   loading
-//                 }
+//                 disabled={loading}
 //               >
 //                 {loading
-//                   ? "Processing..."
+//                   ? "Submitting..."
 //                   : isAdmin
 //                   ? "Confirm Ticket"
-//                   : `Pay ₹ ${total.toLocaleString(
+//                   : `Submit Payment Request • ₹ ${total.toLocaleString(
 //                       "en-IN"
 //                     )}`}
 //               </button>
 
 //             </div>
-
 //           </div>
+
 //         </div>
 //       </section>
 
@@ -1801,8 +2068,6 @@
 // }
 
 // export default Payment;
-
-
 
 import "./Payment.css";
 
@@ -1930,10 +2195,14 @@ function Payment() {
   const [paymentDateTime, setPaymentDateTime] =
     useState("");
 
+  const [whatsappNumber, setWhatsappNumber] =
+    useState(passenger?.phone || "");
+
+  // FIX: CUSTOMER EMAIL
   const [customerEmail, setCustomerEmail] =
     useState(
       passenger?.email ||
-        localStorage.getItem("userEmail") ||
+        passenger?.emailAddress ||
         ""
     );
 
@@ -2545,6 +2814,9 @@ function Payment() {
 
       total,
 
+      whatsappNumber:
+        whatsappNumber.trim(),
+
       customerEmail:
         customerEmail.trim().toLowerCase(),
     };
@@ -2690,18 +2962,44 @@ function Payment() {
         return;
       }
 
+      // EMAIL FIX
       if (!customerEmail.trim()) {
         alert(
-          "Please enter email address."
+          "Please enter customer email."
         );
         return;
       }
 
+      const emailPattern =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
       if (
-        !customerEmail.includes("@")
+        !emailPattern.test(
+          customerEmail.trim()
+        )
       ) {
         alert(
-          "Please enter a valid email address."
+          "Please enter a valid customer email."
+        );
+        return;
+      }
+
+      if (!whatsappNumber.trim()) {
+        alert(
+          "Please enter WhatsApp number."
+        );
+        return;
+      }
+
+      const cleanWhatsappNumber =
+        whatsappNumber.replace(/\D/g, "");
+
+      if (
+        cleanWhatsappNumber.length < 10 ||
+        cleanWhatsappNumber.length > 15
+      ) {
+        alert(
+          "Please enter a valid WhatsApp number."
         );
         return;
       }
@@ -2750,11 +3048,18 @@ function Payment() {
           paymentDateTime
         );
 
+        // CUSTOMER EMAIL FIX
         formData.append(
           "customerEmail",
           customerEmail
             .trim()
             .toLowerCase()
+        );
+
+        // WHATSAPP
+        formData.append(
+          "whatsappNumber",
+          cleanWhatsappNumber
         );
 
         formData.append(
@@ -2911,12 +3216,18 @@ function Payment() {
                 verify your payment.
                 <br />
                 After approval, your booking
-                will be confirmed and the
-                ticket will be sent to:
+                will be confirmed after admin
+                verification.
               </p>
 
               <strong>
-                {customerEmail}
+                Email: {customerEmail}
+              </strong>
+
+              <br />
+
+              <strong>
+                WhatsApp: {whatsappNumber}
               </strong>
 
               <div
@@ -3365,7 +3676,7 @@ function Payment() {
                       />
                     </div>
 
-                    {/* EMAIL */}
+                    {/* CUSTOMER EMAIL */}
 
                     <div
                       style={{
@@ -3374,19 +3685,60 @@ function Payment() {
                       }}
                     >
                       <label>
-                        Email for Ticket
+                        Customer Email *
                       </label>
 
                       <input
                         type="email"
-                        placeholder="Enter email address"
+                        inputMode="email"
+                        placeholder="Enter customer email"
                         value={
                           customerEmail
                         }
                         onChange={(e) =>
                           setCustomerEmail(
-                            e.target
-                              .value
+                            e.target.value
+                          )
+                        }
+                        style={{
+                          width:
+                            "100%",
+                          marginTop:
+                            "8px",
+                          padding:
+                            "13px",
+                          borderRadius:
+                            "8px",
+                          border:
+                            "1px solid #ddd",
+                          boxSizing:
+                            "border-box",
+                        }}
+                      />
+                    </div>
+
+                    {/* WHATSAPP */}
+
+                    <div
+                      style={{
+                        marginTop:
+                          "18px",
+                      }}
+                    >
+                      <label>
+                        WhatsApp Number *
+                      </label>
+
+                      <input
+                        type="tel"
+                        inputMode="numeric"
+                        placeholder="Enter WhatsApp number"
+                        value={
+                          whatsappNumber
+                        }
+                        onChange={(e) =>
+                          setWhatsappNumber(
+                            e.target.value
                           )
                         }
                         style={{
@@ -3427,7 +3779,8 @@ function Payment() {
                     {total.toLocaleString(
                       "en-IN"
                     )}
-                    . After submitting the
+                    .
+                    After submitting the
                     payment details, your booking
                     will remain pending until the
                     admin verifies your payment.
@@ -3524,6 +3877,34 @@ function Payment() {
                 <span>
                   {passenger?.firstName}{" "}
                   {passenger?.lastName}
+                </span>
+              </div>
+
+              {/* EMAIL */}
+
+              {!isAdmin && (
+                <div className="summary-row">
+                  <span>
+                    Email
+                  </span>
+
+                  <span>
+                    {customerEmail ||
+                      "-"}
+                  </span>
+                </div>
+              )}
+
+              {/* WHATSAPP */}
+
+              <div className="summary-row">
+                <span>
+                  WhatsApp
+                </span>
+
+                <span>
+                  {whatsappNumber ||
+                    "-"}
                 </span>
               </div>
 
