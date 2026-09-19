@@ -1,6 +1,10 @@
+
+
+
+
 // import "./Payment.css";
 
-// import { useState } from "react";
+// import { useEffect, useState } from "react";
 // import {
 //   useLocation,
 //   useNavigate,
@@ -13,7 +17,7 @@
 // // QR IMAGES
 // // =====================================================
 
-// import ICICIQR from "../../assets/ANANT.jpeg";
+// import ICICIQR from "../../assets/ICICI.jpeg";
 // import BankOfBarodaQR from "../../assets/Bankof.jpeg";
 
 // // =====================================================
@@ -127,11 +131,95 @@
 //   const [whatsappNumber, setWhatsappNumber] =
 //     useState(passenger?.phone || "");
 
+//   // FIX: CUSTOMER EMAIL
+//   const [customerEmail, setCustomerEmail] =
+//     useState(
+//       passenger?.email ||
+//         passenger?.emailAddress ||
+//         ""
+//     );
+
 //   const [loading, setLoading] =
 //     useState(false);
 
 //   const [submitted, setSubmitted] =
 //     useState(false);
+
+//   // Payment request tracking (customer device)
+//   const [paymentRequestId, setPaymentRequestId] = useState(null);
+//   const [paymentRequestStatus, setPaymentRequestStatus] = useState("Pending");
+//   const [paymentTrackingError, setPaymentTrackingError] = useState("");
+
+//   // =====================================================
+//   // CROSS-DEVICE PAYMENT STATUS TRACKING
+//   // =====================================================
+//   // Customer device payment request ko backend se check karta rahega.
+//   // Admin kisi bhi device se Accept karega to approved booking milte
+//   // hi customer device automatically Success/Ticket page par jayega.
+//   useEffect(() => {
+//     if (!submitted || !paymentRequestId) return;
+
+//     let stopped = false;
+//     let intervalId;
+
+//     const checkPaymentStatus = async () => {
+//       try {
+//         const email = customerEmail.trim().toLowerCase();
+//         if (!email) return;
+
+//         const response = await fetch(
+//           `https://saiyed-travels-backend-1.onrender.com/api/payment-requests/${paymentRequestId}/status?email=${encodeURIComponent(email)}`
+//         );
+
+//         const data = await response.json();
+
+//         if (!response.ok) {
+//           throw new Error(data?.message || "Unable to check payment status.");
+//         }
+
+//         if (stopped) return;
+
+//         setPaymentRequestStatus(data?.status || "Pending");
+
+//         if (data?.status === "Accepted" && data?.booking) {
+//           stopped = true;
+//           clearInterval(intervalId);
+
+//           navigate("/success", {
+//             state: {
+//               booking: data.booking,
+//               fromPaymentApproval: true,
+//               autoDownload: false,
+//             },
+//           });
+//           return;
+//         }
+
+//         if (data?.status === "Rejected") {
+//           setPaymentTrackingError(
+//             data?.adminNote ||
+//               "Payment request was rejected by admin."
+//           );
+//           clearInterval(intervalId);
+//         }
+//       } catch (error) {
+//         if (!stopped) {
+//           console.error("PAYMENT STATUS CHECK ERROR:", error);
+//           setPaymentTrackingError(
+//             error?.message || "Unable to check payment status."
+//           );
+//         }
+//       }
+//     };
+
+//     checkPaymentStatus();
+//     intervalId = setInterval(checkPaymentStatus, 3000);
+
+//     return () => {
+//       stopped = true;
+//       clearInterval(intervalId);
+//     };
+//   }, [submitted, paymentRequestId, customerEmail, navigate]);
 
 //   // =====================================================
 //   // NO BOOKING
@@ -737,6 +825,9 @@
 
 //       whatsappNumber:
 //         whatsappNumber.trim(),
+
+//       customerEmail:
+//         customerEmail.trim().toLowerCase(),
 //     };
 //   };
 
@@ -880,6 +971,28 @@
 //         return;
 //       }
 
+//       // EMAIL FIX
+//       if (!customerEmail.trim()) {
+//         alert(
+//           "Please enter customer email."
+//         );
+//         return;
+//       }
+
+//       const emailPattern =
+//         /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+//       if (
+//         !emailPattern.test(
+//           customerEmail.trim()
+//         )
+//       ) {
+//         alert(
+//           "Please enter a valid customer email."
+//         );
+//         return;
+//       }
+
 //       if (!whatsappNumber.trim()) {
 //         alert(
 //           "Please enter WhatsApp number."
@@ -887,9 +1000,13 @@
 //         return;
 //       }
 
-//       const cleanWhatsappNumber = whatsappNumber.replace(/\D/g, "");
+//       const cleanWhatsappNumber =
+//         whatsappNumber.replace(/\D/g, "");
 
-//       if (cleanWhatsappNumber.length < 10 || cleanWhatsappNumber.length > 15) {
+//       if (
+//         cleanWhatsappNumber.length < 10 ||
+//         cleanWhatsappNumber.length > 15
+//       ) {
 //         alert(
 //           "Please enter a valid WhatsApp number."
 //         );
@@ -940,6 +1057,15 @@
 //           paymentDateTime
 //         );
 
+//         // CUSTOMER EMAIL FIX
+//         formData.append(
+//           "customerEmail",
+//           customerEmail
+//             .trim()
+//             .toLowerCase()
+//         );
+
+//         // WHATSAPP
 //         formData.append(
 //           "whatsappNumber",
 //           cleanWhatsappNumber
@@ -998,6 +1124,24 @@
 //               "Payment request failed."
 //           );
 //         }
+
+//         // Backend se request ID save karo. Isi ID se customer device
+//         // admin approval ka live status check karega.
+//         const createdPaymentRequestId =
+//           data?.paymentRequest?.id ||
+//           data?.paymentRequest?._id ||
+//           data?.id ||
+//           data?._id;
+
+//         if (!createdPaymentRequestId) {
+//           throw new Error(
+//             "Payment request ID was not returned by server."
+//           );
+//         }
+
+//         setPaymentRequestId(String(createdPaymentRequestId));
+//         setPaymentRequestStatus("Pending");
+//         setPaymentTrackingError("");
 
 //         // -------------------------------------------------
 //         // SUCCESS
@@ -1099,8 +1243,15 @@
 //                 verify your payment.
 //                 <br />
 //                 After approval, your booking
-//                 will be confirmed after admin verification.
+//                 will be confirmed after admin
+//                 verification.
 //               </p>
+
+//               <strong>
+//                 Email: {customerEmail}
+//               </strong>
+
+//               <br />
 
 //               <strong>
 //                 WhatsApp: {whatsappNumber}
@@ -1112,16 +1263,33 @@
 //                   padding: "15px",
 //                   borderRadius: "10px",
 //                   background:
-//                     "#fff7e6",
+//                     paymentRequestStatus === "Rejected"
+//                       ? "#ffecec"
+//                       : "#fff7e6",
 //                 }}
 //               >
 //                 <strong>
-//                   Payment Status: Pending
+//                   Payment Status: {paymentRequestStatus}
 //                 </strong>
 //                 <br />
-//                 Please wait for admin
-//                 verification.
+//                 {paymentRequestStatus === "Accepted"
+//                   ? "Payment approved. Opening your ticket..."
+//                   : paymentRequestStatus === "Rejected"
+//                   ? paymentTrackingError || "Payment request was rejected by admin."
+//                   : "Please wait. This page will automatically open your confirmed ticket as soon as admin accepts the payment."}
 //               </div>
+
+//               {paymentRequestId && (
+//                 <small
+//                   style={{
+//                     display: "block",
+//                     marginTop: "10px",
+//                     color: "#777",
+//                   }}
+//                 >
+//                   Request ID: {paymentRequestId}
+//                 </small>
+//               )}
 
 //               <button
 //                 type="button"
@@ -1552,7 +1720,7 @@
 //                       />
 //                     </div>
 
-//                     {/* EMAIL */}
+//                     {/* CUSTOMER EMAIL */}
 
 //                     <div
 //                       style={{
@@ -1561,7 +1729,48 @@
 //                       }}
 //                     >
 //                       <label>
-//                         WhatsApp Number
+//                         Customer Email *
+//                       </label>
+
+//                       <input
+//                         type="email"
+//                         inputMode="email"
+//                         placeholder="Enter customer email"
+//                         value={
+//                           customerEmail
+//                         }
+//                         onChange={(e) =>
+//                           setCustomerEmail(
+//                             e.target.value
+//                           )
+//                         }
+//                         style={{
+//                           width:
+//                             "100%",
+//                           marginTop:
+//                             "8px",
+//                           padding:
+//                             "13px",
+//                           borderRadius:
+//                             "8px",
+//                           border:
+//                             "1px solid #ddd",
+//                           boxSizing:
+//                             "border-box",
+//                         }}
+//                       />
+//                     </div>
+
+//                     {/* WHATSAPP */}
+
+//                     <div
+//                       style={{
+//                         marginTop:
+//                           "18px",
+//                       }}
+//                     >
+//                       <label>
+//                         WhatsApp Number *
 //                       </label>
 
 //                       <input
@@ -1614,7 +1823,8 @@
 //                     {total.toLocaleString(
 //                       "en-IN"
 //                     )}
-//                     . After submitting the
+//                     .
+//                     After submitting the
 //                     payment details, your booking
 //                     will remain pending until the
 //                     admin verifies your payment.
@@ -1711,6 +1921,34 @@
 //                 <span>
 //                   {passenger?.firstName}{" "}
 //                   {passenger?.lastName}
+//                 </span>
+//               </div>
+
+//               {/* EMAIL */}
+
+//               {!isAdmin && (
+//                 <div className="summary-row">
+//                   <span>
+//                     Email
+//                   </span>
+
+//                   <span>
+//                     {customerEmail ||
+//                       "-"}
+//                   </span>
+//                 </div>
+//               )}
+
+//               {/* WHATSAPP */}
+
+//               <div className="summary-row">
+//                 <span>
+//                   WhatsApp
+//                 </span>
+
+//                 <span>
+//                   {whatsappNumber ||
+//                     "-"}
 //                 </span>
 //               </div>
 
@@ -2069,9 +2307,14 @@
 
 // export default Payment;
 
+
+
+
+
+
 import "./Payment.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   useLocation,
   useNavigate,
@@ -2211,6 +2454,82 @@ function Payment() {
 
   const [submitted, setSubmitted] =
     useState(false);
+
+  // Payment request tracking (customer device)
+  const [paymentRequestId, setPaymentRequestId] = useState(null);
+  const [paymentRequestStatus, setPaymentRequestStatus] = useState("Pending");
+  const [paymentTrackingError, setPaymentTrackingError] = useState("");
+
+  // =====================================================
+  // CROSS-DEVICE PAYMENT STATUS TRACKING
+  // =====================================================
+  // Customer device payment request ko backend se check karta rahega.
+  // Admin kisi bhi device se Accept karega to approved booking milte
+  // hi customer device automatically Success/Ticket page par jayega.
+  useEffect(() => {
+    if (!submitted || !paymentRequestId) return;
+
+    let stopped = false;
+    let intervalId;
+
+    const checkPaymentStatus = async () => {
+      try {
+        const email = customerEmail.trim().toLowerCase();
+        if (!email) return;
+
+        const response = await fetch(
+          `https://saiyed-travels-backend-1.onrender.com/api/payment-requests/${paymentRequestId}/status?email=${encodeURIComponent(email)}`
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data?.message || "Unable to check payment status.");
+        }
+
+        if (stopped) return;
+
+        setPaymentRequestStatus(data?.status || "Pending");
+
+        if (data?.status === "Accepted" && data?.booking) {
+          stopped = true;
+          clearInterval(intervalId);
+
+          navigate("/success", {
+            state: {
+              booking: data.booking,
+              fromPaymentApproval: true,
+              autoDownload: false,
+            },
+          });
+          return;
+        }
+
+        if (data?.status === "Rejected") {
+          setPaymentTrackingError(
+            data?.adminNote ||
+              "Payment request was rejected by admin."
+          );
+          clearInterval(intervalId);
+        }
+      } catch (error) {
+        if (!stopped) {
+          console.error("PAYMENT STATUS CHECK ERROR:", error);
+          setPaymentTrackingError(
+            error?.message || "Unable to check payment status."
+          );
+        }
+      }
+    };
+
+    checkPaymentStatus();
+    intervalId = setInterval(checkPaymentStatus, 3000);
+
+    return () => {
+      stopped = true;
+      clearInterval(intervalId);
+    };
+  }, [submitted, paymentRequestId, customerEmail, navigate]);
 
   // =====================================================
   // NO BOOKING
@@ -2691,12 +3010,39 @@ function Payment() {
     const flightId = getFlightId();
 
     if (!flightId) {
-      throw new Error(
-        "Flight ID is missing."
-      );
+      throw new Error("Flight ID is missing.");
     }
 
     const userId = getUserId();
+
+    // =====================================================
+    // BAGGAGE
+    // =====================================================
+
+    const firstBaggage =
+      selectedBaggage?.[0] || {};
+
+    const cabinBaggage =
+      firstBaggage?.cabinBaggage ||
+      firstBaggage?.cabin ||
+      firstBaggage?.baggageCabin ||
+      flight?.cabinBaggage ||
+      flight?.baggage?.cabinBaggage ||
+      flight?.baggage?.cabin ||
+      flight?.cabins?.[0]?.cabinBaggage ||
+      flight?.cabins?.[0]?.baggageCabin ||
+      "7 KG";
+
+    const checkinBaggage =
+      firstBaggage?.checkinBaggage ||
+      firstBaggage?.checkin ||
+      firstBaggage?.weight ||
+      flight?.checkinBaggage ||
+      flight?.baggage?.checkinBaggage ||
+      flight?.baggage?.checkin ||
+      flight?.cabins?.[0]?.checkinBaggage ||
+      flight?.cabins?.[0]?.baggageCheckin ||
+      "15 KG";
 
     return {
       userId,
@@ -2720,8 +3066,20 @@ function Payment() {
       children: childCount,
       infants: infantCount,
 
-      flight:
-        buildFlightData(),
+      flight: {
+        ...buildFlightData(),
+
+        cabinBaggage,
+        checkinBaggage,
+
+        baggage: {
+          ...(flight?.baggage || {}),
+          cabinBaggage,
+          cabin: cabinBaggage,
+          checkinBaggage,
+          checkin: checkinBaggage,
+        },
+      },
 
       flightId,
 
@@ -2750,11 +3108,19 @@ function Payment() {
 
       baggages: selectedBaggage,
 
-      baggage:
-        selectedBaggage[0] || {
-          weight: "15 KG (Included)",
-          price: 0,
-        },
+      baggage: {
+        ...firstBaggage,
+        cabinBaggage,
+        cabin: cabinBaggage,
+        checkinBaggage,
+        checkin: checkinBaggage,
+        weight: checkinBaggage,
+        price:
+          Number(firstBaggage?.price || 0),
+      },
+
+      cabinBaggage,
+      checkinBaggage,
 
       baggageCount:
         selectedBaggage.length,
@@ -2794,8 +3160,7 @@ function Payment() {
         total,
       },
 
-      paymentMethod:
-        paymentMethod,
+      paymentMethod,
 
       paymentVerified: false,
 
@@ -2818,7 +3183,9 @@ function Payment() {
         whatsappNumber.trim(),
 
       customerEmail:
-        customerEmail.trim().toLowerCase(),
+        customerEmail
+          .trim()
+          .toLowerCase(),
     };
   };
 
@@ -3116,6 +3483,24 @@ function Payment() {
           );
         }
 
+        // Backend se request ID save karo. Isi ID se customer device
+        // admin approval ka live status check karega.
+        const createdPaymentRequestId =
+          data?.paymentRequest?.id ||
+          data?.paymentRequest?._id ||
+          data?.id ||
+          data?._id;
+
+        if (!createdPaymentRequestId) {
+          throw new Error(
+            "Payment request ID was not returned by server."
+          );
+        }
+
+        setPaymentRequestId(String(createdPaymentRequestId));
+        setPaymentRequestStatus("Pending");
+        setPaymentTrackingError("");
+
         // -------------------------------------------------
         // SUCCESS
         // -------------------------------------------------
@@ -3236,16 +3621,33 @@ function Payment() {
                   padding: "15px",
                   borderRadius: "10px",
                   background:
-                    "#fff7e6",
+                    paymentRequestStatus === "Rejected"
+                      ? "#ffecec"
+                      : "#fff7e6",
                 }}
               >
                 <strong>
-                  Payment Status: Pending
+                  Payment Status: {paymentRequestStatus}
                 </strong>
                 <br />
-                Please wait for admin
-                verification.
+                {paymentRequestStatus === "Accepted"
+                  ? "Payment approved. Opening your ticket..."
+                  : paymentRequestStatus === "Rejected"
+                  ? paymentTrackingError || "Payment request was rejected by admin."
+                  : "Please wait. This page will automatically open your confirmed ticket as soon as admin accepts the payment."}
               </div>
+
+              {paymentRequestId && (
+                <small
+                  style={{
+                    display: "block",
+                    marginTop: "10px",
+                    color: "#777",
+                  }}
+                >
+                  Request ID: {paymentRequestId}
+                </small>
+              )}
 
               <button
                 type="button"

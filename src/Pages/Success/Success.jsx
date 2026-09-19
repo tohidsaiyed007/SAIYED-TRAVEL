@@ -2733,6 +2733,41 @@ console.log(
     flight?.cabins?.[0]?.baggage ||
     "";
 
+//   const cabinBaggage =
+//   booking?.baggage?.cabinBaggage ||
+//   booking?.baggage?.cabin ||
+//   booking?.baggages?.[0]?.cabinBaggage ||
+//   booking?.baggages?.[0]?.cabin ||
+//   booking?.flight?.baggage?.cabinBaggage ||
+//   booking?.flight?.baggage?.cabin ||
+//   booking?.flight?.cabinBaggage ||
+//   booking?.cabinBaggage ||
+//   flight?.baggage?.cabinBaggage ||
+//   flight?.baggage?.cabin ||
+//   flight?.cabinBaggage ||
+//   flight?.cabins?.[0]?.cabinBaggage ||
+//   flight?.cabins?.[0]?.baggageCabin ||
+//   flight?.cabins?.[0]?.baggage?.cabin ||
+//   "N/A";
+
+// const checkinBaggage =
+//   booking?.baggage?.checkinBaggage ||
+//   booking?.baggage?.checkin ||
+//   booking?.baggage?.weight ||
+//   booking?.baggages?.[0]?.checkinBaggage ||
+//   booking?.baggages?.[0]?.checkin ||
+//   booking?.baggages?.[0]?.weight ||
+//   booking?.flight?.baggage?.checkinBaggage ||
+//   booking?.flight?.baggage?.checkin ||
+//   booking?.flight?.checkinBaggage ||
+//   booking?.checkinBaggage ||
+//   flight?.baggage?.checkinBaggage ||
+//   flight?.baggage?.checkin ||
+//   flight?.checkinBaggage ||
+//   flight?.cabins?.[0]?.checkinBaggage ||
+//   flight?.cabins?.[0]?.baggage ||
+//   "N/A";
+
   console.log("TICKET BAGGAGE:", {
     bookingBaggage: booking?.baggage,
     flightBaggage: booking?.flight?.baggage,
