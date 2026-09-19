@@ -2084,7 +2084,7 @@ import Footer from "../../Components/Footer/Footer";
 // QR IMAGES
 // =====================================================
 
-import ICICIQR from "../../assets/ANANT.jpeg";
+import ICICIQR from "../../assets/ICICI.jpeg";
 import BankOfBarodaQR from "../../assets/Bankof.jpeg";
 
 // =====================================================
