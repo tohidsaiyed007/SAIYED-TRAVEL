@@ -1,3 +1,4 @@
+
 // import "./Success.css";
 
 // import {
@@ -835,19 +836,110 @@
 //   };
 
 
+//   // =====================================================
+//   // BAGGAGE - ADMIN ENTERED DATA
+//   // =====================================================
+
+//   // Admin/booking baggage can be stored in different places.
+//   // Check the confirmed booking first, then its flight snapshot.
+//   // const cabinBaggage =
+//   //   booking?.baggage?.cabinBaggage ||
+//   //   booking?.baggage?.cabin ||
+//   //   booking?.flight?.baggage?.cabinBaggage ||
+//   //   booking?.flight?.baggage?.cabin ||
+//   //   booking?.flight?.cabinBaggage ||
+//   //   booking?.cabinBaggage ||
+//   //   flight?.baggage?.cabinBaggage ||
+//   //   flight?.baggage?.cabin ||
+//   //   flight?.cabinBaggage ||
+//   //   flight?.cabins?.[0]?.cabinBaggage ||
+//   //   flight?.cabins?.[0]?.baggageCabin ||
+//   //   "";
+
 //   const cabinBaggage =
-//     flight?.cabinBaggage ||
-//     booking?.cabinBaggage ||
-//     flight?.cabins?.[0]?.cabinBaggage ||
-//     flight?.cabins?.[0]?.baggageCabin ||
-//     "N/A";
+//   booking?.baggage?.cabinBaggage ||
+//   booking?.baggage?.cabin ||
+//   booking?.baggages?.[0]?.cabinBaggage ||
+//   booking?.baggages?.[0]?.cabin ||
+//   booking?.baggages?.[0]?.baggageCabin ||
+//   booking?.flight?.baggage?.cabinBaggage ||
+//   booking?.flight?.baggage?.cabin ||
+//   booking?.flight?.cabinBaggage ||
+//   booking?.flight?.cabins?.[0]?.cabinBaggage ||
+//   booking?.flight?.cabins?.[0]?.baggageCabin ||
+//   "";
+
+//   // const checkinBaggage =
+//   //   booking?.baggage?.checkinBaggage ||
+//   //   booking?.baggage?.checkin ||
+//   //   booking?.baggage?.weight ||
+//   //   booking?.flight?.baggage?.checkinBaggage ||
+//   //   booking?.flight?.baggage?.checkin ||
+//   //   booking?.flight?.checkinBaggage ||
+//   //   booking?.checkinBaggage ||
+//   //   flight?.baggage?.checkinBaggage ||
+//   //   flight?.baggage?.checkin ||
+//   //   flight?.checkinBaggage ||
+//   //   flight?.cabins?.[0]?.checkinBaggage ||
+//   //   flight?.cabins?.[0]?.baggage ||
+//   //   "";
+
+
 
 //   const checkinBaggage =
-//     flight?.checkinBaggage ||
-//     booking?.checkinBaggage ||
-//     flight?.cabins?.[0]?.baggage ||
-//     flight?.cabins?.[0]?.checkinBaggage ||
-//     "N/A";
+//   booking?.baggage?.checkinBaggage ||
+//   booking?.baggage?.checkin ||
+//   booking?.baggage?.weight ||
+//   booking?.baggages?.[0]?.checkinBaggage ||
+//   booking?.baggages?.[0]?.checkin ||
+//   booking?.flight?.baggage?.checkinBaggage ||
+//   booking?.flight?.baggage?.checkin ||
+//   booking?.flight?.checkinBaggage ||
+//   booking?.flight?.cabins?.[0]?.checkinBaggage ||
+//   booking?.flight?.cabins?.[0]?.baggage ||
+//   "";
+
+// //   const cabinBaggage =
+// //   booking?.baggage?.cabinBaggage ||
+// //   booking?.baggage?.cabin ||
+// //   booking?.baggages?.[0]?.cabinBaggage ||
+// //   booking?.baggages?.[0]?.cabin ||
+// //   booking?.flight?.baggage?.cabinBaggage ||
+// //   booking?.flight?.baggage?.cabin ||
+// //   booking?.flight?.cabinBaggage ||
+// //   booking?.cabinBaggage ||
+// //   flight?.baggage?.cabinBaggage ||
+// //   flight?.baggage?.cabin ||
+// //   flight?.cabinBaggage ||
+// //   flight?.cabins?.[0]?.cabinBaggage ||
+// //   flight?.cabins?.[0]?.baggageCabin ||
+// //   flight?.cabins?.[0]?.baggage?.cabin ||
+// //   "N/A";
+
+// // const checkinBaggage =
+// //   booking?.baggage?.checkinBaggage ||
+// //   booking?.baggage?.checkin ||
+// //   booking?.baggage?.weight ||
+// //   booking?.baggages?.[0]?.checkinBaggage ||
+// //   booking?.baggages?.[0]?.checkin ||
+// //   booking?.baggages?.[0]?.weight ||
+// //   booking?.flight?.baggage?.checkinBaggage ||
+// //   booking?.flight?.baggage?.checkin ||
+// //   booking?.flight?.checkinBaggage ||
+// //   booking?.checkinBaggage ||
+// //   flight?.baggage?.checkinBaggage ||
+// //   flight?.baggage?.checkin ||
+// //   flight?.checkinBaggage ||
+// //   flight?.cabins?.[0]?.checkinBaggage ||
+// //   flight?.cabins?.[0]?.baggage ||
+// //   "N/A";
+
+//   console.log("TICKET BAGGAGE:", {
+//     bookingBaggage: booking?.baggage,
+//     flightBaggage: booking?.flight?.baggage,
+//     cabinBaggage,
+//     checkinBaggage,
+//   });
 
 //   const getPassengerBaggage = () => (
 //     <>
@@ -2718,18 +2810,51 @@ console.log(
   //   flight?.cabins?.[0]?.baggageCabin ||
   //   "";
 
+  const getBaggageValue = (value) => {
+    if (value === null || value === undefined || value === "") {
+      return "";
+    }
+
+    if (typeof value === "string" || typeof value === "number") {
+      return String(value);
+    }
+
+    if (typeof value === "object") {
+      return (
+        value?.cabinBaggage ||
+        value?.cabin ||
+        value?.baggageCabin ||
+        value?.checkinBaggage ||
+        value?.checkin ||
+        value?.weight ||
+        ""
+      );
+    }
+
+    return "";
+  };
+
   const cabinBaggage =
-  booking?.baggage?.cabinBaggage ||
-  booking?.baggage?.cabin ||
-  booking?.baggages?.[0]?.cabinBaggage ||
-  booking?.baggages?.[0]?.cabin ||
-  booking?.baggages?.[0]?.baggageCabin ||
-  booking?.flight?.baggage?.cabinBaggage ||
-  booking?.flight?.baggage?.cabin ||
-  booking?.flight?.cabinBaggage ||
-  booking?.flight?.cabins?.[0]?.cabinBaggage ||
-  booking?.flight?.cabins?.[0]?.baggageCabin ||
-  "";
+    getBaggageValue(booking?.baggage?.cabinBaggage) ||
+    getBaggageValue(booking?.baggage?.cabin) ||
+    getBaggageValue(booking?.baggages?.[0]?.cabinBaggage) ||
+    getBaggageValue(booking?.baggages?.[0]?.cabin) ||
+    getBaggageValue(booking?.baggages?.[0]?.baggageCabin) ||
+    getBaggageValue(booking?.baggages?.[0]?.weight?.cabinBaggage) ||
+    getBaggageValue(booking?.baggages?.[0]?.weight?.cabin) ||
+    getBaggageValue(booking?.flight?.baggage?.cabinBaggage) ||
+    getBaggageValue(booking?.flight?.baggage?.cabin) ||
+    getBaggageValue(booking?.flight?.cabinBaggage) ||
+    getBaggageValue(booking?.cabinBaggage) ||
+    getBaggageValue(booking?.baggageAllowance?.cabinBaggage) ||
+    getBaggageValue(booking?.baggageAllowance?.cabin) ||
+    getBaggageValue(booking?.flight?.baggageAllowance?.cabinBaggage) ||
+    getBaggageValue(booking?.flight?.baggageAllowance?.cabin) ||
+    getBaggageValue(booking?.flight?.cabins?.[0]?.cabinBaggage) ||
+    getBaggageValue(booking?.flight?.cabins?.[0]?.baggageCabin) ||
+    getBaggageValue(booking?.flight?.cabins?.[0]?.baggage?.cabinBaggage) ||
+    getBaggageValue(booking?.flight?.cabins?.[0]?.baggage?.cabin) ||
+    "";
 
   // const checkinBaggage =
   //   booking?.baggage?.checkinBaggage ||
@@ -2749,17 +2874,19 @@ console.log(
 
 
   const checkinBaggage =
-  booking?.baggage?.checkinBaggage ||
-  booking?.baggage?.checkin ||
-  booking?.baggage?.weight ||
-  booking?.baggages?.[0]?.checkinBaggage ||
-  booking?.baggages?.[0]?.checkin ||
-  booking?.flight?.baggage?.checkinBaggage ||
-  booking?.flight?.baggage?.checkin ||
-  booking?.flight?.checkinBaggage ||
-  booking?.flight?.cabins?.[0]?.checkinBaggage ||
-  booking?.flight?.cabins?.[0]?.baggage ||
-  "";
+    getBaggageValue(booking?.baggage?.checkinBaggage) ||
+    getBaggageValue(booking?.baggage?.checkin) ||
+    getBaggageValue(booking?.baggage?.weight) ||
+    getBaggageValue(booking?.baggages?.[0]?.checkinBaggage) ||
+    getBaggageValue(booking?.baggages?.[0]?.checkin) ||
+    getBaggageValue(booking?.baggages?.[0]?.weight) ||
+    getBaggageValue(booking?.flight?.baggage?.checkinBaggage) ||
+    getBaggageValue(booking?.flight?.baggage?.checkin) ||
+    getBaggageValue(booking?.flight?.checkinBaggage) ||
+    getBaggageValue(booking?.checkinBaggage) ||
+    getBaggageValue(booking?.flight?.cabins?.[0]?.checkinBaggage) ||
+    getBaggageValue(booking?.flight?.cabins?.[0]?.baggage) ||
+    "";
 
 //   const cabinBaggage =
 //   booking?.baggage?.cabinBaggage ||
