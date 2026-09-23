@@ -1,14 +1,19 @@
+/* =========================================================
+   PAYMENT REQUESTS PAGE
+========================================================= */
+
 .payment-requests-page {
   width: 100%;
   min-height: 100%;
   padding: 25px;
   box-sizing: border-box;
   background: #f6f8fc;
+  overflow-x: hidden;
 }
 
-/* ==========================================
+/* =========================================================
    HEADER
-========================================== */
+========================================================= */
 
 .payment-page-header {
   display: flex;
@@ -31,19 +36,36 @@
   font-size: 14px;
 }
 
-.refresh-payment-btn {
-  border: none;
-  background: #1f4ed8;
-  color: #fff;
-  padding: 11px 17px;
-  border-radius: 9px;
+/* HEADER BUTTONS */
+
+.payment-header-actions {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.refresh-payment-btn,
+.delete-selected-payment-btn {
+  border: none;
+  min-height: 42px;
+  padding: 10px 16px;
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   transition: 0.2s ease;
+  white-space: nowrap;
+}
+
+.refresh-payment-btn {
+  background: #1f4ed8;
+  color: #fff;
 }
 
 .refresh-payment-btn:hover {
@@ -51,19 +73,35 @@
   opacity: 0.92;
 }
 
+.delete-selected-payment-btn {
+  background: #ffe8e8;
+  color: #c62828;
+}
 
-/* ==========================================
+.delete-selected-payment-btn:hover {
+  background: #ffd8d8;
+}
+
+.refresh-payment-btn:disabled,
+.delete-selected-payment-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =========================================================
    SUMMARY CARDS
-========================================== */
+========================================================= */
 
 .payment-summary {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
   margin-bottom: 25px;
 }
 
 .payment-summary-card {
+  min-width: 0;
   background: #fff;
   border: 1px solid #e7eaf0;
   border-radius: 14px;
@@ -72,9 +110,11 @@
   align-items: center;
   gap: 14px;
   box-shadow: 0 4px 16px rgba(25, 35, 55, 0.04);
+  box-sizing: border-box;
 }
 
 .summary-icon {
+  flex: 0 0 auto;
   width: 46px;
   height: 46px;
   border-radius: 12px;
@@ -117,10 +157,9 @@
   color: #315bdc;
 }
 
-
-/* ==========================================
+/* =========================================================
    ERROR
-========================================== */
+========================================================= */
 
 .payment-error {
   background: #fff0f0;
@@ -130,26 +169,42 @@
   padding: 13px 15px;
   margin-bottom: 20px;
   font-size: 14px;
+  word-break: break-word;
 }
 
-
-/* ==========================================
+/* =========================================================
    TABLE
-========================================== */
+========================================================= */
 
 .payment-table-wrapper {
   width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
   background: #fff;
   border: 1px solid #e6e9ef;
   border-radius: 14px;
   box-shadow: 0 4px 18px rgba(25, 35, 55, 0.04);
 }
 
+.payment-table-wrapper::-webkit-scrollbar {
+  height: 7px;
+}
+
+.payment-table-wrapper::-webkit-scrollbar-track {
+  background: #f1f3f7;
+}
+
+.payment-table-wrapper::-webkit-scrollbar-thumb {
+  background: #c7ccd6;
+  border-radius: 10px;
+}
+
 .payment-table {
   width: 100%;
-  min-width: 1050px;
+  min-width: 1080px;
   border-collapse: collapse;
+  table-layout: auto;
 }
 
 .payment-table th {
@@ -179,16 +234,47 @@
   background: #fafbfe;
 }
 
+/* SELECT CHECKBOX */
 
-/* ==========================================
+.select-column {
+  width: 42px !important;
+  min-width: 42px !important;
+  max-width: 42px !important;
+  text-align: center !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+.select-column input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #315bdc;
+  vertical-align: middle;
+}
+
+.select-column input:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+/* =========================================================
    CUSTOMER
-========================================== */
+========================================================= */
+
+.customer-cell {
+  min-width: 150px;
+  max-width: 210px;
+}
 
 .customer-cell strong {
   display: block;
   color: #20293a;
   font-size: 14px;
   margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .customer-cell small {
@@ -198,12 +284,16 @@
   max-width: 190px;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-
-/* ==========================================
+/* =========================================================
    FLIGHT
-========================================== */
+========================================================= */
+
+.flight-cell {
+  min-width: 120px;
+}
 
 .flight-cell strong {
   display: block;
@@ -217,10 +307,9 @@
   white-space: nowrap;
 }
 
-
-/* ==========================================
+/* =========================================================
    AMOUNT
-========================================== */
+========================================================= */
 
 .amount {
   color: #1a8a4b;
@@ -228,10 +317,9 @@
   white-space: nowrap;
 }
 
-
-/* ==========================================
+/* =========================================================
    BANK
-========================================== */
+========================================================= */
 
 .bank-name {
   display: inline-block;
@@ -243,10 +331,9 @@
   white-space: nowrap;
 }
 
-
-/* ==========================================
+/* =========================================================
    PAYMENT ID
-========================================== */
+========================================================= */
 
 .payment-id {
   display: inline-block;
@@ -258,10 +345,9 @@
   font-weight: 600;
 }
 
-
-/* ==========================================
+/* =========================================================
    DATE
-========================================== */
+========================================================= */
 
 .payment-date {
   color: #6f7787;
@@ -269,10 +355,9 @@
   white-space: nowrap;
 }
 
-
-/* ==========================================
+/* =========================================================
    STATUS
-========================================== */
+========================================================= */
 
 .payment-status {
   display: inline-flex;
@@ -300,34 +385,61 @@
   color: #c63838;
 }
 
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
 
-/* ==========================================
-   VIEW BUTTON
-========================================== */
+.payment-action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
 
-.view-payment-btn {
+.view-payment-btn,
+.delete-payment-btn {
   border: none;
-  background: #edf2ff;
-  color: #315bdc;
-  padding: 8px 12px;
+  padding: 8px 11px;
   border-radius: 7px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   cursor: pointer;
   font-size: 12px;
   font-weight: 600;
   transition: 0.2s ease;
+  white-space: nowrap;
+}
+
+.view-payment-btn {
+  background: #edf2ff;
+  color: #315bdc;
 }
 
 .view-payment-btn:hover {
   background: #dfe7ff;
 }
 
+.delete-payment-btn {
+  background: #ffe9e9;
+  color: #c43838;
+}
 
-/* ==========================================
+.delete-payment-btn:hover {
+  background: #ffdcdc;
+}
+
+.view-payment-btn:disabled,
+.delete-payment-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================================================
    EMPTY
-========================================== */
+========================================================= */
 
 .payment-empty {
   min-height: 300px;
@@ -340,6 +452,7 @@
   justify-content: center;
   text-align: center;
   padding: 30px;
+  box-sizing: border-box;
 }
 
 .payment-empty > svg {
@@ -360,10 +473,9 @@
   font-size: 13px;
 }
 
-
-/* ==========================================
+/* =========================================================
    LOADING
-========================================== */
+========================================================= */
 
 .payment-loading {
   min-height: 400px;
@@ -393,10 +505,9 @@
   }
 }
 
-
-/* ==========================================
+/* =========================================================
    MODAL OVERLAY
-========================================== */
+========================================================= */
 
 .payment-modal-overlay {
   position: fixed;
@@ -407,26 +518,27 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
+  box-sizing: border-box;
 }
 
-
-/* ==========================================
+/* =========================================================
    MODAL
-========================================== */
+========================================================= */
 
 .payment-modal {
   width: min(900px, 100%);
   max-height: 92vh;
   overflow-y: auto;
+  overflow-x: hidden;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.22);
+  box-sizing: border-box;
 }
 
-
-/* ==========================================
+/* =========================================================
    MODAL HEADER
-========================================== */
+========================================================= */
 
 .payment-modal-header {
   position: sticky;
@@ -454,6 +566,7 @@
 }
 
 .modal-close-btn {
+  flex: 0 0 auto;
   width: 34px;
   height: 34px;
   border: none;
@@ -470,23 +583,25 @@
   background: #e8ebf1;
 }
 
-
-/* ==========================================
+/* =========================================================
    DETAIL GRID
-========================================== */
+========================================================= */
 
 .payment-detail-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 13px;
   padding: 20px 22px;
+  box-sizing: border-box;
 }
 
 .detail-box {
+  min-width: 0;
   background: #f8f9fc;
   border: 1px solid #eaedf2;
   border-radius: 9px;
   padding: 12px;
+  box-sizing: border-box;
 }
 
 .detail-box span {
@@ -501,6 +616,7 @@
   color: #293347;
   font-size: 13px;
   word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .detail-box .detail-amount {
@@ -508,13 +624,13 @@
   font-size: 17px;
 }
 
-
-/* ==========================================
+/* =========================================================
    SECTIONS
-========================================== */
+========================================================= */
 
 .payment-section {
   padding: 0 22px 22px;
+  box-sizing: border-box;
 }
 
 .payment-section h3 {
@@ -523,22 +639,23 @@
   margin: 0 0 12px;
 }
 
-
-/* ==========================================
+/* =========================================================
    FLIGHT DETAILS
-========================================== */
+========================================================= */
 
 .flight-detail-box {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
 .flight-detail-box > div {
+  min-width: 0;
   background: #f8f9fc;
   border: 1px solid #eaedf2;
   border-radius: 9px;
   padding: 12px;
+  box-sizing: border-box;
 }
 
 .flight-detail-box span {
@@ -552,12 +669,13 @@
   display: block;
   color: #293347;
   font-size: 13px;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
-
-/* ==========================================
+/* =========================================================
    SCREENSHOT
-========================================== */
+========================================================= */
 
 .screenshot-wrapper {
   width: 100%;
@@ -570,24 +688,27 @@
   justify-content: center;
   padding: 12px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .payment-screenshot {
   display: block;
+  width: auto;
   max-width: 100%;
   max-height: 450px;
   object-fit: contain;
   border-radius: 7px;
 }
 
-
-/* ==========================================
+/* =========================================================
    ADMIN NOTE
-========================================== */
+========================================================= */
 
 .admin-note-input {
+  display: block;
   width: 100%;
   min-height: 85px;
+  max-width: 100%;
   resize: vertical;
   box-sizing: border-box;
   border: 1px solid #dfe3ea;
@@ -609,20 +730,21 @@
   cursor: not-allowed;
 }
 
-
-/* ==========================================
+/* =========================================================
    MODAL ACTIONS
-========================================== */
+========================================================= */
 
 .payment-modal-actions {
   position: sticky;
   bottom: 0;
+  z-index: 2;
   background: #fff;
   border-top: 1px solid #e8ebf0;
   padding: 15px 22px;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+  box-sizing: border-box;
 }
 
 .reject-payment-btn,
@@ -630,6 +752,7 @@
   border: none;
   border-radius: 8px;
   padding: 11px 15px;
+  min-height: 42px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -664,68 +787,138 @@
   cursor: not-allowed;
 }
 
-
-/* ==========================================
-   RESPONSIVE
-========================================== */
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media (max-width: 1100px) {
   .payment-summary {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 700px) {
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 850px) {
   .payment-requests-page {
-    padding: 16px;
+    padding: 20px;
   }
 
   .payment-page-header {
     align-items: flex-start;
+  }
+
+  .payment-page-header h1 {
+    font-size: 25px;
+  }
+
+  .payment-header-actions {
+    flex-shrink: 0;
+  }
+
+  .payment-table {
+    min-width: 1040px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+  .payment-requests-page {
+    padding: 14px;
+  }
+
+  /* HEADER */
+
+  .payment-page-header {
     flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-bottom: 18px;
   }
 
   .payment-page-header h1 {
     font-size: 23px;
   }
 
-  .payment-summary {
-    grid-template-columns: 1fr;
+  .payment-page-header p {
+    font-size: 13px;
+    line-height: 1.5;
   }
 
-  .payment-detail-grid {
-    grid-template-columns: 1fr;
-    padding: 16px;
-  }
-
-  .payment-section {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .flight-detail-box {
-    grid-template-columns: 1fr;
-  }
-
-  .payment-modal-actions {
-    flex-direction: column-reverse;
-    padding: 14px 16px;
-  }
-
-  .reject-payment-btn,
-  .accept-payment-btn {
+  .payment-header-actions {
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
-}
 
-@media (max-width: 450px) {
+  .refresh-payment-btn,
+  .delete-selected-payment-btn {
+    width: 100%;
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+
+  /* SUMMARY */
+
+  .payment-summary {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .payment-summary-card {
+    padding: 13px;
+    gap: 10px;
+    border-radius: 11px;
+  }
+
+  .summary-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    font-size: 15px;
+  }
+
+  .payment-summary-card span {
+    font-size: 11px;
+  }
+
+  .payment-summary-card strong {
+    font-size: 20px;
+  }
+
+  /* TABLE */
+
+  .payment-table-wrapper {
+    border-radius: 11px;
+  }
+
+  .payment-table {
+    min-width: 1040px;
+  }
+
+  .payment-table th,
+  .payment-table td {
+    padding: 12px;
+  }
+
+  /* MODAL */
+
   .payment-modal-overlay {
-    padding: 8px;
+    padding: 10px;
+    align-items: center;
   }
 
   .payment-modal {
-    max-height: 96vh;
-    border-radius: 12px;
+    width: 100%;
+    max-height: 94vh;
+    border-radius: 13px;
   }
 
   .payment-modal-header {
@@ -734,5 +927,206 @@
 
   .payment-modal-header h2 {
     font-size: 18px;
+  }
+
+  .payment-modal-header p {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .payment-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    padding: 15px;
+  }
+
+  .payment-section {
+    padding: 0 15px 18px;
+  }
+
+  .flight-detail-box {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .payment-modal-actions {
+    flex-direction: column-reverse;
+    padding: 12px 15px;
+    gap: 8px;
+  }
+
+  .reject-payment-btn,
+  .accept-payment-btn {
+    width: 100%;
+  }
+
+  .screenshot-wrapper {
+    min-height: 170px;
+    padding: 8px;
+  }
+
+  .payment-screenshot {
+    max-height: 380px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .payment-requests-page {
+    padding: 10px;
+  }
+
+  .payment-page-header h1 {
+    font-size: 21px;
+  }
+
+  .payment-page-header p {
+    font-size: 12px;
+  }
+
+  .payment-header-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .refresh-payment-btn,
+  .delete-selected-payment-btn {
+    min-height: 40px;
+  }
+
+  .payment-summary {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .payment-summary-card {
+    padding: 11px 9px;
+    gap: 8px;
+  }
+
+  .summary-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 13px;
+  }
+
+  .payment-summary-card span {
+    font-size: 10px;
+    margin-bottom: 3px;
+  }
+
+  .payment-summary-card strong {
+    font-size: 18px;
+  }
+
+  .payment-error {
+    font-size: 12px;
+    padding: 11px;
+  }
+
+  .payment-modal-overlay {
+    padding: 7px;
+  }
+
+  .payment-modal {
+    max-height: 96vh;
+    border-radius: 11px;
+  }
+
+  .payment-modal-header {
+    padding: 14px;
+  }
+
+  .payment-modal-header h2 {
+    font-size: 17px;
+  }
+
+  .payment-detail-grid {
+    padding: 13px;
+  }
+
+  .payment-section {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
+  .detail-box {
+    padding: 10px;
+  }
+
+  .detail-box strong {
+    font-size: 12px;
+  }
+
+  .payment-section h3 {
+    font-size: 14px;
+  }
+
+  .flight-detail-box > div {
+    padding: 10px;
+  }
+
+  .payment-modal-actions {
+    padding: 11px 13px;
+  }
+
+  .payment-empty {
+    min-height: 250px;
+    padding: 20px;
+  }
+
+  .payment-empty h2 {
+    font-size: 18px;
+  }
+
+  .payment-empty p {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 360px) {
+  .payment-requests-page {
+    padding: 8px;
+  }
+
+  .payment-summary {
+    gap: 7px;
+  }
+
+  .payment-summary-card {
+    padding: 9px 7px;
+  }
+
+  .summary-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .payment-summary-card span {
+    font-size: 9px;
+  }
+
+  .payment-summary-card strong {
+    font-size: 16px;
+  }
+
+  .payment-modal-header {
+    padding: 12px;
+  }
+
+  .payment-detail-grid {
+    padding: 11px;
+  }
+
+  .payment-section {
+    padding-left: 11px;
+    padding-right: 11px;
   }
 }

@@ -1,287 +1,237 @@
-/* ==========================================
-              TOPBAR
-========================================== */
+/* =========================================================
+   TOPBAR
+========================================================= */
 
 .topbar {
   width: 100%;
-  min-height: 72px;
-  padding: 0 24px;
+  height: 68px;
+
+  position: sticky;
+  top: 0;
+  z-index: 1500;
+
   box-sizing: border-box;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  background: #ffffff;
-  border-bottom: 1px solid #e9edf3;
+  padding: 0 22px;
 
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  gap: 20px;
 }
 
 
-/* ==========================================
-              LEFT SIDE
-========================================== */
+/* =========================================================
+   LEFT
+========================================================= */
 
 .topbar-left {
   display: flex;
   align-items: center;
-  gap: 16px;
+
+  gap: 14px;
 
   min-width: 0;
 }
 
 
-/* ==========================================
-              MENU BUTTON
-========================================== */
+/* =========================================================
+   MENU BUTTON
+========================================================= */
 
 .menu-btn {
   width: 40px;
   height: 40px;
 
-  display: none;
+  flex-shrink: 0;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+
+  background: #ffffff;
+  color: #374151;
+
+  display: flex;
   align-items: center;
   justify-content: center;
 
-  border: none;
-  border-radius: 9px;
-
-  background: #f5f7fa;
-  color: #344054;
+  cursor: pointer;
 
   font-size: 17px;
-
-  cursor: pointer;
 
   transition: 0.2s ease;
 }
 
 .menu-btn:hover {
-  background: #eef2f7;
+  background: #f3f4f6;
+  color: #2563eb;
 }
 
 
-/* ==========================================
-              SEARCH
-========================================== */
+/* =========================================================
+   SEARCH
+========================================================= */
 
-.search-box {
-  width: 380px;
-  height: 42px;
+.topbar-search {
+  width: 340px;
+  height: 40px;
+
+  position: relative;
 
   display: flex;
   align-items: center;
 
-  position: relative;
+  background: #f8fafc;
 
-  background: #f7f9fc;
-
-  border: 1px solid #e5e9ef;
-
-  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
 
   transition: 0.2s ease;
 }
 
-.search-box:focus-within {
+.topbar-search:focus-within {
   background: #ffffff;
+
   border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.08);
 }
 
 
-/* Search Icon */
+/* SEARCH ICON */
 
-.search-icon {
-  margin-left: 14px;
+.topbar-search-icon {
+  position: absolute;
+  left: 13px;
 
-  color: #98a2b3;
+  color: #9ca3af;
 
-  font-size: 15px;
+  font-size: 14px;
 
-  flex-shrink: 0;
+  pointer-events: none;
 }
 
 
-/* Search Input */
+/* INPUT */
 
-.search-box input {
+.topbar-search input {
   width: 100%;
   height: 100%;
 
-  padding: 0 42px 0 11px;
+  box-sizing: border-box;
 
   border: none;
   outline: none;
 
   background: transparent;
 
-  color: #344054;
+  padding: 0 38px 0 38px;
+
+  color: #111827;
 
   font-size: 13px;
+  font-weight: 500;
 }
 
-.search-box input::placeholder {
-  color: #98a2b3;
-}
-
-
-/* Remove browser search X */
-
-.search-box input::-webkit-search-cancel-button {
-  display: none;
+.topbar-search input::placeholder {
+  color: #9ca3af;
 }
 
 
-/* Clear Button */
+/* CLEAR */
 
-.search-clear {
+.topbar-search-clear {
   position: absolute;
-  right: 10px;
 
-  width: 25px;
-  height: 25px;
+  right: 8px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 26px;
+  height: 26px;
 
   border: none;
   border-radius: 50%;
 
-  background: #e8edf3;
-  color: #667085;
+  background: transparent;
 
-  font-size: 17px;
-  line-height: 1;
+  color: #9ca3af;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   cursor: pointer;
+
+  font-size: 11px;
 }
 
-.search-clear:hover {
-  background: #dfe5ec;
+.topbar-search-clear:hover {
+  background: #e5e7eb;
+  color: #374151;
 }
 
 
-/* ==========================================
-              RIGHT SIDE
-========================================== */
+/* =========================================================
+   RIGHT
+========================================================= */
 
 .topbar-right {
   display: flex;
   align-items: center;
-  gap: 8px;
+
+  flex-shrink: 0;
 }
 
 
-/* ==========================================
-              ICON BUTTON
-========================================== */
+/* =========================================================
+   PROFILE WRAPPER
+========================================================= */
 
-.icon-btn {
-  width: 40px;
-  height: 40px;
-
+.profile-wrapper {
   position: relative;
+}
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+/* =========================================================
+   PROFILE BUTTON
+========================================================= */
+
+.profile-box {
+  height: 42px;
 
   border: none;
-  border-radius: 9px;
 
   background: transparent;
 
-  color: #667085;
+  padding: 4px 8px;
 
-  font-size: 16px;
-
-  cursor: pointer;
-
-  transition: 0.2s ease;
-}
-
-.icon-btn:hover {
-  background: #f4f6f9;
-  color: #2563eb;
-}
-
-
-/* ==========================================
-              BADGE
-========================================== */
-
-.badge {
-  position: absolute;
-
-  top: 3px;
-  right: 2px;
-
-  min-width: 16px;
-  height: 16px;
-
-  padding: 0 4px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  box-sizing: border-box;
-
-  border-radius: 20px;
-
-  background: #ef4444;
-  color: #ffffff;
-
-  font-size: 9px;
-  font-weight: 700;
-
-  border: 2px solid #ffffff;
-}
-
-
-/* ==========================================
-              PROFILE
-========================================== */
-
-.profile-box {
-  min-width: 180px;
-
-  height: 52px;
-
-  padding: 0 10px;
+  border-radius: 9px;
 
   display: flex;
   align-items: center;
 
   gap: 9px;
 
-  position: relative;
-
-  border-radius: 10px;
-
   cursor: pointer;
-
-  user-select: none;
 
   transition: 0.2s ease;
 }
 
 .profile-box:hover,
 .profile-box.active {
-  background: #f7f9fc;
+  background: #f3f4f6;
 }
 
 
-/* Profile Icon */
+/* PROFILE ICON */
 
 .profile-icon {
-  width: 35px;
-  height: 35px;
+  width: 31px;
+  height: 31px;
 
   color: #2563eb;
 
@@ -289,79 +239,75 @@
 }
 
 
-/* Profile Text */
+/* PROFILE TEXT */
 
 .profile-info {
-  min-width: 0;
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  line-height: 1.15;
 }
 
-.profile-info h4 {
-  margin: 0 0 2px;
-
-  color: #1d2939;
-
+.profile-info strong {
   font-size: 13px;
+
+  color: #111827;
+
   font-weight: 700;
-
-  white-space: nowrap;
 }
 
-.profile-info p {
-  margin: 0;
+.profile-info span {
+  margin-top: 3px;
 
-  color: #98a2b3;
+  font-size: 10px;
 
-  font-size: 11px;
-
-  white-space: nowrap;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: #6b7280;
 }
 
 
-/* Arrow */
+/* ARROW */
 
 .profile-arrow {
-  color: #98a2b3;
+  color: #6b7280;
 
-  font-size: 11px;
+  font-size: 10px;
 
-  transition: 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
-.profile-box.active .profile-arrow {
+.profile-arrow.rotate {
   transform: rotate(180deg);
 }
 
 
-/* ==========================================
-              DROPDOWN
-========================================== */
+/* =========================================================
+   PROFILE DROPDOWN
+========================================================= */
 
 .profile-dropdown {
   position: absolute;
 
-  top: calc(100% + 8px);
+  top: calc(100% + 9px);
   right: 0;
 
-  width: 240px;
+  width: 220px;
 
   padding: 8px;
 
   background: #ffffff;
 
-  border: 1px solid #e7ebf0;
+  border: 1px solid #e5e7eb;
 
   border-radius: 12px;
 
   box-shadow:
-    0 15px 40px rgba(16, 24, 40, 0.12);
+    0 12px 30px rgba(0, 0, 0, 0.12);
 
-  animation: dropdownOpen 0.18s ease;
+  animation: dropdownOpen 0.15s ease;
 
-  z-index: 2000;
+  overflow: hidden;
 }
 
 @keyframes dropdownOpen {
@@ -377,20 +323,26 @@
 }
 
 
-/* Dropdown User */
+/* =========================================================
+   DROPDOWN USER
+========================================================= */
 
 .dropdown-user {
-  padding: 10px;
-
   display: flex;
   align-items: center;
 
   gap: 10px;
+
+  padding: 10px;
+
+  background: #f8fafc;
+
+  border-radius: 8px;
 }
 
 .dropdown-user > svg {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
 
   color: #2563eb;
 }
@@ -401,57 +353,62 @@
 }
 
 .dropdown-user strong {
-  color: #1d2939;
   font-size: 13px;
+
+  color: #111827;
 }
 
 .dropdown-user span {
   margin-top: 2px;
 
-  color: #98a2b3;
+  font-size: 10px;
 
-  font-size: 11px;
+  color: #6b7280;
 }
 
 
-/* Divider */
+/* =========================================================
+   DIVIDER
+========================================================= */
 
 .dropdown-divider {
   height: 1px;
 
   margin: 7px 0;
 
-  background: #edf0f4;
+  background: #e5e7eb;
 }
 
 
-/* Dropdown Links */
+/* =========================================================
+   DROPDOWN LINKS
+========================================================= */
 
 .profile-dropdown a,
 .dropdown-logout {
   width: 100%;
+  min-height: 38px;
 
-  min-height: 40px;
+  box-sizing: border-box;
 
   padding: 0 10px;
 
-  box-sizing: border-box;
+  border: none;
+  border-radius: 7px;
+
+  background: transparent;
 
   display: flex;
   align-items: center;
 
-  gap: 11px;
-
-  border: none;
-  border-radius: 8px;
-
-  background: transparent;
-
-  color: #475467;
+  gap: 10px;
 
   text-decoration: none;
 
-  font-size: 13px;
+  color: #4b5563;
+
+  font-size: 12px;
+  font-weight: 600;
 
   cursor: pointer;
 
@@ -460,186 +417,153 @@
 
 .profile-dropdown a svg,
 .dropdown-logout svg {
-  width: 15px;
+  width: 14px;
+  height: 14px;
 
-  color: #667085;
+  flex-shrink: 0;
 }
 
 .profile-dropdown a:hover {
-  background: #f5f7fa;
+  background: #f3f6ff;
+
   color: #2563eb;
 }
 
-.profile-dropdown a:hover svg {
-  color: #2563eb;
-}
 
-
-/* Logout */
+/* =========================================================
+   LOGOUT
+========================================================= */
 
 .dropdown-logout {
   color: #dc2626;
 }
 
-.dropdown-logout svg {
-  color: #dc2626;
-}
-
 .dropdown-logout:hover {
-  background: #fff1f1;
+  background: #fff1f2;
+
+  color: #b91c1c;
 }
 
 
-/* ==========================================
-              TABLET
-========================================== */
+/* =========================================================
+   TABLET
+========================================================= */
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
 
   .topbar {
-    padding: 0 18px;
+    height: 64px;
+
+    padding: 0 16px;
+
+    gap: 12px;
   }
 
-  .search-box {
-    width: 300px;
+  .topbar-search {
+    width: 280px;
   }
 
-  .profile-box {
-    min-width: auto;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .topbar {
+    height: 60px;
+
+    padding: 0 12px;
+  }
+
+  .topbar-left {
+    gap: 9px;
+
+    flex: 1;
+  }
+
+  .menu-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .topbar-search {
+    width: min(100%, 300px);
+
+    height: 38px;
+  }
+
+  .topbar-right {
+    margin-left: auto;
   }
 
   .profile-info {
     display: none;
   }
 
-}
-
-
-/* ==========================================
-              MOBILE
-========================================== */
-
-@media (max-width: 700px) {
-
-  .topbar {
-    min-height: 64px;
-
-    padding: 0 12px;
-
-    gap: 8px;
-  }
-
-  .topbar-left {
-    flex: 1;
-
-    gap: 8px;
-  }
-
-  .menu-btn {
-    display: flex;
-  }
-
-  .search-box {
-    width: 100%;
-    max-width: none;
-
-    height: 40px;
-  }
-
-  .topbar-right {
-    gap: 2px;
-  }
-
-  .icon-btn {
-    width: 36px;
-    height: 36px;
-  }
-
   .profile-box {
-    width: 38px;
-    min-width: 38px;
-    height: 40px;
+    padding: 3px;
 
-    padding: 0;
-
-    justify-content: center;
-
-    background: transparent;
+    gap: 4px;
   }
 
   .profile-icon {
-    width: 31px;
-    height: 31px;
-  }
-
-  .profile-arrow {
-    display: none;
-  }
-
-  .profile-dropdown {
-    position: fixed;
-
-    top: 64px;
-    right: 10px;
-
-    width: min(280px, calc(100vw - 20px));
+    width: 30px;
+    height: 30px;
   }
 
 }
 
 
-/* ==========================================
-              SMALL MOBILE
-========================================== */
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
 @media (max-width: 480px) {
 
   .topbar {
-    padding: 0 8px;
+    padding: 0 9px;
+
+    gap: 7px;
   }
 
   .topbar-left {
+    gap: 7px;
+
+    flex: 1;
+
     min-width: 0;
   }
 
-  .search-box {
-    height: 38px;
-  }
-
-  .search-box input {
-    font-size: 12px;
-  }
-
-  .icon-btn:nth-child(1) {
-    display: none;
-  }
-
-  .icon-btn {
-    width: 34px;
-    height: 34px;
-  }
-
-  .badge {
-    top: 1px;
-    right: 0;
-  }
-
-}
-
-
-/* ==========================================
-              VERY SMALL MOBILE
-========================================== */
-
-@media (max-width: 360px) {
-
-  .topbar {
-    padding: 0 6px;
-  }
-
   .menu-btn {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
+
+    min-width: 36px;
+
+    font-size: 15px;
+  }
+
+  .topbar-search {
+    width: 100%;
+    height: 36px;
+
+    min-width: 0;
+  }
+
+  .topbar-search input {
+    font-size: 12px;
+
+    padding-left: 34px;
+    padding-right: 32px;
+  }
+
+  .topbar-search-icon {
+    left: 11px;
+
+    font-size: 12px;
   }
 
   .profile-icon {
@@ -647,13 +571,47 @@
     height: 29px;
   }
 
-  .search-icon {
-    margin-left: 10px;
+  .profile-arrow {
+    display: none;
   }
 
-  .search-box input {
-    padding-left: 8px;
+  .profile-dropdown {
+    right: -4px;
+
+    width: 205px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .topbar {
+    padding: 0 7px;
+  }
+
+  .menu-btn {
+    width: 34px;
+    height: 34px;
+
+    min-width: 34px;
+  }
+
+  .topbar-search {
+    height: 34px;
+  }
+
+  .topbar-search input {
     font-size: 11px;
+  }
+
+  .profile-icon {
+    width: 27px;
+    height: 27px;
   }
 
 }

@@ -1,3 +1,200 @@
+// // // // import "./Sidebar.css";
+
+// // // // import { NavLink } from "react-router-dom";
+
+// // // // import {
+// // // //   FaPlaneDeparture,
+// // // //   FaTachometerAlt,
+// // // //   FaPlane,
+// // // //   FaTicketAlt,
+// // // //   FaUsers,
+// // // //   FaMoneyCheckAlt,
+// // // //   FaWallet,
+// // // //   FaChartBar,
+// // // //   FaUserCircle,
+// // // //   FaCog,
+// // // //   FaSignOutAlt,
+// // // //   FaChevronLeft,
+// // // //   FaChevronRight,
+// // // // } from "react-icons/fa";
+
+// // // // import { useState } from "react";
+
+// // // // function Sidebar() {
+
+// // // //   const [collapsed, setCollapsed] = useState(false);
+
+// // // //   return (
+
+// // // //     <aside
+// // // //       className={`dashboard-sidebar ${
+// // // //         collapsed ? "collapsed" : ""
+// // // //       }`}
+// // // //     >
+
+// // // //       {/* Logo */}
+
+// // // //       <div className="sidebar-logo">
+
+// // // //         <div className="logo-box">
+
+// // // //           <FaPlaneDeparture className="logo-icon" />
+
+// // // //           {!collapsed && (
+
+// // // //             <div>
+
+// // // //               <h2>Saiyed</h2>
+
+// // // //               <span>Travels</span>
+
+// // // //             </div>
+
+// // // //           )}
+
+// // // //         </div>
+
+// // // //         <button
+// // // //           className="collapse-btn"
+// // // //           onClick={() =>
+// // // //             setCollapsed(!collapsed)
+// // // //           }
+// // // //         >
+
+// // // //           {collapsed ? (
+// // // //             <FaChevronRight />
+// // // //           ) : (
+// // // //             <FaChevronLeft />
+// // // //           )}
+
+// // // //         </button>
+
+// // // //       </div>
+
+// // // //       {/* Menu */}
+
+// // // //       <nav className="sidebar-menu">
+
+// // // //         <NavLink to="/dashboard">
+
+// // // //           <FaTachometerAlt />
+
+// // // //           {!collapsed && <span>Dashboard</span>}
+
+// // // //         </NavLink>
+
+// // // //         <NavLink to="/dashboard/flights">
+
+// // // //           <FaPlane />
+
+// // // //           {!collapsed && (
+// // // //             <span>Flight Booking</span>
+// // // //           )}
+
+// // // //         </NavLink>
+
+// // // //         <NavLink to="/dashboard/bookings">
+
+// // // //           <FaTicketAlt />
+
+// // // //           {!collapsed && (
+// // // //             <span>My Bookings</span>
+// // // //           )}
+
+// // // //         </NavLink>
+
+// // // //         <NavLink to="/dashboard/customers">
+
+// // // //           <FaUsers />
+
+// // // //           {!collapsed && (
+// // // //             <span>Customers</span>
+// // // //           )}
+
+// // // //         </NavLink>
+
+// // // //         <NavLink to="/dashboard/payments">
+
+// // // //           <FaMoneyCheckAlt />
+
+// // // //           {!collapsed && (
+// // // //             <span>Payments</span>
+// // // //           )}
+
+// // // //         </NavLink>
+
+// // // //                 <NavLink to="/dashboard/earnings">
+
+// // // //           <FaWallet />
+
+// // // //           {!collapsed && (
+// // // //             <span>Earnings</span>
+// // // //           )}
+
+// // // //         </NavLink>
+
+// // // //         <NavLink to="/dashboard/reports">
+
+// // // //           <FaChartBar />
+
+// // // //           {!collapsed && (
+// // // //             <span>Reports</span>
+// // // //           )}
+
+// // // //         </NavLink>
+
+// // // //         <NavLink to="/dashboard/profile">
+
+// // // //           <FaUserCircle />
+
+// // // //           {!collapsed && (
+// // // //             <span>Profile</span>
+// // // //           )}
+
+// // // //         </NavLink>
+
+// // // //         <NavLink to="/dashboard/settings">
+
+// // // //           <FaCog />
+
+// // // //           {!collapsed && (
+// // // //             <span>Settings</span>
+// // // //           )}
+
+// // // //         </NavLink>
+
+// // // //       </nav>
+
+// // // //       {/* Bottom */}
+
+// // // //       <div className="sidebar-bottom">
+
+// // // //         <NavLink
+// // // //           to="/logout"
+// // // //           className="logout-btn"
+// // // //         >
+
+// // // //           <FaSignOutAlt />
+
+// // // //           {!collapsed && (
+// // // //             <span>Logout</span>
+// // // //           )}
+
+// // // //         </NavLink>
+
+// // // //       </div>
+
+// // // //     </aside>
+
+// // // //   );
+
+// // // // }
+
+// // // // export default Sidebar;
+
+
+
+
 // // // import "./Sidebar.css";
 
 // // // import { NavLink } from "react-router-dom";
@@ -32,7 +229,9 @@
 // // //       }`}
 // // //     >
 
-// // //       {/* Logo */}
+// // //       {/* ==========================================
+// // //                     LOGO
+// // //       ========================================== */}
 
 // // //       <div className="sidebar-logo">
 
@@ -54,6 +253,7 @@
 
 // // //         </div>
 
+
 // // //         <button
 // // //           className="collapse-btn"
 // // //           onClick={() =>
@@ -71,17 +271,28 @@
 
 // // //       </div>
 
-// // //       {/* Menu */}
+
+// // //       {/* ==========================================
+// // //                     MENU
+// // //       ========================================== */}
 
 // // //       <nav className="sidebar-menu">
+
+
+// // //         {/* Dashboard */}
 
 // // //         <NavLink to="/dashboard">
 
 // // //           <FaTachometerAlt />
 
-// // //           {!collapsed && <span>Dashboard</span>}
+// // //           {!collapsed && (
+// // //             <span>Dashboard</span>
+// // //           )}
 
 // // //         </NavLink>
+
+
+// // //         {/* Flight Booking */}
 
 // // //         <NavLink to="/dashboard/flights">
 
@@ -93,6 +304,9 @@
 
 // // //         </NavLink>
 
+
+// // //         {/* Bookings */}
+
 // // //         <NavLink to="/dashboard/bookings">
 
 // // //           <FaTicketAlt />
@@ -102,6 +316,24 @@
 // // //           )}
 
 // // //         </NavLink>
+
+
+// // //         {/* ======================================
+// // //                     USERS
+// // //         ====================================== */}
+
+// // //         <NavLink to="/dashboard/users">
+
+// // //           <FaUsers />
+
+// // //           {!collapsed && (
+// // //             <span>Users</span>
+// // //           )}
+
+// // //         </NavLink>
+
+
+// // //         {/* Customers */}
 
 // // //         <NavLink to="/dashboard/customers">
 
@@ -113,6 +345,9 @@
 
 // // //         </NavLink>
 
+
+// // //         {/* Payments */}
+
 // // //         <NavLink to="/dashboard/payments">
 
 // // //           <FaMoneyCheckAlt />
@@ -123,7 +358,10 @@
 
 // // //         </NavLink>
 
-// // //                 <NavLink to="/dashboard/earnings">
+
+// // //         {/* Earnings */}
+
+// // //         <NavLink to="/dashboard/earnings">
 
 // // //           <FaWallet />
 
@@ -132,6 +370,9 @@
 // // //           )}
 
 // // //         </NavLink>
+
+
+// // //         {/* Reports */}
 
 // // //         <NavLink to="/dashboard/reports">
 
@@ -143,6 +384,9 @@
 
 // // //         </NavLink>
 
+
+// // //         {/* Profile */}
+
 // // //         <NavLink to="/dashboard/profile">
 
 // // //           <FaUserCircle />
@@ -152,6 +396,9 @@
 // // //           )}
 
 // // //         </NavLink>
+
+
+// // //         {/* Settings */}
 
 // // //         <NavLink to="/dashboard/settings">
 
@@ -165,7 +412,10 @@
 
 // // //       </nav>
 
-// // //       {/* Bottom */}
+
+// // //       {/* ==========================================
+// // //                     LOGOUT
+// // //       ========================================== */}
 
 // // //       <div className="sidebar-bottom">
 
@@ -193,11 +443,9 @@
 // // // export default Sidebar;
 
 
-
-
 // // import "./Sidebar.css";
 
-// // import { NavLink } from "react-router-dom";
+// // import { NavLink, useNavigate } from "react-router-dom";
 
 // // import {
 // //   FaPlaneDeparture,
@@ -221,6 +469,23 @@
 
 // //   const [collapsed, setCollapsed] = useState(false);
 
+// //   const navigate = useNavigate();
+
+
+// //   // ==========================================
+// //   // LOGOUT
+// //   // ==========================================
+
+// //   const handleLogout = () => {
+
+// //     localStorage.removeItem("token");
+// //     localStorage.removeItem("user");
+
+// //     navigate("/login");
+
+// //   };
+
+
 // //   return (
 
 // //     <aside
@@ -229,9 +494,9 @@
 // //       }`}
 // //     >
 
-// //       {/* ==========================================
+// //       {/* ======================================
 // //                     LOGO
-// //       ========================================== */}
+// //       ====================================== */}
 
 // //       <div className="sidebar-logo">
 
@@ -241,7 +506,7 @@
 
 // //           {!collapsed && (
 
-// //             <div>
+// //             <div className="logo-text">
 
 // //               <h2>Saiyed</h2>
 
@@ -255,10 +520,12 @@
 
 
 // //         <button
+// //           type="button"
 // //           className="collapse-btn"
 // //           onClick={() =>
 // //             setCollapsed(!collapsed)
 // //           }
+// //           aria-label="Toggle sidebar"
 // //         >
 
 // //           {collapsed ? (
@@ -272,16 +539,22 @@
 // //       </div>
 
 
-// //       {/* ==========================================
+// //       {/* ======================================
 // //                     MENU
-// //       ========================================== */}
+// //       ====================================== */}
 
 // //       <nav className="sidebar-menu">
 
 
 // //         {/* Dashboard */}
 
-// //         <NavLink to="/dashboard">
+// //         <NavLink
+// //           to="/dashboard"
+// //           end
+// //           className={({ isActive }) =>
+// //             isActive ? "active" : ""
+// //           }
+// //         >
 
 // //           <FaTachometerAlt />
 
@@ -294,7 +567,12 @@
 
 // //         {/* Flight Booking */}
 
-// //         <NavLink to="/dashboard/flights">
+// //         <NavLink
+// //           to="/dashboard/flights"
+// //           className={({ isActive }) =>
+// //             isActive ? "active" : ""
+// //           }
+// //         >
 
 // //           <FaPlane />
 
@@ -305,9 +583,14 @@
 // //         </NavLink>
 
 
-// //         {/* Bookings */}
-
-// //         <NavLink to="/dashboard/bookings">
+// //         {/* My Bookings */}
+// // {/* 
+// //         <NavLink
+// //           to="/dashboard/bookings"
+// //           className={({ isActive }) =>
+// //             isActive ? "active" : ""
+// //           }
+// //         >
 
 // //           <FaTicketAlt />
 
@@ -316,13 +599,32 @@
 // //           )}
 
 // //         </NavLink>
+// //  */}
 
 
-// //         {/* ======================================
-// //                     USERS
-// //         ====================================== */}
+// //   <NavLink
+// //   to="/dashboard/my-bookings"
+// //   className={({ isActive }) =>
+// //     isActive ? "active" : ""
+// //   }
+// // >
 
-// //         <NavLink to="/dashboard/users">
+// //   <FaTicketAlt />
+
+// //   {!collapsed && (
+// //     <span>My Bookings</span>
+// //   )}
+
+// // </NavLink>
+
+// //         {/* Users */}
+
+// //         <NavLink
+// //           to="/dashboard/users"
+// //           className={({ isActive }) =>
+// //             isActive ? "active" : ""
+// //           }
+// //         >
 
 // //           <FaUsers />
 
@@ -335,7 +637,12 @@
 
 // //         {/* Customers */}
 
-// //         <NavLink to="/dashboard/customers">
+// //         <NavLink
+// //           to="/dashboard/customers"
+// //           className={({ isActive }) =>
+// //             isActive ? "active" : ""
+// //           }
+// //         >
 
 // //           <FaUsers />
 
@@ -348,7 +655,12 @@
 
 // //         {/* Payments */}
 
-// //         <NavLink to="/dashboard/payments">
+// //         <NavLink
+// //           to="/dashboard/payments"
+// //           className={({ isActive }) =>
+// //             isActive ? "active" : ""
+// //           }
+// //         >
 
 // //           <FaMoneyCheckAlt />
 
@@ -361,7 +673,12 @@
 
 // //         {/* Earnings */}
 
-// //         <NavLink to="/dashboard/earnings">
+// //         <NavLink
+// //           to="/dashboard/earnings"
+// //           className={({ isActive }) =>
+// //             isActive ? "active" : ""
+// //           }
+// //         >
 
 // //           <FaWallet />
 
@@ -374,7 +691,12 @@
 
 // //         {/* Reports */}
 
-// //         <NavLink to="/dashboard/reports">
+// //         <NavLink
+// //           to="/dashboard/reports"
+// //           className={({ isActive }) =>
+// //             isActive ? "active" : ""
+// //           }
+// //         >
 
 // //           <FaChartBar />
 
@@ -387,7 +709,12 @@
 
 // //         {/* Profile */}
 
-// //         <NavLink to="/dashboard/profile">
+// //         <NavLink
+// //           to="/dashboard/profile"
+// //           className={({ isActive }) =>
+// //             isActive ? "active" : ""
+// //           }
+// //         >
 
 // //           <FaUserCircle />
 
@@ -400,7 +727,12 @@
 
 // //         {/* Settings */}
 
-// //         <NavLink to="/dashboard/settings">
+// //         <NavLink
+// //           to="/dashboard/settings"
+// //           className={({ isActive }) =>
+// //             isActive ? "active" : ""
+// //           }
+// //         >
 
 // //           <FaCog />
 
@@ -413,15 +745,16 @@
 // //       </nav>
 
 
-// //       {/* ==========================================
-// //                     LOGOUT
-// //       ========================================== */}
+// //       {/* ======================================
+// //                     BOTTOM LOGOUT
+// //       ====================================== */}
 
 // //       <div className="sidebar-bottom">
 
-// //         <NavLink
-// //           to="/logout"
+// //         <button
+// //           type="button"
 // //           className="logout-btn"
+// //           onClick={handleLogout}
 // //         >
 
 // //           <FaSignOutAlt />
@@ -430,7 +763,7 @@
 // //             <span>Logout</span>
 // //           )}
 
-// //         </NavLink>
+// //         </button>
 
 // //       </div>
 
@@ -441,6 +774,7 @@
 // // }
 
 // // export default Sidebar;
+
 
 
 // import "./Sidebar.css";
@@ -461,90 +795,69 @@
 //   FaSignOutAlt,
 //   FaChevronLeft,
 //   FaChevronRight,
+//   FaCreditCard,
 // } from "react-icons/fa";
 
 // import { useState } from "react";
 
 // function Sidebar() {
-
 //   const [collapsed, setCollapsed] = useState(false);
 
 //   const navigate = useNavigate();
-
 
 //   // ==========================================
 //   // LOGOUT
 //   // ==========================================
 
 //   const handleLogout = () => {
-
 //     localStorage.removeItem("token");
 //     localStorage.removeItem("user");
+//     localStorage.removeItem("userRole");
 
 //     navigate("/login");
-
 //   };
 
-
 //   return (
-
 //     <aside
 //       className={`dashboard-sidebar ${
 //         collapsed ? "collapsed" : ""
 //       }`}
 //     >
-
 //       {/* ======================================
 //                     LOGO
 //       ====================================== */}
 
 //       <div className="sidebar-logo">
-
 //         <div className="logo-box">
-
 //           <FaPlaneDeparture className="logo-icon" />
 
 //           {!collapsed && (
-
 //             <div className="logo-text">
-
 //               <h2>Saiyed</h2>
-
 //               <span>Travels</span>
-
 //             </div>
-
 //           )}
-
 //         </div>
-
 
 //         <button
 //           type="button"
 //           className="collapse-btn"
-//           onClick={() =>
-//             setCollapsed(!collapsed)
-//           }
+//           onClick={() => setCollapsed(!collapsed)}
 //           aria-label="Toggle sidebar"
 //         >
-
 //           {collapsed ? (
 //             <FaChevronRight />
 //           ) : (
 //             <FaChevronLeft />
 //           )}
-
 //         </button>
-
 //       </div>
-
 
 //       {/* ======================================
 //                     MENU
 //       ====================================== */}
 
 //       <nav className="sidebar-menu">
-
 
 //         {/* Dashboard */}
 
@@ -555,13 +868,9 @@
 //             isActive ? "active" : ""
 //           }
 //         >
-
 //           <FaTachometerAlt />
 
-//           {!collapsed && (
-//             <span>Dashboard</span>
-//           )}
-
+//           {!collapsed && <span>Dashboard</span>}
 //         </NavLink>
 
 
@@ -573,49 +882,25 @@
 //             isActive ? "active" : ""
 //           }
 //         >
-
 //           <FaPlane />
 
-//           {!collapsed && (
-//             <span>Flight Booking</span>
-//           )}
-
+//           {!collapsed && <span>Flight Booking</span>}
 //         </NavLink>
 
 
 //         {/* My Bookings */}
-// {/* 
+
 //         <NavLink
-//           to="/dashboard/bookings"
+//           to="/dashboard/my-bookings"
 //           className={({ isActive }) =>
 //             isActive ? "active" : ""
 //           }
 //         >
-
 //           <FaTicketAlt />
 
-//           {!collapsed && (
-//             <span>My Bookings</span>
-//           )}
-
+//           {!collapsed && <span>My Bookings</span>}
 //         </NavLink>
-//  */}
 
-
-//   <NavLink
-//   to="/dashboard/my-bookings"
-//   className={({ isActive }) =>
-//     isActive ? "active" : ""
-//   }
-// >
-
-//   <FaTicketAlt />
-
-//   {!collapsed && (
-//     <span>My Bookings</span>
-//   )}
-
-// </NavLink>
 
 //         {/* Users */}
 
@@ -625,13 +910,9 @@
 //             isActive ? "active" : ""
 //           }
 //         >
-
 //           <FaUsers />
 
-//           {!collapsed && (
-//             <span>Users</span>
-//           )}
-
+//           {!collapsed && <span>Users</span>}
 //         </NavLink>
 
 
@@ -643,13 +924,9 @@
 //             isActive ? "active" : ""
 //           }
 //         >
-
 //           <FaUsers />
 
-//           {!collapsed && (
-//             <span>Customers</span>
-//           )}
-
+//           {!collapsed && <span>Customers</span>}
 //         </NavLink>
 
 
@@ -661,13 +938,27 @@
 //             isActive ? "active" : ""
 //           }
 //         >
-
 //           <FaMoneyCheckAlt />
 
-//           {!collapsed && (
-//             <span>Payments</span>
-//           )}
+//           {!collapsed && <span>Payments</span>}
+//         </NavLink>
 
+
+//         {/* ======================================
+//               PAYMENT REQUESTS - NEW
+//         ====================================== */}
+
+//         <NavLink
+//           to="/dashboard/payment-requests"
+//           className={({ isActive }) =>
+//             isActive ? "active" : ""
+//           }
+//         >
+//           <FaCreditCard />
+
+//           {!collapsed && (
+//             <span>Payment Requests</span>
+//           )}
 //         </NavLink>
 
 
@@ -679,13 +970,9 @@
 //             isActive ? "active" : ""
 //           }
 //         >
-
 //           <FaWallet />
 
-//           {!collapsed && (
-//             <span>Earnings</span>
-//           )}
-
+//           {!collapsed && <span>Earnings</span>}
 //         </NavLink>
 
 
@@ -697,13 +984,9 @@
 //             isActive ? "active" : ""
 //           }
 //         >
-
 //           <FaChartBar />
 
-//           {!collapsed && (
-//             <span>Reports</span>
-//           )}
-
+//           {!collapsed && <span>Reports</span>}
 //         </NavLink>
 
 
@@ -715,13 +998,9 @@
 //             isActive ? "active" : ""
 //           }
 //         >
-
 //           <FaUserCircle />
 
-//           {!collapsed && (
-//             <span>Profile</span>
-//           )}
-
+//           {!collapsed && <span>Profile</span>}
 //         </NavLink>
 
 
@@ -733,13 +1012,9 @@
 //             isActive ? "active" : ""
 //           }
 //         >
-
 //           <FaCog />
 
-//           {!collapsed && (
-//             <span>Settings</span>
-//           )}
-
+//           {!collapsed && <span>Settings</span>}
 //         </NavLink>
 
 //       </nav>
@@ -750,30 +1025,41 @@
 //       ====================================== */}
 
 //       <div className="sidebar-bottom">
-
 //         <button
 //           type="button"
 //           className="logout-btn"
 //           onClick={handleLogout}
 //         >
-
 //           <FaSignOutAlt />
 
-//           {!collapsed && (
-//             <span>Logout</span>
-//           )}
-
+//           {!collapsed && <span>Logout</span>}
 //         </button>
-
 //       </div>
 
 //     </aside>
-
 //   );
-
 // }
 
 // export default Sidebar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -788,10 +1074,7 @@ import {
   FaTicketAlt,
   FaUsers,
   FaMoneyCheckAlt,
-  FaWallet,
-  FaChartBar,
   FaUserCircle,
-  FaCog,
   FaSignOutAlt,
   FaChevronLeft,
   FaChevronRight,
@@ -823,12 +1106,15 @@ function Sidebar() {
         collapsed ? "collapsed" : ""
       }`}
     >
+
       {/* ======================================
                     LOGO
       ====================================== */}
 
       <div className="sidebar-logo">
+
         <div className="logo-box">
+
           <FaPlaneDeparture className="logo-icon" />
 
           {!collapsed && (
@@ -837,12 +1123,15 @@ function Sidebar() {
               <span>Travels</span>
             </div>
           )}
+
         </div>
 
         <button
           type="button"
           className="collapse-btn"
-          onClick={() => setCollapsed(!collapsed)}
+          onClick={() =>
+            setCollapsed(!collapsed)
+          }
           aria-label="Toggle sidebar"
         >
           {collapsed ? (
@@ -851,6 +1140,7 @@ function Sidebar() {
             <FaChevronLeft />
           )}
         </button>
+
       </div>
 
       {/* ======================================
@@ -870,7 +1160,9 @@ function Sidebar() {
         >
           <FaTachometerAlt />
 
-          {!collapsed && <span>Dashboard</span>}
+          {!collapsed && (
+            <span>Dashboard</span>
+          )}
         </NavLink>
 
 
@@ -884,7 +1176,9 @@ function Sidebar() {
         >
           <FaPlane />
 
-          {!collapsed && <span>Flight Booking</span>}
+          {!collapsed && (
+            <span>Flight Booking</span>
+          )}
         </NavLink>
 
 
@@ -898,7 +1192,9 @@ function Sidebar() {
         >
           <FaTicketAlt />
 
-          {!collapsed && <span>My Bookings</span>}
+          {!collapsed && (
+            <span>My Bookings</span>
+          )}
         </NavLink>
 
 
@@ -912,26 +1208,14 @@ function Sidebar() {
         >
           <FaUsers />
 
-          {!collapsed && <span>Users</span>}
-        </NavLink>
-
-
-        {/* Customers */}
-
-        <NavLink
-          to="/dashboard/customers"
-          className={({ isActive }) =>
-            isActive ? "active" : ""
-          }
-        >
-          <FaUsers />
-
-          {!collapsed && <span>Customers</span>}
+          {!collapsed && (
+            <span>Users</span>
+          )}
         </NavLink>
 
 
         {/* Payments */}
-
+{/* 
         <NavLink
           to="/dashboard/payments"
           className={({ isActive }) =>
@@ -940,13 +1224,13 @@ function Sidebar() {
         >
           <FaMoneyCheckAlt />
 
-          {!collapsed && <span>Payments</span>}
-        </NavLink>
+          {!collapsed && (
+            <span>Payments</span>
+          )}
+        </NavLink> */}
 
 
-        {/* ======================================
-              PAYMENT REQUESTS - NEW
-        ====================================== */}
+        {/* Payment Requests */}
 
         <NavLink
           to="/dashboard/payment-requests"
@@ -962,34 +1246,6 @@ function Sidebar() {
         </NavLink>
 
 
-        {/* Earnings */}
-
-        <NavLink
-          to="/dashboard/earnings"
-          className={({ isActive }) =>
-            isActive ? "active" : ""
-          }
-        >
-          <FaWallet />
-
-          {!collapsed && <span>Earnings</span>}
-        </NavLink>
-
-
-        {/* Reports */}
-
-        <NavLink
-          to="/dashboard/reports"
-          className={({ isActive }) =>
-            isActive ? "active" : ""
-          }
-        >
-          <FaChartBar />
-
-          {!collapsed && <span>Reports</span>}
-        </NavLink>
-
-
         {/* Profile */}
 
         <NavLink
@@ -1000,21 +1256,9 @@ function Sidebar() {
         >
           <FaUserCircle />
 
-          {!collapsed && <span>Profile</span>}
-        </NavLink>
-
-
-        {/* Settings */}
-
-        <NavLink
-          to="/dashboard/settings"
-          className={({ isActive }) =>
-            isActive ? "active" : ""
-          }
-        >
-          <FaCog />
-
-          {!collapsed && <span>Settings</span>}
+          {!collapsed && (
+            <span>Profile</span>
+          )}
         </NavLink>
 
       </nav>
@@ -1025,6 +1269,7 @@ function Sidebar() {
       ====================================== */}
 
       <div className="sidebar-bottom">
+
         <button
           type="button"
           className="logout-btn"
@@ -1032,8 +1277,11 @@ function Sidebar() {
         >
           <FaSignOutAlt />
 
-          {!collapsed && <span>Logout</span>}
+          {!collapsed && (
+            <span>Logout</span>
+          )}
         </button>
+
       </div>
 
     </aside>

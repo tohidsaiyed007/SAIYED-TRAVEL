@@ -1262,3 +1262,101 @@
     max-width: 100vw;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   SELECT + BULK DELETE
+========================================== */
+
+.select-column {
+  width: 45px;
+  min-width: 45px;
+  text-align: center !important;
+}
+
+.select-column input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  accent-color: #2563eb;
+}
+
+.booking-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.delete-selected-btn {
+  border: none;
+  background: #dc2626;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  transition: 0.2s ease;
+}
+
+.delete-selected-btn:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+}
+
+.delete-selected-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.selected-booking-row {
+  background: #f8fafc !important;
+}
+
+@media (max-width: 700px) {
+  .booking-toolbar-actions {
+    width: 100%;
+  }
+
+  .delete-selected-btn {
+    width: 100%;
+  }
+
+  .select-column {
+    width: 40px;
+    min-width: 40px;
+  }
+}

@@ -1,283 +1,415 @@
-/* ===========================
+/* ==========================================
    RECENT ACTIVITY
-=========================== */
+========================================== */
 
-.recent-activity{
+.recent-activity {
+  width: 100%;
 
-    background:#fff;
+  background: #ffffff;
 
-    border-radius:20px;
+  border: 1px solid #e5e7eb;
 
-    padding:25px;
+  border-radius: 14px;
 
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
+  padding: 16px;
 
+  box-sizing: border-box;
+
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.05);
 }
 
-/* ===========================
+
+/* ==========================================
    HEADER
-=========================== */
+========================================== */
 
-.activity-header{
+.activity-header {
+  display: flex;
 
-    margin-bottom:25px;
+  align-items: center;
 
+  justify-content: space-between;
+
+  margin-bottom: 12px;
 }
 
-.activity-header h2{
-
-    font-size:24px;
-
-    color:#222;
-
-    font-weight:700;
-
-    margin-bottom:5px;
-
+.activity-header > div {
+  min-width: 0;
 }
 
-.activity-header p{
+.activity-header h2 {
+  margin: 0;
 
-    font-size:14px;
+  color: #111827;
 
-    color:#777;
+  font-size: 16px;
 
+  font-weight: 700;
 }
 
-/* ===========================
+.activity-header p {
+  margin: 3px 0 0;
+
+  color: #6b7280;
+
+  font-size: 10px;
+}
+
+
+/* ==========================================
+   REFRESH BUTTON
+========================================== */
+
+.activity-refresh {
+  border: none;
+
+  background: #f1f5f9;
+
+  color: #0b5ed7;
+
+  padding: 6px 10px;
+
+  border-radius: 6px;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.activity-refresh:hover {
+  background: #0b5ed7;
+
+  color: #ffffff;
+}
+
+
+/* ==========================================
    ACTIVITY LIST
-=========================== */
+========================================== */
 
-.activity-list{
+.activity-list {
+  width: 100%;
 
-    display:flex;
+  /*
+    Around 3 activities visible
+  */
 
-    flex-direction:column;
+  height: 205px;
 
-    gap:18px;
+  overflow-y: auto;
 
+  overflow-x: hidden;
+
+  padding-right: 5px;
+
+  box-sizing: border-box;
 }
 
-/* ===========================
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+.activity-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.activity-list::-webkit-scrollbar-track {
+  background: #f3f4f6;
+
+  border-radius: 10px;
+}
+
+.activity-list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+
+  border-radius: 10px;
+}
+
+.activity-list::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+
+/* ==========================================
    ACTIVITY ITEM
-=========================== */
+========================================== */
 
-.activity-item{
+.activity-item {
+  width: 100%;
 
-    display:flex;
+  min-height: 58px;
 
-    align-items:center;
+  display: flex;
 
-    gap:16px;
+  align-items: center;
 
-    padding:16px;
+  gap: 10px;
 
-    border-radius:16px;
+  padding: 8px;
 
-    transition:.3s;
+  margin-bottom: 7px;
 
-    border:1px solid #edf1f7;
+  box-sizing: border-box;
 
+  background: #f8fafc;
+
+  border: 1px solid #eef2f7;
+
+  border-radius: 9px;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.activity-item:hover{
-
-    background:#f8fbff;
-
-    transform:translateX(6px);
-
+.activity-item:last-child {
+  margin-bottom: 0;
 }
 
-/* ===========================
+
+/* ==========================================
+   HOVER
+========================================== */
+
+.activity-item:hover {
+  background: #ffffff;
+
+  transform: translateX(3px);
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ==========================================
    ICON
-=========================== */
+========================================== */
 
-.activity-icon{
+.activity-icon {
+  flex-shrink: 0;
 
-    width:55px;
+  width: 34px;
 
-    height:55px;
+  height: 34px;
 
-    min-width:55px;
+  display: flex;
 
-    border-radius:14px;
+  align-items: center;
 
-    display:flex;
+  justify-content: center;
 
-    justify-content:center;
+  border-radius: 8px;
 
-    align-items:center;
+  color: #ffffff;
 
-    color:#fff;
-
-    font-size:22px;
-
-    box-shadow:0 8px 18px rgba(0,0,0,.15);
-
+  font-size: 13px;
 }
 
-/* ===========================
+
+/* ==========================================
    CONTENT
-=========================== */
+========================================== */
 
-.activity-content{
+.activity-content {
+  flex: 1;
 
-    flex:1;
-
+  min-width: 0;
 }
 
-.activity-content h4{
+.activity-content h4 {
+  margin: 0;
 
-    font-size:16px;
+  color: #111827;
 
-    font-weight:700;
+  font-size: 11px;
 
-    color:#222;
+  font-weight: 700;
 
-    margin-bottom:6px;
-
+  line-height: 1.3;
 }
 
-.activity-content p{
+.activity-content p {
+  margin: 3px 0 0;
 
-    font-size:14px;
+  color: #6b7280;
 
-    color:#777;
+  font-size: 9px;
 
-    line-height:1.5;
+  line-height: 1.3;
 
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
 }
 
-/* ===========================
+
+/* ==========================================
    TIME
-=========================== */
+========================================== */
 
-.activity-time{
+.activity-time {
+  flex-shrink: 0;
 
-    font-size:13px;
+  color: #9ca3af;
 
-    font-weight:600;
+  font-size: 8px;
 
-    color:#999;
-
-    white-space:nowrap;
-
+  white-space: nowrap;
 }
 
-/* ===========================
+
+/* ==========================================
+   EMPTY / LOADING
+========================================== */
+
+.activity-empty {
+  width: 100%;
+
+  height: 185px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #9ca3af;
+
+  font-size: 11px;
+
+  text-align: center;
+}
+
+
+/* ==========================================
    TABLET
-=========================== */
+========================================== */
 
-@media(max-width:992px){
+@media (max-width: 900px) {
 
-.activity-item{
+  .recent-activity {
+    padding: 14px;
+  }
 
-    gap:14px;
-
-    padding:15px;
-
+  .activity-list {
+    height: 200px;
+  }
 }
 
-.activity-icon{
 
-    width:50px;
-
-    height:50px;
-
-    min-width:50px;
-
-    font-size:20px;
-
-}
-
-}
-
-/* ===========================
+/* ==========================================
    MOBILE
-=========================== */
+========================================== */
 
-@media(max-width:768px){
+@media (max-width: 500px) {
 
-.recent-activity{
+  .recent-activity {
+    padding: 12px;
 
-    padding:20px;
+    border-radius: 12px;
+  }
 
-    border-radius:16px;
+  .activity-header {
+    margin-bottom: 10px;
+  }
 
+  .activity-header h2 {
+    font-size: 14px;
+  }
+
+  .activity-header p {
+    font-size: 9px;
+  }
+
+  .activity-refresh {
+    padding: 5px 8px;
+
+    font-size: 9px;
+  }
+
+  .activity-list {
+    height: 190px;
+
+    padding-right: 3px;
+  }
+
+  .activity-item {
+    min-height: 55px;
+
+    gap: 8px;
+
+    padding: 7px;
+
+    margin-bottom: 6px;
+  }
+
+  .activity-icon {
+    width: 31px;
+
+    height: 31px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+  }
+
+  .activity-content h4 {
+    font-size: 10px;
+  }
+
+  .activity-content p {
+    font-size: 8px;
+
+    margin-top: 2px;
+  }
+
+  .activity-time {
+    font-size: 7px;
+  }
 }
 
-.activity-item{
 
-    flex-direction:column;
-
-    align-items:flex-start;
-
-    gap:12px;
-
-}
-
-.activity-time{
-
-    margin-left:67px;
-
-}
-
-}
-
-/* ===========================
+/* ==========================================
    SMALL MOBILE
-=========================== */
+========================================== */
 
-@media(max-width:480px){
+@media (max-width: 360px) {
 
-.recent-activity{
+  .recent-activity {
+    padding: 10px;
+  }
 
-    padding:18px;
+  .activity-list {
+    height: 180px;
+  }
 
-}
+  .activity-item {
+    min-height: 52px;
+  }
 
-.activity-header h2{
+  .activity-icon {
+    width: 29px;
+    height: 29px;
+  }
 
-    font-size:20px;
+  .activity-content h4 {
+    font-size: 9px;
+  }
 
-}
+  .activity-content p {
+    font-size: 7px;
+  }
 
-.activity-header p{
-
-    font-size:13px;
-
-}
-
-.activity-icon{
-
-    width:46px;
-
-    height:46px;
-
-    min-width:46px;
-
-    font-size:18px;
-
-}
-
-.activity-content h4{
-
-    font-size:15px;
-
-}
-
-.activity-content p{
-
-    font-size:13px;
-
-}
-
-.activity-time{
-
-    margin-left:58px;
-
-    font-size:12px;
-
-}
-
+  .activity-time {
+    font-size: 6px;
+  }
 }
