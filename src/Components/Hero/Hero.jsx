@@ -1525,7 +1525,7 @@ function Hero() {
     "https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=1400&q=90",
     "https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=1400&q=90",
     "https://images.unsplash.com/photo-1556388158-158ea5ccacbd?auto=format&fit=crop&w=1400&q=90",
-    "https://images.unsplash.com/photo-1464037866556-6812c9c1c72e?auto=format&fit=crop&w=1400&q=90",
+    // "https://images.unsplash.com/photo-1464037866556-6812c9c1c72e?auto=format&fit=crop&w=1400&q=90",
     "https://images.unsplash.com/photo-1529074963764-98f45c47344b?auto=format&fit=crop&w=1400&q=90",
     "https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&w=1400&q=90",
     "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=90",
