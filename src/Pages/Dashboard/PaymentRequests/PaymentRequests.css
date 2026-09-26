@@ -1130,3 +1130,132 @@
     padding-right: 11px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   EXPORT EXCEL BUTTON
+========================================== */
+
+.export-excel-btn {
+  min-height: 44px;
+  padding: 0 20px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: linear-gradient(
+    135deg,
+    #16823a,
+    #0b6628
+  );
+
+  color: #ffffff;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 14px rgba(22, 130, 58, 0.25);
+
+  transition: all 0.2s ease;
+}
+
+.export-excel-btn:hover {
+  background: linear-gradient(
+    135deg,
+    #1a963f,
+    #08752b
+  );
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 18px rgba(22, 130, 58, 0.35);
+}
+
+.export-excel-btn:active {
+  transform: translateY(0);
+}
+
+.export-excel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* ==========================================
+   HEADER ACTIONS
+========================================== */
+
+.payment-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+  .payment-header-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .export-excel-btn,
+  .delete-selected-payment-btn,
+  .refresh-payment-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

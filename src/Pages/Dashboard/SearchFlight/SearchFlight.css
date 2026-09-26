@@ -1,263 +1,209 @@
-/*==========================================
-            SEARCH FLIGHT
-==========================================*/
+/* =========================================================
+   SEARCH FLIGHT - PNR SEARCH
+========================================================= */
 
-.search-flight{
-
-    background:#ffffff;
-
-    border-radius:18px;
-
-    padding:25px;
-
-    margin-bottom:25px;
-
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
-
+.search-flight {
+  width: 100%;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  box-sizing: border-box;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-/*==========================================
-            HEADER
-==========================================*/
 
-.search-title{
+/* =========================================================
+   TITLE
+========================================================= */
 
-    margin-bottom:25px;
-
+.search-title {
+  margin-bottom: 20px;
 }
 
-.search-title h2{
-
-    font-size:26px;
-
-    color:#1f2937;
-
-    margin-bottom:6px;
-
-    font-weight:700;
-
+.search-title h2 {
+  margin: 0 0 5px;
+  color: #172033;
+  font-size: 21px;
+  font-weight: 700;
 }
 
-.search-title p{
-
-    color:#6b7280;
-
-    font-size:14px;
-
+.search-title p {
+  margin: 0;
+  color: #667085;
+  font-size: 13px;
 }
 
-/*==========================================
-            GRID
-==========================================*/
 
-.search-grid{
+/* =========================================================
+   PNR SEARCH BOX
+========================================================= */
 
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:20px;
-
+.pnr-search-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-/*==========================================
-            INPUTS
-==========================================*/
 
-.search-field{
+/* INPUT */
 
-    display:flex;
+.pnr-search-box input {
+  flex: 1;
+  height: 48px;
 
-    flex-direction:column;
+  padding: 0 15px;
 
+  border: 1px solid #d9dee7;
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #fff;
+  color: #1f2937;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+
+  box-sizing: border-box;
+
+  transition: 0.2s ease;
 }
 
-.search-field label{
-
-    font-size:14px;
-
-    font-weight:600;
-
-    color:#374151;
-
-    margin-bottom:8px;
-
+.pnr-search-box input::placeholder {
+  color: #9ca3af;
 }
 
-.search-field input,
+.pnr-search-box input:focus {
+  border-color: #0877c9;
 
-.search-field select{
-
-    width:100%;
-
-    height:50px;
-
-    border:1px solid #d1d5db;
-
-    border-radius:10px;
-
-    padding:0 15px;
-
-    font-size:15px;
-
-    outline:none;
-
-    transition:.3s;
-
-    background:#fff;
-
+  box-shadow:
+    0 0 0 3px rgba(8, 119, 201, 0.1);
 }
 
-.search-field input:focus,
 
-.search-field select:focus{
+/* SEARCH BUTTON */
 
-    border-color:#0d6efd;
+.pnr-search-box button {
+  height: 48px;
 
-    box-shadow:0 0 0 3px rgba(13,110,253,.15);
+  padding: 0 24px;
 
+  border: none;
+  border-radius: 9px;
+
+  background: #0877c9;
+  color: #ffffff;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
 }
 
-/*==========================================
-            BUTTONS
-==========================================*/
-
-.search-buttons{
-
-    display:flex;
-
-    justify-content:flex-end;
-
-    gap:15px;
-
-    margin-top:25px;
-
+.pnr-search-box button:hover {
+  background: #075fa3;
+  transform: translateY(-1px);
 }
 
-.search-btn,
-
-.reset-btn{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:8px;
-
-    border:none;
-
-    padding:13px 28px;
-
-    border-radius:10px;
-
-    font-size:15px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.3s;
-
+.pnr-search-box button:active {
+  transform: translateY(0);
 }
 
-.search-btn{
-
-    background:#0d6efd;
-
-    color:#fff;
-
+.pnr-search-box button svg {
+  font-size: 14px;
 }
 
-.search-btn:hover{
 
-    background:#0b5ed7;
+/* =========================================================
+   TABLET
+========================================================= */
 
-    transform:translateY(-2px);
+@media (max-width: 700px) {
 
+  .search-flight {
+    padding: 20px;
+  }
+
+  .search-title h2 {
+    font-size: 19px;
+  }
+
+  .search-title p {
+    font-size: 12px;
+  }
+
+  .pnr-search-box {
+    gap: 10px;
+  }
+
+  .pnr-search-box button {
+    padding: 0 20px;
+  }
 }
 
-.reset-btn{
 
-    background:#f3f4f6;
+/* =========================================================
+   MOBILE
+========================================================= */
 
-    color:#374151;
+@media (max-width: 500px) {
 
+  .search-flight {
+    padding: 17px;
+    border-radius: 12px;
+  }
+
+  .search-title {
+    margin-bottom: 16px;
+  }
+
+  .search-title h2 {
+    font-size: 18px;
+  }
+
+  .pnr-search-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pnr-search-box input {
+    width: 100%;
+    height: 46px;
+  }
+
+  .pnr-search-box button {
+    width: 100%;
+    height: 46px;
+  }
 }
 
-.reset-btn:hover{
 
-    background:#e5e7eb;
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
-}
+@media (max-width: 350px) {
 
-/*==========================================
-            RESPONSIVE
-==========================================*/
+  .search-flight {
+    padding: 14px;
+  }
 
-@media(max-width:992px){
+  .search-title h2 {
+    font-size: 17px;
+  }
 
-.search-grid{
-
-    grid-template-columns:repeat(2,1fr);
-
-}
-
-}
-
-@media(max-width:768px){
-
-.search-flight{
-
-    padding:20px;
-
-}
-
-.search-grid{
-
-    grid-template-columns:1fr;
-
-}
-
-.search-buttons{
-
-    flex-direction:column;
-
-}
-
-.search-btn,
-
-.reset-btn{
-
-    width:100%;
-
-}
-
-}
-
-@media(max-width:480px){
-
-.search-title h2{
-
-    font-size:22px;
-
-}
-
-.search-title p{
-
-    font-size:13px;
-
-}
-
-.search-field input,
-
-.search-field select{
-
-    height:46px;
-
-    font-size:14px;
-
-}
-
+  .pnr-search-box input,
+  .pnr-search-box button {
+    font-size: 13px;
+  }
 }
