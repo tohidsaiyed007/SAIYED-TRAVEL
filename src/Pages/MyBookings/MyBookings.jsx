@@ -1,4 +1,6 @@
 
+
+
 import "./MyBookings.css";
 
 import Navbar from "../../Components/Navbar/Navbar";
@@ -36,45 +38,8 @@ function MyBookings() {
 
   // =====================================================
   // GET CUSTOMER BOOKINGS
+  // USER ID + EMAIL BASED
   // =====================================================
-
-  // useEffect(() => {
-
-  //   fetchMyBookings();
-
-  // }, []);
-
-  useEffect(() => {
-  // Page open hote hi bookings load
-  fetchMyBookings();
-
-  // Har 3 second me latest booking check
-  const bookingInterval = setInterval(() => {
-    fetchMyBookings();
-  }, 3000);
-
-  // Browser tab active hone par immediately refresh
-  const handleVisibilityChange = () => {
-    if (document.visibilityState === "visible") {
-      fetchMyBookings();
-    }
-  };
-
-  document.addEventListener(
-    "visibilitychange",
-    handleVisibilityChange
-  );
-
-  // Component/page close hone par interval remove
-  return () => {
-    clearInterval(bookingInterval);
-
-    document.removeEventListener(
-      "visibilitychange",
-      handleVisibilityChange
-    );
-  };
-}, []);
 
   const fetchMyBookings = async () => {
 
@@ -85,26 +50,24 @@ function MyBookings() {
       setError("");
 
 
-      // -------------------------------------------------
+      // =================================================
       // TOKEN
-      // -------------------------------------------------
+      // =================================================
 
       const token =
-        localStorage.getItem("token");
+        localStorage.getItem("token") || "";
 
 
-      // -------------------------------------------------
-      // USER
-      // -------------------------------------------------
-
-      const storedUser =
-        localStorage.getItem("user");
-
+      // =================================================
+      // GET LOGGED-IN USER
+      // =================================================
 
       let user = null;
 
-
       try {
+
+        const storedUser =
+          localStorage.getItem("user");
 
         user =
           storedUser
@@ -113,78 +76,174 @@ function MyBookings() {
 
       } catch (err) {
 
+        console.error(
+          "USER JSON ERROR:",
+          err
+        );
+
         user = null;
 
       }
 
 
-      // -------------------------------------------------
+      // =================================================
       // USER ID
-      // -------------------------------------------------
+      // =================================================
 
       const userId =
         user?._id ||
         user?.id ||
-        localStorage.getItem("userId");
+        localStorage.getItem("userId") ||
+        "";
 
 
-      // -------------------------------------------------
-      // API URL
-      // -------------------------------------------------
+      // =================================================
+      // CUSTOMER EMAIL
+      // =================================================
 
-      let url =
-        "https://saiyed-travels-backend-1.onrender.com/api/bookings/my-bookings";
+      const userEmail =
+        String(
+          user?.email ||
+          user?.emailAddress ||
+          user?.userEmail ||
+          localStorage.getItem("userEmail") ||
+          localStorage.getItem("email") ||
+          ""
+        )
+          .trim()
+          .toLowerCase();
 
 
-      // Agar JWT token nahi hai,
-      // to userId query ke through bhejenge.
+      // =================================================
+      // DEBUG
+      // =================================================
 
-      if (!token && userId) {
+      console.log(
+        "========================================"
+      );
 
-        url +=
-          `?userId=${encodeURIComponent(
-            userId
-          )}`;
+      console.log(
+        "MY BOOKINGS REQUEST"
+      );
+
+      console.log(
+        "USER ID:",
+        userId
+      );
+
+      console.log(
+        "USER EMAIL:",
+        userEmail
+      );
+
+      console.log(
+        "========================================"
+      );
+
+
+      // =================================================
+      // QUERY PARAMETERS
+      // EMAIL IS SENT IN URL
+      // NOT IN CUSTOM HEADER
+      // =================================================
+
+      const params =
+        new URLSearchParams();
+
+
+      if (userId) {
+
+        params.append(
+          "userId",
+          userId
+        );
 
       }
 
 
-      // -------------------------------------------------
+      if (userEmail) {
+
+        params.append(
+          "email",
+          userEmail
+        );
+
+      }
+
+
+      // =================================================
+      // API URL
+      // =================================================
+
+      const url =
+        `https://saiyed-travels-backend-1.onrender.com/api/bookings/my-bookings?${params.toString()}`;
+
+
+      console.log(
+        "MY BOOKINGS URL:",
+        url
+      );
+
+
+      // =================================================
+      // HEADERS
+      // IMPORTANT:
+      // NO x-user-email HEADER
+      // =================================================
+
+      const headers = {
+
+        "Content-Type":
+          "application/json",
+
+        ...(token
+          ? {
+              Authorization:
+                `Bearer ${token}`,
+            }
+          : {}),
+
+        ...(userId
+          ? {
+              "x-user-id":
+                userId,
+            }
+          : {}),
+
+      };
+
+
+      // =================================================
       // REQUEST
-      // -------------------------------------------------
+      // =================================================
 
       const response =
-        await fetch(url, {
+        await fetch(
+          url,
+          {
+            method: "GET",
+            headers,
+          }
+        );
 
-          method: "GET",
 
-          headers: {
-
-            "Content-Type":
-              "application/json",
-
-            ...(token
-              ? {
-                  Authorization:
-                    `Bearer ${token}`,
-                }
-              : {}),
-
-            ...(userId
-              ? {
-                  "x-user-id":
-                    userId,
-                }
-              : {}),
-
-          },
-
-        });
-
+      // =================================================
+      // RESPONSE
+      // =================================================
 
       const data =
         await response.json();
 
+
+      console.log(
+        "MY BOOKINGS RESPONSE:",
+        data
+      );
+
+
+      // =================================================
+      // ERROR
+      // =================================================
 
       if (!response.ok) {
 
@@ -196,10 +255,30 @@ function MyBookings() {
       }
 
 
-      setBookings(
-        Array.isArray(data?.bookings)
+      // =================================================
+      // BOOKINGS
+      // =================================================
+
+      const customerBookings =
+        Array.isArray(
+          data?.bookings
+        )
           ? data.bookings
-          : []
+          : [];
+
+
+      console.log(
+        "CUSTOMER BOOKINGS FOUND:",
+        customerBookings.length
+      );
+
+
+      // =================================================
+      // SET BOOKINGS
+      // =================================================
+
+      setBookings(
+        customerBookings
       );
 
 
@@ -210,10 +289,15 @@ function MyBookings() {
         error
       );
 
+
+      setBookings([]);
+
+
       setError(
         error.message ||
         "Unable to load your bookings."
       );
+
 
     } finally {
 
@@ -225,14 +309,75 @@ function MyBookings() {
 
 
   // =====================================================
+  // LOAD BOOKINGS
+  // REFRESH EVERY 3 SECONDS
+  // =====================================================
+
+  useEffect(() => {
+
+    fetchMyBookings();
+
+
+    const bookingInterval =
+      setInterval(() => {
+
+        fetchMyBookings();
+
+      }, 3000);
+
+
+    const handleVisibilityChange =
+      () => {
+
+        if (
+          document.visibilityState ===
+          "visible"
+        ) {
+
+          fetchMyBookings();
+
+        }
+
+      };
+
+
+    document.addEventListener(
+      "visibilitychange",
+      handleVisibilityChange
+    );
+
+
+    return () => {
+
+      clearInterval(
+        bookingInterval
+      );
+
+
+      document.removeEventListener(
+        "visibilitychange",
+        handleVisibilityChange
+      );
+
+    };
+
+  }, []);
+
+
+  // =====================================================
   // FORMAT DATE
   // =====================================================
 
-  const formatDate = (date) => {
+  const formatDate = (
+    date
+  ) => {
 
     if (!date) {
+
       return "N/A";
+
     }
+
 
     try {
 
@@ -260,7 +405,9 @@ function MyBookings() {
   // GET BOOKING STATUS
   // =====================================================
 
-  const getStatus = (booking) => {
+  const getStatus = (
+    booking
+  ) => {
 
     return (
       booking?.bookingStatus ||
@@ -272,19 +419,25 @@ function MyBookings() {
 
 
   // =====================================================
-  // UPCOMING / COMPLETED / CANCELLED
+  // BOOKING CATEGORY
   // =====================================================
 
-  const getBookingCategory = (booking) => {
+  const getBookingCategory = (
+    booking
+  ) => {
 
     const status =
       String(
-        getStatus(booking)
+        getStatus(
+          booking
+        )
       ).toLowerCase();
 
 
     if (
-      status.includes("cancel")
+      status.includes(
+        "cancel"
+      )
     ) {
 
       return "Cancelled";
@@ -293,7 +446,9 @@ function MyBookings() {
 
 
     if (
-      status.includes("complete")
+      status.includes(
+        "complete"
+      )
     ) {
 
       return "Completed";
@@ -354,7 +509,8 @@ function MyBookings() {
 
 
           const matchesTab =
-            activeTab === category;
+            activeTab ===
+            category;
 
 
           return (
@@ -381,10 +537,12 @@ function MyBookings() {
   ) => {
 
     navigate(
-      "/ticket",
+      "/success",
       {
         state: {
           booking,
+          fromMyBookings: true,
+          autoDownload: false,
         },
       }
     );
@@ -393,23 +551,20 @@ function MyBookings() {
 
 
   // =====================================================
-  // DOWNLOAD
+  // DOWNLOAD TICKET
   // =====================================================
 
   const handleDownload = (
     booking
   ) => {
 
-    // Agar tumhare ticket page mein
-    // PDF/print functionality hai,
-    // booking state ke saath ticket page open hoga.
-
     navigate(
-      "/ticket",
+      "/success",
       {
         state: {
           booking,
-          autoPrint: true,
+          fromMyBookings: true,
+          autoDownload: true,
         },
       }
     );
@@ -418,7 +573,7 @@ function MyBookings() {
 
 
   // =====================================================
-  // CANCEL
+  // CANCEL BOOKING
   // =====================================================
 
   const handleCancel = async (
@@ -432,14 +587,24 @@ function MyBookings() {
 
 
     if (!confirmCancel) {
+
       return;
+
     }
 
 
     try {
 
       const token =
-        localStorage.getItem("token");
+        localStorage.getItem(
+          "token"
+        ) || "";
+
+
+      const userId =
+        localStorage.getItem(
+          "userId"
+        ) || "";
 
 
       const response =
@@ -457,6 +622,13 @@ function MyBookings() {
                 ? {
                     Authorization:
                       `Bearer ${token}`,
+                  }
+                : {}),
+
+              ...(userId
+                ? {
+                    "x-user-id":
+                      userId,
                   }
                 : {}),
 
@@ -480,8 +652,6 @@ function MyBookings() {
       }
 
 
-      // Refresh bookings
-
       await fetchMyBookings();
 
 
@@ -496,6 +666,7 @@ function MyBookings() {
         "CANCEL BOOKING ERROR:",
         error
       );
+
 
       alert(
         error.message ||
@@ -514,12 +685,18 @@ function MyBookings() {
   if (loading) {
 
     return (
+
       <>
+
         <Navbar />
 
-        <section className="bookings-page">
+        <section
+          className="bookings-page"
+        >
 
-          <div className="booking-hero">
+          <div
+            className="booking-hero"
+          >
 
             <h1>
               My Bookings
@@ -531,9 +708,14 @@ function MyBookings() {
 
           </div>
 
-          <div className="booking-loading">
 
-            <div className="booking-loader"></div>
+          <div
+            className="booking-loading"
+          >
+
+            <div
+              className="booking-loader"
+            ></div>
 
             <p>
               Please wait...
@@ -543,12 +725,19 @@ function MyBookings() {
 
         </section>
 
+
         <Footer />
+
       </>
+
     );
 
   }
 
+
+  // =====================================================
+  // PAGE
+  // =====================================================
 
   return (
 
@@ -557,14 +746,18 @@ function MyBookings() {
       <Navbar />
 
 
-      <section className="bookings-page">
+      <section
+        className="bookings-page"
+      >
 
 
         {/* =================================================
             HERO
         ================================================= */}
 
-        <div className="booking-hero">
+        <div
+          className="booking-hero"
+        >
 
           <h1>
             My Bookings
@@ -582,9 +775,13 @@ function MyBookings() {
             SEARCH
         ================================================= */}
 
-        <div className="booking-search">
+        <div
+          className="booking-search"
+        >
 
-          <div className="search-box">
+          <div
+            className="search-box"
+          >
 
             <FaSearch />
 
@@ -610,13 +807,16 @@ function MyBookings() {
 
         {error && (
 
-          <div className="booking-error">
+          <div
+            className="booking-error"
+          >
 
             <p>
               {error}
             </p>
 
             <button
+              type="button"
               onClick={
                 fetchMyBookings
               }
@@ -633,7 +833,9 @@ function MyBookings() {
             TABS
         ================================================= */}
 
-        <div className="booking-tabs">
+        <div
+          className="booking-tabs"
+        >
 
           <button
             className={
@@ -693,24 +895,33 @@ function MyBookings() {
         ================================================= */}
 
         {!error &&
-          filteredBookings.length === 0 && (
+          filteredBookings.length ===
+            0 && (
 
-            <div className="no-bookings">
+            <div
+              className="no-bookings"
+            >
 
-              <div className="no-bookings-icon">
+              <div
+                className="no-bookings-icon"
+              >
 
                 <FaPlaneDeparture />
 
               </div>
 
+
               <h2>
                 No {activeTab} Bookings
               </h2>
 
+
               <p>
+
                 {search
                   ? "No booking found matching your search."
                   : `You don't have any ${activeTab.toLowerCase()} bookings.`}
+
               </p>
 
             </div>
@@ -722,53 +933,77 @@ function MyBookings() {
             BOOKING LIST
         ================================================= */}
 
-        <div className="booking-list">
+        <div
+          className="booking-list"
+        >
 
           {filteredBookings.map(
             (booking) => {
 
+              // =================================================
+              // FLIGHT
+              // =================================================
 
               const flight =
                 booking?.flight ||
                 {};
 
 
-              // const passenger =
-              //   booking?.passengers?.[0] ||
-              //   {};
+              // =================================================
+              // PASSENGER
+              // =================================================
 
               const passenger =
-  booking?.passengers?.[0] ||
-  booking?.passenger ||
-  {};
+                booking?.passengers?.[0] ||
+                booking?.passenger ||
+                {};
 
 
-  const passengerName =
-  `${passenger?.firstName || ""} ${
-    passenger?.lastName || ""
-  }`.trim() || "Customer";
+              const passengerName =
+                `${passenger?.firstName || ""} ${
+                  passenger?.lastName || ""
+                }`.trim() ||
+                "Customer";
 
-const passengerEmail =
-  passenger?.email || "No Email";
 
-const passengerPhone =
-  passenger?.phone || "No Phone";
+              const passengerEmail =
+                passenger?.email ||
+                "No Email";
 
-const passengerDOB =
-  passenger?.dob || "N/A";
 
-const passengerGender =
-  passenger?.gender || "N/A";
+              const passengerPhone =
+                passenger?.phone ||
+                "No Phone";
 
-const passengerPassport =
-  passenger?.passport || "N/A";
 
-const passengerCity =
-  passenger?.city || "N/A";
+              const passengerDOB =
+                passenger?.dob ||
+                "N/A";
 
-const passengerAddress =
-  passenger?.address || "N/A";
 
+              const passengerGender =
+                passenger?.gender ||
+                "N/A";
+
+
+              const passengerPassport =
+                passenger?.passport ||
+                "N/A";
+
+
+              const passengerCity =
+                passenger?.city ||
+                "N/A";
+
+
+              const passengerAddress =
+                passenger?.address ||
+                "N/A";
+
+
+              // =================================================
+              // STATUS
+              // =================================================
 
               const status =
                 getStatus(
@@ -776,23 +1011,42 @@ const passengerAddress =
                 );
 
 
+              // =================================================
+              // SEAT
+              // =================================================
+
               const seat =
                 booking?.seat ||
-                booking?.seats?.[0]?.seatNumber ||
+                booking?.seats?.[0]
+                  ?.seatNumber ||
                 "N/A";
 
 
+              // =================================================
+              // MEAL
+              // =================================================
+
               const meal =
                 booking?.meal?.name ||
-                booking?.meals?.[0]?.name ||
+                booking?.meals?.[0]
+                  ?.name ||
                 "No Meal";
 
 
+              // =================================================
+              // BAGGAGE
+              // =================================================
+
               const baggage =
                 booking?.baggage?.weight ||
-                booking?.baggages?.[0]?.weight ||
+                booking?.baggages?.[0]
+                  ?.weight ||
                 "15 KG";
 
+
+              // =================================================
+              // PRICE
+              // =================================================
 
               const price =
                 booking?.total ??
@@ -816,9 +1070,13 @@ const passengerAddress =
                       LEFT
                   ================================================= */}
 
-                  <div className="booking-left">
+                  <div
+                    className="booking-left"
+                  >
 
-                    <div className="airline-icon">
+                    <div
+                      className="airline-icon"
+                    >
 
                       <FaPlaneDeparture />
 
@@ -878,7 +1136,9 @@ const passengerAddress =
                       MIDDLE
                   ================================================= */}
 
-                  <div className="booking-middle">
+                  <div
+                    className="booking-middle"
+                  >
 
 
                     <div>
@@ -921,10 +1181,12 @@ const passengerAddress =
                       </strong>
 
                       <p>
+
                         {
                           passenger?.firstName ||
                           ""
                         }{" "}
+
                         {
                           passenger?.lastName ||
                           ""
@@ -1039,7 +1301,9 @@ const passengerAddress =
                       RIGHT
                   ================================================= */}
 
-                  <div className="booking-right">
+                  <div
+                    className="booking-right"
+                  >
 
 
                     <span
@@ -1064,7 +1328,9 @@ const passengerAddress =
                     </span>
 
 
-                    <h2 className="booking-price">
+                    <h2
+                      className="booking-price"
+                    >
 
                       ₹{" "}
 
@@ -1077,88 +1343,19 @@ const passengerAddress =
                     </h2>
 
 
+                    {/* =================================================
+                        BUTTONS
+                    ================================================= */}
 
-{/* 
-wdojdidjeide */}
-
-
-
-<div className="booking-buttons">
-
-  {/* VIEW TICKET */}
-
-  <button
-    type="button"
-    className="view-btn"
-    onClick={() => {
-
-      navigate("/success", {
-        state: {
-          booking: booking,
-          fromMyBookings: true,
-          autoDownload: false,
-        },
-      });
-
-    }}
-  >
-
-    <FaEye />
-
-    View Ticket
-
-  </button>
+                    <div
+                      className="booking-buttons"
+                    >
 
 
-  {/* DOWNLOAD TICKET */}
-
-  <button
-    type="button"
-    className="download-btn"
-    onClick={() => {
-
-      navigate("/success", {
-        state: {
-          booking: booking,
-          fromMyBookings: true,
-          autoDownload: true,
-        },
-      });
-
-    }}
-  >
-
-    <FaDownload />
-
-    Download
-
-  </button>
-
-
-  {/* CANCEL */}
-
-  <button
-    type="button"
-    className="cancel-btn"
-    onClick={() => {
-
-      // तुम्हारा existing cancel function यहाँ रहेगा
-
-    }}
-  >
-
-    <FaTimesCircle />
-
-    Cancel
-
-  </button>
-
-</div>
-
-                    {/* <div className="booking-buttons">
-
+                      {/* VIEW TICKET */}
 
                       <button
+                        type="button"
                         className="view-btn"
                         onClick={() =>
                           handleViewTicket(
@@ -1174,7 +1371,10 @@ wdojdidjeide */}
                       </button>
 
 
+                      {/* DOWNLOAD TICKET */}
+
                       <button
+                        type="button"
                         className="download-btn"
                         onClick={() =>
                           handleDownload(
@@ -1190,13 +1390,16 @@ wdojdidjeide */}
                       </button>
 
 
-                      {status
+                      {/* CANCEL */}
+
+                      {!status
                         .toLowerCase()
                         .includes(
                           "cancel"
-                        ) === false && (
+                        ) && (
 
                         <button
+                          type="button"
                           className="cancel-btn"
                           onClick={() =>
                             handleCancel(
@@ -1213,8 +1416,7 @@ wdojdidjeide */}
 
                       )}
 
-
-                    </div> */}
+                    </div>
 
 
                   </div>
