@@ -1,6 +1,3 @@
-
-
-
 import "./Success.css";
 
 import {
