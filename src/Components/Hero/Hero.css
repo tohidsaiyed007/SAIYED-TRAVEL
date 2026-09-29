@@ -916,3 +916,584 @@
     display: none;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   HERO STATS CARDS - FINAL RESPONSIVE
+========================================================= */
+
+.hero-right {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   3 CARDS ROW
+========================================================= */
+
+.hero-stats {
+  width: 100%;
+  min-width: 0;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 14px;
+
+  margin: 0 0 18px 0;
+
+  padding: 0;
+
+  position: relative;
+  z-index: 10;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.hero-stats .card {
+  position: relative !important;
+
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+
+  transform: none !important;
+
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+
+  min-height: 76px;
+
+  padding: 11px 13px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #e7eef9;
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 8px 25px rgba(37, 99, 235, 0.09);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.hero-stats .card:hover {
+  transform: translateY(-3px) !important;
+
+  box-shadow:
+    0 12px 30px rgba(37, 99, 235, 0.14);
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.hero-stats .card-icon-box {
+  width: 40px;
+  height: 40px;
+
+  min-width: 40px;
+  flex: 0 0 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  color: #2563eb;
+
+  background: #eff6ff;
+
+  font-size: 20px;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.hero-stats .card-content {
+  min-width: 0;
+  width: 100%;
+
+  overflow: hidden;
+}
+
+
+.hero-stats .card h4 {
+  margin: 0;
+
+  color: #172b4d;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  white-space: nowrap;
+}
+
+
+.hero-stats .card p {
+  margin: 4px 0 0;
+
+  color: #718096;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  line-height: 1.2;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.hero-image-box {
+  width: 100%;
+  min-width: 0;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+}
+
+
+/* =========================================================
+   REMOVE OLD CARD POSITION
+========================================================= */
+
+.hero-right > .card,
+.hero-right > .card1,
+.hero-right > .card2,
+.hero-right > .card3 {
+  position: static !important;
+
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+
+  transform: none !important;
+}
+
+
+/* =========================================================
+   1200px
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .hero-stats {
+    gap: 10px;
+  }
+
+  .hero-stats .card {
+    padding: 10px;
+    gap: 8px;
+
+    min-height: 70px;
+  }
+
+  .hero-stats .card-icon-box {
+    width: 36px;
+    height: 36px;
+
+    min-width: 36px;
+    flex-basis: 36px;
+
+    font-size: 18px;
+  }
+
+  .hero-stats .card h4 {
+    font-size: 16px;
+  }
+
+  .hero-stats .card p {
+    font-size: 9px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .hero-stats {
+    gap: 8px;
+
+    margin-bottom: 14px;
+  }
+
+  .hero-stats .card {
+    min-height: 65px;
+
+    padding: 8px;
+
+    gap: 7px;
+
+    border-radius: 12px;
+  }
+
+  .hero-stats .card-icon-box {
+    width: 32px;
+    height: 32px;
+
+    min-width: 32px;
+    flex-basis: 32px;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+  }
+
+  .hero-stats .card h4 {
+    font-size: 14px;
+  }
+
+  .hero-stats .card p {
+    margin-top: 3px;
+
+    font-size: 8px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .hero-stats {
+    width: 100%;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 7px;
+
+    margin-bottom: 12px;
+  }
+
+  .hero-stats .card {
+    min-width: 0;
+
+    min-height: 62px;
+
+    padding: 8px 6px;
+
+    gap: 6px;
+
+    border-radius: 11px;
+  }
+
+  .hero-stats .card-icon-box {
+    width: 29px;
+    height: 29px;
+
+    min-width: 29px;
+    flex-basis: 29px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+  }
+
+  .hero-stats .card-content {
+    min-width: 0;
+  }
+
+  .hero-stats .card h4 {
+    font-size: 13px;
+  }
+
+  .hero-stats .card p {
+    font-size: 7px;
+
+    white-space: nowrap;
+  }
+}
+
+
+/* =========================================================
+   600px
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .hero-stats {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 6px;
+
+    width: 100%;
+
+    margin-bottom: 10px;
+  }
+
+  .hero-stats .card {
+    min-height: 58px;
+
+    padding: 7px 5px;
+
+    gap: 5px;
+
+    border-radius: 10px;
+  }
+
+  .hero-stats .card-icon-box {
+    width: 26px;
+    height: 26px;
+
+    min-width: 26px;
+    flex-basis: 26px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+  }
+
+  .hero-stats .card h4 {
+    font-size: 12px;
+  }
+
+  .hero-stats .card p {
+    margin-top: 2px;
+
+    font-size: 6.5px;
+  }
+}
+
+
+/* =========================================================
+   420px
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .hero-stats {
+    width: 100%;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 5px;
+
+    margin-bottom: 9px;
+  }
+
+  .hero-stats .card {
+    width: 100% !important;
+    min-width: 0 !important;
+
+    min-height: 56px;
+
+    padding: 6px 4px;
+
+    gap: 4px;
+
+    border-radius: 9px;
+
+    box-shadow:
+      0 5px 15px rgba(37, 99, 235, 0.08);
+  }
+
+  .hero-stats .card-icon-box {
+    width: 24px;
+    height: 24px;
+
+    min-width: 24px;
+    flex-basis: 24px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+  }
+
+  .hero-stats .card h4 {
+    font-size: 11px;
+
+    line-height: 1;
+  }
+
+  .hero-stats .card p {
+    margin-top: 2px;
+
+    font-size: 6px;
+
+    line-height: 1.1;
+
+    max-width: 100%;
+  }
+}
+
+
+/* =========================================================
+   375px - iPhone SE
+========================================================= */
+
+@media (max-width: 390px) {
+
+  .hero-stats {
+    width: 100%;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 4px;
+  }
+
+  .hero-stats .card {
+    min-height: 54px;
+
+    padding: 5px 3px;
+
+    gap: 3px;
+  }
+
+  .hero-stats .card-icon-box {
+    width: 22px;
+    height: 22px;
+
+    min-width: 22px;
+    flex-basis: 22px;
+
+    font-size: 10px;
+  }
+
+  .hero-stats .card h4 {
+    font-size: 10px;
+  }
+
+  .hero-stats .card p {
+    font-size: 5.5px;
+  }
+}
+
+
+/* =========================================================
+   350px
+========================================================= */
+
+@media (max-width: 350px) {
+
+  .hero-stats {
+    gap: 3px;
+  }
+
+  .hero-stats .card {
+    min-height: 51px;
+
+    padding: 4px 2px;
+
+    gap: 2px;
+  }
+
+  .hero-stats .card-icon-box {
+    width: 20px;
+    height: 20px;
+
+    min-width: 20px;
+    flex-basis: 20px;
+
+    font-size: 9px;
+  }
+
+  .hero-stats .card h4 {
+    font-size: 9px;
+  }
+
+  .hero-stats .card p {
+    font-size: 5px;
+  }
+}

@@ -31,9 +31,11 @@
 .navbar {
   width: 100%;
   height: 74px;
+
   position: sticky;
   top: 0;
   left: 0;
+
   z-index: 9999;
 
   background: rgba(255, 255, 255, 0.97);
@@ -195,7 +197,7 @@
   align-items: center;
   justify-content: flex-end;
 
-  gap: 10px;
+  gap: 8px;
 
   flex-shrink: 0;
 }
@@ -203,27 +205,34 @@
 
 /* =========================================================
    LOGIN BUTTON
+   DESKTOP = 50 x 25
 ========================================================= */
 
 .login-btn {
-  min-width: 78px;
-  height: 40px;
-
-  padding: 0 16px;
+  width: 50px;
+  min-width: 50px;
+  height: 25px;
+  padding: 0;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
   border: 1px solid #2563eb;
-  border-radius: 8px;
+  border-radius: 6px;
 
   color: #2563eb;
 
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 700;
 
+  line-height: 1;
+
   background: transparent;
+
+  white-space: nowrap;
+
+  cursor: pointer;
 
   transition:
     all 0.2s ease;
@@ -239,29 +248,38 @@
 
 /* =========================================================
    SIGN UP BUTTON
+   DESKTOP = 60 x 25
 ========================================================= */
 
 .signup-btn {
-  min-width: 82px;
-  height: 40px;
+  width: 60px;
+  min-width: 80px;
+  height: 25px;
 
-  padding: 0 17px;
+  padding: 0;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 8px;
+  border: 1px solid #2563eb;
+  border-radius: 6px;
 
   color: #fff;
 
   background: #2563eb;
 
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 700;
 
+  line-height: 1;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
   box-shadow:
-    0 4px 12px rgba(37, 99, 235, 0.20);
+    0 3px 8px rgba(37, 99, 235, 0.18);
 
   transition:
     all 0.2s ease;
@@ -273,7 +291,7 @@
   transform: translateY(-1px);
 
   box-shadow:
-    0 6px 16px rgba(37, 99, 235, 0.25);
+    0 5px 12px rgba(37, 99, 235, 0.23);
 }
 
 
@@ -525,7 +543,7 @@
 
   padding: 0;
 
-  margin-left: 10px;
+  margin-left: 8px;
 
   border: 1px solid #e5e7eb;
   border-radius: 9px;
@@ -591,10 +609,20 @@
     font-size: 20px;
   }
 
-  .login-btn,
+  .login-btn {
+    width: 48px;
+    min-width: 48px;
+    height: 25px;
+
+    font-size: 9px;
+  }
+
   .signup-btn {
-    min-width: auto;
-    padding: 0 13px;
+    width: 57px;
+    min-width: 57px;
+    height: 25px;
+
+    font-size: 9px;
   }
 
 }
@@ -616,18 +644,14 @@
   }
 
 
-  /* -----------------------------
-       SHOW HAMBURGER
-  ----------------------------- */
+  /* HAMBURGER */
 
   .menu-toggle {
     display: flex;
   }
 
 
-  /* -----------------------------
-       MAIN MENU
-  ----------------------------- */
+  /* MAIN MENU */
 
   .nav-menu {
     position: fixed;
@@ -655,8 +679,7 @@
     box-shadow:
       0 15px 35px rgba(0, 0, 0, 0.10);
 
-    transform:
-      translateY(-20px);
+    transform: translateY(-20px);
 
     opacity: 0;
     visibility: hidden;
@@ -671,7 +694,6 @@
     z-index: 10000;
   }
 
-
   .nav-menu.active {
     opacity: 1;
 
@@ -679,10 +701,8 @@
 
     pointer-events: auto;
 
-    transform:
-      translateY(0);
+    transform: translateY(0);
   }
-
 
   .nav-menu ul {
     width: 100%;
@@ -698,12 +718,10 @@
     gap: 5px;
   }
 
-
   .nav-menu li {
     width: 100%;
     height: auto;
   }
-
 
   .nav-menu a {
     width: 100%;
@@ -718,16 +736,13 @@
     font-size: 15px;
   }
 
-
   .nav-menu a:hover,
   .nav-menu a.active {
     padding-left: 19px;
   }
 
 
-  /* -----------------------------
-       OVERLAY
-  ----------------------------- */
+  /* OVERLAY */
 
   .mobile-menu-overlay {
     display: block;
@@ -748,7 +763,6 @@
       overlayFade 0.2s ease;
   }
 
-
   @keyframes overlayFade {
 
     from {
@@ -762,18 +776,33 @@
   }
 
 
-  /* -----------------------------
-       RIGHT SIDE
-  ----------------------------- */
+  /* RIGHT SIDE */
 
   .nav-right {
     margin-left: auto;
   }
 
 
-  /* -----------------------------
-       ACCOUNT DROPDOWN
-  ----------------------------- */
+  /* TABLET BUTTONS */
+
+  .login-btn {
+    width: 45px;
+    min-width: 45px;
+    height: 24px;
+
+    font-size: 9px;
+  }
+
+  .signup-btn {
+    width: 52px;
+    min-width: 52px;
+    height: 24px;
+
+    font-size: 9px;
+  }
+
+
+  /* ACCOUNT DROPDOWN */
 
   .account-dropdown {
     right: 0;
@@ -795,14 +824,11 @@
   .nav-container {
     height: 64px;
 
-    padding:
-      0 13px;
+    padding: 0 13px;
   }
 
 
-  /* -----------------------------
-       LOGO
-  ----------------------------- */
+  /* LOGO */
 
   .logo {
     gap: 7px;
@@ -818,36 +844,52 @@
   }
 
 
-  /* -----------------------------
-       RIGHT SIDE
-  ----------------------------- */
+  /* RIGHT SIDE */
 
   .nav-right {
-    gap: 6px;
+    gap: 5px;
   }
 
+
+  /* LOGIN
+     EXACT MOBILE SIZE = 40 x 20 */
 
   .login-btn {
-    height: 37px;
+    display: inline-flex;
 
-    padding: 0 10px;
+    width: 40px;
+    min-width: 40px;
+    height: 20px;
 
-    min-width: auto;
+    padding: 0;
 
-    font-size: 13px;
+    border-radius: 5px;
+
+    font-size: 8px;
+    font-weight: 700;
   }
 
+
+  /* SIGN UP
+     EXACT MOBILE SIZE = 42 x 22 */
 
   .signup-btn {
-    height: 37px;
+    display: inline-flex;
 
-    padding: 0 10px;
+    width: 42px;
+    min-width: 42px;
+    height: 22px;
 
-    min-width: auto;
+    padding: 0;
 
-    font-size: 13px;
+    border-radius: 5px;
+
+    font-size: 8px;
+    font-weight: 700;
   }
 
+
+  /* ACCOUNT */
 
   .account-btn {
     width: 39px;
@@ -857,19 +899,19 @@
   }
 
 
+  /* HAMBURGER */
+
   .menu-toggle {
     width: 39px;
     height: 39px;
 
-    margin-left: 5px;
+    margin-left: 4px;
 
     font-size: 18px;
   }
 
 
-  /* -----------------------------
-       MOBILE NAV
-  ----------------------------- */
+  /* MOBILE NAV */
 
   .nav-menu {
     top: 64px;
@@ -881,7 +923,6 @@
       12px 13px 20px;
   }
 
-
   .mobile-menu-overlay {
     top: 64px;
 
@@ -890,9 +931,7 @@
   }
 
 
-  /* -----------------------------
-       ACCOUNT DROPDOWN
-  ----------------------------- */
+  /* ACCOUNT DROPDOWN */
 
   .account-dropdown {
     position: fixed;
@@ -919,7 +958,7 @@
 
 
 /* =========================================================
-   SMALL MOBILE
+   SMALL MOBILE - 420px
 ========================================================= */
 
 @media (max-width: 420px) {
@@ -940,17 +979,36 @@
   }
 
 
+  /* LOGIN
+     40 x 20 */
+
   .login-btn {
-    display: none;
+    display: inline-flex;
+
+    width: 40px;
+    min-width: 40px;
+    height: 20px;
+
+    font-size: 8px;
   }
 
 
+  /* SIGN UP
+     42 x 22 */
+
   .signup-btn {
-    height: 35px;
+    display: inline-flex;
 
-    padding: 0 9px;
+    width: 42px;
+    min-width: 42px;
+    height: 22px;
 
-    font-size: 12px;
+    font-size: 8px;
+  }
+
+
+  .nav-right {
+    gap: 4px;
   }
 
 
@@ -992,12 +1050,50 @@
     font-size: 15px;
   }
 
-  .signup-btn {
-    display: none;
+  .logo-icon {
+    width: 22px;
+    height: 22px;
   }
 
   .nav-container {
     padding: 0 8px;
+  }
+
+  .nav-right {
+    gap: 3px;
+  }
+
+
+  .login-btn {
+    width: 36px;
+    min-width: 36px;
+    height: 19px;
+
+    font-size: 7px;
+  }
+
+  .signup-btn {
+    width: 40px;
+    min-width: 40px;
+    height: 20px;
+
+    font-size: 7px;
+  }
+
+  .account-btn {
+    width: 35px;
+    height: 35px;
+
+    font-size: 20px;
+  }
+
+  .menu-toggle {
+    width: 35px;
+    height: 35px;
+
+    margin-left: 2px;
+
+    font-size: 16px;
   }
 
 }
@@ -1044,7 +1140,9 @@ body.navbar-menu-open {
 .nav-menu a:focus-visible,
 .account-dropdown a:focus-visible,
 .logout-link:focus-visible {
-  outline: 3px solid rgba(37, 99, 235, 0.25);
+
+  outline:
+    3px solid rgba(37, 99, 235, 0.25);
 
   outline-offset: 2px;
 }
@@ -1059,9 +1157,15 @@ body.navbar-menu-open {
   .navbar *,
   .navbar *::before,
   .navbar *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
   }
 
 }

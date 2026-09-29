@@ -1,763 +1,1006 @@
-
 /*==========================================
         FLIGHT SEARCH SECTION
 ==========================================*/
 
-.flight-search{
-
-    width:100%;
-
-    background:transparent;
-
-    padding:15px 0;
-
-    margin:0;
-
+.flight-search {
+    width: 100%;
+    background: transparent;
+    padding: 15px 0;
+    margin: 0;
+    box-sizing: border-box;
 }
+
 
 /*==========================================
         SEARCH CARD
 ==========================================*/
 
-.search-card{
-
-    width:100%;
-
-    max-width:1450px;
-
-    margin:0 auto;
-
-    background:#fff;
-
-    border-radius:20px;
-
-    padding:22px;
-
-    border:1px solid #e8edf5;
+.search-card {
+    width: 100%;
+    max-width: 1450px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 20px;
+    padding: 22px;
+    border: 1px solid #e8edf5;
 
     box-shadow:
-    0 8px 25px rgba(0,0,0,.06);
+        0 8px 25px rgba(0, 0, 0, 0.06);
 
+    box-sizing: border-box;
 }
+
 
 /*==========================================
         TRIP TABS
 ==========================================*/
 
-.trip-tabs{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    margin-bottom:20px;
-
-    flex-wrap:wrap;
-
+.trip-tabs {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
-.trip-tabs button{
+.trip-tabs button {
+    border: none;
+    outline: none;
+    background: #f4f7fc;
+    color: #555;
 
-    border:none;
+    padding: 12px 22px;
 
-    outline:none;
+    border-radius: 30px;
 
-    background:#f4f7fc;
+    font-size: 15px;
+    font-weight: 600;
 
-    color:#555;
+    cursor: pointer;
 
-    padding:12px 22px;
-
-    border-radius:30px;
-
-    font-size:15px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.3s;
-
+    transition: 0.3s;
 }
 
-.trip-tabs button:hover{
-
-    background:#eaf3ff;
-
-    color:#0d6efd;
-
+.trip-tabs button:hover {
+    background: #eaf3ff;
+    color: #0d6efd;
 }
 
-.trip-tabs button.active{
+.trip-tabs button.active {
+    background: #0d6efd;
+    color: #fff;
 
-    background:#0d6efd;
-
-    color:#fff;
-
-    box-shadow:0 8px 20px rgba(13,110,253,.25);
-
+    box-shadow:
+        0 8px 20px rgba(13, 110, 253, 0.25);
 }
+
 
 /*==========================================
-        SEARCH ROW
+        SEARCH ROW - DESKTOP
 ==========================================*/
 
-.search-row{
+.search-row {
+    width: 100%;
 
-    display:grid;
+    display: grid;
 
     grid-template-columns:
-    1.2fr
-    70px
-    1.2fr
-    1fr
-    1fr
-    70px;
+        minmax(0, 1.2fr)
+        58px
+        minmax(0, 1.2fr)
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        70px;
 
-    gap:16px;
+    gap: 16px;
 
-    align-items:center;
+    align-items: center;
 
+    box-sizing: border-box;
 }
-
-/*==========================================
-        RESPONSIVE
-==========================================*/
-
-@media(max-width:1200px){
-
-.search-row{
-
-    grid-template-columns:
-    1fr
-    70px
-    1fr;
-
-}
-
-}
-
-@media(max-width:768px){
-
-.flight-search{
-
-    padding:10px 0;
-
-}
-
-.search-card{
-
-    padding:18px;
-
-    border-radius:16px;
-
-}
-
-.trip-tabs{
-
-    overflow-x:auto;
-
-    flex-wrap:nowrap;
-
-}
-
-.trip-tabs::-webkit-scrollbar{
-
-    display:none;
-
-}
-
-.search-row{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:14px;
-
-}
-
-}
-
 
 
 /*==========================================
-            SEARCH FIELD
+        SEARCH FIELD
 ==========================================*/
 
-.field{
+.field {
+    position: relative;
 
-    position:relative;
+    width: 100%;
+    min-width: 0;
 
-    display:flex;
+    display: flex;
+    align-items: center;
 
-    align-items:center;
+    gap: 15px;
 
-    gap:15px;
+    background: #fff;
 
-    background:#fff;
+    border: 1px solid #e5e7eb;
 
-    border:1px solid #e5e7eb;
+    border-radius: 16px;
 
-    border-radius:16px;
+    padding: 16px 18px;
 
-    padding:16px 18px;
+    min-height: 82px;
 
-    min-height:82px;
+    transition: 0.3s;
 
-    transition:.3s;
+    cursor: pointer;
 
-    cursor:pointer;
-
+    box-sizing: border-box;
 }
 
-.field:hover{
+.field:hover {
+    border-color: #0d6efd;
 
-    border-color:#0d6efd;
-
-    box-shadow:0 8px 22px rgba(13,110,253,.12);
-
+    box-shadow:
+        0 8px 22px rgba(13, 110, 253, 0.12);
 }
-
-/*==========================================
-            SELECTOR FIELD
-==========================================*/
-
-.selector-field{
-
-    position:relative;
-
-}
-
-/*==========================================
-            ICON
-==========================================*/
-
-.icon{
-
-    font-size:24px;
-
-    color:#0d6efd;
-
-    flex-shrink:0;
-
-}
-
-/*==========================================
-            CONTENT
-==========================================*/
-
-.selector-content{
-
-    flex:1;
-
-}
-
-.selector-content p{
-
-    margin:0;
-
-    font-size:12px;
-
-    font-weight:600;
-
-    color:#6b7280;
-
-    text-transform:uppercase;
-
-    letter-spacing:.5px;
-
-}
-
-.selector-content h3{
-
-    margin:4px 0;
-
-    font-size:24px;
-
-    font-weight:700;
-
-    color:#111827;
-
-    line-height:1.2;
-
-}
-
-.selector-content span{
-
-    font-size:13px;
-
-    color:#9ca3af;
-
-}
-
-/*==========================================
-            DATE PICKER
-==========================================*/
-
-.date-picker{
-
-    width:100%;
-
-    border:none;
-
-    outline:none;
-
-    background:transparent;
-
-    font-size:22px;
-
-    font-weight:700;
-
-    color:#111827;
-
-    cursor:pointer;
-
-    margin-top:4px;
-
-    padding:0;
-
-}
-
-/*==========================================
-            SWAP BUTTON
-==========================================*/
-
-.swap-btn{
-
-    width:58px;
-
-    height:58px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:#0d6efd;
-
-    color:#fff;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    cursor:pointer;
-
-    font-size:18px;
-
-    transition:.35s;
-
-    box-shadow:0 8px 20px rgba(13,110,253,.25);
-
-}
-
-.swap-btn:hover{
-
-    transform:rotate(180deg);
-
-    background:#0056d2;
-
-}
-
-.swap-btn:active{
-
-    transform:scale(.95);
-
-}
-
-/*==========================================
-            MOBILE
-==========================================*/
-
-@media(max-width:768px){
-
-.field{
-
-    min-height:72px;
-
-    padding:14px 16px;
-
-}
-
-.icon{
-
-    font-size:20px;
-
-}
-
-.selector-content h3{
-
-    font-size:20px;
-
-}
-
-.date-picker{
-
-    font-size:18px;
-
-}
-
-.swap-btn{
-
-    width:52px;
-
-    height:52px;
-
-    margin:auto;
-
-}
-
-}
-
 
 
 /*==========================================
-            SELECTOR POPUP
+        SELECTOR FIELD
 ==========================================*/
 
-.selector-popup{
-
-    position:absolute;
-
-    top:105%;
-
-    left:0;
-
-    width:400px;
-
-    max-width:95vw;
-
-    background:#fff;
-
-    border-radius:18px;
-
-    border:1px solid #e5e7eb;
-
-    box-shadow:0 18px 40px rgba(0,0,0,.12);
-
-    overflow:hidden;
-
-    z-index:999;
-
-    animation:popup .25s ease;
-
+.selector-field {
+    position: relative;
+    width: 100%;
+    min-width: 0;
 }
 
-@keyframes popup{
 
-    from{
-        opacity:0;
-        transform:translateY(12px);
+/*==========================================
+        ICON
+==========================================*/
+
+.icon {
+    font-size: 24px;
+    color: #0d6efd;
+
+    flex-shrink: 0;
+}
+
+
+/*==========================================
+        CONTENT
+==========================================*/
+
+.selector-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.selector-content p {
+    margin: 0;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #6b7280;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+.selector-content h3 {
+    margin: 4px 0;
+
+    font-size: 24px;
+    font-weight: 700;
+
+    color: #111827;
+
+    line-height: 1.2;
+
+    min-width: 0;
+}
+
+.selector-content span {
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+
+/*==========================================
+        DATE PICKER
+==========================================*/
+
+.date-picker {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    color: #111827;
+
+    cursor: pointer;
+
+    margin-top: 4px;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+
+/*==========================================
+        SWAP BUTTON
+==========================================*/
+
+.swap-btn {
+    width: 58px;
+    height: 58px;
+
+    min-width: 58px;
+    min-height: 58px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #0d6efd;
+
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition: 0.35s;
+
+    box-shadow:
+        0 8px 20px rgba(13, 110, 253, 0.25);
+
+    flex-shrink: 0;
+}
+
+.swap-btn:hover {
+    transform: rotate(180deg);
+    background: #0056d2;
+}
+
+.swap-btn:active {
+    transform: scale(0.95);
+}
+
+
+/*==========================================
+        SEARCH BUTTON
+==========================================*/
+
+.search-btn {
+    width: 100%;
+    height: 82px;
+
+    min-width: 0;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd,
+            #2563eb
+        );
+
+    color: #fff;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.3s;
+
+    box-shadow:
+        0 10px 25px rgba(13, 110, 253, 0.25);
+
+    box-sizing: border-box;
+}
+
+.search-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 16px 35px rgba(13, 110, 253, 0.35);
+}
+
+
+/*==========================================
+        SELECTOR POPUP
+==========================================*/
+
+.selector-popup {
+    position: absolute;
+
+    top: 105%;
+    left: 0;
+
+    width: 400px;
+    max-width: 95vw;
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.12);
+
+    overflow: hidden;
+
+    z-index: 999;
+
+    animation: popup 0.25s ease;
+}
+
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
     }
 
-    to{
-        opacity:1;
-        transform:translateY(0);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-
 }
 
-/*==========================================
-            SEARCH BUTTON
-==========================================*/
-
-.search-btn{
-
-    width:100%;
-
-    height:82px;
-
-    border:none;
-
-    border-radius:16px;
-
-    background:linear-gradient(
-        135deg,
-        #0d6efd,
-        #2563eb
-    );
-
-    color:#fff;
-
-    font-size:22px;
-
-    cursor:pointer;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    transition:.3s;
-
-    box-shadow:0 10px 25px rgba(13,110,253,.25);
-
-}
-
-.search-btn:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:0 16px 35px rgba(13,110,253,.35);
-
-}
 
 /*==========================================
         REACT DATE PICKER
 ==========================================*/
 
-.react-datepicker{
+.react-datepicker {
+    border: none !important;
 
-    border:none !important;
+    border-radius: 16px !important;
 
-    border-radius:16px !important;
+    overflow: hidden;
 
-    overflow:hidden;
-
-    box-shadow:0 15px 35px rgba(0,0,0,.12);
-
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
-.react-datepicker__header{
+.react-datepicker__header {
+    background: #0d6efd !important;
 
-    background:#0d6efd !important;
-
-    border:none !important;
-
+    border: none !important;
 }
 
 .react-datepicker__current-month,
-.react-datepicker__day-name{
-
-    color:#fff !important;
-
+.react-datepicker__day-name {
+    color: #fff !important;
 }
 
-.react-datepicker__day{
+.react-datepicker__day {
+    border-radius: 50%;
 
-    border-radius:50%;
-
-    transition:.25s;
-
+    transition: 0.25s;
 }
 
-.react-datepicker__day:hover{
-
-    background:#0d6efd !important;
-
-    color:#fff !important;
-
+.react-datepicker__day:hover {
+    background: #0d6efd !important;
+    color: #fff !important;
 }
 
-.react-datepicker__day--selected{
-
-    background:#0d6efd !important;
-
-    color:#fff !important;
-
+.react-datepicker__day--selected {
+    background: #0d6efd !important;
+    color: #fff !important;
 }
 
-.react-datepicker__navigation-icon::before{
-
-    border-color:#fff !important;
-
+.react-datepicker__navigation-icon::before {
+    border-color: #fff !important;
 }
+
 
 /*==========================================
-            TABLET
+        AVAILABLE FLIGHT DATE
 ==========================================*/
-
-@media(max-width:1200px){
-
-.search-btn{
-
-    height:65px;
-
-}
-
-}
-
-/*==========================================
-            MOBILE
-==========================================*/
-
-@media(max-width:768px){
-
-.selector-popup{
-
-    position:fixed;
-
-    left:50%;
-
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    width:95%;
-
-    max-height:85vh;
-
-    overflow:auto;
-
-    border-radius:16px;
-
-}
-
-.search-btn{
-
-    height:58px;
-
-    border-radius:14px;
-
-    font-size:18px;
-
-}
-
-}
-
-/*==========================================
-            SMALL MOBILE
-==========================================*/
-
-@media(max-width:480px){
-
-.selector-popup{
-
-    width:96%;
-
-}
-
-.search-btn{
-
-    height:54px;
-
-    font-size:17px;
-
-}
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* =====================================================
-   AVAILABLE FLIGHT DATE
-===================================================== */
 
 .react-datepicker__day.flight-available-day {
-  background: #111827 !important;
-  color: #ffffff !important;
-  border-radius: 50% !important;
-  font-weight: 700 !important;
+    background: #111827 !important;
+
+    color: #ffffff !important;
+
+    border-radius: 50% !important;
+
+    font-weight: 700 !important;
 }
-
-
-/* Hover */
 
 .react-datepicker__day.flight-available-day:hover {
-  background: #000000 !important;
-  color: #ffffff !important;
+    background: #000000 !important;
+
+    color: #ffffff !important;
 }
-
-
-/* Selected available date */
 
 .react-datepicker__day--selected.flight-available-day {
-  background: #111827 !important;
-  color: #ffffff !important;
+    background: #111827 !important;
+
+    color: #ffffff !important;
 }
-
-
-/* Today */
 
 .react-datepicker__day--today.flight-available-day {
-  font-weight: 800 !important;
+    font-weight: 800 !important;
 }
-
-
-/* Disabled dates */
 
 .react-datepicker__day--disabled {
-  color: #cbd5e1 !important;
-  cursor: not-allowed !important;
+    color: #cbd5e1 !important;
+
+    cursor: not-allowed !important;
 }
 
 
+/*==========================================
+        TABLET
+        1200px
+==========================================*/
 
+@media (max-width: 1200px) {
 
+    .search-card {
+        width: calc(100% - 24px);
 
+        padding: 20px;
+    }
 
+    .search-row {
+        grid-template-columns:
+            minmax(0, 1fr)
+            55px
+            minmax(0, 1fr)
+            minmax(0, 1fr)
+            minmax(0, 1fr);
 
+        gap: 12px;
+    }
 
+    .search-btn {
+        grid-column: 1 / -1;
 
+        width: 100%;
 
+        height: 65px;
+    }
 
+    .field {
+        min-width: 0;
+    }
 
+    .selector-content h3 {
+        font-size: 21px;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.react-datepicker__day.flight-available-day {
-  background: #111827 !important;
-  color: #ffffff !important;
-  border-radius: 50% !important;
-  font-weight: 700 !important;
+    .date-picker {
+        font-size: 19px;
+    }
 }
 
-.react-datepicker__day.flight-available-day:hover {
-  background: #000000 !important;
-  color: #ffffff !important;
+
+/*==========================================
+        TABLET
+        900px
+==========================================*/
+
+@media (max-width: 900px) {
+
+    .flight-search {
+        padding: 10px 0;
+    }
+
+    .search-card {
+        width: calc(100% - 20px);
+
+        padding: 18px;
+
+        border-radius: 18px;
+    }
+
+    .search-row {
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            52px
+            minmax(0, 1fr);
+
+        gap: 12px;
+    }
+
+    .search-btn {
+        grid-column: 1 / -1;
+
+        height: 62px;
+    }
+
+    .field {
+        min-height: 76px;
+
+        padding: 14px;
+    }
+
+    .selector-content h3 {
+        font-size: 20px;
+    }
+
+    .icon {
+        font-size: 21px;
+    }
 }
 
-.react-datepicker__day--selected.flight-available-day {
-  background: #111827 !important;
-  color: #ffffff !important;
+
+/*==========================================
+        MOBILE
+        768px
+==========================================*/
+
+@media (max-width: 768px) {
+
+    .flight-search {
+        width: 100%;
+
+        padding: 10px 0;
+
+        box-sizing: border-box;
+    }
+
+
+    /* SEARCH CARD */
+
+    .search-card {
+        width: calc(100% - 20px);
+
+        margin: 0 auto;
+
+        padding: 16px;
+
+        border-radius: 16px;
+
+        box-sizing: border-box;
+    }
+
+
+    /* TRIP TABS */
+
+    .trip-tabs {
+        display: flex;
+
+        width: 100%;
+
+        gap: 8px;
+
+        margin-bottom: 16px;
+
+        overflow-x: auto;
+
+        flex-wrap: nowrap;
+
+        scrollbar-width: none;
+
+        -ms-overflow-style: none;
+    }
+
+    .trip-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .trip-tabs button {
+        flex: 0 0 auto;
+
+        padding: 10px 18px;
+
+        font-size: 14px;
+
+        white-space: nowrap;
+    }
+
+
+    /* SEARCH ROW */
+
+    .search-row {
+        display: flex;
+
+        flex-direction: column;
+
+        width: 100%;
+
+        gap: 12px;
+
+        box-sizing: border-box;
+    }
+
+
+    /* ALL FIELDS */
+
+    .field {
+        width: 100%;
+
+        min-width: 0;
+
+        min-height: 70px;
+
+        padding: 14px;
+
+        border-radius: 14px;
+
+        box-sizing: border-box;
+    }
+
+
+    /* ICON */
+
+    .icon {
+        font-size: 20px;
+
+        flex-shrink: 0;
+    }
+
+
+    /* CONTENT */
+
+    .selector-content {
+        width: 100%;
+
+        min-width: 0;
+
+        overflow: hidden;
+    }
+
+    .selector-content p {
+        font-size: 11px;
+    }
+
+    .selector-content h3 {
+        font-size: 19px;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+    }
+
+    .selector-content span {
+        font-size: 12px;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+    }
+
+
+    /* DATE */
+
+    .date-picker {
+        width: 100%;
+
+        min-width: 0;
+
+        font-size: 18px;
+    }
+
+
+    /* SWAP */
+
+    .swap-btn {
+        width: 48px;
+        height: 48px;
+
+        min-width: 48px;
+        min-height: 48px;
+
+        margin: 0 auto;
+
+        flex-shrink: 0;
+    }
+
+
+    /* SEARCH BUTTON */
+
+    .search-btn {
+        width: 100%;
+
+        height: 58px;
+
+        min-height: 58px;
+
+        border-radius: 14px;
+
+        font-size: 18px;
+
+        box-sizing: border-box;
+
+        flex-shrink: 0;
+    }
+
+
+    /* POPUP */
+
+    .selector-popup {
+        position: fixed;
+
+        left: 50%;
+        top: 50%;
+
+        transform: translate(-50%, -50%);
+
+        width: 95%;
+
+        max-width: 95%;
+
+        max-height: 85vh;
+
+        overflow: auto;
+
+        border-radius: 16px;
+    }
+}
+
+
+/*==========================================
+        SMALL MOBILE
+        480px
+==========================================*/
+
+@media (max-width: 480px) {
+
+    .flight-search {
+        padding: 8px 0;
+    }
+
+    .search-card {
+        width: calc(100% - 16px);
+
+        padding: 13px;
+
+        border-radius: 14px;
+    }
+
+
+    /* TABS */
+
+    .trip-tabs {
+        gap: 7px;
+
+        margin-bottom: 14px;
+    }
+
+    .trip-tabs button {
+        padding: 9px 15px;
+
+        font-size: 13px;
+    }
+
+
+    /* ROW */
+
+    .search-row {
+        gap: 10px;
+    }
+
+
+    /* FIELD */
+
+    .field {
+        min-height: 66px;
+
+        padding: 12px;
+
+        border-radius: 13px;
+
+        gap: 11px;
+    }
+
+
+    /* ICON */
+
+    .icon {
+        font-size: 19px;
+    }
+
+
+    /* CONTENT */
+
+    .selector-content p {
+        font-size: 10px;
+    }
+
+    .selector-content h3 {
+        font-size: 18px;
+
+        margin: 3px 0;
+    }
+
+    .selector-content span {
+        font-size: 11px;
+    }
+
+
+    /* DATE */
+
+    .date-picker {
+        font-size: 17px;
+    }
+
+
+    /* SWAP */
+
+    .swap-btn {
+        width: 46px;
+        height: 46px;
+
+        min-width: 46px;
+        min-height: 46px;
+    }
+
+
+    /* SEARCH */
+
+    .search-btn {
+        height: 55px;
+
+        min-height: 55px;
+
+        border-radius: 13px;
+
+        font-size: 17px;
+    }
+
+
+    /* POPUP */
+
+    .selector-popup {
+        width: 96%;
+
+        max-width: 96%;
+    }
+}
+
+
+/*==========================================
+        VERY SMALL MOBILE
+        360px
+==========================================*/
+
+@media (max-width: 360px) {
+
+    .flight-search {
+        padding: 6px 0;
+    }
+
+    .search-card {
+        width: calc(100% - 10px);
+
+        padding: 10px;
+
+        border-radius: 13px;
+    }
+
+
+    .trip-tabs {
+        gap: 6px;
+    }
+
+    .trip-tabs button {
+        padding: 8px 13px;
+
+        font-size: 12px;
+    }
+
+
+    .search-row {
+        gap: 9px;
+    }
+
+
+    .field {
+        min-height: 63px;
+
+        padding: 10px;
+
+        gap: 9px;
+    }
+
+
+    .icon {
+        font-size: 18px;
+    }
+
+
+    .selector-content p {
+        font-size: 9px;
+    }
+
+    .selector-content h3 {
+        font-size: 17px;
+    }
+
+    .selector-content span {
+        font-size: 10px;
+    }
+
+
+    .date-picker {
+        font-size: 16px;
+    }
+
+
+    .swap-btn {
+        width: 44px;
+        height: 44px;
+
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+
+    .search-btn {
+        height: 53px;
+
+        min-height: 53px;
+
+        font-size: 16px;
+    }
+}
+
+
+/*==========================================
+        EXTRA SMALL MOBILE
+        340px
+==========================================*/
+
+@media (max-width: 340px) {
+
+    .search-card {
+        width: calc(100% - 6px);
+
+        padding: 9px;
+    }
+
+    .trip-tabs button {
+        padding: 7px 11px;
+
+        font-size: 11px;
+    }
+
+    .field {
+        padding: 9px;
+
+        gap: 8px;
+    }
+
+    .selector-content h3 {
+        font-size: 16px;
+    }
+
+    .selector-content span {
+        font-size: 9px;
+    }
+
+    .icon {
+        font-size: 17px;
+    }
+
+    .search-btn {
+        font-size: 15px;
+    }
 }
