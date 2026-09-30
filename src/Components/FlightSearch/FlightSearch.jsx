@@ -251,34 +251,88 @@ function FlightSearch() {
         const selectedFrom = normalizeCity(from);
         const selectedTo = normalizeCity(to);
 
-        const routeFlights =
-          flights.filter((flight) => {
-            const fromValues = [
-              flight.fromCity,
-              flight.fromCode,
-              flight.fromAirport,
-              flight.from
-            ]
-              .filter(Boolean)
-              .map(normalizeCity);
 
-            const toValues = [
-              flight.toCity,
-              flight.toCode,
-              flight.toAirport,
-              flight.to
-            ]
-              .filter(Boolean)
-              .map(normalizeCity);
 
-            const fromMatch =
-              fromValues.includes(selectedFrom);
+const routeFlights =
+  flights.filter((flight) => {
+    const fromValues = [
+      flight.fromCity,
+      flight.fromCode,
+      flight.fromAirport,
+      flight.from,
+    ]
+      .filter(Boolean)
+      .map(normalizeCity);
 
-            const toMatch =
-              toValues.includes(selectedTo);
+    const toValues = [
+      flight.toCity,
+      flight.toCode,
+      flight.toAirport,
+      flight.to,
+    ]
+      .filter(Boolean)
+      .map(normalizeCity);
 
-            return fromMatch && toMatch;
-          });
+    const fromMatch =
+      fromValues.includes(selectedFrom);
+
+    const toMatch =
+      toValues.includes(selectedTo);
+
+    // ==========================================
+    // ACTUAL AVAILABLE TICKET CHECK
+    // ==========================================
+
+    const hasAvailableTicket =
+      Array.isArray(flight.tickets) &&
+      flight.tickets.some(
+        (ticket) =>
+          String(ticket?.status || "")
+            .trim()
+            .toLowerCase() === "available"
+      );
+
+    return (
+      fromMatch &&
+      toMatch &&
+      hasAvailableTicket
+    );
+  });
+
+
+
+
+
+
+
+        // const routeFlights =
+        //   flights.filter((flight) => {
+        //     const fromValues = [
+        //       flight.fromCity,
+        //       flight.fromCode,
+        //       flight.fromAirport,
+        //       flight.from
+        //     ]
+        //       .filter(Boolean)
+        //       .map(normalizeCity);
+
+        //     const toValues = [
+        //       flight.toCity,
+        //       flight.toCode,
+        //       flight.toAirport,
+        //       flight.to
+        //     ]
+        //       .filter(Boolean)
+        //       .map(normalizeCity);
+
+        //     const fromMatch =
+        //       fromValues.includes(selectedFrom);
+
+        //     const toMatch =
+        //       toValues.includes(selectedTo);
+
+        //     return fromMatch && toMatch;
+        //   });
 
         console.log(
           "Route flights:",
