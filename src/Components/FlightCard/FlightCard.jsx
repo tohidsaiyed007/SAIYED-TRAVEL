@@ -56,75 +56,344 @@ function FlightCard({
   // AIRLINE LOGOS
   // =====================================================
 
-  const airlineLogos = {
-
-    indigo:
-      "https://images.kiwi.com/airlines/64/6E.png",
-
-    "air india":
-      "https://images.kiwi.com/airlines/64/AI.png",
-
-    spicejet:
-      "https://images.kiwi.com/airlines/64/SG.png",
-
-    vistara:
-      "https://images.kiwi.com/airlines/64/UK.png",
-
-    "air india express":
-      "https://images.kiwi.com/airlines/64/IX.png",
-
-    emirates:
-      "https://images.kiwi.com/airlines/64/EK.png",
-
-    "qatar airways":
-      "https://images.kiwi.com/airlines/64/QR.png",
-
-    "etihad airways":
-      "https://images.kiwi.com/airlines/64/EY.png",
-
-    "oman air":
-      "https://images.kiwi.com/airlines/64/WY.png",
-
-    "saudi airlines":
-      "https://images.kiwi.com/airlines/64/SV.png",
-
-    "singapore airlines":
-      "https://images.kiwi.com/airlines/64/SQ.png",
-
-    lufthansa:
-      "https://images.kiwi.com/airlines/64/LH.png",
-
-    "british airways":
-      "https://images.kiwi.com/airlines/64/BA.png",
-
-    "turkish airlines":
-      "https://images.kiwi.com/airlines/64/TK.png",
-
-    "malaysia airlines":
-      "https://images.kiwi.com/airlines/64/MH.png",
-
-    "thai airways":
-      "https://images.kiwi.com/airlines/64/TG.png",
-
-    "indian airlines":
-      "https://images.kiwi.com/airlines/64/IC.png",
-
-  };
 
 
-  const airlineName =
-    String(
-      flight.airline || ""
-    )
-      .trim()
-      .toLowerCase();
 
 
-  const airlineLogo =
-    airlineLogos[
-      airlineName
-    ];
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const airlineLogos = {
+
+  // =========================
+  // INDIA
+  // =========================
+
+  indigo:
+    "https://images.kiwi.com/airlines/64/6E.png",
+
+  "air india":
+    "https://images.kiwi.com/airlines/64/AI.png",
+
+  "air india express":
+    "https://images.kiwi.com/airlines/64/IX.png",
+
+  spicejet:
+    "https://images.kiwi.com/airlines/64/SG.png",
+
+  vistara:
+    "https://images.kiwi.com/airlines/64/UK.png",
+
+  akasa:
+    "https://images.kiwi.com/airlines/64/QP.png",
+
+  "akasa air":
+    "https://images.kiwi.com/airlines/64/QP.png",
+
+  "alliance air":
+    "https://images.kiwi.com/airlines/64/9I.png",
+
+  "go first":
+    "https://images.kiwi.com/airlines/64/G8.png",
+
+  "go air":
+    "https://images.kiwi.com/airlines/64/G8.png",
+
+  "star air":
+    "https://images.kiwi.com/airlines/64/S5.png",
+
+  "indiaone air":
+    "https://images.kiwi.com/airlines/64/I7.png",
+
+  "indian airlines":
+    "https://images.kiwi.com/airlines/64/IC.png",
+
+
+  // =========================
+  // GULF / MIDDLE EAST
+  // =========================
+
+  emirates:
+    "https://images.kiwi.com/airlines/64/EK.png",
+
+  "qatar airways":
+    "https://images.kiwi.com/airlines/64/QR.png",
+
+  "etihad airways":
+    "https://images.kiwi.com/airlines/64/EY.png",
+
+  "oman air":
+    "https://images.kiwi.com/airlines/64/WY.png",
+
+  salamair:
+    "https://images.kiwi.com/airlines/64/OV.png",
+
+  "salam air":
+    "https://images.kiwi.com/airlines/64/OV.png",
+
+  flydubai:
+    "https://images.kiwi.com/airlines/64/FZ.png",
+
+  "air arabia":
+    "https://images.kiwi.com/airlines/64/G9.png",
+
+  "saudi airlines":
+    "https://images.kiwi.com/airlines/64/SV.png",
+
+  "saudi arabia":
+    "https://images.kiwi.com/airlines/64/SV.png",
+
+  "kuwait airways":
+    "https://images.kiwi.com/airlines/64/KU.png",
+
+  "gulf air":
+    "https://images.kiwi.com/airlines/64/GF.png",
+
+  "jazeera airways":
+    "https://images.kiwi.com/airlines/64/J9.png",
+
+  "flynas":
+    "https://images.kiwi.com/airlines/64/XY.png",
+
+  "flyadeal":
+    "https://images.kiwi.com/airlines/64/F3.png",
+
+
+  // =========================
+  // ASIA
+  // =========================
+
+  "singapore airlines":
+    "https://images.kiwi.com/airlines/64/SQ.png",
+
+  malaysia:
+    "https://images.kiwi.com/airlines/64/MH.png",
+
+  "malaysia airlines":
+    "https://images.kiwi.com/airlines/64/MH.png",
+
+  "thai airways":
+    "https://images.kiwi.com/airlines/64/TG.png",
+
+  "thai airways international":
+    "https://images.kiwi.com/airlines/64/TG.png",
+
+  "sri lankan airlines":
+    "https://images.kiwi.com/airlines/64/UL.png",
+
+  "air asia":
+    "https://images.kiwi.com/airlines/64/AK.png",
+
+  airasia:
+    "https://images.kiwi.com/airlines/64/AK.png",
+
+  "air asia india":
+    "https://images.kiwi.com/airlines/64/I5.png",
+
+  "batik air":
+    "https://images.kiwi.com/airlines/64/ID.png",
+
+  "garuda indonesia":
+    "https://images.kiwi.com/airlines/64/GA.png",
+
+  "vietnam airlines":
+    "https://images.kiwi.com/airlines/64/VN.png",
+
+  "vietnam air":
+    "https://images.kiwi.com/airlines/64/VN.png",
+
+  "cathay pacific":
+    "https://images.kiwi.com/airlines/64/CX.png",
+
+  "eva air":
+    "https://images.kiwi.com/airlines/64/BR.png",
+
+  "china southern":
+    "https://images.kiwi.com/airlines/64/CZ.png",
+
+  "china eastern":
+    "https://images.kiwi.com/airlines/64/MU.png",
+
+
+  // =========================
+  // EUROPE
+  // =========================
+
+  lufthansa:
+    "https://images.kiwi.com/airlines/64/LH.png",
+
+  "british airways":
+    "https://images.kiwi.com/airlines/64/BA.png",
+
+  "turkish airlines":
+    "https://images.kiwi.com/airlines/64/TK.png",
+
+  klm:
+    "https://images.kiwi.com/airlines/64/KL.png",
+
+  "klm royal dutch airlines":
+    "https://images.kiwi.com/airlines/64/KL.png",
+
+  "swiss international":
+    "https://images.kiwi.com/airlines/64/LX.png",
+
+  "swiss air":
+    "https://images.kiwi.com/airlines/64/LX.png",
+
+  "air france":
+    "https://images.kiwi.com/airlines/64/AF.png",
+
+  "finnair":
+    "https://images.kiwi.com/airlines/64/AY.png",
+
+  "iberia":
+    "https://images.kiwi.com/airlines/64/IB.png",
+
+  "austrian airlines":
+    "https://images.kiwi.com/airlines/64/OS.png",
+
+  "brussels airlines":
+    "https://images.kiwi.com/airlines/64/SN.png",
+
+
+  // =========================
+  // OTHER
+  // =========================
+
+  "qantas":
+    "https://images.kiwi.com/airlines/64/QF.png",
+
+  "air new zealand":
+    "https://images.kiwi.com/airlines/64/NZ.png",
+
+  "south african airways":
+    "https://images.kiwi.com/airlines/64/SA.png",
+
+  "ethiopian airlines":
+    "https://images.kiwi.com/airlines/64/ET.png",
+
+  "kenya airways":
+    "https://images.kiwi.com/airlines/64/KQ.png",
+
+
+
+    "air arabia":
+  "https://images.kiwi.com/airlines/64/G9.png",
+
+airarabia:
+  "https://images.kiwi.com/airlines/64/G9.png",
+
+};
+
+
+
+//   const airlineLogos = {
+
+//     indigo:
+//       "https://images.kiwi.com/airlines/64/6E.png",
+
+//     "air india":
+//       "https://images.kiwi.com/airlines/64/AI.png",
+
+//     spicejet:
+//       "https://images.kiwi.com/airlines/64/SG.png",
+
+//     vistara:
+//       "https://images.kiwi.com/airlines/64/UK.png",
+
+//     "air india express":
+//       "https://images.kiwi.com/airlines/64/IX.png",
+
+//     emirates:
+//       "https://images.kiwi.com/airlines/64/EK.png",
+
+//     "qatar airways":
+//       "https://images.kiwi.com/airlines/64/QR.png",
+
+//     "etihad airways":
+//       "https://images.kiwi.com/airlines/64/EY.png",
+
+//     "oman air":
+//       "https://images.kiwi.com/airlines/64/WY.png",
+
+//       "salamair":
+//   "https://images.kiwi.com/airlines/64/OV.png",
+
+// "salam air":
+//   "https://images.kiwi.com/airlines/64/OV.png",
+
+//     "saudi airlines":
+//       "https://images.kiwi.com/airlines/64/SV.png",
+
+//     "singapore airlines":
+//       "https://images.kiwi.com/airlines/64/SQ.png",
+
+//     lufthansa:
+//       "https://images.kiwi.com/airlines/64/LH.png",
+
+//     "british airways":
+//       "https://images.kiwi.com/airlines/64/BA.png",
+
+//     "turkish airlines":
+//       "https://images.kiwi.com/airlines/64/TK.png",
+
+//     "malaysia airlines":
+//       "https://images.kiwi.com/airlines/64/MH.png",
+
+//     "thai airways":
+//       "https://images.kiwi.com/airlines/64/TG.png",
+
+//     "indian airlines":
+//       "https://images.kiwi.com/airlines/64/IC.png",
+
+//   };
+
+
+  // const airlineName =
+  //   String(
+  //     flight.airline || ""
+  //   )
+  //     .trim()
+  //     .toLowerCase();
+
+
+  // const airlineLogo =
+  //   airlineLogos[
+  //     airlineName
+  //   ];
+
+
+
+  const airlineName = String(
+  flight.airline || ""
+)
+  .trim()
+  .toLowerCase();
+
+const airlineLogo =
+  flight.logo ||
+  airlineLogos[airlineName] ||
+  "";
 
   // =====================================================
   // PASSENGER COUNTS
