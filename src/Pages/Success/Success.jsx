@@ -10365,19 +10365,66 @@ function Success() {
   // DATE / TIME
   // =====================================================
 
-  const departureDate =
-    flight?.departureDate ||
-    booking?.departureDate ||
-    flight?.date ||
-    booking?.date ||
-    "N/A";
+//   const departureDate =
+//     flight?.departureDate ||
+//     booking?.departureDate ||
+//     flight?.date ||
+//     booking?.date ||
+//     "N/A";
 
 
-  const arrivalDate =
-    flight?.arrivalDate ||
-    booking?.arrivalDate ||
-    departureDate;
+//   const arrivalDate =
+//     flight?.arrivalDate ||
+//     booking?.arrivalDate ||
+//     departureDate;
+// =====================================================
+// DATE FORMAT: DD-MM-YYYY
+// =====================================================
 
+const formatFlightDate = (value) => {
+  if (!value) return "N/A";
+
+  const dateString = String(value).trim();
+
+  // YYYY-MM-DD / YYYY-MM-DDTHH:mm:ss
+  const match = dateString.match(
+    /^(\d{4})-(\d{2})-(\d{2})/
+  );
+
+  if (match) {
+    const [, year, month, day] = match;
+
+    return `${day}-${month}-${year}`;
+  }
+
+  // Fallback for other valid date formats
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return dateString;
+  }
+
+  return [
+    String(date.getDate()).padStart(2, "0"),
+    String(date.getMonth() + 1).padStart(2, "0"),
+    date.getFullYear(),
+  ].join("-");
+};
+
+
+const departureDate = formatFlightDate(
+  flight?.departureDate ||
+  booking?.departureDate ||
+  flight?.date ||
+  booking?.date
+);
+
+
+const arrivalDate = formatFlightDate(
+  flight?.arrivalDate ||
+  booking?.arrivalDate ||
+  departureDate
+);
 
   const departureTime =
     flight?.departureTime ||

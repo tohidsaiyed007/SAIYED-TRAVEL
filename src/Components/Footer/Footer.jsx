@@ -68,7 +68,7 @@ function Footer() {
               <FaPhoneAlt />
               <strong>Abdul Wahid:</strong>
               <a href="tel:+919660497018">
-                +91 9960497018
+                +91 9660497018
               </a>
             </p>
 

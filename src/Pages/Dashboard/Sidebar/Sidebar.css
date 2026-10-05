@@ -646,3 +646,307 @@
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   HOME PAGE BUTTON
+========================================== */
+
+.sidebar-home-btn {
+  width: 100%;
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  padding: 0 20px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: transparent;
+  color: #374151;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.sidebar-home-btn svg {
+  min-width: 20px;
+  font-size: 18px;
+}
+
+.sidebar-home-btn:hover {
+  background: #eef5ff;
+  color: #1769e0;
+
+  transform: translateX(4px);
+
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.08);
+}
+
+.sidebar-home-btn:active {
+  transform: scale(0.97);
+}
+
+
+/* ==========================================
+   HOME PAGE TRANSITION OVERLAY
+========================================== */
+
+.home-transition-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.98),
+      rgba(239, 246, 255, 0.98)
+    );
+
+  animation: homeOverlayIn 0.35s ease forwards;
+}
+
+
+/* ==========================================
+   ANIMATION CONTENT
+========================================== */
+
+.home-animation-content {
+  position: relative;
+
+  width: 320px;
+
+  text-align: center;
+
+  animation: homeContentIn 0.5s ease forwards;
+}
+
+.home-flying-plane {
+  font-size: 55px;
+
+  color: #1769e0;
+
+  transform: rotate(-8deg);
+
+  animation: flyPlane 0.7s ease-in-out forwards;
+
+  filter:
+    drop-shadow(
+      0 8px 12px rgba(23, 105, 224, 0.25)
+    );
+}
+
+
+/* ==========================================
+   MOVING LINE
+========================================== */
+
+.home-animation-line {
+  width: 190px;
+  height: 3px;
+
+  margin: 14px auto 18px;
+
+  border-radius: 50px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #1769e0,
+    #60a5fa,
+    transparent
+  );
+
+  animation: lineMove 0.7s ease-in-out forwards;
+}
+
+
+/* ==========================================
+   TEXT
+========================================== */
+
+.home-animation-content h3 {
+  margin: 0;
+
+  font-size: 24px;
+
+  font-weight: 700;
+
+  color: #111827;
+
+  animation: textUp 0.5s ease 0.15s both;
+}
+
+.home-animation-content span {
+  display: block;
+
+  margin-top: 6px;
+
+  font-size: 14px;
+
+  color: #1769e0;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  animation: textUp 0.5s ease 0.25s both;
+}
+
+
+/* ==========================================
+   KEYFRAMES
+========================================== */
+
+@keyframes homeOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes homeContentIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+@keyframes flyPlane {
+  0% {
+    opacity: 0;
+    transform:
+      translateX(-100px)
+      translateY(25px)
+      rotate(-15deg);
+  }
+
+  45% {
+    opacity: 1;
+    transform:
+      translateX(0)
+      translateY(0)
+      rotate(-8deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translateX(100px)
+      translateY(-35px)
+      rotate(-8deg);
+  }
+}
+
+
+@keyframes lineMove {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+
+  to {
+    width: 190px;
+    opacity: 1;
+  }
+}
+
+
+@keyframes textUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

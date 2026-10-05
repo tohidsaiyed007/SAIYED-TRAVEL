@@ -307,83 +307,6 @@ airarabia:
 
 
 
-//   const airlineLogos = {
-
-//     indigo:
-//       "https://images.kiwi.com/airlines/64/6E.png",
-
-//     "air india":
-//       "https://images.kiwi.com/airlines/64/AI.png",
-
-//     spicejet:
-//       "https://images.kiwi.com/airlines/64/SG.png",
-
-//     vistara:
-//       "https://images.kiwi.com/airlines/64/UK.png",
-
-//     "air india express":
-//       "https://images.kiwi.com/airlines/64/IX.png",
-
-//     emirates:
-//       "https://images.kiwi.com/airlines/64/EK.png",
-
-//     "qatar airways":
-//       "https://images.kiwi.com/airlines/64/QR.png",
-
-//     "etihad airways":
-//       "https://images.kiwi.com/airlines/64/EY.png",
-
-//     "oman air":
-//       "https://images.kiwi.com/airlines/64/WY.png",
-
-//       "salamair":
-//   "https://images.kiwi.com/airlines/64/OV.png",
-
-// "salam air":
-//   "https://images.kiwi.com/airlines/64/OV.png",
-
-//     "saudi airlines":
-//       "https://images.kiwi.com/airlines/64/SV.png",
-
-//     "singapore airlines":
-//       "https://images.kiwi.com/airlines/64/SQ.png",
-
-//     lufthansa:
-//       "https://images.kiwi.com/airlines/64/LH.png",
-
-//     "british airways":
-//       "https://images.kiwi.com/airlines/64/BA.png",
-
-//     "turkish airlines":
-//       "https://images.kiwi.com/airlines/64/TK.png",
-
-//     "malaysia airlines":
-//       "https://images.kiwi.com/airlines/64/MH.png",
-
-//     "thai airways":
-//       "https://images.kiwi.com/airlines/64/TG.png",
-
-//     "indian airlines":
-//       "https://images.kiwi.com/airlines/64/IC.png",
-
-//   };
-
-
-  // const airlineName =
-  //   String(
-  //     flight.airline || ""
-  //   )
-  //     .trim()
-  //     .toLowerCase();
-
-
-  // const airlineLogo =
-  //   airlineLogos[
-  //     airlineName
-  //   ];
-
-
-
   const airlineName = String(
   flight.airline || ""
 )
@@ -689,6 +612,117 @@ const airlineLogo =
         ),
       0
     );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // =====================================================
+// AVAILABLE TICKETS / PNR COUNT
+// =====================================================
+
+const totalTickets = Array.isArray(flight?.tickets)
+  ? flight.tickets.length
+  : 0;
+
+const availableTickets = Array.isArray(flight?.tickets)
+  ? flight.tickets.filter(
+      (ticket) =>
+        String(ticket?.status || "")
+          .trim()
+          .toLowerCase() === "available"
+    ).length
+  : 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   // =====================================================
@@ -1489,7 +1523,7 @@ const airlineLogo =
             {checkinBaggage || "—"}
           </span>
 
-
+{/* 
           <span>
 
             💺{" "}
@@ -1502,7 +1536,15 @@ const airlineLogo =
 
             {" "}Seats
 
-          </span>
+          </span> */}
+
+          <span>
+  🎟️{" "}
+  {availableTickets}
+  {totalTickets > 0 &&
+    ` / ${totalTickets}`}
+  {" "}Tickets
+</span>
 
 
           {cabinBaggage && (

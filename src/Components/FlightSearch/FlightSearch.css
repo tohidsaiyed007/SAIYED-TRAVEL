@@ -1004,3 +1004,649 @@
         font-size: 15px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   PREMIUM FLIGHT CALENDAR
+========================================== */
+
+.react-datepicker {
+  border: none !important;
+  border-radius: 22px !important;
+
+  padding: 10px !important;
+
+  background: #ffffff !important;
+
+  box-shadow:
+    0 20px 60px rgba(15, 23, 42, 0.16),
+    0 5px 20px rgba(15, 23, 42, 0.08) !important;
+
+  font-family: inherit !important;
+
+  overflow: hidden;
+}
+
+.react-datepicker__header {
+  background: #ffffff !important;
+  border-bottom: none !important;
+
+  padding-top: 8px !important;
+}
+
+/* ==========================================
+   CUSTOM CALENDAR HEADER
+========================================== */
+
+.custom-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 8px 8px 16px;
+}
+
+.calendar-month-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 2px;
+}
+
+.calendar-month-title span {
+  font-size: 17px;
+  font-weight: 800;
+
+  color: #111827;
+}
+
+.calendar-month-title small {
+  font-size: 11px;
+  font-weight: 600;
+
+  color: #94a3b8;
+
+  letter-spacing: 1px;
+}
+
+.calendar-nav-btn {
+  width: 36px;
+  height: 36px;
+
+  border: none;
+  border-radius: 11px;
+
+  background: #f1f5f9;
+
+  color: #1769e0;
+
+  font-size: 26px;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.calendar-nav-btn:hover:not(:disabled) {
+  background: #e0ecff;
+
+  transform: scale(1.08);
+}
+
+.calendar-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   DAY NAMES
+========================================== */
+
+.react-datepicker__day-name {
+  width: 38px !important;
+
+  margin: 3px !important;
+
+  font-size: 11px !important;
+  font-weight: 700 !important;
+
+  color: #94a3b8 !important;
+}
+
+/* ==========================================
+   DAYS
+========================================== */
+
+.react-datepicker__day {
+  width: 38px !important;
+  height: 38px !important;
+
+  line-height: 38px !important;
+
+  margin: 3px !important;
+
+  border-radius: 12px !important;
+
+  font-size: 13px !important;
+  font-weight: 600 !important;
+
+  color: #64748b !important;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* ==========================================
+   AVAILABLE FLIGHT DATE
+========================================== */
+
+.react-datepicker__day.flight-available-day {
+  background: #eef5ff !important;
+
+  color: #1769e0 !important;
+
+  font-weight: 800 !important;
+
+  position: relative;
+}
+
+.react-datepicker__day.flight-available-day::after {
+  content: "";
+
+  position: absolute;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #1769e0;
+
+  bottom: 4px;
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+.react-datepicker__day.flight-available-day:hover {
+  background: #1769e0 !important;
+
+  color: #ffffff !important;
+
+  transform: translateY(-2px);
+}
+
+.react-datepicker__day.flight-available-day:hover::after {
+  background: #ffffff;
+}
+
+/* ==========================================
+   SELECTED DATE
+========================================== */
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background: linear-gradient(
+    135deg,
+    #1769e0,
+    #3b82f6
+  ) !important;
+
+  color: #ffffff !important;
+
+  font-weight: 800 !important;
+
+  box-shadow:
+    0 7px 18px rgba(23, 105, 224, 0.28);
+}
+
+.react-datepicker__day--selected::after,
+.react-datepicker__day--keyboard-selected::after {
+  background: #ffffff !important;
+}
+
+/* ==========================================
+   TODAY
+========================================== */
+
+.react-datepicker__day--today {
+  font-weight: 900 !important;
+
+  color: #1769e0 !important;
+}
+
+/* ==========================================
+   DISABLED DAYS
+========================================== */
+
+.react-datepicker__day--disabled {
+  color: #d7dee8 !important;
+
+  background: transparent !important;
+
+  cursor: not-allowed !important;
+
+  opacity: 0.65;
+}
+
+/* ==========================================
+   MONTH
+========================================== */
+
+.react-datepicker__month {
+  margin: 6px 4px 10px !important;
+}
+
+/* ==========================================
+   POPPER
+========================================== */
+
+.react-datepicker-popper {
+  z-index: 9999 !important;
+}
+
+.react-datepicker__triangle {
+  display: none !important;
+}
+
+
+/* ==========================================
+   SEARCH ANIMATION
+========================================== */
+
+.flight-search-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 999999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(
+    255,
+    255,
+    255,
+    0.97
+  );
+
+  backdrop-filter: blur(8px);
+
+  animation:
+    searchOverlayIn 0.3s ease
+    forwards;
+}
+
+.flight-search-animation {
+  width: min(90%, 430px);
+
+  text-align: center;
+
+  animation:
+    searchCardIn 0.5s ease
+    forwards;
+}
+
+/* ==========================================
+   ROUTE ANIMATION
+========================================== */
+
+.route-animation {
+  position: relative;
+
+  width: 330px;
+  height: 85px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.route-dot {
+  width: 14px;
+  height: 14px;
+
+  border-radius: 50%;
+
+  background: #1769e0;
+
+  box-shadow:
+    0 0 0 7px
+    rgba(23, 105, 224, 0.1);
+
+  z-index: 3;
+}
+
+.route-line {
+  position: absolute;
+
+  left: 14px;
+  right: 14px;
+
+  top: 50%;
+
+  height: 2px;
+
+  background: #dbe7f8;
+
+  overflow: hidden;
+}
+
+.route-line span {
+  position: absolute;
+
+  left: -30%;
+  top: 0;
+
+  width: 30%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #1769e0,
+    transparent
+  );
+
+  animation:
+    routeLineMove
+    0.8s linear infinite;
+}
+
+.search-flying-plane {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  font-size: 34px;
+
+  color: #1769e0;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-8deg);
+
+  background: #ffffff;
+
+  padding: 7px;
+
+  border-radius: 50%;
+
+  animation:
+    searchPlaneMove
+    1.2s ease-in-out infinite;
+
+  filter:
+    drop-shadow(
+      0 8px 12px
+      rgba(23, 105, 224, 0.2)
+    );
+}
+
+/* ==========================================
+   SEARCH TEXT
+========================================== */
+
+.flight-search-animation h2 {
+  margin: 10px 0 7px;
+
+  font-size: 27px;
+
+  font-weight: 800;
+
+  color: #111827;
+}
+
+.flight-search-animation p {
+  margin: 0;
+
+  font-size: 14px;
+
+  color: #64748b;
+}
+
+/* ==========================================
+   LOADING DOTS
+========================================== */
+
+.search-loading-dots {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  margin-top: 18px;
+}
+
+.search-loading-dots span {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #1769e0;
+
+  animation:
+    searchDot
+    0.8s ease-in-out infinite;
+}
+
+.search-loading-dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.search-loading-dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* ==========================================
+   KEYFRAMES
+========================================== */
+
+@keyframes searchOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes searchCardIn {
+  from {
+    opacity: 0;
+
+    transform:
+      scale(0.88)
+      translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scale(1)
+      translateY(0);
+  }
+}
+
+@keyframes routeLineMove {
+  from {
+    left: -30%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes searchPlaneMove {
+  0% {
+    transform:
+      translate(-50%, -50%)
+      translateX(-35px)
+      rotate(-8deg);
+  }
+
+  50% {
+    transform:
+      translate(-50%, -50%)
+      translateX(35px)
+      rotate(-8deg);
+  }
+
+  100% {
+    transform:
+      translate(-50%, -50%)
+      translateX(-35px)
+      rotate(-8deg);
+  }
+}
+
+@keyframes searchDot {
+  0%,
+  100% {
+    opacity: 0.3;
+
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translateY(-5px);
+  }
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+  .react-datepicker {
+    border-radius: 18px !important;
+
+    padding: 7px !important;
+  }
+
+  .react-datepicker__day,
+  .react-datepicker__day-name {
+    width: 34px !important;
+  }
+
+  .react-datepicker__day {
+    height: 34px !important;
+
+    line-height: 34px !important;
+
+    margin: 2px !important;
+  }
+
+  .react-datepicker__day-name {
+    margin: 2px !important;
+  }
+
+  .route-animation {
+    width: 280px;
+  }
+
+  .flight-search-animation h2 {
+    font-size: 23px;
+  }
+
+  .flight-search-animation p {
+    font-size: 13px;
+  }
+}
+
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .flight-search-overlay,
+  .flight-search-animation,
+  .route-line span,
+  .search-flying-plane,
+  .search-loading-dots span {
+    animation: none !important;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

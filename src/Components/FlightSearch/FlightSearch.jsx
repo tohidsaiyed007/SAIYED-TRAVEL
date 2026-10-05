@@ -1,3 +1,1126 @@
+// import "./FlightSearch.css";
+
+// import { useState, useEffect, useRef } from "react";
+// import { useNavigate } from "react-router-dom";
+
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
+
+// import CitySelector from "../CitySelector/CitySelector";
+// import TravellerSelector from "../TravellerSelector/TravellerSelector";
+
+// import {
+//   FaPlaneDeparture,
+//   FaPlaneArrival,
+//   FaExchangeAlt,
+//   FaCalendarAlt,
+//   FaUserFriends,
+//   FaSearch,
+// } from "react-icons/fa";
+
+// function FlightSearch() {
+//   const navigate = useNavigate();
+
+//   // ==========================================
+//   // FROM / TO
+//   // ==========================================
+
+//   const [from, setFrom] = useState("");
+//   const [to, setTo] = useState("");
+
+//   // ==========================================
+//   // DATE
+//   // ==========================================
+
+//   const [departureDate, setDepartureDate] =
+//     useState(null);
+
+//   // ==========================================
+//   // AVAILABLE DATES
+//   // ==========================================
+
+//   const [availableDates, setAvailableDates] =
+//     useState([]);
+
+//   const [loadingDates, setLoadingDates] =
+//     useState(false);
+
+//   // ==========================================
+//   // POPUPS
+//   // ==========================================
+
+//   const [showFromSelector, setShowFromSelector] =
+//     useState(false);
+
+//   const [showToSelector, setShowToSelector] =
+//     useState(false);
+
+//   const [showTraveller, setShowTraveller] =
+//     useState(false);
+
+//   // ==========================================
+//   // TRAVELLERS
+//   // ==========================================
+
+//   const [travellers, setTravellers] =
+//     useState({
+//       adults: 1,
+//       children: 0,
+//       infants: 0,
+//       cabin: "Economy",
+//     });
+
+//   // ==========================================
+//   // REFS
+//   // ==========================================
+
+//   const fromRef = useRef(null);
+//   const toRef = useRef(null);
+
+//   // ==========================================
+//   // NORMALIZE CITY
+//   // ==========================================
+
+//   const normalizeCity = (value) => {
+//     if (!value) {
+//       return "";
+//     }
+
+//     return String(value)
+//       .trim()
+//       .toLowerCase();
+//   };
+
+//   // ==========================================
+//   // DATE STRING
+//   // ==========================================
+
+//   const formatDateForSearch = (date) => {
+//     if (!date) {
+//       return "";
+//     }
+
+//     const year =
+//       date.getFullYear();
+
+//     const month =
+//       String(
+//         date.getMonth() + 1
+//       ).padStart(2, "0");
+
+//     const day =
+//       String(
+//         date.getDate()
+//       ).padStart(2, "0");
+
+//     return `${year}-${month}-${day}`;
+//   };
+
+//   // ==========================================
+//   // STRING DATE → DATE OBJECT
+//   // ==========================================
+
+//   const convertToDateObject = (
+//     dateString
+//   ) => {
+//     if (!dateString) {
+//       return null;
+//     }
+
+//     const value =
+//       String(dateString).trim();
+
+//     const match =
+//       value.match(
+//         /^(\d{4})-(\d{2})-(\d{2})$/
+//       );
+
+//     if (!match) {
+//       return null;
+//     }
+
+//     const year =
+//       Number(match[1]);
+
+//     const month =
+//       Number(match[2]) - 1;
+
+//     const day =
+//       Number(match[3]);
+
+//     const date = new Date(
+//       year,
+//       month,
+//       day
+//     );
+
+//     date.setHours(
+//       0,
+//       0,
+//       0,
+//       0
+//     );
+
+//     return date;
+//   };
+
+//   // ==========================================
+//   // FETCH AVAILABLE DATES
+//   //
+//   // When From + To changes,
+//   // automatically find all flights
+//   // for that route.
+//   // ==========================================
+
+//   useEffect(() => {
+//     const fetchAvailableDates = async () => {
+//       // --------------------------------------
+//       // Both cities required
+//       // --------------------------------------
+
+//       if (!from || !to) {
+//         setAvailableDates([]);
+
+//         setDepartureDate(null);
+
+//         return;
+//       }
+
+//       // --------------------------------------
+//       // Same city protection
+//       // --------------------------------------
+
+//       if (
+//         normalizeCity(from) ===
+//         normalizeCity(to)
+//       ) {
+//         setAvailableDates([]);
+
+//         setDepartureDate(null);
+
+//         return;
+//       }
+
+//       try {
+//         setLoadingDates(true);
+
+//         console.log(
+//           "Checking available dates:"
+//         );
+
+//         console.log(
+//           "From:",
+//           from
+//         );
+
+//         console.log(
+//           "To:",
+//           to
+//         );
+
+//         // ------------------------------------
+//         // GET ALL FLIGHTS
+//         // ------------------------------------
+
+//         const response =
+//           await fetch(
+//             "https://saiyed-travels-backend-1.onrender.com/api/flights"
+//           );
+
+//         const data =
+//           await response.json();
+
+//         if (!response.ok) {
+//           throw new Error(
+//             data.message ||
+//             "Unable to load flights."
+//           );
+//         }
+
+//         const flights =
+//           Array.isArray(
+//             data.flights
+//           )
+//             ? data.flights
+//             : [];
+
+//         // ------------------------------------
+//         // FILTER ROUTE
+//         // ------------------------------------
+
+//         const selectedFrom = normalizeCity(from);
+//         const selectedTo = normalizeCity(to);
+
+
+
+// const routeFlights =
+//   flights.filter((flight) => {
+//     const fromValues = [
+//       flight.fromCity,
+//       flight.fromCode,
+//       flight.fromAirport,
+//       flight.from,
+//     ]
+//       .filter(Boolean)
+//       .map(normalizeCity);
+
+//     const toValues = [
+//       flight.toCity,
+//       flight.toCode,
+//       flight.toAirport,
+//       flight.to,
+//     ]
+//       .filter(Boolean)
+//       .map(normalizeCity);
+
+//     const fromMatch =
+//       fromValues.includes(selectedFrom);
+
+//     const toMatch =
+//       toValues.includes(selectedTo);
+
+//     // ==========================================
+//     // ACTUAL AVAILABLE TICKET CHECK
+//     // ==========================================
+
+//     const hasAvailableTicket =
+//       Array.isArray(flight.tickets) &&
+//       flight.tickets.some(
+//         (ticket) =>
+//           String(ticket?.status || "")
+//             .trim()
+//             .toLowerCase() === "available"
+//       );
+
+//     return (
+//       fromMatch &&
+//       toMatch &&
+//       hasAvailableTicket
+//     );
+//   });
+
+
+
+
+
+
+
+//         // const routeFlights =
+//         //   flights.filter((flight) => {
+//         //     const fromValues = [
+//         //       flight.fromCity,
+//         //       flight.fromCode,
+//         //       flight.fromAirport,
+//         //       flight.from
+//         //     ]
+//         //       .filter(Boolean)
+//         //       .map(normalizeCity);
+
+//         //     const toValues = [
+//         //       flight.toCity,
+//         //       flight.toCode,
+//         //       flight.toAirport,
+//         //       flight.to
+//         //     ]
+//         //       .filter(Boolean)
+//         //       .map(normalizeCity);
+
+//         //     const fromMatch =
+//         //       fromValues.includes(selectedFrom);
+
+//         //     const toMatch =
+//         //       toValues.includes(selectedTo);
+
+//         //     return fromMatch && toMatch;
+//         //   });
+
+//         console.log(
+//           "Route flights:",
+//           routeFlights
+//         );
+
+//         console.log(
+//           "Matched route:",
+//           selectedFrom,
+//           "=>",
+//           selectedTo
+//         );
+
+//         // ------------------------------------
+//         // GET UNIQUE DATES
+//         // ------------------------------------
+
+//         const uniqueDateStrings =
+//           [
+//             ...new Set(
+//               routeFlights
+//                 .map((flight) => {
+//                   const value =
+//                     flight.departureDate ||
+//                     flight.date;
+
+//                   if (!value) {
+//                     return null;
+//                   }
+
+//                   const raw =
+//                     String(value).trim();
+
+//                   // YYYY-MM-DD or ISO date
+//                   if (
+//                     /^\d{4}-\d{2}-\d{2}/.test(
+//                       raw
+//                     )
+//                   ) {
+//                     return raw.slice(0, 10);
+//                   }
+
+//                   // DD-MM-YYYY
+//                   const dmy =
+//                     raw.match(
+//                       /^(\d{2})-(\d{2})-(\d{4})$/
+//                     );
+
+//                   if (dmy) {
+//                     return `${dmy[3]}-${dmy[2]}-${dmy[1]}`;
+//                   }
+
+//                   // DD/MM/YYYY
+//                   const slash =
+//                     raw.match(
+//                       /^(\d{2})\/(\d{2})\/(\d{4})$/
+//                     );
+
+//                   if (slash) {
+//                     return `${slash[3]}-${slash[2]}-${slash[1]}`;
+//                   }
+
+//                   return null;
+//                 })
+//                 .filter(Boolean)
+//             ),
+//           ].sort();
+
+//         console.log(
+//           "Available dates:",
+//           uniqueDateStrings
+//         );
+
+//         // ------------------------------------
+//         // CONVERT TO DATE OBJECTS
+//         // ------------------------------------
+
+//         const dateObjects =
+//           uniqueDateStrings
+//             .map(
+//               convertToDateObject
+//             )
+//             .filter(Boolean);
+
+//         setAvailableDates(
+//           dateObjects
+//         );
+
+//         // ------------------------------------
+//         // RESET OLD DATE
+//         // ------------------------------------
+
+//         setDepartureDate(
+//           null
+//         );
+
+//       } catch (error) {
+//         console.error(
+//           "Available Dates Error:",
+//           error
+//         );
+
+//         setAvailableDates([]);
+
+//         setDepartureDate(null);
+//       } finally {
+//         setLoadingDates(false);
+//       }
+//     };
+
+//     fetchAvailableDates();
+
+//   }, [from, to]);
+
+//   // ==========================================
+//   // SEARCH
+//   // ==========================================
+
+//   const handleSearch = () => {
+//     const cleanFrom =
+//       from.trim();
+
+//     const cleanTo =
+//       to.trim();
+
+//     // ----------------------------------------
+//     // FROM / TO
+//     // ----------------------------------------
+
+//     if (
+//       !cleanFrom ||
+//       !cleanTo
+//     ) {
+//       alert(
+//         "Please select departure and destination."
+//       );
+
+//       return;
+//     }
+
+//     // ----------------------------------------
+//     // SAME CITY
+//     // ----------------------------------------
+
+//     if (
+//       normalizeCity(cleanFrom) ===
+//       normalizeCity(cleanTo)
+//     ) {
+//       alert(
+//         "Departure and Destination cannot be the same."
+//       );
+
+//       return;
+//     }
+
+//     // ----------------------------------------
+//     // NO AVAILABLE DATE
+//     // ----------------------------------------
+
+//     if (
+//       availableDates.length ===
+//       0
+//     ) {
+//       alert(
+//         `No flights available from ${cleanFrom} to ${cleanTo}.`
+//       );
+
+//       return;
+//     }
+
+//     // ----------------------------------------
+//     // DATE
+//     // ----------------------------------------
+
+//     if (!departureDate) {
+//       alert(
+//         "Please select an available travel date."
+//       );
+
+//       return;
+//     }
+
+//     // ----------------------------------------
+//     // CHECK SELECTED DATE
+//     // ----------------------------------------
+
+//     const selectedDate =
+//       formatDateForSearch(
+//         departureDate
+//       );
+
+//     const isAvailable =
+//       availableDates.some(
+//         (date) =>
+//           formatDateForSearch(
+//             date
+//           ) === selectedDate
+//       );
+
+//     if (!isAvailable) {
+//       alert(
+//         "No flight is available on this date."
+//       );
+
+//       return;
+//     }
+
+//     console.log(
+//       "CUSTOMER SEARCH:"
+//     );
+
+//     console.log(
+//       "From:",
+//       cleanFrom
+//     );
+
+//     console.log(
+//       "To:",
+//       cleanTo
+//     );
+
+//     console.log(
+//       "Date:",
+//       selectedDate
+//     );
+
+//     // ----------------------------------------
+//     // GO TO FLIGHTS
+//     // ----------------------------------------
+
+//     navigate(
+//       "/flights",
+//       {
+//         state: {
+//           from: cleanFrom,
+
+//           to: cleanTo,
+
+//           departureDate:
+//             selectedDate,
+
+//           travellers,
+//         },
+//       }
+//     );
+//   };
+
+//   // ==========================================
+//   // FROM SELECT
+//   // ==========================================
+
+//   const handleFromSelect = (
+//     city
+//   ) => {
+//     setFrom(city);
+
+//     // When From changes,
+//     // old destination is removed.
+
+//     setTo("");
+
+//     setDepartureDate(null);
+
+//     setAvailableDates([]);
+
+//     setShowFromSelector(
+//       false
+//     );
+//   };
+
+//   // ==========================================
+//   // TO SELECT
+//   // ==========================================
+
+//   const handleToSelect = (
+//     city
+//   ) => {
+//     setTo(city);
+
+//     setDepartureDate(null);
+
+//     setShowToSelector(
+//       false
+//     );
+//   };
+
+//   // ==========================================
+//   // SWAP
+//   // ==========================================
+
+//   const handleSwap = () => {
+//     const oldFrom =
+//       from;
+
+//     const oldTo =
+//       to;
+
+//     setFrom(oldTo);
+
+//     setTo(oldFrom);
+
+//     setDepartureDate(null);
+//   };
+
+//   // ==========================================
+//   // TRAVELLER DONE
+//   // ==========================================
+
+//   const handleTravellerDone = (
+//     data
+//   ) => {
+//     setTravellers(data);
+
+//     setShowTraveller(
+//       false
+//     );
+//   };
+
+//   // ==========================================
+//   // CLICK OUTSIDE
+//   // ==========================================
+
+//   useEffect(() => {
+//     const handleClickOutside = (
+//       event
+//     ) => {
+
+//       // FROM
+
+//       if (
+//         fromRef.current &&
+//         !fromRef.current.contains(
+//           event.target
+//         )
+//       ) {
+//         setShowFromSelector(
+//           false
+//         );
+//       }
+
+//       // TO
+
+//       if (
+//         toRef.current &&
+//         !toRef.current.contains(
+//           event.target
+//         )
+//       ) {
+//         setShowToSelector(
+//           false
+//         );
+//       }
+
+//       // TRAVELLER
+
+//       if (
+//         !event.target.closest(
+//           ".traveller-popup"
+//         ) &&
+//         !event.target.closest(
+//           ".selector-content"
+//         )
+//       ) {
+//         setShowTraveller(
+//           false
+//         );
+//       }
+//     };
+
+//     document.addEventListener(
+//       "mousedown",
+//       handleClickOutside
+//     );
+
+//     return () => {
+//       document.removeEventListener(
+//         "mousedown",
+//         handleClickOutside
+//       );
+//     };
+
+//   }, []);
+
+//   // ==========================================
+//   // UI
+//   // ==========================================
+
+//   return (
+//     <section className="flight-search">
+
+//       <div className="search-card">
+
+//         {/* ====================================
+//             TABS
+//         ==================================== */}
+
+//         <div className="trip-tabs">
+
+//           <button
+//             type="button"
+//             className="active"
+//           >
+//             One Way
+//           </button>
+
+//           <button
+//             type="button"
+//           >
+//             Round Trip
+//           </button>
+
+//           <button
+//             type="button"
+//           >
+//             Multi City
+//           </button>
+
+//         </div>
+
+//         {/* ====================================
+//             SEARCH ROW
+//         ==================================== */}
+
+//         <div className="search-row">
+
+//           {/* ==================================
+//               FROM
+//           ================================== */}
+
+//           <div
+//             className="field selector-field"
+//             ref={fromRef}
+//           >
+
+//             <FaPlaneDeparture
+//               className="icon"
+//             />
+
+//             <div
+//               className="selector-content"
+//               onClick={() =>
+//                 setShowFromSelector(
+//                   true
+//                 )
+//               }
+//             >
+
+//               <p>
+//                 From
+//               </p>
+
+//               <h3>
+//                 {from ||
+//                   "Select City"}
+//               </h3>
+
+//               <span>
+//                 Select Departure City
+//               </span>
+
+//             </div>
+
+//             {showFromSelector && (
+
+//               <div className="selector-popup">
+
+//                 <CitySelector
+//                   type="from"
+//                   onSelect={
+//                     handleFromSelect
+//                   }
+//                 />
+
+//               </div>
+
+//             )}
+
+//           </div>
+
+//           {/* ==================================
+//               SWAP
+//           ================================== */}
+
+//           <button
+//             type="button"
+//             className="swap-btn"
+//             onClick={
+//               handleSwap
+//             }
+//             title="Swap cities"
+//           >
+
+//             <FaExchangeAlt />
+
+//           </button>
+
+//           {/* ==================================
+//               TO
+//           ================================== */}
+
+//           <div
+//             className="field selector-field"
+//             ref={toRef}
+//           >
+
+//             <FaPlaneArrival
+//               className="icon"
+//             />
+
+//             <div
+//               className="selector-content"
+//               onClick={() =>
+//                 setShowToSelector(
+//                   true
+//                 )
+//               }
+//             >
+
+//               <p>
+//                 To
+//               </p>
+
+//               <h3>
+//                 {to ||
+//                   "Select City"}
+//               </h3>
+
+//               <span>
+//                 Select Destination
+//               </span>
+
+//             </div>
+
+//             {showToSelector && (
+
+//               <div className="selector-popup">
+
+//                 <CitySelector
+//                   type="to"
+//                   selectedFrom={
+//                     from
+//                   }
+//                   onSelect={
+//                     handleToSelect
+//                   }
+//                 />
+
+//               </div>
+
+//             )}
+
+//           </div>
+
+//           {/* ==================================
+//               DATE
+//           ================================== */}
+
+//           <div className="field">
+
+//             <FaCalendarAlt
+//               className="icon"
+//             />
+
+//             <div>
+
+//               <p>
+//                 Departure
+//               </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+// <DatePicker
+//   selected={departureDate}
+
+//   onChange={(date) => {
+//     if (!date) {
+//       setDepartureDate(null);
+//       return;
+//     }
+
+//     const selected =
+//       formatDateForSearch(date);
+
+//     const isAvailable =
+//       availableDates.some(
+//         (availableDate) =>
+//           formatDateForSearch(
+//             availableDate
+//           ) === selected
+//       );
+
+//     if (isAvailable) {
+//       setDepartureDate(date);
+//     }
+//   }}
+
+//   dateFormat="dd MMM yyyy"
+
+//   minDate={new Date()}
+
+//   // Sirf available flight dates select hongi
+//   includeDates={availableDates}
+
+//   // Available flight dates ko highlight karo
+//   dayClassName={(date) => {
+
+//     const currentDate =
+//       formatDateForSearch(date);
+
+//     const isAvailable =
+//       availableDates.some(
+//         (availableDate) =>
+//           formatDateForSearch(
+//             availableDate
+//           ) === currentDate
+//       );
+
+//     return isAvailable
+//       ? "flight-available-day"
+//       : undefined;
+//   }}
+
+//   className="date-picker"
+
+//   placeholderText={
+//     from && to
+//       ? loadingDates
+//         ? "Loading available dates..."
+//         : availableDates.length > 0
+//         ? "Select available date"
+//         : "No flights available"
+//       : "Select From & To first"
+//   }
+
+//   disabled={
+//     !from ||
+//     !to ||
+//     loadingDates ||
+//     availableDates.length === 0
+//   }
+
+//   onCalendarOpen={() => {
+
+//     if (
+//       from &&
+//       to &&
+//       availableDates.length === 0 &&
+//       !loadingDates
+//     ) {
+//       alert(
+//         `No flights available from ${from} to ${to}.`
+//       );
+//     }
+
+//   }}
+// />
+
+
+//        <span>
+
+//                 {loadingDates
+//                   ? "Checking flights..."
+//                   : from && to
+//                     ? availableDates.length >
+//                       0
+//                       ? `${availableDates.length} available date${availableDates.length >
+//                         1
+//                         ? "s"
+//                         : ""
+//                       }`
+//                       : "No available dates"
+//                     : "Select From & To first"}
+
+//               </span>
+
+//             </div>
+
+//           </div>
+
+//           {/* ==================================
+//               TRAVELLERS
+//           ================================== */}
+
+//           <div className="field selector-field">
+
+//             <FaUserFriends
+//               className="icon"
+//             />
+
+//             <div
+//               className="selector-content"
+//               onClick={() =>
+//                 setShowTraveller(
+//                   true
+//                 )
+//               }
+//             >
+
+//               <p>
+//                 Travellers
+//               </p>
+
+//               <h3>
+
+//                 {
+//                   travellers.adults
+//                 }{" "}
+
+//                 Adult
+
+//                 {travellers.adults >
+//                   1
+//                   ? "s"
+//                   : ""}
+
+//               </h3>
+
+//               <span>
+//                 {travellers.cabin}
+//               </span>
+
+//             </div>
+
+//             {showTraveller && (
+
+//               <div className="selector-popup traveller-popup">
+
+//                 <TravellerSelector
+//                   travellers={
+//                     travellers
+//                   }
+
+//                   onDone={
+//                     handleTravellerDone
+//                   }
+
+//                   onClose={() =>
+//                     setShowTraveller(
+//                       false
+//                     )
+//                   }
+//                 />
+
+//               </div>
+
+//             )}
+
+//           </div>
+
+//           {/* ==================================
+//               SEARCH
+//           ================================== */}
+
+//           <button
+//             type="button"
+//             className="search-btn"
+//             onClick={
+//               handleSearch
+//             }
+//             title="Search Flights"
+//           >
+
+//             <FaSearch />
+
+//           </button>
+
+//         </div>
+
+//       </div>
+
+//     </section>
+//   );
+// }
+
+// export default FlightSearch;
+
+
+
 import "./FlightSearch.css";
 
 import { useState, useEffect, useRef } from "react";
@@ -32,43 +1155,39 @@ function FlightSearch() {
   // DATE
   // ==========================================
 
-  const [departureDate, setDepartureDate] =
-    useState(null);
+  const [departureDate, setDepartureDate] = useState(null);
 
   // ==========================================
   // AVAILABLE DATES
   // ==========================================
 
-  const [availableDates, setAvailableDates] =
-    useState([]);
+  const [availableDates, setAvailableDates] = useState([]);
+  const [loadingDates, setLoadingDates] = useState(false);
 
-  const [loadingDates, setLoadingDates] =
-    useState(false);
+  // ==========================================
+  // SEARCH ANIMATION
+  // ==========================================
+
+  const [isSearching, setIsSearching] = useState(false);
 
   // ==========================================
   // POPUPS
   // ==========================================
 
-  const [showFromSelector, setShowFromSelector] =
-    useState(false);
-
-  const [showToSelector, setShowToSelector] =
-    useState(false);
-
-  const [showTraveller, setShowTraveller] =
-    useState(false);
+  const [showFromSelector, setShowFromSelector] = useState(false);
+  const [showToSelector, setShowToSelector] = useState(false);
+  const [showTraveller, setShowTraveller] = useState(false);
 
   // ==========================================
   // TRAVELLERS
   // ==========================================
 
-  const [travellers, setTravellers] =
-    useState({
-      adults: 1,
-      children: 0,
-      infants: 0,
-      cabin: "Economy",
-    });
+  const [travellers, setTravellers] = useState({
+    adults: 1,
+    children: 0,
+    infants: 0,
+    cabin: "Economy",
+  });
 
   // ==========================================
   // REFS
@@ -82,9 +1201,7 @@ function FlightSearch() {
   // ==========================================
 
   const normalizeCity = (value) => {
-    if (!value) {
-      return "";
-    }
+    if (!value) return "";
 
     return String(value)
       .trim()
@@ -96,22 +1213,17 @@ function FlightSearch() {
   // ==========================================
 
   const formatDateForSearch = (date) => {
-    if (!date) {
-      return "";
-    }
+    if (!date) return "";
 
-    const year =
-      date.getFullYear();
+    const year = date.getFullYear();
 
-    const month =
-      String(
-        date.getMonth() + 1
-      ).padStart(2, "0");
+    const month = String(
+      date.getMonth() + 1
+    ).padStart(2, "0");
 
-    const day =
-      String(
-        date.getDate()
-      ).padStart(2, "0");
+    const day = String(
+      date.getDate()
+    ).padStart(2, "0");
 
     return `${year}-${month}-${day}`;
   };
@@ -120,33 +1232,20 @@ function FlightSearch() {
   // STRING DATE → DATE OBJECT
   // ==========================================
 
-  const convertToDateObject = (
-    dateString
-  ) => {
-    if (!dateString) {
-      return null;
-    }
+  const convertToDateObject = (dateString) => {
+    if (!dateString) return null;
 
-    const value =
-      String(dateString).trim();
+    const value = String(dateString).trim();
 
-    const match =
-      value.match(
-        /^(\d{4})-(\d{2})-(\d{2})$/
-      );
+    const match = value.match(
+      /^(\d{4})-(\d{2})-(\d{2})$/
+    );
 
-    if (!match) {
-      return null;
-    }
+    if (!match) return null;
 
-    const year =
-      Number(match[1]);
-
-    const month =
-      Number(match[2]) - 1;
-
-    const day =
-      Number(match[3]);
+    const year = Number(match[1]);
+    const month = Number(match[2]) - 1;
+    const day = Number(match[3]);
 
     const date = new Date(
       year,
@@ -154,281 +1253,183 @@ function FlightSearch() {
       day
     );
 
-    date.setHours(
-      0,
-      0,
-      0,
-      0
-    );
+    date.setHours(0, 0, 0, 0);
 
     return date;
   };
 
   // ==========================================
   // FETCH AVAILABLE DATES
-  //
-  // When From + To changes,
-  // automatically find all flights
-  // for that route.
   // ==========================================
 
   useEffect(() => {
     const fetchAvailableDates = async () => {
-      // --------------------------------------
-      // Both cities required
-      // --------------------------------------
-
       if (!from || !to) {
         setAvailableDates([]);
-
         setDepartureDate(null);
-
         return;
       }
-
-      // --------------------------------------
-      // Same city protection
-      // --------------------------------------
 
       if (
         normalizeCity(from) ===
         normalizeCity(to)
       ) {
         setAvailableDates([]);
-
         setDepartureDate(null);
-
         return;
       }
 
       try {
         setLoadingDates(true);
 
-        console.log(
-          "Checking available dates:"
+        const response = await fetch(
+          "https://saiyed-travels-backend-1.onrender.com/api/flights"
         );
 
-        console.log(
-          "From:",
-          from
-        );
-
-        console.log(
-          "To:",
-          to
-        );
-
-        // ------------------------------------
-        // GET ALL FLIGHTS
-        // ------------------------------------
-
-        const response =
-          await fetch(
-            "https://saiyed-travels-backend-1.onrender.com/api/flights"
-          );
-
-        const data =
-          await response.json();
+        const data = await response.json();
 
         if (!response.ok) {
           throw new Error(
             data.message ||
-            "Unable to load flights."
+              "Unable to load flights."
           );
         }
 
-        const flights =
-          Array.isArray(
-            data.flights
-          )
-            ? data.flights
-            : [];
+        const flights = Array.isArray(
+          data.flights
+        )
+          ? data.flights
+          : [];
 
-        // ------------------------------------
+        // ======================================
         // FILTER ROUTE
-        // ------------------------------------
+        // ======================================
 
-        const selectedFrom = normalizeCity(from);
-        const selectedTo = normalizeCity(to);
+        const selectedFrom =
+          normalizeCity(from);
 
+        const selectedTo =
+          normalizeCity(to);
 
+        const routeFlights =
+          flights.filter((flight) => {
+            const fromValues = [
+              flight.fromCity,
+              flight.fromCode,
+              flight.fromAirport,
+              flight.from,
+            ]
+              .filter(Boolean)
+              .map(normalizeCity);
 
-const routeFlights =
-  flights.filter((flight) => {
-    const fromValues = [
-      flight.fromCity,
-      flight.fromCode,
-      flight.fromAirport,
-      flight.from,
-    ]
-      .filter(Boolean)
-      .map(normalizeCity);
+            const toValues = [
+              flight.toCity,
+              flight.toCode,
+              flight.toAirport,
+              flight.to,
+            ]
+              .filter(Boolean)
+              .map(normalizeCity);
 
-    const toValues = [
-      flight.toCity,
-      flight.toCode,
-      flight.toAirport,
-      flight.to,
-    ]
-      .filter(Boolean)
-      .map(normalizeCity);
+            const fromMatch =
+              fromValues.includes(
+                selectedFrom
+              );
 
-    const fromMatch =
-      fromValues.includes(selectedFrom);
+            const toMatch =
+              toValues.includes(
+                selectedTo
+              );
 
-    const toMatch =
-      toValues.includes(selectedTo);
+            // ==================================
+            // AVAILABLE TICKET CHECK
+            // ==================================
 
-    // ==========================================
-    // ACTUAL AVAILABLE TICKET CHECK
-    // ==========================================
+            const hasAvailableTicket =
+              Array.isArray(
+                flight.tickets
+              ) &&
+              flight.tickets.some(
+                (ticket) =>
+                  String(
+                    ticket?.status || ""
+                  )
+                    .trim()
+                    .toLowerCase() ===
+                  "available"
+              );
 
-    const hasAvailableTicket =
-      Array.isArray(flight.tickets) &&
-      flight.tickets.some(
-        (ticket) =>
-          String(ticket?.status || "")
-            .trim()
-            .toLowerCase() === "available"
-      );
+            return (
+              fromMatch &&
+              toMatch &&
+              hasAvailableTicket
+            );
+          });
 
-    return (
-      fromMatch &&
-      toMatch &&
-      hasAvailableTicket
-    );
-  });
+        // ======================================
+        // UNIQUE DATES
+        // ======================================
 
+        const uniqueDateStrings = [
+          ...new Set(
+            routeFlights
+              .map((flight) => {
+                const value =
+                  flight.departureDate ||
+                  flight.date;
 
+                if (!value) return null;
 
+                const raw =
+                  String(value).trim();
 
+                // YYYY-MM-DD / ISO
+                if (
+                  /^\d{4}-\d{2}-\d{2}/.test(
+                    raw
+                  )
+                ) {
+                  return raw.slice(0, 10);
+                }
 
+                // DD-MM-YYYY
+                const dmy = raw.match(
+                  /^(\d{2})-(\d{2})-(\d{4})$/
+                );
 
+                if (dmy) {
+                  return `${dmy[3]}-${dmy[2]}-${dmy[1]}`;
+                }
 
-        // const routeFlights =
-        //   flights.filter((flight) => {
-        //     const fromValues = [
-        //       flight.fromCity,
-        //       flight.fromCode,
-        //       flight.fromAirport,
-        //       flight.from
-        //     ]
-        //       .filter(Boolean)
-        //       .map(normalizeCity);
+                // DD/MM/YYYY
+                const slash = raw.match(
+                  /^(\d{2})\/(\d{2})\/(\d{4})$/
+                );
 
-        //     const toValues = [
-        //       flight.toCity,
-        //       flight.toCode,
-        //       flight.toAirport,
-        //       flight.to
-        //     ]
-        //       .filter(Boolean)
-        //       .map(normalizeCity);
+                if (slash) {
+                  return `${slash[3]}-${slash[2]}-${slash[1]}`;
+                }
 
-        //     const fromMatch =
-        //       fromValues.includes(selectedFrom);
+                return null;
+              })
+              .filter(Boolean)
+          ),
+        ].sort();
 
-        //     const toMatch =
-        //       toValues.includes(selectedTo);
-
-        //     return fromMatch && toMatch;
-        //   });
-
-        console.log(
-          "Route flights:",
-          routeFlights
-        );
-
-        console.log(
-          "Matched route:",
-          selectedFrom,
-          "=>",
-          selectedTo
-        );
-
-        // ------------------------------------
-        // GET UNIQUE DATES
-        // ------------------------------------
-
-        const uniqueDateStrings =
-          [
-            ...new Set(
-              routeFlights
-                .map((flight) => {
-                  const value =
-                    flight.departureDate ||
-                    flight.date;
-
-                  if (!value) {
-                    return null;
-                  }
-
-                  const raw =
-                    String(value).trim();
-
-                  // YYYY-MM-DD or ISO date
-                  if (
-                    /^\d{4}-\d{2}-\d{2}/.test(
-                      raw
-                    )
-                  ) {
-                    return raw.slice(0, 10);
-                  }
-
-                  // DD-MM-YYYY
-                  const dmy =
-                    raw.match(
-                      /^(\d{2})-(\d{2})-(\d{4})$/
-                    );
-
-                  if (dmy) {
-                    return `${dmy[3]}-${dmy[2]}-${dmy[1]}`;
-                  }
-
-                  // DD/MM/YYYY
-                  const slash =
-                    raw.match(
-                      /^(\d{2})\/(\d{2})\/(\d{4})$/
-                    );
-
-                  if (slash) {
-                    return `${slash[3]}-${slash[2]}-${slash[1]}`;
-                  }
-
-                  return null;
-                })
-                .filter(Boolean)
-            ),
-          ].sort();
-
-        console.log(
-          "Available dates:",
-          uniqueDateStrings
-        );
-
-        // ------------------------------------
-        // CONVERT TO DATE OBJECTS
-        // ------------------------------------
+        // ======================================
+        // DATE OBJECTS
+        // ======================================
 
         const dateObjects =
           uniqueDateStrings
-            .map(
-              convertToDateObject
-            )
+            .map(convertToDateObject)
             .filter(Boolean);
 
         setAvailableDates(
           dateObjects
         );
 
-        // ------------------------------------
-        // RESET OLD DATE
-        // ------------------------------------
-
-        setDepartureDate(
-          null
-        );
-
+        setDepartureDate(null);
       } catch (error) {
         console.error(
           "Available Dates Error:",
@@ -436,7 +1437,6 @@ const routeFlights =
         );
 
         setAvailableDates([]);
-
         setDepartureDate(null);
       } finally {
         setLoadingDates(false);
@@ -444,7 +1444,6 @@ const routeFlights =
     };
 
     fetchAvailableDates();
-
   }, [from, to]);
 
   // ==========================================
@@ -452,30 +1451,15 @@ const routeFlights =
   // ==========================================
 
   const handleSearch = () => {
-    const cleanFrom =
-      from.trim();
+    const cleanFrom = from.trim();
+    const cleanTo = to.trim();
 
-    const cleanTo =
-      to.trim();
-
-    // ----------------------------------------
-    // FROM / TO
-    // ----------------------------------------
-
-    if (
-      !cleanFrom ||
-      !cleanTo
-    ) {
+    if (!cleanFrom || !cleanTo) {
       alert(
         "Please select departure and destination."
       );
-
       return;
     }
-
-    // ----------------------------------------
-    // SAME CITY
-    // ----------------------------------------
 
     if (
       normalizeCity(cleanFrom) ===
@@ -484,40 +1468,22 @@ const routeFlights =
       alert(
         "Departure and Destination cannot be the same."
       );
-
       return;
     }
 
-    // ----------------------------------------
-    // NO AVAILABLE DATE
-    // ----------------------------------------
-
-    if (
-      availableDates.length ===
-      0
-    ) {
+    if (availableDates.length === 0) {
       alert(
         `No flights available from ${cleanFrom} to ${cleanTo}.`
       );
-
       return;
     }
-
-    // ----------------------------------------
-    // DATE
-    // ----------------------------------------
 
     if (!departureDate) {
       alert(
         "Please select an available travel date."
       );
-
       return;
     }
-
-    // ----------------------------------------
-    // CHECK SELECTED DATE
-    // ----------------------------------------
 
     const selectedDate =
       formatDateForSearch(
@@ -527,70 +1493,48 @@ const routeFlights =
     const isAvailable =
       availableDates.some(
         (date) =>
-          formatDateForSearch(
-            date
-          ) === selectedDate
+          formatDateForSearch(date) ===
+          selectedDate
       );
 
     if (!isAvailable) {
       alert(
         "No flight is available on this date."
       );
-
       return;
     }
 
     console.log(
-      "CUSTOMER SEARCH:"
-    );
-
-    console.log(
-      "From:",
-      cleanFrom
-    );
-
-    console.log(
-      "To:",
-      cleanTo
-    );
-
-    console.log(
-      "Date:",
+      "CUSTOMER SEARCH:",
+      cleanFrom,
+      cleanTo,
       selectedDate
     );
 
-    // ----------------------------------------
-    // GO TO FLIGHTS
-    // ----------------------------------------
+    // ========================================
+    // SHOW SEARCH ANIMATION
+    // ========================================
 
-    navigate(
-      "/flights",
-      {
+    setIsSearching(true);
+
+    setTimeout(() => {
+      navigate("/flights", {
         state: {
           from: cleanFrom,
-
           to: cleanTo,
-
-          departureDate:
-            selectedDate,
-
+          departureDate: selectedDate,
           travellers,
         },
-      }
-    );
+      });
+    }, 1200);
   };
 
   // ==========================================
   // FROM SELECT
   // ==========================================
 
-  const handleFromSelect = (
-    city
-  ) => {
+  const handleFromSelect = (city) => {
     setFrom(city);
-
-    // When From changes,
-    // old destination is removed.
 
     setTo("");
 
@@ -598,25 +1542,19 @@ const routeFlights =
 
     setAvailableDates([]);
 
-    setShowFromSelector(
-      false
-    );
+    setShowFromSelector(false);
   };
 
   // ==========================================
   // TO SELECT
   // ==========================================
 
-  const handleToSelect = (
-    city
-  ) => {
+  const handleToSelect = (city) => {
     setTo(city);
 
     setDepartureDate(null);
 
-    setShowToSelector(
-      false
-    );
+    setShowToSelector(false);
   };
 
   // ==========================================
@@ -624,14 +1562,10 @@ const routeFlights =
   // ==========================================
 
   const handleSwap = () => {
-    const oldFrom =
-      from;
-
-    const oldTo =
-      to;
+    const oldFrom = from;
+    const oldTo = to;
 
     setFrom(oldTo);
-
     setTo(oldFrom);
 
     setDepartureDate(null);
@@ -641,14 +1575,9 @@ const routeFlights =
   // TRAVELLER DONE
   // ==========================================
 
-  const handleTravellerDone = (
-    data
-  ) => {
+  const handleTravellerDone = (data) => {
     setTravellers(data);
-
-    setShowTraveller(
-      false
-    );
+    setShowTraveller(false);
   };
 
   // ==========================================
@@ -656,24 +1585,15 @@ const routeFlights =
   // ==========================================
 
   useEffect(() => {
-    const handleClickOutside = (
-      event
-    ) => {
-
-      // FROM
-
+    const handleClickOutside = (event) => {
       if (
         fromRef.current &&
         !fromRef.current.contains(
           event.target
         )
       ) {
-        setShowFromSelector(
-          false
-        );
+        setShowFromSelector(false);
       }
-
-      // TO
 
       if (
         toRef.current &&
@@ -681,12 +1601,8 @@ const routeFlights =
           event.target
         )
       ) {
-        setShowToSelector(
-          false
-        );
+        setShowToSelector(false);
       }
-
-      // TRAVELLER
 
       if (
         !event.target.closest(
@@ -696,9 +1612,7 @@ const routeFlights =
           ".selector-content"
         )
       ) {
-        setShowTraveller(
-          false
-        );
+        setShowTraveller(false);
       }
     };
 
@@ -713,7 +1627,6 @@ const routeFlights =
         handleClickOutside
       );
     };
-
   }, []);
 
   // ==========================================
@@ -721,399 +1634,437 @@ const routeFlights =
   // ==========================================
 
   return (
-    <section className="flight-search">
+    <>
+      {/* ======================================
+          SEARCH ANIMATION
+      ====================================== */}
 
-      <div className="search-card">
+      {isSearching && (
+        <div className="flight-search-overlay">
+          <div className="flight-search-animation">
 
-        {/* ====================================
-            TABS
-        ==================================== */}
+            <div className="route-animation">
 
-        <div className="trip-tabs">
+              <div className="route-dot start-dot"></div>
 
-          <button
-            type="button"
-            className="active"
-          >
-            One Way
-          </button>
+              <div className="route-line">
+                <span></span>
+              </div>
 
-          <button
-            type="button"
-          >
-            Round Trip
-          </button>
+              <div className="route-dot end-dot"></div>
 
-          <button
-            type="button"
-          >
-            Multi City
-          </button>
+              <FaPlaneDeparture className="search-flying-plane" />
 
+            </div>
+
+            <h2>
+              Searching Flights
+            </h2>
+
+            <p>
+              Finding the best flights for you...
+            </p>
+
+            <div className="search-loading-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+          </div>
         </div>
+      )}
 
-        {/* ====================================
-            SEARCH ROW
-        ==================================== */}
+      {/* ======================================
+          MAIN SEARCH
+      ====================================== */}
 
-        <div className="search-row">
+      <section className="flight-search">
+
+        <div className="search-card">
 
           {/* ==================================
-              FROM
+              TABS
           ================================== */}
 
-          <div
-            className="field selector-field"
-            ref={fromRef}
-          >
+          <div className="trip-tabs">
 
-            <FaPlaneDeparture
-              className="icon"
-            />
-
-            <div
-              className="selector-content"
-              onClick={() =>
-                setShowFromSelector(
-                  true
-                )
-              }
+            <button
+              type="button"
+              className="active"
             >
+              One Way
+            </button>
 
-              <p>
-                From
-              </p>
+            <button type="button">
+              Round Trip
+            </button>
 
-              <h3>
-                {from ||
-                  "Select City"}
-              </h3>
-
-              <span>
-                Select Departure City
-              </span>
-
-            </div>
-
-            {showFromSelector && (
-
-              <div className="selector-popup">
-
-                <CitySelector
-                  type="from"
-                  onSelect={
-                    handleFromSelect
-                  }
-                />
-
-              </div>
-
-            )}
+            <button type="button">
+              Multi City
+            </button>
 
           </div>
 
           {/* ==================================
-              SWAP
+              SEARCH ROW
           ================================== */}
 
-          <button
-            type="button"
-            className="swap-btn"
-            onClick={
-              handleSwap
-            }
-            title="Swap cities"
-          >
+          <div className="search-row">
 
-            <FaExchangeAlt />
-
-          </button>
-
-          {/* ==================================
-              TO
-          ================================== */}
-
-          <div
-            className="field selector-field"
-            ref={toRef}
-          >
-
-            <FaPlaneArrival
-              className="icon"
-            />
+            {/* ==================================
+                FROM
+            ================================== */}
 
             <div
-              className="selector-content"
-              onClick={() =>
-                setShowToSelector(
-                  true
-                )
-              }
+              className="field selector-field"
+              ref={fromRef}
             >
 
-              <p>
-                To
-              </p>
+              <FaPlaneDeparture className="icon" />
 
-              <h3>
-                {to ||
-                  "Select City"}
-              </h3>
+              <div
+                className="selector-content"
+                onClick={() =>
+                  setShowFromSelector(true)
+                }
+              >
 
-              <span>
-                Select Destination
-              </span>
+                <p>From</p>
 
-            </div>
+                <h3>
+                  {from || "Select City"}
+                </h3>
 
-            {showToSelector && (
-
-              <div className="selector-popup">
-
-                <CitySelector
-                  type="to"
-                  selectedFrom={
-                    from
-                  }
-                  onSelect={
-                    handleToSelect
-                  }
-                />
+                <span>
+                  Select Departure City
+                </span>
 
               </div>
 
-            )}
+              {showFromSelector && (
+                <div className="selector-popup">
 
-          </div>
+                  <CitySelector
+                    type="from"
+                    onSelect={
+                      handleFromSelect
+                    }
+                  />
 
-          {/* ==================================
-              DATE
-          ================================== */}
+                </div>
+              )}
 
-          <div className="field">
+            </div>
 
-            <FaCalendarAlt
-              className="icon"
-            />
+            {/* ==================================
+                SWAP
+            ================================== */}
 
-            <div>
+            <button
+              type="button"
+              className="swap-btn"
+              onClick={handleSwap}
+              title="Swap cities"
+            >
+              <FaExchangeAlt />
+            </button>
 
-              <p>
-                Departure
-              </p>
+            {/* ==================================
+                TO
+            ================================== */}
 
+            <div
+              className="field selector-field"
+              ref={toRef}
+            >
 
+              <FaPlaneArrival className="icon" />
 
+              <div
+                className="selector-content"
+                onClick={() =>
+                  setShowToSelector(true)
+                }
+              >
 
+                <p>To</p>
 
+                <h3>
+                  {to || "Select City"}
+                </h3>
 
+                <span>
+                  Select Destination
+                </span>
 
+              </div>
 
+              {showToSelector && (
+                <div className="selector-popup">
 
+                  <CitySelector
+                    type="to"
+                    selectedFrom={from}
+                    onSelect={
+                      handleToSelect
+                    }
+                  />
 
+                </div>
+              )}
 
+            </div>
 
+            {/* ==================================
+                DATE
+            ================================== */}
 
-<DatePicker
-  selected={departureDate}
+            <div className="field">
 
-  onChange={(date) => {
-    if (!date) {
-      setDepartureDate(null);
-      return;
-    }
+              <FaCalendarAlt className="icon" />
 
-    const selected =
-      formatDateForSearch(date);
+              <div>
 
-    const isAvailable =
-      availableDates.some(
-        (availableDate) =>
-          formatDateForSearch(
-            availableDate
-          ) === selected
-      );
+                <p>Departure</p>
 
-    if (isAvailable) {
-      setDepartureDate(date);
-    }
-  }}
+                <DatePicker
+                  selected={departureDate}
 
-  dateFormat="dd MMM yyyy"
+                  onChange={(date) => {
+                    if (!date) {
+                      setDepartureDate(null);
+                      return;
+                    }
 
-  minDate={new Date()}
+                    const selected =
+                      formatDateForSearch(
+                        date
+                      );
 
-  // Sirf available flight dates select hongi
-  includeDates={availableDates}
+                    const isAvailable =
+                      availableDates.some(
+                        (availableDate) =>
+                          formatDateForSearch(
+                            availableDate
+                          ) === selected
+                      );
 
-  // Available flight dates ko highlight karo
-  dayClassName={(date) => {
+                    if (isAvailable) {
+                      setDepartureDate(date);
+                    }
+                  }}
 
-    const currentDate =
-      formatDateForSearch(date);
+                  dateFormat="dd MMM yyyy"
 
-    const isAvailable =
-      availableDates.some(
-        (availableDate) =>
-          formatDateForSearch(
-            availableDate
-          ) === currentDate
-      );
+                  minDate={new Date()}
 
-    return isAvailable
-      ? "flight-available-day"
-      : undefined;
-  }}
+                  includeDates={
+                    availableDates
+                  }
 
-  className="date-picker"
+                  dayClassName={(date) => {
+                    const currentDate =
+                      formatDateForSearch(
+                        date
+                      );
 
-  placeholderText={
-    from && to
-      ? loadingDates
-        ? "Loading available dates..."
-        : availableDates.length > 0
-        ? "Select available date"
-        : "No flights available"
-      : "Select From & To first"
-  }
+                    const isAvailable =
+                      availableDates.some(
+                        (availableDate) =>
+                          formatDateForSearch(
+                            availableDate
+                          ) === currentDate
+                      );
 
-  disabled={
-    !from ||
-    !to ||
-    loadingDates ||
-    availableDates.length === 0
-  }
+                    return isAvailable
+                      ? "flight-available-day"
+                      : undefined;
+                  }}
 
-  onCalendarOpen={() => {
+                  className="date-picker"
 
-    if (
-      from &&
-      to &&
-      availableDates.length === 0 &&
-      !loadingDates
-    ) {
-      alert(
-        `No flights available from ${from} to ${to}.`
-      );
-    }
+                  placeholderText={
+                    from && to
+                      ? loadingDates
+                        ? "Loading available dates..."
+                        : availableDates.length >
+                          0
+                        ? "Select available date"
+                        : "No flights available"
+                      : "Select From & To first"
+                  }
 
-  }}
-/>
+                  disabled={
+                    !from ||
+                    !to ||
+                    loadingDates ||
+                    availableDates.length === 0
+                  }
 
+                  onCalendarOpen={() => {
+                    if (
+                      from &&
+                      to &&
+                      availableDates.length === 0 &&
+                      !loadingDates
+                    ) {
+                      alert(
+                        `No flights available from ${from} to ${to}.`
+                      );
+                    }
+                  }}
 
-       <span>
+                  renderCustomHeader={({
+                    date,
+                    decreaseMonth,
+                    increaseMonth,
+                    prevMonthButtonDisabled,
+                    nextMonthButtonDisabled,
+                  }) => (
+                    <div className="custom-calendar-header">
 
-                {loadingDates
-                  ? "Checking flights..."
-                  : from && to
+                      <button
+                        type="button"
+                        onClick={
+                          decreaseMonth
+                        }
+                        disabled={
+                          prevMonthButtonDisabled
+                        }
+                        className="calendar-nav-btn"
+                        aria-label="Previous month"
+                      >
+                        ‹
+                      </button>
+
+                      <div className="calendar-month-title">
+
+                        <span>
+                          {date.toLocaleString(
+                            "en-US",
+                            {
+                              month: "long",
+                            }
+                          )}
+                        </span>
+
+                        <small>
+                          {date.getFullYear()}
+                        </small>
+
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={
+                          increaseMonth
+                        }
+                        disabled={
+                          nextMonthButtonDisabled
+                        }
+                        className="calendar-nav-btn"
+                        aria-label="Next month"
+                      >
+                        ›
+                      </button>
+
+                    </div>
+                  )}
+                />
+
+                <span>
+                  {loadingDates
+                    ? "Checking flights..."
+                    : from && to
                     ? availableDates.length >
                       0
-                      ? `${availableDates.length} available date${availableDates.length >
-                        1
-                        ? "s"
-                        : ""
-                      }`
+                      ? `${
+                          availableDates.length
+                        } available date${
+                          availableDates.length >
+                          1
+                            ? "s"
+                            : ""
+                        }`
                       : "No available dates"
                     : "Select From & To first"}
-
-              </span>
-
-            </div>
-
-          </div>
-
-          {/* ==================================
-              TRAVELLERS
-          ================================== */}
-
-          <div className="field selector-field">
-
-            <FaUserFriends
-              className="icon"
-            />
-
-            <div
-              className="selector-content"
-              onClick={() =>
-                setShowTraveller(
-                  true
-                )
-              }
-            >
-
-              <p>
-                Travellers
-              </p>
-
-              <h3>
-
-                {
-                  travellers.adults
-                }{" "}
-
-                Adult
-
-                {travellers.adults >
-                  1
-                  ? "s"
-                  : ""}
-
-              </h3>
-
-              <span>
-                {travellers.cabin}
-              </span>
-
-            </div>
-
-            {showTraveller && (
-
-              <div className="selector-popup traveller-popup">
-
-                <TravellerSelector
-                  travellers={
-                    travellers
-                  }
-
-                  onDone={
-                    handleTravellerDone
-                  }
-
-                  onClose={() =>
-                    setShowTraveller(
-                      false
-                    )
-                  }
-                />
+                </span>
 
               </div>
 
-            )}
+            </div>
+
+            {/* ==================================
+                TRAVELLERS
+            ================================== */}
+
+            <div className="field selector-field">
+
+              <FaUserFriends className="icon" />
+
+              <div
+                className="selector-content"
+                onClick={() =>
+                  setShowTraveller(true)
+                }
+              >
+
+                <p>Travellers</p>
+
+                <h3>
+                  {travellers.adults}{" "}
+                  Adult
+                  {travellers.adults > 1
+                    ? "s"
+                    : ""}
+                </h3>
+
+                <span>
+                  {travellers.cabin}
+                </span>
+
+              </div>
+
+              {showTraveller && (
+                <div className="selector-popup traveller-popup">
+
+                  <TravellerSelector
+                    travellers={travellers}
+                    onDone={
+                      handleTravellerDone
+                    }
+                    onClose={() =>
+                      setShowTraveller(false)
+                    }
+                  />
+
+                </div>
+              )}
+
+            </div>
+
+            {/* ==================================
+                SEARCH BUTTON
+            ================================== */}
+
+            <button
+              type="button"
+              className="search-btn"
+              onClick={handleSearch}
+              title="Search Flights"
+              disabled={isSearching}
+            >
+
+              <FaSearch />
+
+            </button>
 
           </div>
-
-          {/* ==================================
-              SEARCH
-          ================================== */}
-
-          <button
-            type="button"
-            className="search-btn"
-            onClick={
-              handleSearch
-            }
-            title="Search Flights"
-          >
-
-            <FaSearch />
-
-          </button>
-
         </div>
 
-      </div>
-
-    </section>
+      </section>
+    </>
   );
 }
 

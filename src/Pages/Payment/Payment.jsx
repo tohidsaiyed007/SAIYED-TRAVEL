@@ -12065,6 +12065,23 @@ function Payment() {
                   <strong>Admin Booking</strong>
                   <span>Payment is not required for admin.</span>
                 </div>
+
+                <button
+  type="button"
+  className="pay-btn"
+  onClick={handlePayment}
+  disabled={loading}
+  style={{
+    marginTop: "25px",
+    width: "100%",
+  }}
+>
+  {loading
+    ? "Creating Ticket..."
+    : `Confirm Booking & Generate Ticket • ₹ ${total.toLocaleString(
+        "en-IN"
+      )}`}
+</button>
               </>
             ) : (
               <>
@@ -12188,12 +12205,12 @@ function Payment() {
 
                         <div className="bank-detail">
                           <span>Account Holder</span>
-                          <strong>SAIYED TRAVELS</strong>
+                          <strong>SAYED TRAVELS</strong>
                         </div>
 
                         <div className="bank-detail">
                           <span>IFSC Code</span>
-                          <strong>BARBOMOHJHU</strong>
+                          <strong>BARB0MOHJHU</strong>
                         </div>
 
                         <div className="bank-detail">
