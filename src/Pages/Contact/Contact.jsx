@@ -141,7 +141,7 @@ function Contact() {
                 <h3>Abdul Wahid</h3>
 
                 <a href="tel:+919660497018">
-                  +91 9960497018
+                  +91 9660497018
                 </a>
 
               </div>
