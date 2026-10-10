@@ -1265,3 +1265,519 @@
   }
 
 }
+
+
+
+/* =========================================================
+   TICKET TOP SUMMARY — matches the requested airline-ticket
+   reference. Existing booking and print actions are unchanged.
+========================================================= */
+.ticket-top-summary {
+  display: grid;
+  grid-template-columns: 135px minmax(120px, 1fr) 30px minmax(135px, 1fr) 190px minmax(260px, 1.45fr);
+  align-items: center;
+  gap: 16px;
+  padding: 20px 25px;
+  background: linear-gradient(110deg, #edf4ff 0%, #e5eefb 52%, #f7faff 100%);
+  border-bottom: 1px solid #c8d9f2;
+  color: #101f3f;
+}
+
+.ticket-top-airline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 0;
+  padding-right: 15px;
+  border-right: 2px solid #c3d8f5;
+  text-align: center;
+}
+
+.ticket-top-airline img,
+.ticket-top-airline-fallback {
+  width: 76px;
+  height: 76px;
+  object-fit: contain;
+  border-radius: 9px;
+  background: #fff;
+  padding: 5px;
+}
+
+.ticket-top-airline-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0759d7;
+  font-size: 30px;
+}
+
+.ticket-top-airline strong {
+  color: #111827;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.ticket-top-city {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  color: #101f3f;
+  overflow-wrap: anywhere;
+}
+
+.ticket-top-code {
+  color: #0c1b3a;
+  font-size: 30px;
+  line-height: 1.05;
+  font-weight: 900;
+}
+
+.ticket-top-city b {
+  color: #111d37;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.ticket-top-city span {
+  color: #172b4d;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.ticket-top-plane {
+  color: #101f3f;
+  text-align: center;
+  font-size: 27px;
+  font-weight: 900;
+}
+
+.ticket-top-reference {
+  min-width: 0;
+  min-height: 82px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding-left: 16px;
+  border-left: 1px solid #c3d8f5;
+}
+
+.ticket-top-reference span {
+  color: #172b4d;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ticket-top-reference strong {
+  color: #0759d7;
+  font-size: 23px;
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.ticket-top-reference b {
+  color: #101f3f;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.ticket-top-reference .ticket-booking-id {
+  color: #101f3f;
+  font-size: 12px;
+  font-weight: 900;
+  overflow-wrap: anywhere;
+  line-height: 1.25;
+}
+
+.ticket-top-qr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 4px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.ticket-top-qr img {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: 115px;
+  object-fit: fill;
+}
+
+@media (max-width: 1000px) {
+  .ticket-top-summary {
+    grid-template-columns: 110px minmax(100px, 1fr) 25px minmax(100px, 1fr) 155px;
+    gap: 12px;
+  }
+
+  .ticket-top-qr {
+    grid-column: 2 / -1;
+    justify-content: flex-start;
+  }
+
+  .ticket-top-qr img {
+    width: 100%;
+    max-width: 360px;
+    height: 95px;
+  }
+}
+
+@media (max-width: 650px) {
+  .ticket-top-summary {
+    grid-template-columns: 1fr 28px 1fr;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .ticket-top-airline {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-right: 0;
+    border-bottom: 1px solid #c3d8f5;
+    padding: 0 0 12px;
+  }
+
+  .ticket-top-airline img,
+  .ticket-top-airline-fallback {
+    width: 52px;
+    height: 52px;
+  }
+
+  .ticket-top-code {
+    font-size: 24px;
+  }
+
+  .ticket-top-city b {
+    font-size: 14px;
+  }
+
+  .ticket-top-city span {
+    font-size: 11px;
+  }
+
+  .ticket-top-reference {
+    grid-column: 1 / 2;
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .ticket-top-qr {
+    grid-column: 2 / -1;
+  }
+
+  .ticket-top-qr img {
+    width: 100%;
+    max-width: 360px;
+    height: 85px;
+  }
+}
+
+@media print {
+  .ticket-top-summary {
+    grid-template-columns: 105px minmax(90px, 1fr) 22px minmax(95px, 1fr) 130px 165px !important;
+    gap: 9px !important;
+    padding: 12px 14px !important;
+    background: #eaf1fb !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    break-inside: avoid;
+  }
+
+  .ticket-top-airline img,
+  .ticket-top-airline-fallback {
+    width: 58px !important;
+    height: 58px !important;
+  }
+
+  .ticket-top-airline strong {
+    font-size: 13px !important;
+  }
+
+  .ticket-top-code {
+    font-size: 22px !important;
+  }
+
+  .ticket-top-city b {
+    font-size: 12px !important;
+  }
+
+  .ticket-top-city span,
+  .ticket-top-reference span {
+    font-size: 9px !important;
+    color: #000 !important;
+  }
+
+  .ticket-top-reference strong {
+    font-size: 17px !important;
+  }
+
+  .ticket-top-reference b {
+    font-size: 11px !important;
+  }
+
+  .ticket-top-qr img {
+    height: 78px !important;
+    max-width: 165px !important;
+  }
+
+  .flight-note {
+    display: none !important;
+  }
+}
+
+
+
+/* Match the reference image's blue section bars for flight/passenger details */
+.ticket-section > .section-title.orange {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 42px;
+  align-items: center;
+  gap: 10px;
+  background: #e7f1ff !important;
+  color: #123a70 !important;
+  font-size: 18px;
+  border: 1px solid #d7e7fb;
+  border-radius: 10px;
+  padding: 9px 15px;
+}
+
+@media print {
+  .ticket-section > .section-title.orange {
+    background: #e7f1ff !important;
+    color: #000 !important;
+    border-color: #9bbce8 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+
+
+/* Booking ID + wide 2D barcode in the ticket's top summary */
+.ticket-top-reference .ticket-booking-id {
+  display: block;
+  color: #101f3f !important;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.ticket-top-qr img {
+  width: 100%;
+  max-width: 360px;
+  height: 115px;
+  object-fit: fill;
+}
+
+@media print {
+  .ticket-top-summary {
+    grid-template-columns: 92px minmax(78px, 1fr) 20px minmax(85px, 1fr) 135px minmax(190px, 1.4fr) !important;
+    gap: 7px !important;
+  }
+
+  .ticket-top-reference .ticket-booking-id {
+    color: #000000 !important;
+    font-size: 10px !important;
+  }
+
+  .ticket-top-qr img {
+    width: 100% !important;
+    max-width: 320px !important;
+    height: 82px !important;
+    object-fit: fill !important;
+  }
+}
+
+
+
+/* =========================================================
+   PRINT / DOWNLOAD PDF FIX
+   Keep the existing ticket and all actions unchanged.
+   Landscape A4 gives the flight/passenger tables more room.
+========================================================= */
+@media print {
+  @page {
+    size: A4 landscape !important;
+    margin: 6mm !important;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .success-page {
+    width: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  #ticket-print-area,
+  .eticket {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  /* Prevent mobile/tablet grid rules from squeezing the ticket */
+  .ticket-top-summary {
+    display: grid !important;
+    grid-template-columns: 88px minmax(95px, 1fr) 22px minmax(100px, 1fr) 145px minmax(190px, 1.25fr) !important;
+    gap: 8px !important;
+    padding: 10px 12px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .ticket-top-airline img,
+  .ticket-top-airline-fallback {
+    width: 52px !important;
+    height: 52px !important;
+  }
+
+  .ticket-top-airline strong {
+    font-size: 11px !important;
+  }
+
+  .ticket-top-code {
+    font-size: 21px !important;
+  }
+
+  .ticket-top-city b {
+    font-size: 11px !important;
+  }
+
+  .ticket-top-city span,
+  .ticket-top-reference span {
+    font-size: 9px !important;
+    line-height: 1.25 !important;
+  }
+
+  .ticket-top-reference strong {
+    font-size: 15px !important;
+  }
+
+  .ticket-top-reference b,
+  .ticket-top-reference .ticket-booking-id {
+    font-size: 10px !important;
+  }
+
+  .ticket-top-qr img {
+    width: 100% !important;
+    max-width: none !important;
+    height: 58px !important;
+    object-fit: fill !important;
+  }
+
+  .ticket-section {
+    padding: 8px 10px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .ticket-section > .section-title,
+  .ticket-section > .section-title.orange {
+    min-height: 30px !important;
+    margin-bottom: 6px !important;
+    padding: 5px 10px !important;
+    font-size: 13px !important;
+  }
+
+  .flight-table,
+  .passenger-table {
+    width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+  }
+
+  .flight-table th,
+  .passenger-table th {
+    padding: 6px 5px !important;
+    font-size: 8px !important;
+    line-height: 1.2 !important;
+    color: #000000 !important;
+    background: #e5edf8 !important;
+    border: 1px solid #8fa6c4 !important;
+    white-space: normal !important;
+  }
+
+  .flight-table td,
+  .passenger-table td {
+    padding: 7px 5px !important;
+    font-size: 9px !important;
+    line-height: 1.3 !important;
+    color: #000000 !important;
+    border: 1px solid #9aacc3 !important;
+    overflow-wrap: anywhere !important;
+    white-space: normal !important;
+  }
+
+  .flight-table td strong,
+  .passenger-table td strong,
+  .flight-table td b,
+  .passenger-table td b {
+    color: #000000 !important;
+    font-weight: 800 !important;
+  }
+
+  .flight-table small,
+  .passenger-table small,
+  .flight-table span,
+  .passenger-table span {
+    color: #202020 !important;
+    font-size: 8px !important;
+  }
+
+  .flight-note,
+  .important-flight-note {
+    font-size: 8px !important;
+    line-height: 1.25 !important;
+    margin: 4px 0 !important;
+  }
+
+  .passenger-count-line,
+  .passenger-note {
+    font-size: 9px !important;
+    line-height: 1.25 !important;
+  }
+
+  .terms-section {
+    padding: 7px 10px !important;
+    font-size: 8px !important;
+    line-height: 1.3 !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .fare-payment-section,
+  .qr-brand-section {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+

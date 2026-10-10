@@ -1423,7 +1423,7 @@ function Booking() {
                         }
                       >
 
-                        <option value="">
+                        {/* <option value="">
                           Select Gender
                         </option>
 
@@ -1437,7 +1437,20 @@ function Booking() {
 
                         <option value="Other">
                           Other
-                        </option>
+                        </option> */}
+
+
+                        <option value="">
+  Select Gender
+</option>
+
+<option value="Male">
+  Male (MR)
+</option>
+
+<option value="Female">
+  Female (MS)
+</option>
 
                       </select>
 
